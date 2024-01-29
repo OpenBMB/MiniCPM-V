@@ -34,7 +34,7 @@ OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The mode
 
 - **High Efficiency.** OmniLLM 3B can be efficiently deployed on most GPU cards and personal computers, and even on edge devices such as mobilephones. Due to the significantly fewer tokens used to represent the images (i.e., 64 in OmniLMM 3B vs. 512+ in counterpart models), OmniLMM 3B can operate with less memory cost and higher speed during inference.
 
-- **Promising Performance.** OmniLMM 3B achieves promising performance on multiple benchmarks (including MMMU, MME and MMbech), surpassing existing LMMs built on Phi-2. The model also supports OCR capability and endows rich multimodal world knowledge.
+- **Promising Performance.** OmniLMM 3B achieves promising performance on multiple benchmarks (including MMMU, MME and MMbech), surpassing existing LMMs built on Phi-2. The model supports bilingual mulitmodal interaction in English and Chinese, and endows rich multimodal world knowledge.
 
 TODO：实验结果，可以放个表格截图 @王崇屹
 
