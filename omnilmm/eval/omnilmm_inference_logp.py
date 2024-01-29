@@ -8,7 +8,7 @@ import torch.utils.data as torch_data
 from typing import List
 from functools import partial
 
-from omnilmm.eval.muffin_vqa import init_muffin
+from omnilmm.eval.omnilmm_vqa import init_omnilmm
 from omnilmm.train.train_utils import encode_multimodal_preference_sample, SFT_collator_fn
 from omnilmm.data.datasets import SingleDataSourceDataset
 from omnilmm.data.tsv_file_op import multimodal_img_tsv_writer_prev
@@ -213,16 +213,16 @@ def write_logp_to_preference_tsv(tsv_filename, out_tsv_filename, logps, overwrit
 
 
 if __name__ == '__main__':
-    # model, img_processor, image_token_len, tokenizer = init_muffin('../Muffin_checkpoints/310m_pretrain_100k_SFT_M3IT_2800_then_M3IT-LVA-UniMM-SYNTHEDOG_2800/')
-    # model, img_processor, image_token_len, tokenizer = init_muffin('../Muffin_checkpoints/vqa_exp/muffin_13b_SFT-no_crop_0.99-vqav2-train#unimm-chat-50#50-beit3_large_patch16_448/checkpionts/checkpoint-2800/')
-    # model, img_processor, image_token_len, tokenizer = init_muffin('/home/yutianyu/Muffin_checkpoints/vqa_exp/muffin_13b_SFT-vqa_with_unimmchat_run2-vqav2-train#unimm-chat-50#50-beit3_large_patch16_448/checkpionts/checkpoint-1200/')
-    # model, img_processor, image_token_len, tokenizer = init_muffin('../Muffin_checkpoints/SFT_exp/muffin_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-gpt4v_detailed_1102-1-beit3_large_patch16_448/checkpionts/checkpoint-50/')
-    # model, img_processor, image_token_len, tokenizer = init_muffin('../Muffin_checkpoints/SFT_exp/muffin_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-gpt4v_detailed_1102-1-beit3_large_patch16_448/checkpionts/checkpoint-100/')
-    # model, img_processor, image_token_len, tokenizer = init_muffin('../Muffin_checkpoints/SFT_exp/muffin_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-vqav2-train#gpt4v_detailed_1102-1#1-beit3_large_patch16_448/checkpionts/checkpoint-40/')
-    # model, img_processor, image_token_len, tokenizer = init_muffin('../Muffin_checkpoints/SFT_exp/muffin_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-gpt4v_detailed_1102-1-beit3_large_patch16_448/checkpionts/checkpoint-20/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('../Muffin_checkpoints/310m_pretrain_100k_SFT_M3IT_2800_then_M3IT-LVA-UniMM-SYNTHEDOG_2800/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('../Muffin_checkpoints/vqa_exp/omnilmm_13b_SFT-no_crop_0.99-vqav2-train#unimm-chat-50#50-beit3_large_patch16_448/checkpionts/checkpoint-2800/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('/home/yutianyu/Muffin_checkpoints/vqa_exp/omnilmm_13b_SFT-vqa_with_unimmchat_run2-vqav2-train#unimm-chat-50#50-beit3_large_patch16_448/checkpionts/checkpoint-1200/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('../Muffin_checkpoints/SFT_exp/omnilmm_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-gpt4v_detailed_1102-1-beit3_large_patch16_448/checkpionts/checkpoint-50/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('../Muffin_checkpoints/SFT_exp/omnilmm_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-gpt4v_detailed_1102-1-beit3_large_patch16_448/checkpionts/checkpoint-100/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('../Muffin_checkpoints/SFT_exp/omnilmm_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-vqav2-train#gpt4v_detailed_1102-1#1-beit3_large_patch16_448/checkpionts/checkpoint-40/')
+    # model, img_processor, image_token_len, tokenizer = init_omnilmm('../Muffin_checkpoints/SFT_exp/omnilmm_13b_SFT-Muffin_QA_GPT-4v_1102_SFT_bsz512-gpt4v_detailed_1102-1-beit3_large_patch16_448/checkpionts/checkpoint-20/')
 
-    model, img_processor, image_token_len, tokenizer = init_muffin(
-        '/home/yutianyu/Muffin_checkpoints/SFT_exp/muffin_13b_SFT-Muffin_QA_win_SFT_combine-vqav2-train#dpo_sftwin_checked_1005-1026#dpo_sftwin_checked_1103-1106-1#1#1-beit3_large_patch16_448/checkpionts/checkpoint-20/')
+    model, img_processor, image_token_len, tokenizer = init_omnilmm(
+        '/home/yutianyu/Muffin_checkpoints/SFT_exp/omnilmm_13b_SFT-Muffin_QA_win_SFT_combine-vqav2-train#dpo_sftwin_checked_1005-1026#dpo_sftwin_checked_1103-1106-1#1#1-beit3_large_patch16_448/checkpionts/checkpoint-20/')
 
     use_im_start_end = True
 

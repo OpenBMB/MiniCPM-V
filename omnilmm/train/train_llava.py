@@ -5,7 +5,7 @@ import pathlib
 
 import transformers
 from omnilmm.train.trainers import MuffinDPOTrainer, MuffinTrainer
-from omnilmm.train.train_muffin import LazySupervisedDataset, ModelArguments, DataArguments, TrainingArguments, smart_tokenizer_and_embedding_resize, safe_save_model_for_hf_trainer, make_supervised_data_module, make_dpo_data_module, get_local_dir
+from omnilmm.train.train_omnilmm import LazySupervisedDataset, ModelArguments, DataArguments, TrainingArguments, smart_tokenizer_and_embedding_resize, safe_save_model_for_hf_trainer, make_supervised_data_module, make_dpo_data_module, get_local_dir
 
 from omnilmm import conversation as conversation_lib
 from omnilmm import LlavaLlamaForCausalLM

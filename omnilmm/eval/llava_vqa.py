@@ -15,7 +15,7 @@ from omnilmm.utils import disable_torch_init
 from omnilmm.model.utils import build_transform
 from omnilmm.data.datasets import MultimodalQADataset
 
-from omnilmm.eval.muffin_vqa import patch_config, wrap_question_with_default_conv, qa_colloator_fn, KeywordsStoppingCriteria
+from omnilmm.eval.omnilmm_vqa import patch_config, wrap_question_with_default_conv, qa_colloator_fn, KeywordsStoppingCriteria
 
 
 DEFAULT_IMAGE_TOKEN = "<image>"

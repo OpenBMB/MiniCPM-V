@@ -29,10 +29,10 @@ from torch.utils.data import Dataset
 from utils.utils import is_main_process, get_rank
 from utils.diff_lib import get_diff_ids, color_print_diff_pair, split_into_words
 from omnilmm.train.trainers import MuffinTrainer, MuffinDPOTrainer
-from omnilmm.eval.muffin_inference_logp import preference_collator_fn, concate_pad
+from omnilmm.eval.omnilmm_inference_logp import preference_collator_fn, concate_pad
 from omnilmm import conversation as conversation_lib
 from omnilmm import LlavaLlamaForCausalLM, Beit3LlavaLlamaForCausalLM
-from omnilmm.model.muffin import interpolate_beit3
+from omnilmm.model.omnilmm import interpolate_beit3
 from omnilmm.model.utils import stop_gradient_by_name
 from omnilmm.data.datasets import SingleDataSourceDataset, MultiDataSourceDataset
 from omnilmm.data.data_processors import register_data_path

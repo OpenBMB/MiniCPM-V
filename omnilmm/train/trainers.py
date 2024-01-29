@@ -22,7 +22,7 @@ from torch import Tensor
 from torch.nn import Module
 from utils.utils import is_main_process
 
-from omnilmm.eval.muffin_inference_logp import get_batch_logps
+from omnilmm.eval.omnilmm_inference_logp import get_batch_logps
 
 
 def unwrap_model(model: nn.Module) -> nn.Module:

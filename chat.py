@@ -7,10 +7,10 @@ import io
 from accelerate import load_checkpoint_and_dispatch, init_empty_weights
 from transformers import AutoTokenizer 
 
-from muffin.utils import disable_torch_init
-from muffin.model.zephyr_mm import ZephyrMMForCausalLM
-from muffin.model.utils import build_transform
-from muffin.train.train_utils import zephyr_preprocess
+from omnilmm.utils import disable_torch_init
+from omnilmm.model.omni_lmm import OmniLMMForCausalLM
+from omnilmm.model.utils import build_transform
+from omnilmm.train.train_utils import omni_preprocess
 
 DEFAULT_IMAGE_TOKEN = "<image>"
 DEFAULT_IMAGE_PATCH_TOKEN = "<im_patch>"
@@ -19,23 +19,23 @@ DEFAULT_IM_END_TOKEN = "<im_end>"
 
     
 
-def init_zephyr_mm(model_path):
+def init_omni_lmm(model_path):
     torch.backends.cuda.matmul.allow_tf32 = True
     disable_torch_init()
     model_name = os.path.expanduser(model_path)
-    print(f'Load zephyr_mm model and tokenizer from {model_name}')
+    print(f'Load omni_lmm model and tokenizer from {model_name}')
     tokenizer = AutoTokenizer.from_pretrained(
         model_name, model_max_length=2048)
 
     if False:
         # model on multiple devices for small size gpu memory (Nvidia 3090 24G x2) 
         with init_empty_weights():
-            model = ZephyrMMForCausalLM.from_pretrained(model_name, tune_clip=True, torch_dtype=torch.bfloat16)
+            model = OmniLMMForCausalLM.from_pretrained(model_name, tune_clip=True, torch_dtype=torch.bfloat16)
         model = load_checkpoint_and_dispatch(model, model_name, dtype=torch.bfloat16, 
                     device_map="auto",  no_split_module_classes=['Eva','MistralDecoderLayer']
         )
     else:
-        model = ZephyrMMForCausalLM.from_pretrained(
+        model = OmniLMMForCausalLM.from_pretrained(
             model_name, tune_clip=True, torch_dtype=torch.bfloat16
         ).to(device='cuda', dtype=torch.bfloat16)
 
@@ -68,12 +68,12 @@ def expand_question_into_multimodal(question_text, image_token_len, im_st_token,
             image_token_len + im_ed_token + '\n' + question_text[0]['content']
     return question_text
 
-def wrap_question_for_zephyr_mm(question, image_token_len, tokenizer):
+def wrap_question_for_omni_lmm(question, image_token_len, tokenizer):
     question = expand_question_into_multimodal(
         question, image_token_len, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN, DEFAULT_IMAGE_PATCH_TOKEN)
 
     conversation = question
-    data_dict = zephyr_preprocess(sources=[conversation],
+    data_dict = omni_preprocess(sources=[conversation],
                                   tokenizer=tokenizer,
                                   generation=True)
 
@@ -83,9 +83,9 @@ def wrap_question_for_zephyr_mm(question, image_token_len, tokenizer):
 
 
 
-class ZephyrMMChat:
+class OmniLMMChat:
     def __init__(self, model_path) -> None:
-        model, img_processor, image_token_len, tokenizer = init_zephyr_mm(model_path)
+        model, img_processor, image_token_len, tokenizer = init_omni_lmm(model_path)
         self.model = model
         self.image_token_len = image_token_len
         self.image_transform = img_processor
@@ -122,7 +122,7 @@ class ZephyrMMChat:
             return "Image decode error"
 
         msgs = json.loads(input['question'])
-        input_ids = wrap_question_for_zephyr_mm(
+        input_ids = wrap_question_for_omni_lmm(
             msgs, self.image_token_len, self.tokenizer)['input_ids']
         input_ids = torch.as_tensor(input_ids)
         #print('input_ids', input_ids)
@@ -140,8 +140,8 @@ def img2base64(file_name):
 
 if __name__ == '__main__':
     
-    model_path = '/home/jeeves/models/zephyr_dpo_0107'
-    chat_model = ZephyrMMChat(model_path)
+    model_path = '/path/to/checkpoint'
+    chat_model = OmniLMMChat(model_path)
 
     im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
 

@@ -7,7 +7,7 @@ import pathlib
 import argparse
 
 from PIL import Image
-from omnilmm.eval.zephyr_mm_chat import init_zephyr_mm, wrap_question_for_zephyr_mm
+from omnilmm.eval.omni_lmm_chat import init_omni_lmm, wrap_question_for_omni_lmm
 
 
 DEFAULT_IMAGE_TOKEN = "<image>"
@@ -24,7 +24,7 @@ def is_yes(text):
 
 
 def eval_model(args):
-    model, image_processor, image_token_len, tokenizer = init_zephyr_mm(
+    model, image_processor, image_token_len, tokenizer = init_omni_lmm(
         args.model_name, tune_clip=args.tune_clip)
 
     if not pathlib.Path(args.out_dir).exists():
@@ -52,7 +52,7 @@ def eval_model(args):
 
             for line in lines:
                 qs = line.split('\t')[0]
-                input_ids = torch.as_tensor(wrap_question_for_zephyr_mm(
+                input_ids = torch.as_tensor(wrap_question_for_omni_lmm(
                     qs, image_token_len=image_token_len, tokenizer=tokenizer)['input_ids'])
                 input_token_len = input_ids.shape[0]
 

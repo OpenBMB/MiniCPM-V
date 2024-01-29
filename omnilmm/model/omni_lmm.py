@@ -14,11 +14,11 @@ from transformers.modeling_outputs import BaseModelOutputWithPast, CausalLMOutpu
 
 from omnilmm.model.utils import build_transform
 from omnilmm.model.resampler import Resampler
-from omnilmm.model.muffin import DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
+from omnilmm.model.omnilmm import DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 
 
-class ZephyrMMConfig(MistralConfig):
-    model_type = "zephyr_mm"
+class OmniLMMConfig(MistralConfig):
+    model_type = "omni_lmm"
 
 
 class Identity(torch.nn.Identity):
@@ -50,11 +50,11 @@ def create_vision_module(config):
     return vision_tower, resampler
 
 
-class ZephyrMMModel(MistralModel):
-    config_class = ZephyrMMConfig
+class OmniLMMModel(MistralModel):
+    config_class = OmniLMMConfig
 
-    def __init__(self, config: ZephyrMMConfig, mm_vision_tower=None, mm_hidden_size=None, tune_clip=False):
-        super(ZephyrMMModel, self).__init__(config)
+    def __init__(self, config: OmniLMMConfig, mm_vision_tower=None, mm_hidden_size=None, tune_clip=False):
+        super(OmniLMMModel, self).__init__(config)
 
         if hasattr(config, "mm_vision_tower"):
             vision_tower, resampler = create_vision_module(config)
@@ -197,7 +197,7 @@ class ZephyrMMModel(MistralModel):
                     raise NotImplementedError
             inputs_embeds = torch.stack(new_input_embeds, dim=0)
 
-        return super(ZephyrMMModel, self).forward(
+        return super(OmniLMMModel, self).forward(
             input_ids=None, attention_mask=attention_mask, past_key_values=past_key_values,
             inputs_embeds=inputs_embeds, use_cache=use_cache,
             output_attentions=output_attentions, output_hidden_states=output_hidden_states,
@@ -205,12 +205,12 @@ class ZephyrMMModel(MistralModel):
         )
 
 
-class ZephyrMMForCausalLM(MistralForCausalLM):
-    config_class = ZephyrMMConfig
+class OmniLMMForCausalLM(MistralForCausalLM):
+    config_class = OmniLMMConfig
 
     def __init__(self, config, mm_vision_tower=None, tune_clip=False):
         super(MistralForCausalLM, self).__init__(config)
-        self.model = ZephyrMMModel(
+        self.model = OmniLMMModel(
             config, mm_vision_tower=mm_vision_tower, tune_clip=tune_clip)
 
         self.lm_head = nn.Linear(
@@ -361,5 +361,5 @@ class ZephyrMMForCausalLM(MistralForCausalLM):
         # exit()
 
 
-AutoConfig.register("zephyr_mm", ZephyrMMConfig)
-AutoModelForCausalLM.register(ZephyrMMConfig, ZephyrMMForCausalLM)
+AutoConfig.register("omni_lmm", OmniLMMConfig)
+AutoModelForCausalLM.register(OmniLMMConfig, OmniLMMForCausalLM)

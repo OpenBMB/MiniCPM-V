@@ -16,13 +16,13 @@ import torch
 import torch.utils.data as torch_data
 import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from omnilmm.eval.zephyr_mm_chat import init_zephyr_mm, wrap_question_for_zephyr_mm
+from omnilmm.eval.omni_lmm_chat import init_omni_lmm, wrap_question_for_omni_lmm
 from omnilmm.data.datasets import SingleDataSourceDataset
 from omnilmm.data.data_processors import register_data_path, vqa_instruction_templates
 from utils.vqa import VQA
 from utils.vqa_eval import VQAEval
-from omnilmm.eval.muffin_eval_vqa_dataset import InferenceSampler, ds_collections, VQAEvalJSONDataset, VQAEvalDataset
-from omnilmm.eval.muffin_vqa import torch_pad_sequence
+from omnilmm.eval.omnilmm_eval_vqa_dataset import InferenceSampler, ds_collections, VQAEvalJSONDataset, VQAEvalDataset
+from omnilmm.eval.omnilmm_vqa import torch_pad_sequence
 from utils.vqa_dataset import VQADataset
 from utils.vqa_evaluate import evaluate_dataset
 
@@ -198,7 +198,7 @@ class MMBDataset(torch_data.Dataset):
         return self.max_size
 
 
-def zephyr_qa_colloator_fn(data_list, tokenizer, img_transform):
+def omni_qa_colloator_fn(data_list, tokenizer, img_transform):
     input_ids = [torch.as_tensor(x['question_input_ids']) for x in data_list]
     attn_mask = [torch.as_tensor([1] * len(x)) for x in input_ids]
 
@@ -269,25 +269,25 @@ if __name__ == '__main__':
     torch.cuda.set_device(int(os.getenv('LOCAL_RANK', 0)))
 
     print(f'Init Rank-{torch.distributed.get_rank()}')
-    model, image_processor, image_token_len, tokenizer = init_zephyr_mm(
+    model, image_processor, image_token_len, tokenizer = init_omni_lmm(
         args.checkpoint, tune_clip=args.tune_clip)
     random.seed(args.seed)
 
     if args.ds_name.startswith('pretrain_eval'):
         dataset = PretrainEvalDataset(args.ds_name, partial(
-            wrap_question_for_zephyr_mm, image_token_len=image_token_len, tokenizer=tokenizer), max_size=args.max_sample)
+            wrap_question_for_omni_lmm, image_token_len=image_token_len, tokenizer=tokenizer), max_size=args.max_sample)
     elif args.ds_name.startswith('eval_mmbench'):
         dataset = MMBDataset(args.ds_name, partial(
-            wrap_question_for_zephyr_mm, image_token_len=image_token_len, tokenizer=tokenizer), max_size=args.max_sample)
+            wrap_question_for_omni_lmm, image_token_len=image_token_len, tokenizer=tokenizer), max_size=args.max_sample)
     elif args.ds_name.startswith('MMMUDev'):
         dataset = MMMUDevDataset(args.ds_name, partial(
-            wrap_question_for_zephyr_mm, image_token_len=image_token_len, tokenizer=tokenizer), max_size=args.max_sample)
+            wrap_question_for_omni_lmm, image_token_len=image_token_len, tokenizer=tokenizer), max_size=args.max_sample)
     else:
         raise NotImplementedError
 
     print(f'Dataset size is {len(dataset)}')
 
-    collate_fn = partial(zephyr_qa_colloator_fn, tokenizer=tokenizer,
+    collate_fn = partial(omni_qa_colloator_fn, tokenizer=tokenizer,
                          img_transform=image_processor)
     dataloader = torch_data.DataLoader(
         dataset=dataset,

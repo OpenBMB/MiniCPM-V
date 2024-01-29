@@ -12,9 +12,9 @@ from functools import partial
 from PIL import Image
 
 from omnilmm.conversation import conv_templates
-from omnilmm.eval.muffin_vqa import torch_pad_sequence
-from omnilmm.eval.zephyr_mm_chat import init_zephyr_mm, wrap_question_for_zephyr_mm
-from omnilmm.eval.muffin_vqa import expand_question_into_multimodal
+from omnilmm.eval.omnilmm_vqa import torch_pad_sequence
+from omnilmm.eval.omni_lmm_chat import init_omni_lmm, wrap_question_for_omni_lmm
+from omnilmm.eval.omnilmm_vqa import expand_question_into_multimodal
 
 
 class MultimodalQADataset(torch_data.Dataset):
@@ -131,7 +131,7 @@ def qa_colloator_fn(data_list, tokenizer, img_transform):
 
 
 def eval_model(args):
-    model, image_processor, image_token_len, tokenizer = init_zephyr_mm(
+    model, image_processor, image_token_len, tokenizer = init_omni_lmm(
         args.model_name, tune_clip=args.tune_clip)
 
     answer_dir = '/'.join(args.answers_file.split("/")[:-1])

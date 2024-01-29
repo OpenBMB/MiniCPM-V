@@ -1,7 +1,7 @@
 import os
 
 from omnilmm.eval.llava_vqa import init_llava
-from omnilmm.eval.muffin_inference_logp import write_logp_to_preference_tsv, get_multimodal_sample_logps
+from omnilmm.eval.omnilmm_inference_logp import write_logp_to_preference_tsv, get_multimodal_sample_logps
 
 
 if __name__ == '__main__':

@@ -122,10 +122,10 @@ class KeywordsStoppingCriteria(StoppingCriteria):
         return True
 
 
-def init_muffin(model_path, device=None):
+def init_omnilmm(model_path, device=None):
     disable_torch_init()
     model_name = os.path.expanduser(model_path)
-    print(f'Load muffin model and tokenizer from {model_name}')
+    print(f'Load omnilmm model and tokenizer from {model_name}')
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
     patch_config(model_name)
@@ -159,7 +159,7 @@ def init_muffin(model_path, device=None):
 
 
 def eval_model(args):
-    model, image_processor, image_token_len, tokenizer = init_muffin(
+    model, image_processor, image_token_len, tokenizer = init_omnilmm(
         args.model_name)
 
     answers_file = os.path.expanduser(args.answers_file)

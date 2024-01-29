@@ -624,24 +624,24 @@ def dpo_sftwin_checked_1103_1106_processor(*args, **kwargs):
     return gpt4v_detailed_1102_processor(*args, **kwargs)
 
 
-@register_data_path('muffin_cvpr_rewrite_bytrans_sft')
+@register_data_path('omnilmm_cvpr_rewrite_bytrans_sft')
 def dpo_sft_ncrp_vqa_path():
     data_dir = "/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_cvpr"
-    return gather_data_files_by_glob(data_dir, pattern='muffin_rewrite-by_translate_cvpr_dpo_with_per_token_vqa_logp_train-1401.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omnilmm_rewrite-by_translate_cvpr_dpo_with_per_token_vqa_logp_train-1401.tsv')
 
 
-@register_data_processor('muffin_cvpr_rewrite_bytrans_sft')
+@register_data_processor('omnilmm_cvpr_rewrite_bytrans_sft')
 def dpo_sft_ncrp_vqa_processor(*args, **kwargs):
     return gpt4v_detailed_1102_processor(*args, **kwargs)
 
 
-@register_data_path('muffin_rewrite-by_trans_cvpr_1020_1027-1124_sft')
+@register_data_path('omnilmm_rewrite-by_trans_cvpr_1020_1027-1124_sft')
 def dpo_sft_ncrp_vqa_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_cvpr_1020_1027-1124_good/'
-    return gather_data_files_by_glob(data_dir, pattern='muffin_rewrite-by_trans_cvpr_zj1020_zj1027-1124_dpo_with_per_token_vqa_logp_train-2102.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omnilmm_rewrite-by_trans_cvpr_zj1020_zj1027-1124_dpo_with_per_token_vqa_logp_train-2102.tsv')
 
 
-@register_data_processor('muffin_rewrite-by_trans_cvpr_1020_1027-1124_sft')
+@register_data_processor('omnilmm_rewrite-by_trans_cvpr_1020_1027-1124_sft')
 def dpo_sft_ncrp_vqa_processor(*args, **kwargs):
     return gpt4v_detailed_1102_processor(*args, **kwargs)
 
@@ -900,92 +900,92 @@ def yesno_vqa_suffix_processor(img_b64_buffer, text_b64, origin_dataset, origin_
 
 
 # 1401: cvpr
-# 2102: cvpr + new muffin data
+# 2102: cvpr + new omnilmm data
 # 1065: llava outputs
 # 2566: multi_model outputs [1218, 1229]
-@register_data_processor(['dpo_zephyr_1401-en', 'dpo_zephyr_1401-trs', 'dpo_zephyr_2102-en', 'dpo_zephyr_2102-trs', 'dpo_zephyr_1065-trs', 'dpo_zephyr_2566-trs', 'RM_Bench_clean_diff1', 'RM_Bench_clean_diff2', 'RM_Bench_clean_diff3'])
+@register_data_processor(['dpo_omni_1401-en', 'dpo_omni_1401-trs', 'dpo_omni_2102-en', 'dpo_omni_2102-trs', 'dpo_omni_1065-trs', 'dpo_omni_2566-trs', 'RM_Bench_clean_diff1', 'RM_Bench_clean_diff2', 'RM_Bench_clean_diff3'])
 def dpo_data_processor(*args, **kwargs):
     return dpo_preference_processor(*args, **kwargs)
 
-@register_data_processor(['dpo_zephyr_2102-trs_SFT', 'dpo_zephyr_1065-trs_SFT', 'dpo_zephyr_2566-trs_SFT', 'RM_Bench_clean_diff1_SFT', 'RM_Bench_clean_diff2_SFT', 'RM_Bench_clean_diff3_SFT'])
+@register_data_processor(['dpo_omni_2102-trs_SFT', 'dpo_omni_1065-trs_SFT', 'dpo_omni_2566-trs_SFT', 'RM_Bench_clean_diff1_SFT', 'RM_Bench_clean_diff2_SFT', 'RM_Bench_clean_diff3_SFT'])
 def dpo_data_processor(*args, **kwargs):
     return dpo_preference_processor(*args, **kwargs)
 
 
-@register_data_path('dpo_zephyr_1401-en')
+@register_data_path('dpo_omni_1401-en')
 def dpo_data_path():
     data_dir = "/data/public/multimodal/multimodal_data/dpo/refined_test/"
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp-1401.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp-1401.tsv')
 
-@register_data_path('dpo_zephyr_1401-trs')
+@register_data_path('dpo_omni_1401-trs')
 def dpo_data_path():
     data_dir = "/data/public/multimodal/multimodal_data/dpo/refined_test/"
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_by_trans-1401.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_by_trans-1401.tsv')
 
-@register_data_path('dpo_zephyr_2102-en')
+@register_data_path('dpo_omni_2102-en')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_cvpr_1020_1027-1124_good/'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp-2102.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp-2102.tsv')
 
-@register_data_path('dpo_zephyr_2102-trs')
+@register_data_path('dpo_omni_2102-trs')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_cvpr_1020_1027-1124_good/'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_by_trans-2102.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_by_trans-2102.tsv')
 
-@register_data_path('dpo_zephyr_2102-trs_SFT')
+@register_data_path('dpo_omni_2102-trs_SFT')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_cvpr_1020_1027-1124_good/'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_SFT_by_trans-2102.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_SFT_by_trans-2102.tsv')
 
-@register_data_path('dpo_zephyr_1065-trs')
+@register_data_path('dpo_omni_1065-trs')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_llava_1122-1123_1128/'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_by_trans-1065.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_by_trans-1065.tsv')
 
-@register_data_path('dpo_zephyr_1065-trs_SFT')
+@register_data_path('dpo_omni_1065-trs_SFT')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_rewrite_llava_1122-1123_1128/'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_SFT_by_trans-1065.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_SFT_by_trans-1065.tsv')
 
-@register_data_path('dpo_zephyr_2566-trs')
+@register_data_path('dpo_omni_2566-trs')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = "/data/public/multimodal/multimodal_data/dpo/DPO_diverse_20231218-1229_all/"
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_by_trans-2566.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_by_trans-2566.tsv')
 
-@register_data_path('dpo_zephyr_2566-trs_SFT')
+@register_data_path('dpo_omni_2566-trs_SFT')
 def dpo_cvpr_ncrp_vqa_path():
     data_dir = "/data/public/multimodal/multimodal_data/dpo/DPO_diverse_20231218-1229_all/"
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_SFT_by_trans-2566.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_SFT_by_trans-2566.tsv')
 
 @register_data_path('RM_Bench_clean_diff1')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/eval/reward_bench/tsvs_clean'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp-893.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp-893.tsv')
 
 @register_data_path('RM_Bench_clean_diff2')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/eval/reward_bench/tsvs_clean'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp-262.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp-262.tsv')
 
 @register_data_path('RM_Bench_clean_diff3')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/eval/reward_bench/tsvs_clean'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp-90.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp-90.tsv')
 
 @register_data_path('RM_Bench_clean_diff1_SFT')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/eval/reward_bench/tsvs_clean'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_SFT-893.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_SFT-893.tsv')
 
 @register_data_path('RM_Bench_clean_diff2_SFT')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/eval/reward_bench/tsvs_clean'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_SFT-262.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_SFT-262.tsv')
 
 @register_data_path('RM_Bench_clean_diff3_SFT')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/eval/reward_bench/tsvs_clean'
-    return gather_data_files_by_glob(data_dir, pattern='zephyr_stage3_4k_logp_SFT-90.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omni_stage3_4k_logp_SFT-90.tsv')
 
 
 
@@ -2032,7 +2032,7 @@ def coh_preference_processor(img_b64_buffer, text_b64, origin_dataset, origin_sp
 @register_data_path('dpo_preference_val')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_20231005'
-    return gather_data_files_by_glob(data_dir, pattern='muffin_long_rewrite_1005_good_val_dpo_with_per_token_vqa_logp_val-32.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omnilmm_long_rewrite_1005_good_val_dpo_with_per_token_vqa_logp_val-32.tsv')
 
 
 @register_data_processor('dpo_preference_val')
@@ -2073,13 +2073,13 @@ def dpo_preference_val_processor(*args, **kwargs):
     return dpo_preference_processor(*args, **kwargs)
 
 
-@register_data_path('dpo_val_muffin_long')
+@register_data_path('dpo_val_omnilmm_long')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_20231113-1to1116'
-    return gather_data_files_by_glob(data_dir, pattern='muffin_long_rewrite_1113-1to1116_good_val_dpo_with_per_token_vqa_logp_val-48.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omnilmm_long_rewrite_1113-1to1116_good_val_dpo_with_per_token_vqa_logp_val-48.tsv')
 
 
-@register_data_processor('dpo_val_muffin_long')
+@register_data_processor('dpo_val_omnilmm_long')
 def dpo_preference_val_processor(*args, **kwargs):
     return dpo_preference_processor(*args, **kwargs)
 
@@ -2095,13 +2095,13 @@ def dpo_preference_val_processor(*args, **kwargs):
     return dpo_preference_processor(*args, **kwargs)
 
 
-@register_data_path('dpo_val_muffin_short')
+@register_data_path('dpo_val_omnilmm_short')
 def dpo_preference_data_val_path():
     data_dir = '/data/public/multimodal/multimodal_data/dpo/DPO_preference_20231107to1110-2_goodqas'
-    return gather_data_files_by_glob(data_dir, pattern='muffin_short_rewrite_1107to1110-2_good_val_dpo_with_per_token_vqa_logp_val-48.tsv')
+    return gather_data_files_by_glob(data_dir, pattern='omnilmm_short_rewrite_1107to1110-2_good_val_dpo_with_per_token_vqa_logp_val-48.tsv')
 
 
-@register_data_processor('dpo_val_muffin_short')
+@register_data_processor('dpo_val_omnilmm_short')
 def dpo_preference_val_processor(*args, **kwargs):
     return dpo_preference_processor(*args, **kwargs)
 

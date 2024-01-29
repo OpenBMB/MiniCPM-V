@@ -15,10 +15,10 @@ from utils.utils import is_main_process, get_rank
 from omnilmm.train.trainers import ZephyrTrainer, ZephyrDPOTrainer
 from omnilmm.data.datasets import SingleDataSourceDataset, MultiDataSourceDataset
 from omnilmm.data.data_processors import register_data_path
-from omnilmm.train.train_utils import SFT_collator_fn, IGNORE_INDEX, encode_multimodal_sample, encode_multimodal_preference_sample, zephyr_encode_multimodal_sample, zephyr_preprocess
+from omnilmm.train.train_utils import SFT_collator_fn, IGNORE_INDEX, encode_multimodal_sample, encode_multimodal_preference_sample, omni_encode_multimodal_sample, omni_preprocess
 
-from omnilmm.model.zephyr_mm import ZephyrMMForCausalLM
-from omnilmm.train.train_muffin import DataCollatorForDPODataset
+from omnilmm.model.omni_lmm import OmniLMMForCausalLM
+from omnilmm.train.train_omnilmm import DataCollatorForDPODataset
 
 DEFAULT_PAD_TOKEN = "[PAD]"
 DEFAULT_EOS_TOKEN = "</s>"
@@ -128,7 +128,7 @@ class LazySupervisedDataset(Dataset):
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
         source: dict = self.list_data_dict[i]
 
-        data_dict = zephyr_encode_multimodal_sample(
+        data_dict = omni_encode_multimodal_sample(
             source, self.tokenizer, self.multimodal_cfg)
         return data_dict
 
@@ -179,7 +179,7 @@ class DPODataset(Dataset):
     def __getitem__(self, i):
         source: dict = self.list_data_dict[i]
         rej_data_dict, win_data_dict = encode_multimodal_preference_sample(
-            source, self.tokenizer, self.multimodal_cfg, preprocess_func=zephyr_preprocess)
+            source, self.tokenizer, self.multimodal_cfg, preprocess_func=omni_preprocess)
         return rej_data_dict, win_data_dict
 
 
@@ -227,7 +227,7 @@ def make_dpo_data_module(tokenizer, data_args):
 
 def init_model(model_args, data_args, training_args):
     if model_args.vision_tower is not None:
-        model = ZephyrMMForCausalLM.from_pretrained(
+        model = OmniLMMForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             cache_dir=training_args.cache_dir,
             use_flash_attention_2=True,

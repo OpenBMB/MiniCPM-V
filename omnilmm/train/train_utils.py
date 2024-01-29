@@ -168,14 +168,14 @@ def expand_image_token(source, multimodal_cfg) -> Dict:
     return source
 
 
-def zephyr_encode_multimodal_sample(source, tokenizer, multimodal_cfg):
+def omni_encode_multimodal_sample(source, tokenizer, multimodal_cfg):
     conversation = copy.deepcopy(source["conversations"])
     if 'image' in source:
         image = source['image']
         image = multimodal_cfg['image_processor'](image)
         conversation = expand_image_token(conversation, multimodal_cfg)
 
-    data_dict = zephyr_preprocess([conversation], tokenizer)
+    data_dict = omni_preprocess([conversation], tokenizer)
     data_dict = dict(input_ids=data_dict["input_ids"][0],
                      labels=data_dict["labels"][0])
 
@@ -300,7 +300,7 @@ def preprocess_v1(
     )
 
 
-def zephyr_preprocess(sources,
+def omni_preprocess(sources,
                       tokenizer: transformers.PreTrainedTokenizer,
                       generation=False):
     system_content = 'You are an artificial intelligence assistant, which gives helpful, detailed, and polite answers to the human\'s questions.'

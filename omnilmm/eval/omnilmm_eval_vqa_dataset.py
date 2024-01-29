@@ -12,7 +12,7 @@ import torch
 import torch.utils.data as torch_data
 import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from omnilmm.eval.muffin_vqa import init_muffin, qa_colloator_fn, KeywordsStoppingCriteria, wrap_question_with_default_conv
+from omnilmm.eval.omnilmm_vqa import init_omnilmm, qa_colloator_fn, KeywordsStoppingCriteria, wrap_question_with_default_conv
 from omnilmm.data.datasets import SingleDataSourceDataset
 from omnilmm.data.data_processors import register_data_path, vqa_instruction_templates
 from utils.vqa import VQA
@@ -200,7 +200,7 @@ if __name__ == '__main__':
                 print(f"{args.ds_name} : {acc} ")
         exit()
 
-    model, image_processor, image_token_len, tokenizer = init_muffin(
+    model, image_processor, image_token_len, tokenizer = init_omnilmm(
         args.checkpoint)
 
     random.seed(args.seed)

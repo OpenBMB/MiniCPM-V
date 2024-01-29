@@ -11,8 +11,8 @@ import torch.utils.data as torch_data
 from PIL import Image
 from functools import partial
 
-from omnilmm.eval.zephyr_mm_chat import init_zephyr_mm, wrap_question_for_zephyr_mm
-from omnilmm.eval.zephyr_eval_vqa_dataset import zephyr_qa_colloator_fn
+from omnilmm.eval.omni_lmm_chat import init_omni_lmm, wrap_question_for_omni_lmm
+from omnilmm.eval.omni_eval_vqa_dataset import omni_qa_colloator_fn
 
 
 class MultimodalQADataset(torch_data.Dataset):
@@ -74,7 +74,7 @@ class MultimodalQADataset(torch_data.Dataset):
 
 
 def eval_model(args):
-    model, image_processor, image_token_len, tokenizer = init_zephyr_mm(
+    model, image_processor, image_token_len, tokenizer = init_omni_lmm(
         args.model_name, tune_clip=args.tune_clip)
 
     answer_dir = '/'.join(args.answers_file.split("/")[:-1])
@@ -84,10 +84,10 @@ def eval_model(args):
     os.makedirs(os.path.dirname(answers_file), exist_ok=True)
 
     qa_dataset = MultimodalQADataset(args.question_file, partial(
-        wrap_question_for_zephyr_mm, image_token_len=image_token_len, tokenizer=tokenizer),
+        wrap_question_for_omni_lmm, image_token_len=image_token_len, tokenizer=tokenizer),
         max_len=300)
 
-    collate_fn = partial(zephyr_qa_colloator_fn,
+    collate_fn = partial(omni_qa_colloator_fn,
                          tokenizer=tokenizer, img_transform=image_processor)
     dataloader = torch_data.DataLoader(qa_dataset,
                                        batch_size=1,
