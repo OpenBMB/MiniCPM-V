@@ -72,50 +72,21 @@ pip install -r requirements.txt
 | OmniLMM-12B | OmniLMM 12B is the most capable version                                 | [download](https://huggingface.co/openbmb/OmniLMM-12B/blob/main/pytorch_model.v1.bin) |
 | OmniLMM-3B  | OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. | [download](https://huggingface.co/openbmb/OmniLMM-3B/blob/main/pytorch_model.v1.bin)  |
 
-### VisCPM-Chat
+### OmniLMM-12B
 After downloading the checkpoints, please refer to the following codes to run `OmniLMM` (replace `'/path/to/checkpoint'` with actually path of downloaded checkpoint).
 
-#### Single-turn Conversation
+#### Multi-turn Conversation
 
 <div align="center">
 <img src="data/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
-We can have a multimodal conversation with VisCPM-Chat using a few lines of codes.
-```shell
-# If the memory of your GPU is less than 40G, you can introduce the following environment variables. After the introduction, the memory usage is about 17G, but the time required for inference will be longer. This feature relies on the BMInf package.
-export CUDA_MEMORY_CPMBEE_MAX=1g
-```
-
 ```python
+from chat import OmniLMMChat, img2base64
+
 # Load and initialize the model
 model_path = '/path/to/checkpoint'
-chat_model = OmniLMM(model_path)
-
-# We perform security checks on the input images by default.
-im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
-
-# First round chat 
-msgs = [{"role": "user", "content": "What are the people doing?"}]
-input = {
-    "image": im_64,
-    "question": json.dumps(msgs, ensure_ascii=True)
-}
-answer = chat_model.process(input)
-print(answer)
-```
-
-We can obtain the following results:
-```
-"The people in the image are playing baseball. One person is pitching a ball, another one is swinging a bat to hit it, and there's also an umpire present who appears to be watching the game closely."
-```
-
-#### Multi-turn Conversation
-
-```python
-# Load and initialize the model
-model_path = '/path/to/checkpoint'
-chat_model = OmniLMM(model_path)
+chat_model = OmniLMMChat(model_path)
 
 # We perform security checks on the input images by default.
 im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
