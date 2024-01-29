@@ -29,8 +29,6 @@ TODO：实验结果，可以放个表格截图（基准：MMMU、MME、MMBench�
 
 TODO：case画图展示 @蔡天驰
 
-TODO：使用文档（安装、使用、提供Demo入口） @朱宏吉
-
 ## OmniLMM 3B
 OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The model is built based on SigLip 400M and MiniCPM 2.4B, and trained in a smilar way to OmniLMM 12B. Notable features include:
 
@@ -40,9 +38,11 @@ OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The mode
 
 TODO：实验结果，可以放个表格截图 @王崇屹
 
-TODO：case画图展示 @蔡天驰
+TODO：视频展示手机端效果？ @蔡天驰
 
-TODO：使用文档（安装、使用、提供Demo入口） @朱宏吉
+## Get Started
+
+TODO：使用文档（安装、使用、提供Demo入口，包括3B和12B） @朱宏吉
 
 
 ## 🏫 Institutions
