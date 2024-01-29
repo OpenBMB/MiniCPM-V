@@ -45,6 +45,12 @@ TODO：case画图展示 @蔡天驰
 TODO：使用文档（安装、使用、提供Demo入口） @朱宏吉
 
 
+## 🏫 Institutions
 
+This project is developed by the following institutions:
+
+- <img src="figures/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
+- <img src="figures/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
+- <img src="figures/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
 
 
