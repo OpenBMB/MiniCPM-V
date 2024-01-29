@@ -25,6 +25,12 @@ OmniLMM 12B is the most capable version. The model is built based on EVA-E 5B an
 
 - **Realtime Mulitmodal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a realtime multimodal interactive assistant. The assistant accepts video stream from camera and speech stream from microphone, and emitts speech output. While still primary, we find the model can replicate some of the fun cases shown in Gemini Demo video, without any video edition.
 
+TODO：实验结果，可以放个表格截图（基准：MMMU、MME、MMBench、SEED-Bench、MMHALBench、Object Halbench；模型：Qwen-VL-Chat、CogVLM、GPT-4V、Gemini等） @余天予
+
+TODO：case画图展示 @蔡天驰
+
+TODO：使用文档（安装、使用、提供Demo入口） @朱宏吉
+
 ## OmniLMM 3B
 OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The model is built based on SigLip 400M and MiniCPM 2.4B, and trained in a smilar way to OmniLMM 12B. Notable features include:
 
@@ -32,8 +38,12 @@ OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The mode
 
 - **Promising Performance.** OmniLMM 3B achieves promising performance on multiple benchmarks (including MMMU, MME and MMbech), surpassing existing LMMs built on Phi-2. The model also supports OCR capability and endows rich multimodal world knowledge.
 
-TODO：实验结果（基准：MMMU、MME、MMBench、SEED-Bench、MMHALBench、Object Halbench；模型：Qwen-VL-Chat、CogVLM、GPT-4V、Gemini等） @余天予
+TODO：实验结果，可以放个表格截图 @王崇屹
+
 TODO：case画图展示 @蔡天驰
+
+TODO：使用文档（安装、使用、提供Demo入口） @朱宏吉
+
 
 
 
