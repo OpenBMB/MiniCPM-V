@@ -42,8 +42,113 @@ TODO：视频展示手机端效果？ @蔡天驰
 
 ## Get Started
 
-TODO：使用文档（安装、使用、提供Demo入口，包括3B和12B） @朱宏吉
+## ⚙️ Install
 
+1. Clone this repository and navigate to source folder
+
+```bash
+git clone https://github.com/OpenBMB/OmniLMM.git
+cd OmniLMM
+```
+
+2. Create conda environment
+
+```Shell
+conda create -n OmniLMM python=3.10 -y
+conda activate OmniLMM
+```
+
+3. Install dependencies
+
+```shell
+pip install -r requirements.txt
+```
+
+## 💡 Inference
+
+### Model Zoo
+| Model                | Description       | Download Link |
+|----------------------|-------------------|---------------|
+| OmniLMM-12B | OmniLMM 12B is the most capable version                                 | [download](https://huggingface.co/openbmb/OmniLMM-12B/blob/main/pytorch_model.v1.bin) |
+| OmniLMM-3B  | OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. | [download](https://huggingface.co/openbmb/OmniLMM-3B/blob/main/pytorch_model.v1.bin)  |
+
+### VisCPM-Chat
+After downloading the checkpoints, please refer to the following codes to run `OmniLMM` (replace `'/path/to/checkpoint'` with actually path of downloaded checkpoint).
+
+#### Single-turn Conversation
+
+<div align="center">
+<img src="data/COCO_test2015_000000262144.jpg" width="660px">
+</div>
+
+We can have a multimodal conversation with VisCPM-Chat using a few lines of codes.
+```shell
+# If the memory of your GPU is less than 40G, you can introduce the following environment variables. After the introduction, the memory usage is about 17G, but the time required for inference will be longer. This feature relies on the BMInf package.
+export CUDA_MEMORY_CPMBEE_MAX=1g
+```
+
+```python
+# Load and initialize the model
+model_path = '/path/to/checkpoint'
+chat_model = OmniLMM(model_path)
+
+# We perform security checks on the input images by default.
+im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
+
+# First round chat 
+msgs = [{"role": "user", "content": "What are the people doing?"}]
+input = {
+    "image": im_64,
+    "question": json.dumps(msgs, ensure_ascii=True)
+}
+answer = chat_model.process(input)
+print(answer)
+```
+
+We can obtain the following results:
+```
+"The people in the image are playing baseball. One person is pitching a ball, another one is swinging a bat to hit it, and there's also an umpire present who appears to be watching the game closely."
+```
+
+#### Multi-turn Conversation
+
+```python
+# Load and initialize the model
+model_path = '/path/to/checkpoint'
+chat_model = OmniLMM(model_path)
+
+# We perform security checks on the input images by default.
+im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
+
+# First round chat 
+msgs = [{"role": "user", "content": "What are the people doing?"}]
+input = {
+    "image": im_64,
+    "question": json.dumps(msgs, ensure_ascii=True)
+}
+answer = chat_model.process(input)
+print(answer)
+
+# Second round chat 
+# pass history context of multi-turn conversation
+msgs.append({"role": "assistant", "content": answer})
+msgs.append({"role": "user", "content": "Describe the image"})
+input = {
+    "image": im_64,
+    "question": json.dumps(msgs, ensure_ascii=True)
+}
+answer = chat_model.process(input)
+print(answer)
+```
+
+We can obtain the following results:
+```
+"The people in the image are playing baseball. One person is pitching a ball, another one is swinging a bat to hit it, and there's also an umpire present who appears to be watching the game closely."
+
+"The image depicts a baseball game in progress. A pitcher is throwing the ball, while another player is swinging his bat to hit it. An umpire can be seen observing the play closely."
+```
+
+TODO：使用文档（安装、使用、提供Demo入口，包括3B和12B） @朱宏吉
 
 ## 🏫 Institutions
 
