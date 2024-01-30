@@ -30,11 +30,13 @@ TODO：实验结果，可以放个表格截图（基准：MMMU、MME、MMBench�
 TODO：case画图展示 @蔡天驰
 
 ## OmniLMM 3B
-OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The model is built based on SigLip 400M and MiniCPM 2.4B, and trained in a smilar way to OmniLMM 12B. Notable features include:
+OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version with promising performance for deployment. The model is built based on SigLip 400M and MiniCPM 2.4B, connected by perceiver resampler. Notable features of OmniLLM 3B include:
 
-- **High Efficiency.** OmniLLM 3B can be efficiently deployed on most GPU cards and personal computers, and even on edge devices such as mobilephones. Due to the significantly fewer tokens used to represent the images (i.e., 64 in OmniLMM 3B vs. 512+ in counterpart models), OmniLMM 3B can operate with less memory cost and higher speed during inference.
+- **High Efficiency.** OmniLLM 3B can be efficiently deployed on most GPU cards and personal computers, and even on edge devices such as mobilephones. In terms of visual encoding, we compress the image representations into 64 tokens via perciever resampler, which is significantly fewer than other LMMs based on MLP architecture (typically >512 tokens). This allows OmniLLM 3B to operate with much less memory cost and higher speed during inference.
 
-- **Promising Performance.** OmniLMM 3B achieves promising performance on multiple benchmarks (including MMMU, MME and MMbech), surpassing existing LMMs built on Phi-2. The model supports bilingual mulitmodal interaction in English and Chinese, and endows rich multimodal world knowledge.
+- **Promising Performance.** OmniLMM 3B achieves state-of-the-art performance on multiple benchmarks (including MMMU, MME and MMbech, etc) among models with comparable sizes, surpassing existing LMMs built on Phi-2. It even achieves comparable or better performance than the 9.6B Qwen-VL-Chat.
+
+- **Bilingual Support.** OmniLMM 3B is the first edge-deployable LMM supporting bilingual mulitmodal interaction in English and Chinese. This is achieved by generalizating mulitmodal capabilites across languages, a technique from our ICLR 2024 spotlight paper.
 
 
 | **Method**       | **Parameters** | **MME(P)** | **MMB-dev(en)** | **MMB-dev(zh)** | **MMMU-val** | **CMMMU-val** |
@@ -43,7 +45,7 @@ OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The mode
 | MobileVLM    | 3B      | 1289       | 59.6            | -              | -            | -             |
 | Imp-v1       | 3B      | 1434       | 66.5            | -               | -            | -             |
 | Qwen-VL-Chat | 9.6B    | **1487**       | 60.6            | 56.7            | **35.9**         | 30.7          |
-| MiniCPM-Omni | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
+| OmniLMM 3B | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
 
 TODO：视频展示手机端效果？ @蔡天驰
 
