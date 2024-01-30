@@ -14,8 +14,10 @@ from transformers.modeling_outputs import BaseModelOutputWithPast, CausalLMOutpu
 
 from omnilmm.model.utils import build_transform
 from omnilmm.model.resampler import Resampler
-from omnilmm.model.omnilmm import DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN, DEFAULT_IM_END_TOKEN
 
+DEFAULT_IMAGE_PATCH_TOKEN = "<im_patch>"
+DEFAULT_IM_START_TOKEN = "<im_start>"
+DEFAULT_IM_END_TOKEN = "<im_end>"
 
 class OmniLMMConfig(MistralConfig):
     model_type = "omni_lmm"

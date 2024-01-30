@@ -32,7 +32,6 @@ from omnilmm.train.trainers import MuffinTrainer, MuffinDPOTrainer
 from omnilmm.eval.omnilmm_inference_logp import preference_collator_fn, concate_pad
 from omnilmm import conversation as conversation_lib
 from omnilmm import LlavaLlamaForCausalLM, Beit3LlavaLlamaForCausalLM
-from omnilmm.model.omnilmm import interpolate_beit3
 from omnilmm.model.utils import stop_gradient_by_name
 from omnilmm.data.datasets import SingleDataSourceDataset, MultiDataSourceDataset
 from omnilmm.data.data_processors import register_data_path
@@ -113,7 +112,6 @@ def safe_save_model_for_hf_trainer(trainer: transformers.Trainer,
         }
         del state_dict
         trainer._save(output_dir, state_dict=cpu_state_dict)  # noqa
-
 
 def smart_tokenizer_and_embedding_resize(
     special_tokens_dict: Dict,
@@ -397,6 +395,48 @@ def make_dpo_data_module(tokenizer, data_args):
     return dict(train_dataset=train_dataset,
                 eval_dataset=eval_datasets,
                 data_collator=data_collator)
+
+
+def interpolate_beit3(model, new_model_name):
+    target_size = new_model_name.split('_')[-1]
+    state_dict = model.state_dict()
+
+    # interpolate position embedding
+    pos_embed_key = 'beit3.encoder.embed_positions.A.weight'
+    pos_embed_checkpoint = state_dict[pos_embed_key]
+    embedding_size = pos_embed_checkpoint.shape[-1]
+
+    # being consistent with Fairseq, which starts from 2 for position embedding
+    torchscale_model = True
+    num_patches = model.beit3.vision_embed.num_patches
+    num_extra_tokens = model.beit3.vision_embed.num_position_embeddings() + 2 - \
+        num_patches
+
+    # height (== width) for the checkpoint position embedding
+    orig_size = int(num_patches ** 0.5)
+    # height (== width) for the new position embedding
+    new_size = int(target_size) // 16
+    # class_token and dist_token are kept unchanged
+
+    if orig_size != new_size:
+        print("Position interpolate from %dx%d to %dx%d" %
+              (orig_size, orig_size, new_size, new_size))
+        extra_tokens = pos_embed_checkpoint[:num_extra_tokens].unsqueeze(0)
+        # only the position tokens are interpolated
+        pos_tokens = pos_embed_checkpoint[num_extra_tokens:]
+        pos_tokens = pos_tokens.reshape(-1, orig_size,
+                                        orig_size, embedding_size).permute(0, 3, 1, 2)
+        pos_tokens = torch.nn.functional.interpolate(
+            pos_tokens, size=(new_size, new_size), mode='bicubic', align_corners=False)
+        pos_tokens = pos_tokens.permute(0, 2, 3, 1).flatten(1, 2)
+        new_pos_embed = torch.cat((extra_tokens, pos_tokens), dim=1)
+        if torchscale_model:
+            new_pos_embed = new_pos_embed.squeeze(0)
+        state_dict[pos_embed_key] = new_pos_embed
+
+    return state_dict
+
+# The implementation code is modified from DeiT (https://github.com/facebookresearch/deit.git)
 
 
 def init_model(model_args, data_args, training_args):
