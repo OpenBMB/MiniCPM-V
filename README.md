@@ -36,7 +36,14 @@ OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version for deployment. The mode
 
 - **Promising Performance.** OmniLMM 3B achieves promising performance on multiple benchmarks (including MMMU, MME and MMbech), surpassing existing LMMs built on Phi-2. The model supports bilingual mulitmodal interaction in English and Chinese, and endows rich multimodal world knowledge.
 
-TODO：实验结果，可以放个表格截图 @王崇屹
+
+| **Method**       | **Parameters** | **MME(P)** | **MMB-dev(en)** | **MMB-dev(zh)** | **CCBench** | **MMMU-val** | **CMMMU-val** |
+|:------------:|:-------:|:----------:|:---------------:|:---------------:|:-----------:|:------------:|:-------------:|
+| LLaVA-Phi    | 3B      | 1335       | 59.8            | -               |             | -            | -             |
+| MobileVLM    | 3B      | 1289       | 59.6            | -               |             | -            | -             |
+| Imp-v1       | 3B      | 1434       | 66.5            | -               |             | -            | -             |
+| Qwen-VL-Chat | 9.6B    | 1487       | 60.6            | 56.7            | 41.2        | 35.9         | 30.7          |
+| MiniCPM-Omni | 3B      | 1452       | 67.3            | 61.9            | 37.8        | 34.7         | 32.1          |
 
 TODO：视频展示手机端效果？ @蔡天驰
 
