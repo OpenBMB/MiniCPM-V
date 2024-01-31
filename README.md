@@ -1,6 +1,7 @@
 <div align="center">
 
-# OmniLMM
+<h1 style="color: #78C2C4; font-family: Helvetica"> OmniLMM </h1>
+
 **Large multi-modal models for strong performance and efficient deployment**
 <!-- <p align="center">
   <a href="#-viscpm-chat">multi-modal Conversation Model VisCPM-Chat</a> •
