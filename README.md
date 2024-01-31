@@ -15,9 +15,9 @@
 
 **OmniLMM** is a family of open-source large multimodal models (LMMs) that are adept at vision & language modeling. This model processes both images and text inputs and delivers high-quality text outputs. We release two distinct versions of OmniLMM that are targeted at **strong performance and efficient deployment**:
 
-- **OmniLMM-12B:** Achieves leading performance among models with comparable sizes on multiple benchmarks.
+- **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-- **OmniLMM-3B:** Perfect for deployment on edge devices with promising performance. 
+- **OmniLMM-3B**: Perfect for deployment on edge devices with promising performance.
 
 
 ## Contents
