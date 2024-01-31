@@ -51,7 +51,7 @@
 </thead>
 <tbody align="center">
   <tr>
-    <td align="left">GPT-4V</td>
+    <td align="left">GPT-4V † </td>
     <td>-</td>
     <td>1409</td>
     <td>56.8</td>
@@ -62,7 +62,7 @@
     <td>75.1 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left">Qwen-VL-Plus</td>
+    <td nowrap="nowrap" align="left">Qwen-VL-Plus †</td>
     <td>-</td>
     <td>1681</td>
     <td>45.2</td>
@@ -129,6 +129,7 @@
   </tr>
 </tbody>
 </table>
+<small>†: closed-source models</small>
 
 
 TODO：case画图展示 @蔡天驰
