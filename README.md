@@ -40,6 +40,27 @@ TODO：实验结果，可以放个表格截图 @王崇屹
 
 TODO：视频展示手机端效果？ @蔡天驰
 
+<table>
+  <tr>
+    <td>
+      <p> 
+        <img src="data/Mushroom_en.gif" width="400"/>
+      </p>
+    </td>
+    <td>
+      <p> 
+        <img src="data/Snake_en.gif" width="400"/>
+      </p>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <p>🌐 Web Demo for both CogVLM and CogAgent: <a href="http://36.103.203.44:7861">this link</a></p>
+    </td>
+  </tr>
+</table>
+
+
 ## Get Started
 
 ## ⚙️ Install
