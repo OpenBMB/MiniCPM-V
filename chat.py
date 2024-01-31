@@ -32,7 +32,7 @@ def init_omni_lmm(model_path):
         with init_empty_weights():
             model = OmniLMMForCausalLM.from_pretrained(model_name, tune_clip=True, torch_dtype=torch.bfloat16)
         model = load_checkpoint_and_dispatch(model, model_name, dtype=torch.bfloat16, 
-                    device_map="auto",  no_split_module_classes=['Eva','MistralDecoderLayer']
+                    device_map="auto",  no_split_module_classes=['Eva','MistralDecoderLayer', 'ModuleList', 'Resampler']
         )
     else:
         model = OmniLMMForCausalLM.from_pretrained(
