@@ -56,25 +56,19 @@ def create_vision_module(config):
 class OmniLMMModel(MistralModel):
     config_class = OmniLMMConfig
 
-    def __init__(self, config: OmniLMMConfig, mm_vision_tower=None, mm_hidden_size=None, tune_clip=False):
+    def __init__(self, config: OmniLMMConfig, mm_vision_tower=None, mm_hidden_size=None, tune_clip=True):
         super(OmniLMMModel, self).__init__(config)
 
         if hasattr(config, "mm_vision_tower"):
             vision_tower, resampler = create_vision_module(config)
 
             print(__file__, 'skip loading vision tower weights')
-            #state_dict = torch.load(
-            #    '/data/public/multimodal/multimodal_model_ckpts/timm/eva02_enormous_patch14_clip_224.laion2b_plus.pt')
-
-            #vision_tower.load_state_dict(state_dict, strict=False)
 
             # HACK: for FSDP
             self.vision_tower = [vision_tower]
             self.resampler = resampler
             if tune_clip:
                 self.vision_tower = self.vision_tower[0]
-            #del state_dict
-            #gc.collect()
 
         self.vision_config = lambda x: None
 
@@ -275,7 +269,7 @@ class OmniLMMModel(MistralModel):
 class OmniLMMForCausalLM(MistralForCausalLM):
     config_class = OmniLMMConfig
 
-    def __init__(self, config, mm_vision_tower=None, tune_clip=False):
+    def __init__(self, config, mm_vision_tower=None, tune_clip=True):
         super(MistralForCausalLM, self).__init__(config)
         self.model = OmniLMMModel(
             config, mm_vision_tower=mm_vision_tower, tune_clip=tune_clip)

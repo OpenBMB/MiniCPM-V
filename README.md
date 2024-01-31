@@ -258,8 +258,7 @@ After downloading the checkpoints, please refer to the following codes to run `O
 ```python
 from chat import OmniLMMChat, img2base64
 
-# Load and initialize the model
-model_path = '/path/to/checkpoint'
+model_path = 'openbmb/OmniLMM-12B'
 chat_model = OmniLMMChat(model_path)
 
 
@@ -267,22 +266,22 @@ im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
 
 # First round chat 
 msgs = [{"role": "user", "content": "What are the people doing?"}]
-input = {
+inputs = {
     "image": im_64,
     "question": json.dumps(msgs, ensure_ascii=True)
 }
-answer = chat_model.process(input)
+answer = chat_model.process(inputs)
 print(answer)
 
 # Second round chat 
 # pass history context of multi-turn conversation
 msgs.append({"role": "assistant", "content": answer})
 msgs.append({"role": "user", "content": "Describe the image"})
-input = {
+inputs = {
     "image": im_64,
     "question": json.dumps(msgs, ensure_ascii=True)
 }
-answer = chat_model.process(input)
+answer = chat_model.process(inputs)
 print(answer)
 ```
 

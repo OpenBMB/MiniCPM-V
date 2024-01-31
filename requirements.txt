@@ -23,7 +23,6 @@ torchvision==0.15.2
 tqdm==4.66.1
 protobuf==4.25.0
 transformers==4.36.0
-triton==2.0.0
 typing_extensions==4.8.0
 uvicorn==0.24.0.post1
 #xformers==0.0.22.post7
