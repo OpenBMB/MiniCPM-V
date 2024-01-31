@@ -25,7 +25,94 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
   
 - **Real-time multi-modal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a real-time multi-modal interactive assistant. The assistant accepts video stream from the camera and speech stream from microphone, and emits speech output. While still primary, we find the model can replicate some of the fun cases shown in the Gemini Demo video, without any video edition.
 
-| **Method**       | Size | **MME(P)** | **MMMU val** | MMHal- Bench | SeedBench-I | LLaVA Bench W | MathVista | MMBench dev |
+
+
+<table>
+<thead>
+  <tr>
+    <th>Model</th>
+    <th>Size</th>
+    <th>MME</th>
+    <th>MMMU val</th>
+    <th>MMHal-Bench</th>
+    <th>SeedBench-I</th>
+    <th>LLaVA Bench W</th>
+    <th>MathVista</th>
+    <th>MMBench dev</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td>GPT-4V</td>
+    <td>-</td>
+    <td>1409</td>
+    <td>56.8</td>
+    <td>3.53 / 70.8</td>
+    <td>71.6 </td>
+    <td>93.1 </td>
+    <td>47.8 </td>
+    <td>75.1 </td>
+  </tr>
+  <tr>
+    <td>Qwen-VL-Chat</td>
+    <td>9.6B</td>
+    <td>1488</td>
+    <td>35.9</td>
+    <td>2.93 (59.4)</td>
+    <td>64.8 </td>
+    <td>67.7 </td>
+    <td>33.8 </td>
+    <td>60.6 </td>
+  </tr>
+  <tr>
+    <td>CogVLM</td>
+    <td>17.4B</td>
+    <td>1438</td>
+    <td>32.1 </td>
+    <td>2.68 (52.1) </td>
+    <td>68.8 </td>
+    <td>73.9 </td>
+    <td>34.7 </td>
+    <td>63.7 </td>
+  </tr>
+  <tr>
+    <td>LLaVA 1.5</td>
+    <td>13.6B </td>
+    <td>1531 </td>
+    <td>36.4 </td>
+    <td>2.71 (51.0) </td>
+    <td>68.1 </td>
+    <td>64.6 </td>
+    <td>26.4 </td>
+    <td>68.2 </td>
+  </tr>
+  <tr>
+    <td>Yi-VL 6B</td>
+    <td>6.7B </td>
+    <td>- </td>
+    <td>39.1 </td>
+    <td>- </td>
+    <td>66.1 </td>
+    <td>39.9 </td>
+    <td>28.0 </td>
+    <td>68.2 </td>
+  </tr>
+  <tr>
+    <td>OmniLMM-12B</td>
+    <td>11.6B </td>
+    <td>1637 </td>
+    <td>40.7 </td>
+    <td>3.45 (68.8) </td>
+    <td>71.1 </td>
+    <td>72.0 </td>
+    <td>34.9 </td>
+    <td>71.6 </td>
+  </tr>
+</tbody>
+</table>
+
+
+<!-- | **Method**       | Size | **MME(P)** | **MMMU val** | MMHal- Bench | SeedBench-I | LLaVA Bench W | MathVista | MMBench dev |
 |:------------:|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|--------------|--------------|
 | GPT-4V | - | 1409 | 56.8 | 3.53 (70.8) | 71.6 | 93.1 | 47.8 | 75.1 |
 | QWEN-VL-PLUS | - | 1681 | 45.2 | - | 65.7 | 73.7 | 36.0 | 66.2 |
@@ -33,7 +120,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 | CogVLM | 17B | 1438 | 32.1 | 2.68 (52.1) | 68.8 | 73.9 | 34.7 | 63.7 |
 | LLaVA 1.5 | 14B | 1531 | 36.4 | 2.71 (51.0) | 68.1 | 64.6 | 26.4 | 68.2 |
 | Yi-VL | 6.7B | - | 39.1 | - | 66.1 | 39.9 | 28.0 | 68.2 |
-| OmniLMM-12B | 12B    | 1637  | 40.7        | 3.45 (68.8) | 71.1        | 72.0      | 34.9      | 71.6      |
+| OmniLMM-12B | 12B    | 1637  | 40.7        | 3.45 (68.8) | 71.1        | 72.0      | 34.9      | 71.6      | -->
 
 TODO：case画图展示 @蔡天驰
 
