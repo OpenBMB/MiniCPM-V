@@ -24,7 +24,8 @@
 - [OmniLMM 12B](#omnilmm-12b)
 - [OmniLMM 3B](#omnilmm-3b)
 - [Demo](#demo)
-- [Inference](#💡-inference)
+- [Install](#install)
+- [Inference](#inference)
 - [Model Zoo](#model-zoo)
 
 ## OmniLMM 12B
@@ -246,7 +247,7 @@ TODO：case画图展示 @蔡天驰
 ## Demo
 Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
 
-## ⚙️ Install
+## Install
 
 1. Clone this repository and navigate to the source folder
 
@@ -268,7 +269,7 @@ conda activate OmniLMM
 pip install -r requirements.txt
 ```
 
-## 💡 Inference
+## Inference
 
 ### Model Zoo
 | Model                | Description       | Download Link |
