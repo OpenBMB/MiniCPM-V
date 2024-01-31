@@ -17,11 +17,11 @@ OmniLMM is a family of open-source large multimodal models (LMMs) that are adept
 - OmniLMM 3B, the efficient version that can be deployed on edge devices with promising performance.
 
 ## OmniLMM 12B
-OmniLMM 12B is the most capable version. The model is built based on EVA-E 5B and Zephyr 7B, and trained on mulitmodal data in a curriculum fashion. It has three notable features:
+OmniLMM 12B is the most capable version. The model is built based on EVA-E 5B and Zephyr 7B, connected with a preceiver resampler layer, and trained on mulitmodal data in a curriculum fashion. The model has three notable features:
 
 - **Strong Performance.** OmniLMM 12B achieves leading performance among models with comparable sizes, surpassing established LMMs on mulitple benchmarks (including MME, MMBench and SEED-Bench, etc). The model also supports OCR capability and endows rich multimodal world knowledge.
 
-- **Trustworthy Behavior.** LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM 12B is first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior (using our recent [RLHF-V] (https://rlhf-v.github.io/) technique), and ranked #1 among open-source models on MMHalBench and Object Halbench.
+- **Trustworthy Behavior.** LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM 12B is first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior (using our recent [RLHF-V](https://rlhf-v.github.io/) technique), and ranked #1 among open-source models on MMHalBench and Object Halbench.
   
 - **Realtime Mulitmodal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a realtime multimodal interactive assistant. The assistant accepts video stream from camera and speech stream from microphone, and emitts speech output. While still primary, we find the model can replicate some of the fun cases shown in Gemini Demo video, without any video edition.
 
