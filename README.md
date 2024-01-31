@@ -229,9 +229,9 @@ pip install -r requirements.txt
 
 ### Model Zoo
 | Model                | Description       | Download Link |
-|----------------------|-------------------|---------------|
-| OmniLMM-12B | The most capable version with strong performance                   | 🤗 [download](https://huggingface.co/openbmb/OmniLMM-12B)  🤖 [download](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
-| OmniLMM-3B  | The efficient version for edge device deployment          | 🤗 [download](https://huggingface.co/openbmb/MiniCPM-V) 🤖 [download](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
+|:----------------------|:-------------------|:---------------:|
+| OmniLMM-12B | The most capable version with strong performance.                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-3B  | The efficient version for edge device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
 
 ### OmniLMM-12B
 After downloading the checkpoints, please refer to the following codes to run `OmniLMM` (replace `'/path/to/checkpoint'` with the path of the downloaded checkpoint).
