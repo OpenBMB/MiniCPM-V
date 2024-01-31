@@ -30,7 +30,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 <table>
 <thead>
   <tr>
-    <th>Model</th>
+    <th align="left">Model</th>
     <th>Size</th>
     <th>MME</th>
     <th>MMMU val</th>
@@ -38,12 +38,12 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <th nowrap="nowrap" >SeedBench-I</th>
     <th>LLaVA Bench W</th>
     <th>MathVista</th>
-    <th>MMBench dev</th>
+    <th>MMB dev (en)</th>
   </tr>
 </thead>
 <tbody align="center">
   <tr>
-    <td>GPT-4V</td>
+    <td align="left">GPT-4V</td>
     <td>-</td>
     <td>1409</td>
     <td>56.8</td>
@@ -54,7 +54,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>75.1 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap">Qwen-VL-Plus</td>
+    <td nowrap="nowrap" align="left">Qwen-VL-Plus</td>
     <td>-</td>
     <td>1681</td>
     <td>45.2</td>
@@ -65,7 +65,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>66.2 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap">Qwen-VL-Chat</td>
+    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
     <td>9.6B</td>
     <td>1488</td>
     <td>35.9</td>
@@ -76,7 +76,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>60.6 </td>
   </tr>
   <tr>
-    <td>CogVLM</td>
+    <td align="left" >CogVLM</td>
     <td>17.4B</td>
     <td>1438</td>
     <td>32.1 </td>
@@ -87,7 +87,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>63.7 </td>
   </tr>
   <tr>
-    <td>LLaVA 1.5</td>
+    <td align="left" >LLaVA 1.5</td>
     <td>13.6B </td>
     <td>1531 </td>
     <td>36.4 </td>
@@ -98,7 +98,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>68.2 </td>
   </tr>
   <tr>
-    <td>Yi-VL 6B</td>
+    <td align="left">Yi-VL 6B</td>
     <td>6.7B </td>
     <td>- </td>
     <td>39.1 </td>
@@ -109,7 +109,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>68.2 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" >OmniLMM-12B</td>
+    <td nowrap="nowrap" align="left" ><b>OmniLMM-12B</b></td>
     <td>11.6B </td>
     <td>1637 </td>
     <td>40.7 </td>
@@ -145,13 +145,13 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 - **Bilingual Support.** OmniLMM 3B is the first edge-deployable LMM supporting bilingual multi-modal interaction in English and Chinese. This is achieved by generalizing multi-modal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
 
-| **Method**       | #Params | **MME(P)** | **MMB-dev(en)** | **MMB-dev(zh)** | **MMMU-val** | **CMMMU-val** |
-|:------------:|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|
+| Model       | Size | MME | MMB dev(en) | MMB dev(zh) | MMMU val | CMMMU val |
+|:------------|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|
 | LLaVA-Phi    | 3B      | 1335       | 59.8            | -               | -            | -             |
 | MobileVLM    | 3B      | 1289       | 59.6            | -              | -            | -             |
 | Imp-v1       | 3B      | 1434       | 66.5            | -               | -            | -             |
 | Qwen-VL-Chat | 9.6B    | **1487**       | 60.6            | 56.7            | **35.9**         | 30.7          |
-| OmniLMM-3B | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
+| **OmniLMM-3B** | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
 
 TODO：视频展示手机端效果？ @蔡天驰
 
