@@ -20,7 +20,7 @@
 - **OmniLMM-3B:** The efficient version that is perfect for deployment on edge devices with promising performance. 
 
 ## OmniLMM 12B
-**OmniLMM-12B** is the most capable version. The model is built based on [EVA02 5B](https://github.com/baaivision/EVA/tree/master/EVA-CLIP) and [Zephyr-7B-β](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta), connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
+**OmniLMM-12B** is the most capable version. The model is built based on EVA02-5B and Zephyr-7B-β, connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
 
 - 🔥 **Strong Performance.** 
 
@@ -148,6 +148,8 @@ TODO：case画图展示 @蔡天驰
 
   OmniLMM-3B is **the first edge-deployable LMM supporting bilingual multimodal interaction in English and Chinese**. This is achieved by generalizing multimodal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
+### Evaluation
+
 <div align="center">
 
 <table style="margin: 0px auto;">
@@ -213,6 +215,9 @@ TODO：case画图展示 @蔡天驰
 
 </div>
 
+### Examples
+
+<div align="center">
 <table>
   <tr>
     <td>
@@ -227,6 +232,7 @@ TODO：case画图展示 @蔡天驰
     </td>
   </tr>
 </table>
+</div>
 
 ## Demo
 Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
