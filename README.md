@@ -34,8 +34,8 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <th>Size</th>
     <th>MME</th>
     <th>MMMU val</th>
-    <th>MMHal-Bench</th>
-    <th>SeedBench-I</th>
+    <th nowrap="nowrap" >MMHal-Bench</th>
+    <th nowrap="nowrap" >SeedBench-I</th>
     <th>LLaVA Bench W</th>
     <th>MathVista</th>
     <th>MMBench dev</th>
@@ -54,11 +54,22 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>75.1 </td>
   </tr>
   <tr>
-    <td>Qwen-VL-Chat</td>
+    <td nowrap="nowrap">Qwen-VL-Plus</td>
+    <td>-</td>
+    <td>1681</td>
+    <td>45.2</td>
+    <td>- </td>
+    <td>65.7 </td>
+    <td>73.7 </td>
+    <td>36.0 </td>
+    <td>66.2 </td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap">Qwen-VL-Chat</td>
     <td>9.6B</td>
     <td>1488</td>
     <td>35.9</td>
-    <td>2.93 (59.4)</td>
+    <td>2.93 / 59.4</td>
     <td>64.8 </td>
     <td>67.7 </td>
     <td>33.8 </td>
@@ -69,7 +80,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>17.4B</td>
     <td>1438</td>
     <td>32.1 </td>
-    <td>2.68 (52.1) </td>
+    <td>2.68 / 52.1 </td>
     <td>68.8 </td>
     <td>73.9 </td>
     <td>34.7 </td>
@@ -80,7 +91,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>13.6B </td>
     <td>1531 </td>
     <td>36.4 </td>
-    <td>2.71 (51.0) </td>
+    <td>2.71 / 51.0 </td>
     <td>68.1 </td>
     <td>64.6 </td>
     <td>26.4 </td>
@@ -98,11 +109,11 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <td>68.2 </td>
   </tr>
   <tr>
-    <td>OmniLMM-12B</td>
+    <td nowrap="nowrap" >OmniLMM-12B</td>
     <td>11.6B </td>
     <td>1637 </td>
     <td>40.7 </td>
-    <td>3.45 (68.8) </td>
+    <td>3.45 / 68.8 </td>
     <td>71.1 </td>
     <td>72.0 </td>
     <td>34.9 </td>
@@ -140,7 +151,7 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 | MobileVLM    | 3B      | 1289       | 59.6            | -              | -            | -             |
 | Imp-v1       | 3B      | 1434       | 66.5            | -               | -            | -             |
 | Qwen-VL-Chat | 9.6B    | **1487**       | 60.6            | 56.7            | **35.9**         | 30.7          |
-| OmniLMM 3B | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
+| OmniLMM-3B | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
 
 TODO：视频展示手机端效果？ @蔡天驰
 
