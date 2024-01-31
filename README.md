@@ -25,7 +25,15 @@ OmniLMM 12B is the most capable version. The model is built based on EVA-E 5B an
   
 - **Realtime Mulitmodal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a realtime multimodal interactive assistant. The assistant accepts video stream from camera and speech stream from microphone, and emitts speech output. While still primary, we find the model can replicate some of the fun cases shown in Gemini Demo video, without any video edition.
 
-TODO：实验结果，可以放个表格截图（基准：MMMU、MME、MMBench、SEED-Bench、MMHALBench、Object Halbench；模型：Qwen-VL-Chat、CogVLM、GPT-4V、Gemini等） @余天予
+| **Method**       | Size | **MME(P)** | **MMMU val** | MMHal- Bench | SeedBench-I | LLaVA Bench W | MathVista | MMBench dev |
+|:------------:|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|--------------|--------------|
+| GPT-4V | - | 1409 | 56.8 | 3.53 (70.8) | 71.6 | 93.1 | 47.8 | 75.1 |
+| QWEN-VL-PLUS | - | 1681 | 45.2 | - | 65.7 | 73.7 | 36.0 | 66.2 |
+| Qwen-VL-Chat | 9.6B | 1488   | 35.9         | 2.93 (59.4) | 64.8         | 67.7     | 33.8       | 60.6      |
+| CogVLM | 17B | 1438 | 32.1 | 2.68 (52.1) | 68.8 | 73.9 | 34.7 | 63.7 |
+| LLaVA 1.5 | 14B | 1531 | 36.4 | 2.71 (51.0) | 68.1 | 64.6 | 26.4 | 68.2 |
+| Yi-VL | 6.7B | - | 39.1 | - | 66.1 | 39.9 | 28.0 | 68.2 |
+| OmniLMM-12B | 12B    | 1637  | 40.7        | 3.45 (68.8) | 71.1        | 72.0      | 34.9      | 71.6      |
 
 TODO：case画图展示 @蔡天驰
 
@@ -39,7 +47,7 @@ OmniLMM 3B (i.e., MiniCPM-Omni) is an efficient version with promising performan
 - **Bilingual Support.** OmniLMM 3B is the first edge-deployable LMM supporting bilingual mulitmodal interaction in English and Chinese. This is achieved by generalizating mulitmodal capabilites across languages, a technique from our ICLR 2024 spotlight paper.
 
 
-| **Method**       | **Parameters** | **MME(P)** | **MMB-dev(en)** | **MMB-dev(zh)** | **MMMU-val** | **CMMMU-val** |
+| **Method**       | #Params | **MME(P)** | **MMB-dev(en)** | **MMB-dev(zh)** | **MMMU-val** | **CMMMU-val** |
 |:------------:|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|
 | LLaVA-Phi    | 3B      | 1335       | 59.8            | -               | -            | -             |
 | MobileVLM    | 3B      | 1289       | 59.6            | -              | -            | -             |
@@ -137,5 +145,4 @@ This project is developed by the following institutions:
 - <img src="figures/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
 - <img src="figures/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
 - <img src="figures/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
-
 
