@@ -5,29 +5,34 @@
 <img src="./assets/title-2.png" width="200em" ></img> 
 
 **Large multi-modal models for strong performance and efficient deployment**
-<!-- <p align="center">
-  <a href="#-viscpm-chat">multi-modal Conversation Model VisCPM-Chat</a> •
-  <a href="#-viscpm-paint">Text-to-image Model VisCPM-Paint</a> •
-  <a href="#-inference">Inference</a> •
-  <a href="https://arxiv.org/pdf/2308.12038.pdf">Paper</a>
-</p> -->
+<p align="center">
+  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081/">🤖</a> |
+  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80">🤖</a>
+</p>
 
 </div>
 
 
-OmniLMM is a family of open-source large multi-modal models (LMMs) adept at vision & language modeling. The model accepts images and text inputs, and emits text outputs. We release two versions of OmniLMM that are targeted at strong performance and efficient deployment.
-- OmniLMM 12B: The most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
-- OmniLMM 3B: The efficient version that can be deployed on edge devices with promising performance.
+**OmniLMM** is a family of open-source large multimodal models (LMMs) that are adept at vision & language modeling. This model processes both images and text inputs and delivers high-quality text outputs. We release two distinct versions of OmniLMM that are targeted at **strong performance and efficient deployment**:
+
+- **OmniLMM-12B:** The most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
+
+- **OmniLMM-3B:** The efficient version that is perfect for deployment on edge devices with promising performance. 
 
 ## OmniLMM 12B
-OmniLMM 12B is the most capable version with strong performance. The model is built based on EVA-E 5B and Zephyr 7B, connected with a perceiver resampler layer, and trained on multi-modal data in a curriculum learning fashion. The model has three notable features:
+**OmniLMM-12B** is the most capable version. The model is built based on [EVA02 5B](https://github.com/baaivision/EVA/tree/master/EVA-CLIP) and [Zephyr-7B-β](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta), connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
 
-- **Strong Performance.** OmniLMM 12B achieves leading performance among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MMMU, MME, MMBench and SEED-Bench, etc). The model also supports OCR capability and endows rich multi-modal world knowledge.
+- 🔥 **Strong Performance.** 
 
-- **Trustworthy Behavior.** LMMs are known for suffering from hallucination (e.g., faithfully describing non-existing objects in images). OmniLMM 12B is the first state-of-the-art open-source LMM aligned via multi-modal RLHF (using our recent [RLHF-V](https://rlhf-v.github.io/) technique) for trustworthy behavior, and ranked #1 among open-source models on MMHalBench and Object Halbench.
-  
-- **Real-time Multi-modal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a real-time multi-modal interactive assistant. The assistant accepts video stream from the camera and speech stream from microphone, and emits speech output. While still primary, we find the model can replicate some of the fun cases shown in the Gemini Demo video, without any video edition.
+  OmniLMM-12B achieves **leading performance** among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MME, MMBench, SEED-Bench, etc). The model also **supports OCR capability** and endows **rich multimodal world knowledge**.
 
+- 🏆 **Trustworthy Behavior.** 
+
+  LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM-12B is **the first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior** (using our recent [RLHF-V](https://rlhf-v.github.io/) technique) and **ranked #1** among open-source models on [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench).
+
+- 🕹 **Real-time Multimodal Interaction.** 
+
+  We combine the OmniLMM-12B and GPT-3.5 into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
 
 
 <table>
@@ -129,13 +134,19 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 TODO：case画图展示 @蔡天驰
 
 ## OmniLMM 3B
-OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip 400M and [MiniCPM](https://github.com/OpenBMB/MiniCPM)  2.4B, connected by a perceiver resampler layer. Notable features of OmniLLM 3B include:
+**OmniLMM-3B** (i.e., MiniCPM-Omni) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
-- **High Efficiency.** OmniLLM 3B can be efficiently deployed on most GPU cards and personal computers, and even on edge devices such as mobile phones. In terms of visual encoding, we compress the image representations into 64 tokens via perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically >512 tokens). This allows OmniLLM 3B to operate with much less memory cost and higher speed during inference.
+- 🚀 **High Efficiency.** 
 
-- **Promising Performance.** OmniLMM 3B achieves state-of-the-art performance on multiple benchmarks (including MMMU, MME and MMbech, etc) among models with comparable sizes, surpassing existing LMMs built on Phi-2. It even achieves comparable or better performance than the 9.6B Qwen-VL-Chat.
+  OmniLMM-3B can be **efficiently deployed on most GPU cards and personal computers**, and **even on edge devices such as mobile phones**. In terms of visual encoding, we compress the image representations into 64 tokens via a perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically > 512 tokens). This allows OmniLMM-3B to operate with **much less memory cost and higher speed during inference**.
 
-- **Bilingual Support.** OmniLMM 3B is the first edge-deployable LMM supporting bilingual multi-modal interaction in English and Chinese. This is achieved by generalizing multi-modal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
+- 🔥 **Promising Performance.** 
+
+  OmniLMM-3B achieves **state-of-the-art performance** on multiple benchmarks (including MMMU, MME, and MMbech, etc) among models with comparable sizes, surpassing existing LMMs built on Phi-2. It even **achieves comparable or better performance than the 9.6B Qwen-VL-Chat**.
+
+- 🙌 **Bilingual Support.** 
+
+  OmniLMM-3B is **the first edge-deployable LMM supporting bilingual multimodal interaction in English and Chinese**. This is achieved by generalizing multimodal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
 <table style="margin: 0px auto;">
 <thead>
@@ -218,7 +229,7 @@ Click here to try out the Demo of [OmniLMM 12B](http://120.92.209.146:8081) and 
 
 ## ⚙️ Install
 
-1. Clone this repository and navigate to source folder
+1. Clone this repository and navigate to the source folder
 
 ```bash
 git clone https://github.com/OpenBMB/OmniLMM.git
