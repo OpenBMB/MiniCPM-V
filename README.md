@@ -326,7 +326,6 @@ res, context, _ = model.chat(
 print(res)
 ```
 
-TODO：使用文档（安装、使用，包括3B和12B） @朱宏吉
 
 ## ✅ TODO
 
