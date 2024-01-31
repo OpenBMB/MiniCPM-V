@@ -8,7 +8,7 @@ from accelerate import load_checkpoint_and_dispatch, init_empty_weights
 from transformers import AutoTokenizer 
 
 from omnilmm.utils import disable_torch_init
-from omnilmm.model.omni_lmm import OmniLMMForCausalLM
+from omnilmm.model.omnilmm import OmniLMMForCausalLM
 from omnilmm.model.utils import build_transform
 from omnilmm.train.train_utils import omni_preprocess
 
@@ -140,7 +140,7 @@ def img2base64(file_name):
 
 if __name__ == '__main__':
     
-    model_path = '/path/to/checkpoint'
+    model_path = '/home/jeeves/models/zephyr_rlhf_0131_deploy/model'
     chat_model = OmniLMMChat(model_path)
 
     im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
