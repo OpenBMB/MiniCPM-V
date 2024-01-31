@@ -13,8 +13,8 @@
 
 
 OmniLMM is a family of open-source large multi-modal models (LMMs) adept at vision & language modeling. The model accepts images and text inputs, and emits text outputs. We release two versions of OmniLMM that are targeted at strong performance and efficient deployment.
-- OmniLMM 12B, the most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
-- OmniLMM 3B, the efficient version that can be deployed on edge devices with promising performance.
+- OmniLMM 12B: the most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
+- OmniLMM 3B: the efficient version that can be deployed on edge devices with promising performance.
 
 ## OmniLMM 12B
 OmniLMM 12B is the most capable version with strong performance. The model is built based on EVA-E 5B and Zephyr 7B, connected with a perceiver resampler layer, and trained on multi-modal data in a curriculum learning fashion. The model has three notable features:
