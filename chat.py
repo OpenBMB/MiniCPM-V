@@ -138,7 +138,7 @@ def img2base64(file_name):
 
 if __name__ == '__main__':
     
-    model_path = '/home/jeeves/models/zephyr_rlhf_0131_deploy/model'
+    model_path = 'openbmb/OmniLMM-12B'
     chat_model = OmniLMMChat(model_path)
 
     im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')

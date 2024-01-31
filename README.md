@@ -6,8 +6,8 @@
 
 **Large multi-modal models for strong performance and efficient deployment**
 <p align="center">
-  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081/">🤖</a> |
-  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80">🤖</a>
+  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80">🤖</a> |
+  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
 </p>
 
 </div>
@@ -73,15 +73,15 @@
     <td>66.2 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
-    <td align="right">9.6B</td>
-    <td>1488</td>
-    <td>35.9</td>
-    <td>2.93 / 59.4</td>
-    <td>64.8 </td>
-    <td>67.7 </td>
-    <td>33.8 </td>
-    <td>60.6 </td>
+    <td align="left">Yi-VL 6B</td>
+    <td align="right">6.7B </td>
+    <td>- </td>
+    <td>39.1 </td>
+    <td>- </td>
+    <td>66.1 </td>
+    <td>39.9 </td>
+    <td>28.0 </td>
+    <td>68.2 </td>
   </tr>
   <tr>
     <td align="left" >CogVLM</td>
@@ -95,6 +95,17 @@
     <td>63.7 </td>
   </tr>
   <tr>
+    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
+    <td align="right">9.6B</td>
+    <td>1488</td>
+    <td>35.9</td>
+    <td>2.93 / 59.4</td>
+    <td>64.8 </td>
+    <td>67.7 </td>
+    <td>33.8 </td>
+    <td>60.6 </td>
+  </tr>
+  <tr>
     <td align="left" >LLaVA 1.5</td>
     <td align="right">13.6B </td>
     <td>1531 </td>
@@ -103,17 +114,6 @@
     <td>68.1 </td>
     <td>64.6 </td>
     <td>26.4 </td>
-    <td>68.2 </td>
-  </tr>
-  <tr>
-    <td align="left">Yi-VL 6B</td>
-    <td align="right">6.7B </td>
-    <td>- </td>
-    <td>39.1 </td>
-    <td>- </td>
-    <td>66.1 </td>
-    <td>39.9 </td>
-    <td>28.0 </td>
     <td>68.2 </td>
   </tr>
   <tr>
@@ -167,7 +167,7 @@ TODO：case画图展示 @蔡天驰
 <tbody align="center">
   <tr>
     <td align="left">LLaVA-Phi</td>
-    <td align="right">3.0B</td>
+    <td align="right">3B</td>
     <td>1335</td>
     <td>59.8</td>
     <td>- </td>
@@ -176,7 +176,7 @@ TODO：case画图展示 @蔡天驰
   </tr>
   <tr>
     <td nowrap="nowrap" align="left">MobileVLM</td>
-    <td align="right">3.0B</td>
+    <td align="right">3B</td>
     <td>1289</td>
     <td>59.6</td>
     <td>- </td>
@@ -190,6 +190,15 @@ TODO：case画图展示 @蔡天驰
     <td>66.5</td>
     <td>- </td>
     <td>- </td>
+    <td>- </td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap" align="left" >CogVLM</td>
+    <td align="right">17.4B </td>
+    <td>1438 </td>
+    <td>63.7 </td>
+    <td>53.8 </td>
+    <td>32.1 </td>
     <td>- </td>
   </tr>
   <tr>
@@ -332,7 +341,6 @@ res, context, _ = model.chat(
 print(res)
 ```
 
-TODO：使用文档（安装、使用，包括3B和12B） @朱宏吉
 
 ## ✅ TODO
 
