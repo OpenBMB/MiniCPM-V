@@ -33,12 +33,12 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
     <th align="left">Model</th>
     <th>Size</th>
     <th>MME</th>
-    <th>MMMU val</th>
+    <th nowrap="nowrap" >MMMU val</th>
     <th nowrap="nowrap" >MMHal-Bench</th>
     <th nowrap="nowrap" >SeedBench-I</th>
-    <th>LLaVA Bench W</th>
+    <th nowrap="nowrap" >LLaVA Bench W</th>
     <th>MathVista</th>
-    <th>MMB dev (en)</th>
+    <th nowrap="nowrap">MMB dev (en)</th>
   </tr>
 </thead>
 <tbody align="center">
@@ -66,7 +66,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
   </tr>
   <tr>
     <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
-    <td>9.6B</td>
+    <td align="right">9.6B</td>
     <td>1488</td>
     <td>35.9</td>
     <td>2.93 / 59.4</td>
@@ -77,7 +77,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
   </tr>
   <tr>
     <td align="left" >CogVLM</td>
-    <td>17.4B</td>
+    <td align="right">17.4B</td>
     <td>1438</td>
     <td>32.1 </td>
     <td>2.68 / 52.1 </td>
@@ -88,7 +88,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
   </tr>
   <tr>
     <td align="left" >LLaVA 1.5</td>
-    <td>13.6B </td>
+    <td align="right">13.6B </td>
     <td>1531 </td>
     <td>36.4 </td>
     <td>2.71 / 51.0 </td>
@@ -99,7 +99,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
   </tr>
   <tr>
     <td align="left">Yi-VL 6B</td>
-    <td>6.7B </td>
+    <td align="right">6.7B </td>
     <td>- </td>
     <td>39.1 </td>
     <td>- </td>
@@ -110,7 +110,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
   </tr>
   <tr>
     <td nowrap="nowrap" align="left" ><b>OmniLMM-12B</b></td>
-    <td>11.6B </td>
+    <td align="right">11.6B </td>
     <td>1637 </td>
     <td>40.7 </td>
     <td>3.45 / 68.8 </td>
