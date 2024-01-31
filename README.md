@@ -51,7 +51,7 @@
 </thead>
 <tbody align="center">
   <tr>
-    <td align="left">GPT-4V † </td>
+    <td align="left">GPT-4V</td>
     <td>-</td>
     <td>1409</td>
     <td>56.8</td>
@@ -62,7 +62,7 @@
     <td>75.1 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left">Qwen-VL-Plus †</td>
+    <td nowrap="nowrap" align="left">Qwen-VL-Plus</td>
     <td>-</td>
     <td>1681</td>
     <td>45.2</td>
@@ -73,15 +73,15 @@
     <td>66.2 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
-    <td align="right">9.6B</td>
-    <td>1488</td>
-    <td>35.9</td>
-    <td>2.93 / 59.4</td>
-    <td>64.8 </td>
-    <td>67.7 </td>
-    <td>33.8 </td>
-    <td>60.6 </td>
+    <td align="left">Yi-VL 6B</td>
+    <td align="right">6.7B </td>
+    <td>- </td>
+    <td>39.1 </td>
+    <td>- </td>
+    <td>66.1 </td>
+    <td>39.9 </td>
+    <td>28.0 </td>
+    <td>68.2 </td>
   </tr>
   <tr>
     <td align="left" >CogVLM</td>
@@ -95,6 +95,17 @@
     <td>63.7 </td>
   </tr>
   <tr>
+    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
+    <td align="right">9.6B</td>
+    <td>1488</td>
+    <td>35.9</td>
+    <td>2.93 / 59.4</td>
+    <td>64.8 </td>
+    <td>67.7 </td>
+    <td>33.8 </td>
+    <td>60.6 </td>
+  </tr>
+  <tr>
     <td align="left" >LLaVA 1.5</td>
     <td align="right">13.6B </td>
     <td>1531 </td>
@@ -103,17 +114,6 @@
     <td>68.1 </td>
     <td>64.6 </td>
     <td>26.4 </td>
-    <td>68.2 </td>
-  </tr>
-  <tr>
-    <td align="left">Yi-VL 6B</td>
-    <td align="right">6.7B </td>
-    <td>- </td>
-    <td>39.1 </td>
-    <td>- </td>
-    <td>66.1 </td>
-    <td>39.9 </td>
-    <td>28.0 </td>
     <td>68.2 </td>
   </tr>
   <tr>
