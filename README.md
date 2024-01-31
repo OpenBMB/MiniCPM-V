@@ -123,16 +123,6 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 </table>
 
 
-<!-- | **Method**       | Size | **MME(P)** | **MMMU val** | MMHal- Bench | SeedBench-I | LLaVA Bench W | MathVista | MMBench dev |
-|:------------:|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|--------------|--------------|
-| GPT-4V | - | 1409 | 56.8 | 3.53 (70.8) | 71.6 | 93.1 | 47.8 | 75.1 |
-| QWEN-VL-PLUS | - | 1681 | 45.2 | - | 65.7 | 73.7 | 36.0 | 66.2 |
-| Qwen-VL-Chat | 9.6B | 1488   | 35.9         | 2.93 (59.4) | 64.8         | 67.7     | 33.8       | 60.6      |
-| CogVLM | 17B | 1438 | 32.1 | 2.68 (52.1) | 68.8 | 73.9 | 34.7 | 63.7 |
-| LLaVA 1.5 | 14B | 1531 | 36.4 | 2.71 (51.0) | 68.1 | 64.6 | 26.4 | 68.2 |
-| Yi-VL | 6.7B | - | 39.1 | - | 66.1 | 39.9 | 28.0 | 68.2 |
-| OmniLMM-12B | 12B    | 1637  | 40.7        | 3.45 (68.8) | 71.1        | 72.0      | 34.9      | 71.6      | -->
-
 TODO：case画图展示 @蔡天驰
 
 ## OmniLMM 3B
@@ -144,14 +134,68 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 
 - **Bilingual Support.** OmniLMM 3B is the first edge-deployable LMM supporting bilingual multi-modal interaction in English and Chinese. This is achieved by generalizing multi-modal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
-
-| Model       | Size | MME | MMB dev(en) | MMB dev(zh) | MMMU val | CMMMU val |
-|:------------|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|
-| LLaVA-Phi    | 3B      | 1335       | 59.8            | -               | -            | -             |
-| MobileVLM    | 3B      | 1289       | 59.6            | -              | -            | -             |
-| Imp-v1       | 3B      | 1434       | 66.5            | -               | -            | -             |
-| Qwen-VL-Chat | 9.6B    | **1487**       | 60.6            | 56.7            | **35.9**         | 30.7          |
-| **OmniLMM-3B** | 3B      | 1452       | **67.3**            | **61.9**            | 34.7         | **32.1**          |
+<center>
+<table>
+<thead>
+  <tr>
+    <th align="left">Model</th>
+    <th>Size</th>
+    <th>MME</th>
+    <th nowrap="nowrap" >MMB dev (en)</th>
+    <th nowrap="nowrap" >MMB dev (zh)</th>
+    <th nowrap="nowrap" >MMMU val</th>
+    <th nowrap="nowrap" >CMMMU val</th>
+  </tr>
+</thead>
+<tbody align="center">
+  <tr>
+    <td align="left">LLaVA-Phi</td>
+    <td align="right">3.0B</td>
+    <td>1335</td>
+    <td>59.8</td>
+    <td>- </td>
+    <td>- </td>
+    <td>- </td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap" align="left">MobileVLM</td>
+    <td align="right">3.0B</td>
+    <td>1289</td>
+    <td>59.6</td>
+    <td>- </td>
+    <td>- </td>
+    <td>- </td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap" align="left" >Imp-v1</td>
+    <td align="right">3B</td>
+    <td>1434</td>
+    <td>66.5</td>
+    <td>- </td>
+    <td>- </td>
+    <td>- </td>
+  </tr>
+  <tr>
+    <td align="left" >Qwen-VL-Chat</td>
+    <td align="right" >9.6B</td>
+    <td>1487</td>
+    <td>60.6 </td>
+    <td>56.7 </td>
+    <td>35.9 </td>
+    <td>30.7 </td>
+  </tr>
+  <tr>
+    <td nowrap="nowrap" align="left" ><b>OmniLMM-3B</b></td>
+    <td align="right">3B </td>
+    <td>1452 </td>
+    <td>67.3 </td>
+    <td>61.9 </td>
+    <td>34.7 </td>
+    <td>32.1 </td>
+  </tr>
+</tbody>
+</table>
+</center>
 
 TODO：视频展示手机端效果？ @蔡天驰
 
