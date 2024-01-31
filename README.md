@@ -19,6 +19,14 @@
 
 - **OmniLMM-3B:** The efficient version that is perfect for deployment on edge devices with promising performance. 
 
+
+## Contents
+- [OmniLMM 12B](#omnilmm-12b)
+- [OmniLMM 3B](#omnilmm-3b)
+- [Demo](#demo)
+- [Inference](#💡-inference)
+- [Model Zoo](#model-zoo)
+
 ## OmniLMM 12B
 **OmniLMM-12B** is the most capable version. The model is built based on [EVA02-5B](https://github.com/baaivision/EVA/tree/master/EVA-CLIP) and [Zephyr-7B-β](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta), connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
 
