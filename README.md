@@ -247,7 +247,7 @@ from chat import OmniLMMChat, img2base64
 model_path = '/path/to/checkpoint'
 chat_model = OmniLMMChat(model_path)
 
-# We perform security checks on the input images by default.
+
 im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
 
 # First round chat 
