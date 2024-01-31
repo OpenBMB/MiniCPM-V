@@ -1,6 +1,9 @@
 <div align="center">
 
-<h1 style="color: #78C2C4; font-family: Helvetica"> OmniLMM </h1>
+<!-- <h1 style="color: #33A6B8; font-family: Helvetica"> OmniLMM </h1> -->
+<!-- <h1 style="color: #2EA9DF; font-family: Helvetica"> OmniLMM </h1> -->
+
+<img src="./assets/title-3.png" width="200em" ></img> 
 
 **Large multi-modal models for strong performance and efficient deployment**
 <!-- <p align="center">
