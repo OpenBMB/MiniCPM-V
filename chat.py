@@ -94,24 +94,22 @@ class OmniLMMChat:
 
     def decode(self, image, input_ids):
         with torch.inference_mode():
-            input_size = input_ids.shape[-1]
-
-            output = self.model.generate(
+            output = self.model.generate_vllm(
                 input_ids=input_ids.unsqueeze(0).cuda(),
                 images=image.unsqueeze(0).half().cuda(),
-                temperature=1.2,
+                temperature=0.6,
                 max_new_tokens=1024,
                 # num_beams=num_beams,
                 do_sample=True,
                 output_scores=True,
                 return_dict_in_generate=True,
                 repetition_penalty=1.1,
-                top_k=50,
-                top_p=0.95,
+                top_k=30,
+                top_p=0.9,
             )
 
             response = self.tokenizer.decode(
-                output.sequences[0][input_size:], skip_special_tokens=True)
+                output.sequences[0], skip_special_tokens=True)
             response = response.strip()
             return response
 
