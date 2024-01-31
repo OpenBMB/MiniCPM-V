@@ -134,8 +134,7 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 
 - **Bilingual Support.** OmniLMM 3B is the first edge-deployable LMM supporting bilingual multi-modal interaction in English and Chinese. This is achieved by generalizing multi-modal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
-<center>
-<table>
+<table style="margin: 0px auto;">
 <thead>
   <tr>
     <th align="left">Model</th>
@@ -195,7 +194,6 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
   </tr>
 </tbody>
 </table>
-</center>
 
 TODO：视频展示手机端效果？ @蔡天驰
 
