@@ -148,6 +148,8 @@ TODO：case画图展示 @蔡天驰
 
   OmniLMM-3B is **the first edge-deployable LMM supporting bilingual multimodal interaction in English and Chinese**. This is achieved by generalizing multimodal capabilities across languages, a technique from our ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
+<div align="center">
+
 <table style="margin: 0px auto;">
 <thead>
   <tr>
@@ -208,6 +210,8 @@ TODO：case画图展示 @蔡天驰
   </tr>
 </tbody>
 </table>
+
+</div>
 
 <table>
   <tr>
