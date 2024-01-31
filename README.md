@@ -246,30 +246,26 @@ pip install -r requirements.txt
 | OmniLMM-12B | The most capable version with strong performance.                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
 | OmniLMM-3B  | The efficient version for edge device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
 
-### OmniLMM-12B
-After downloading the checkpoints, please refer to the following codes to run `OmniLMM` (replace `'/path/to/checkpoint'` with the path of the downloaded checkpoint).
 
-#### Multi-turn Conversation
+### Multi-turn Conversation
+Please refer to the following codes to run `OmniLMM`.
 
 <div align="center">
 <img src="data/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
+##### OmniLMM-12B
 ```python
 from chat import OmniLMMChat, img2base64
 
-model_path = 'openbmb/OmniLMM-12B'
-chat_model = OmniLMMChat(model_path)
-
+chat_model = OmniLMMChat('openbmb/OmniLMM-12B')
 
 im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
 
 # First round chat 
 msgs = [{"role": "user", "content": "What are the people doing?"}]
-inputs = {
-    "image": im_64,
-    "question": json.dumps(msgs, ensure_ascii=True)
-}
+
+inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.process(inputs)
 print(answer)
 
@@ -277,10 +273,8 @@ print(answer)
 # pass history context of multi-turn conversation
 msgs.append({"role": "assistant", "content": answer})
 msgs.append({"role": "user", "content": "Describe the image"})
-inputs = {
-    "image": im_64,
-    "question": json.dumps(msgs, ensure_ascii=True)
-}
+
+inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.process(inputs)
 print(answer)
 ```
@@ -290,6 +284,31 @@ We can obtain the following results:
 "The people in the image are playing baseball. One person is pitching a ball, another one is swinging a bat to hit it, and there's also an umpire present who appears to be watching the game closely."
 
 "The image depicts a baseball game in progress. A pitcher is throwing the ball, while another player is swinging his bat to hit it. An umpire can be seen observing the play closely."
+```
+
+##### OmniLMM-3B
+```python
+import torch
+from PIL import Image
+from transformers import AutoModel, AutoTokenizer
+
+model_path='openbmb/MiniCPM-V'
+model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+model.eval().cuda()
+
+image = Image.open('./data/COCO_test2015_000000262144.jpg').convert('RGB')
+
+question = '请描述一下该图像'
+res, context, _ = model.chat(
+    image=image,
+    question=question,
+    context=None,
+    tokenizer=tokenizer,
+    sampling=True,
+    temperature=0.7
+)
+print(res)
 ```
 
 TODO：使用文档（安装、使用，包括3B和12B） @朱宏吉
