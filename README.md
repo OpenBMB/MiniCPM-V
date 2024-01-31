@@ -13,8 +13,8 @@
 
 
 OmniLMM is a family of open-source large multi-modal models (LMMs) adept at vision & language modeling. The model accepts images and text inputs, and emits text outputs. We release two versions of OmniLMM that are targeted at strong performance and efficient deployment.
-- OmniLMM 12B, the most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
-- OmniLMM 3B, the efficient version that can be deployed on edge devices with promising performance.
+- OmniLMM 12B: The most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
+- OmniLMM 3B: The efficient version that can be deployed on edge devices with promising performance.
 
 ## OmniLMM 12B
 OmniLMM 12B is the most capable version with strong performance. The model is built based on EVA-E 5B and Zephyr 7B, connected with a perceiver resampler layer, and trained on multi-modal data in a curriculum learning fashion. The model has three notable features:
@@ -23,7 +23,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 
 - **Trustworthy Behavior.** LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM 12B is the first state-of-the-art open-source LMM aligned via multi-modal RLHF (using our recent [RLHF-V](https://rlhf-v.github.io/) technique) for trustworthy behavior, and ranked #1 among open-source models on MMHalBench and Object Halbench.
   
-- **Real-time multi-modal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a real-time multi-modal interactive assistant. The assistant accepts video stream from the camera and speech stream from microphone, and emits speech output. While still primary, we find the model can replicate some of the fun cases shown in the Gemini Demo video, without any video edition.
+- **Real-time Multi-modal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a real-time multi-modal interactive assistant. The assistant accepts video stream from the camera and speech stream from microphone, and emits speech output. While still primary, we find the model can replicate some of the fun cases shown in the Gemini Demo video, without any video edition.
 
 
 
@@ -125,7 +125,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 TODO：case画图展示 @蔡天驰
 
 ## OmniLMM 3B
-OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip 400M and MiniCPM 2.4B, connected by a perceiver resampler layer. Notable features of OmniLLM 3B include:
+OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip 400M and [MiniCPM](https://github.com/OpenBMB/MiniCPM)  2.4B, connected by a perceiver resampler layer. Notable features of OmniLLM 3B include:
 
 - **High Efficiency.** OmniLLM 3B can be efficiently deployed on most GPU cards and personal computers, and even on edge devices such as mobile phones. In terms of visual encoding, we compress the image representations into 64 tokens via perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically >512 tokens). This allows OmniLLM 3B to operate with much less memory cost and higher speed during inference.
 
@@ -145,7 +145,7 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 TODO：视频展示手机端效果？ @蔡天驰
 
 ## Demo
-Click here to try out the Demo of [OmniLMM 12B]() and [OmniLMM 3B](http://120.92.209.146:80).
+Click here to try out the Demo of [OmniLMM 12B](http://120.92.209.146:8081) and [OmniLMM 3B](http://120.92.209.146:80).
 
 ## ⚙️ Install
 
