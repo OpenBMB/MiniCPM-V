@@ -225,7 +225,7 @@ TODO：case画图展示 @蔡天驰
 </table>
 
 ## Demo
-Click here to try out the Demo of [OmniLMM 12B](http://120.92.209.146:8081) and [OmniLMM 3B](http://120.92.209.146:80).
+Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
 
 ## ⚙️ Install
 
