@@ -168,7 +168,7 @@ TODO：case画图展示 @蔡天驰
 <tbody align="center">
   <tr>
     <td align="left">LLaVA-Phi</td>
-    <td align="right">3.0B</td>
+    <td align="right">3B</td>
     <td>1335</td>
     <td>59.8</td>
     <td>- </td>
@@ -177,7 +177,7 @@ TODO：case画图展示 @蔡天驰
   </tr>
   <tr>
     <td nowrap="nowrap" align="left">MobileVLM</td>
-    <td align="right">3.0B</td>
+    <td align="right">3B</td>
     <td>1289</td>
     <td>59.6</td>
     <td>- </td>
