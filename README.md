@@ -23,7 +23,7 @@ OmniLMM 12B is the most capable version with strong performance. The model is bu
 
 - **Trustworthy Behavior.** LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM 12B is the first state-of-the-art open-source LMM aligned via multi-modal RLHF (using our recent [RLHF-V](https://rlhf-v.github.io/) technique) for trustworthy behavior, and ranked #1 among open-source models on MMHalBench and Object Halbench.
   
-- **Real-time multi-modal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a real-time multi-modal interactive assistant. The assistant accepts video stream from the camera and speech stream from microphone, and emits speech output. While still primary, we find the model can replicate some of the fun cases shown in the Gemini Demo video, without any video edition.
+- **Real-time Multi-modal Interaction.** We combine the OmniLMM 12B and ChatGPT3.5 into a real-time multi-modal interactive assistant. The assistant accepts video stream from the camera and speech stream from microphone, and emits speech output. While still primary, we find the model can replicate some of the fun cases shown in the Gemini Demo video, without any video edition.
 
 | **Method**       | Size | **MME(P)** | **MMMU val** | MMHal- Bench | SeedBench-I | LLaVA Bench W | MathVista | MMBench dev |
 |:------------:|:-------:|:----------:|:---------------:|:---------------:|:------------:|:-------------:|--------------|--------------|
@@ -58,7 +58,7 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 TODO：视频展示手机端效果？ @蔡天驰
 
 ## Demo
-Click here to try out the Demo of [OmniLMM 12B]() and [OmniLMM 3B](http://120.92.209.146:80).
+Click here to try out the Demo of [OmniLMM 12B](http://120.92.209.146:8081) and [OmniLMM 3B](http://120.92.209.146:80).
 
 ## ⚙️ Install
 
