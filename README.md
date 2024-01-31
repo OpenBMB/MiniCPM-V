@@ -30,7 +30,7 @@ TODO：实验结果，可以放个表格截图（基准：MMMU、MME、MMBench�
 TODO：case画图展示 @蔡天驰
 
 ## OmniLMM 3B
-OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip 400M and MiniCPM 2.4B, connected by a perceiver resampler layer. Notable features of OmniLLM 3B include:
+OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip 400M and [MiniCPM](https://github.com/OpenBMB/MiniCPM)  2.4B, connected by a perceiver resampler layer. Notable features of OmniLLM 3B include:
 
 - **High Efficiency.** OmniLLM 3B can be efficiently deployed on most GPU cards and personal computers, and even on edge devices such as mobile phones. In terms of visual encoding, we compress the image representations into 64 tokens via perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically >512 tokens). This allows OmniLLM 3B to operate with much less memory cost and higher speed during inference.
 
@@ -50,7 +50,7 @@ OmniLMM 3B (i.e., MiniCPM-V) is an efficient version with promising performance 
 TODO：视频展示手机端效果？ @蔡天驰
 
 ## Demo
-Click here to try out the Demo of [OmniLMM 12B]() and [OmniLMM 3B](http://120.92.209.146:80).
+Click here to try out the Demo of [OmniLMM 12B](http://120.92.209.146:8081) and [OmniLMM 3B](http://120.92.209.146:80).
 
 ## ⚙️ Install
 
