@@ -20,6 +20,7 @@
 - **OmniLMM-3B**: Pioneer edge device multi-modal conversation with promising performance.
 
 
+[中文文档](./README_zh.md)
 
 ## Contents
 - [OmniLMM 12B](#omnilmm-12b)
