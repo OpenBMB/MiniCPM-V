@@ -292,11 +292,11 @@ Please refer to the following codes to run `OmniLMM`.
 <img src="assets/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
-##### OmniLMM-12B
+
 ```python
 from chat import OmniLMMChat, img2base64
 
-chat_model = OmniLMMChat('openbmb/OmniLMM-12B')
+chat_model = OmniLMMChat('openbmb/OmniLMM-12B') # or 'openbmb/MiniCPM-V'
 
 im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
 
@@ -324,30 +324,6 @@ We can obtain the following results:
 "The image depicts a baseball game in progress. A pitcher is throwing the ball, while another player is swinging his bat to hit it. An umpire can be seen observing the play closely."
 ```
 
-##### OmniLMM-3B
-```python
-import torch
-from PIL import Image
-from transformers import AutoModel, AutoTokenizer
-
-model_path='openbmb/MiniCPM-V'
-model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
-tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model.eval().cuda()
-
-image = Image.open('./assets/COCO_test2015_000000262144.jpg').convert('RGB')
-
-question = '请描述一下该图像'
-res, context, _ = model.chat(
-    image=image,
-    question=question,
-    context=None,
-    tokenizer=tokenizer,
-    sampling=True,
-    temperature=0.7
-)
-print(res)
-```
 
 ## ✅ TODO
 
