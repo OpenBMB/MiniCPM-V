@@ -34,6 +34,7 @@
 
   We combine the OmniLMM-12B and GPT-3.5 into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
 
+### Evaluation
 
 <table>
 <thead>
@@ -130,8 +131,7 @@
 </tbody>
 </table>
 
-
-TODO：case画图展示 @蔡天驰
+### Examples
 
 ## OmniLMM 3B
 **OmniLMM-3B** (i.e., MiniCPM-Omni) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
@@ -331,8 +331,6 @@ res, context, _ = model.chat(
 )
 print(res)
 ```
-
-TODO：使用文档（安装、使用，包括3B和12B） @朱宏吉
 
 ## ✅ TODO
 
