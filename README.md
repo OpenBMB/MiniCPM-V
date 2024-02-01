@@ -61,7 +61,7 @@
     <img src=assets/eval_radar.png width=50% />
 </div>
 <details>
-<summary>Click to view results on MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W. </summary>
+<summary>Click to view results on MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista. </summary>
 
 <table>
 <thead>
