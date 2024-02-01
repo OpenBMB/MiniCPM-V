@@ -236,22 +236,11 @@ TODO：case画图展示 @蔡天驰
 
 ### Examples
 
-<div align="center">
-<table>
-  <tr>
-    <td>
-      <p> 
-        <img src="data/Mushroom_en.gif" width="400"/>
-      </p>
-    </td>
-    <td>
-      <p> 
-        <img src="data/Snake_en.gif" width="400"/>
-      </p>
-    </td>
-  </tr>
+<table align="center">
+  <p align="center" > 
+    <img src="data/Snake_cn_Mushroom_en.gif" width="400"/>
+  </p>
 </table>
-</div>
 
 ## Demo
 Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
