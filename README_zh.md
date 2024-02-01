@@ -153,11 +153,11 @@
 
 ## OmniLMM-3B
 
-**OmniLMM-3B**（即 MiniCPM-V）是一种我们的高效率版本模型，可用于终端机器上的部署。该模型基于SigLip-400M和MiniCPM-2.4B构建，通过感知器重采样器连接。OmniLMM-3B的显著特点包括：
+**OmniLMM-3B**（即 MiniCPM-V）是一种我们的高效率版本模型，可用于终端机器上的部署。该模型基于 SigLip-400M 和 MiniCPM-2.4B 构建，通过感知器重采样器连接。OmniLMM-3B的显著特点包括：
 
 - ⚡️ **高效率。**
 
-  OmniLMM-3B可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等边缘设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个令牌，远远少于基于MLP架构的其他LMMs（通常> 512个令牌）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
+  OmniLMM-3B 可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等边缘设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于MLP架构的其他LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
 
 - 🔥 **优秀的性能。**
 
@@ -279,21 +279,24 @@ pip install -r requirements.txt
 
 ## 推理
 
-### Model Zoo
-| Model                | Description       | Download Link |
+### 模型库
+
+| 模型                | 简介       | 下载链接 |
 |:----------------------|:-------------------|:---------------:|
-| OmniLMM-12B | The most capable version with strong performance.                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
-| OmniLMM-3B  | The efficient version for edge device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-12B | 更强大的性能表现                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-3B  | 支持终端设备上的高效部署，性能优秀          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
 
 
-### Multi-turn Conversation
-Please refer to the following codes to run `OmniLMM`.
+### 多轮对话
+
+请参考以下代码运行  `OmniLMM` 的推理服务。
 
 <div align="center">
 <img src="assets/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
 ##### OmniLMM-12B
+
 ```python
 from chat import OmniLMMChat, img2base64
 
