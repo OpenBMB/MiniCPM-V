@@ -1,4 +1,4 @@
-![image](https://github.com/OpenBMB/OmniLMM/assets/42668396/84b82457-31ce-4859-b9e7-99faf3767530)<div align="center">
+<div align="center">
 
 <!-- <!-- <h1 style="color: #33A6B8; font-family: Helvetica"> OmniLMM </h1> -->
 
