@@ -6,7 +6,7 @@
 
 **Large multi-modal models for strong performance and efficient deployment**
 <p align="center">
-  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
+  OmniLMM-3B  <a href="https://huggingface.co/openbmb/MiniCPM-V/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
   OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
 </p>
 
@@ -17,7 +17,7 @@
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-- **OmniLMM-3B**: Perfect for deployment on edge devices with promising performance.
+- **OmniLMM-3B**: Recommended for deployment on edge devices with promising performance.
 
 
 ## Contents
