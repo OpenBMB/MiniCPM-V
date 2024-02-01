@@ -6,8 +6,8 @@
 
 **Large multi-modal models for strong performance and efficient deployment**
 <p align="center">
-  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081/">🤖</a> |
-  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80">🤖</a>
+  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
+  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
 </p>
 
 </div>
@@ -15,9 +15,18 @@
 
 **OmniLMM** is a family of open-source large multimodal models (LMMs) that are adept at vision & language modeling. This model processes both images and text inputs and delivers high-quality text outputs. We release two distinct versions of OmniLMM that are targeted at **strong performance and efficient deployment**:
 
-- **OmniLMM-12B:** The most capable version that achieves leading performance among models with comparable sizes on multiple benchmarks.
+- **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-- **OmniLMM-3B:** The efficient version that is perfect for deployment on edge devices with promising performance. 
+- **OmniLMM-3B**: Perfect for deployment on edge devices with promising performance.
+
+
+## Contents
+- [OmniLMM 12B](#omnilmm-12b)
+- [OmniLMM 3B](#omnilmm-3b)
+- [Demo](#demo)
+- [Install](#install)
+- [Inference](#inference)
+- [Model Zoo](#model-zoo)
 
 ## OmniLMM 12B
 **OmniLMM-12B** is the most capable version. The model is built based on [EVA02-5B](https://github.com/baaivision/EVA/tree/master/EVA-CLIP) and [Zephyr-7B-β](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta), connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
@@ -52,7 +61,7 @@
 </thead>
 <tbody align="center">
   <tr>
-    <td align="left">GPT-4V</td>
+    <td align="left">GPT-4V †</td>
     <td>-</td>
     <td>1409</td>
     <td>56.8</td>
@@ -63,7 +72,7 @@
     <td>75.1 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left">Qwen-VL-Plus</td>
+    <td nowrap="nowrap" align="left">Qwen-VL-Plus †</td>
     <td>-</td>
     <td>1681</td>
     <td>45.2</td>
@@ -74,15 +83,15 @@
     <td>66.2 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
-    <td align="right">9.6B</td>
-    <td>1488</td>
-    <td>35.9</td>
-    <td>2.93 / 59.4</td>
-    <td>64.8 </td>
-    <td>67.7 </td>
-    <td>33.8 </td>
-    <td>60.6 </td>
+    <td align="left">Yi-VL 6B</td>
+    <td align="right">6.7B </td>
+    <td>- </td>
+    <td>39.1 </td>
+    <td>- </td>
+    <td>66.1 </td>
+    <td>39.9 </td>
+    <td>28.0 </td>
+    <td>68.2 </td>
   </tr>
   <tr>
     <td align="left" >CogVLM</td>
@@ -96,6 +105,17 @@
     <td>63.7 </td>
   </tr>
   <tr>
+    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
+    <td align="right">9.6B</td>
+    <td>1488</td>
+    <td>35.9</td>
+    <td>2.93 / 59.4</td>
+    <td>64.8 </td>
+    <td>67.7 </td>
+    <td>33.8 </td>
+    <td>60.6 </td>
+  </tr>
+  <tr>
     <td align="left" >LLaVA 1.5</td>
     <td align="right">13.6B </td>
     <td>1531 </td>
@@ -104,17 +124,6 @@
     <td>68.1 </td>
     <td>64.6 </td>
     <td>26.4 </td>
-    <td>68.2 </td>
-  </tr>
-  <tr>
-    <td align="left">Yi-VL 6B</td>
-    <td align="right">6.7B </td>
-    <td>- </td>
-    <td>39.1 </td>
-    <td>- </td>
-    <td>66.1 </td>
-    <td>39.9 </td>
-    <td>28.0 </td>
     <td>68.2 </td>
   </tr>
   <tr>
@@ -130,6 +139,7 @@
   </tr>
 </tbody>
 </table>
+<small>†: closed-source models</small>
 
 ### Examples
 
@@ -167,7 +177,7 @@
 <tbody align="center">
   <tr>
     <td align="left">LLaVA-Phi</td>
-    <td align="right">3.0B</td>
+    <td align="right">3B</td>
     <td>1335</td>
     <td>59.8</td>
     <td>- </td>
@@ -176,7 +186,7 @@
   </tr>
   <tr>
     <td nowrap="nowrap" align="left">MobileVLM</td>
-    <td align="right">3.0B</td>
+    <td align="right">3B</td>
     <td>1289</td>
     <td>59.6</td>
     <td>- </td>
@@ -237,7 +247,7 @@
 ## Demo
 Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
 
-## ⚙️ Install
+## Install
 
 1. Clone this repository and navigate to the source folder
 
@@ -259,7 +269,7 @@ conda activate OmniLMM
 pip install -r requirements.txt
 ```
 
-## 💡 Inference
+## Inference
 
 ### Model Zoo
 | Model                | Description       | Download Link |
