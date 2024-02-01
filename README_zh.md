@@ -19,6 +19,8 @@
 
 - **OmniLMM-3B**：可在终端设备上部署并具备先进的多模态对话能力。
 
+[English Document](./README.md)
+
 ## 目录
 - [OmniLMM-12B](#omnilmm-12b)
 - [OmniLMM-3B](#omnilmm-3b)
