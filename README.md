@@ -6,7 +6,7 @@
 
 **Large multi-modal models for strong performance and efficient deployment**
 <p align="center">
-  OmniLMM-3B  <a href="https://huggingface.co/openbmb/OmniLMM-3B/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
+  OmniLMM-3B  <a href="https://huggingface.co/openbmb/MiniCPM-V/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
   OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
 </p>
 
@@ -17,7 +17,11 @@
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
+<<<<<<< HEAD
 - **OmniLMM-3B**: Pioneer edge device multi-modal conversation with promising performance.
+=======
+- **OmniLMM-3B**: Recommended for deployment on edge devices with promising performance.
+>>>>>>> 5770a8390da31068738631bbdef1c717120784ea
 
 
 ## Contents
@@ -203,6 +207,15 @@
     <td>- </td>
   </tr>
   <tr>
+    <td nowrap="nowrap" align="left" >CogVLM</td>
+    <td align="right">17.4B </td>
+    <td>1438 </td>
+    <td>63.7 </td>
+    <td>53.8 </td>
+    <td>32.1 </td>
+    <td>- </td>
+  </tr>
+  <tr>
     <td align="left" >Qwen-VL-Chat</td>
     <td align="right" >9.6B</td>
     <td>1487</td>
@@ -227,22 +240,11 @@
 
 ### Examples
 
-<div align="center">
-<table>
-  <tr>
-    <td>
-      <p> 
-        <img src="data/Mushroom_en.gif" width="400"/>
-      </p>
-    </td>
-    <td>
-      <p> 
-        <img src="data/Snake_en.gif" width="400"/>
-      </p>
-    </td>
-  </tr>
+<table align="center">
+  <p align="center" > 
+    <img src="assets/Snake_cn_Mushroom_en.gif" width="400"/>
+  </p>
 </table>
-</div>
 
 ## Demo
 Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
@@ -282,7 +284,7 @@ pip install -r requirements.txt
 Please refer to the following codes to run `OmniLMM`.
 
 <div align="center">
-<img src="data/COCO_test2015_000000262144.jpg" width="660px">
+<img src="assets/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
 ##### OmniLMM-12B
@@ -291,7 +293,7 @@ from chat import OmniLMMChat, img2base64
 
 chat_model = OmniLMMChat('openbmb/OmniLMM-12B')
 
-im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
+im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
 
 # First round chat 
 msgs = [{"role": "user", "content": "What are the people doing?"}]
@@ -328,7 +330,7 @@ model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=t
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model.eval().cuda()
 
-image = Image.open('./data/COCO_test2015_000000262144.jpg').convert('RGB')
+image = Image.open('./assets/COCO_test2015_000000262144.jpg').convert('RGB')
 
 question = '请描述一下该图像'
 res, context, _ = model.chat(
@@ -352,7 +354,7 @@ print(res)
 
 This project is developed by the following institutions:
 
-- <img src="figures/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
-- <img src="figures/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
-- <img src="figures/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
+- <img src="assets/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
+- <img src="assets/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
+- <img src="assets/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
 
