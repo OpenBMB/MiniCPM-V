@@ -5,7 +5,7 @@ from PIL import Image
 import base64
 import io
 from accelerate import load_checkpoint_and_dispatch, init_empty_weights
-from transformers import AutoTokenizer 
+from transformers import AutoTokenizer, AutoModel
 
 from omnilmm.utils import disable_torch_init
 from omnilmm.model.omnilmm import OmniLMMForCausalLM
@@ -83,7 +83,7 @@ def wrap_question_for_omni_lmm(question, image_token_len, tokenizer):
 
 
 
-class OmniLMMChat:
+class OmniLMM12B:
     def __init__(self, model_path) -> None:
         model, img_processor, image_token_len, tokenizer = init_omni_lmm(model_path)
         self.model = model
@@ -113,7 +113,7 @@ class OmniLMMChat:
             response = response.strip()
             return response
 
-    def process(self, input):
+    def chat(self, input):
         try:
             image = Image.open(io.BytesIO(base64.b64decode(input['image']))).convert('RGB')
         except Exception as e:
@@ -136,6 +136,42 @@ def img2base64(file_name):
         encoded_string = base64.b64encode(f.read())
         return encoded_string
 
+class OmniLMM3B:
+    def __init__(self, model_path) -> None:
+        self.model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
+        self.model.eval().cuda()
+
+    def chat(self, input):
+        try:
+            image = Image.open(io.BytesIO(base64.b64decode(input['image']))).convert('RGB')
+        except Exception as e:
+            return "Image decode error"
+
+        msgs = json.loads(input['question'])
+        
+        answer, context, _ = self.model.chat(
+            image=image,
+            msgs=msgs,
+            context=None,
+            tokenizer=self.tokenizer,
+            sampling=True,
+            temperature=0.7
+    	)
+        return answer
+
+
+class OmniLMMChat:
+    def __init__(self, model_path) -> None:
+        if '12B' in model_path:
+            self.model = OmniLMM12B(model_path)
+        else:
+            self.model = OmniLMM3B(model_path)
+
+    def chat(self, input):
+        return self.model.chat(input)
+
+
 if __name__ == '__main__':
     
     model_path = 'openbmb/OmniLMM-12B'
@@ -145,20 +181,14 @@ if __name__ == '__main__':
 
     # first round chat 
     msgs = [{"role": "user", "content": "What are the people doing?"}]
-    input = {
-        "image": im_64,
-        "question": json.dumps(msgs, ensure_ascii=True)
-    }
-    answer = chat_model.process(input)
-    print(msgs, answer)
+    input = {"image": im_64, "question": json.dumps(msgs, ensure_ascii=True)}
+    answer = chat_model.chat(input)
+    print(msgs[-1]["content"]+'\n', answer)
 
     # second round chat 
     msgs.append({"role": "assistant", "content": answer})
     msgs.append({"role": "user", "content": "Describe the image"})
-    input = {
-        "image": im_64,
-        "question": json.dumps(msgs, ensure_ascii=True)
-    }
-    answer = chat_model.process(input)
-    print(msgs, answer)
+    input = {"image": im_64,"question": json.dumps(msgs, ensure_ascii=True)}
+    answer = chat_model.chat(input)
+    print(msgs[-1]["content"]+'\n', answer)
 
