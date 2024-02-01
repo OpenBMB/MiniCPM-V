@@ -43,7 +43,7 @@
 
 - 🕹 **Real-time Multimodal Interaction.** 
 
-  We combine the OmniLMM-12B and GPT-3.5 into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
+  We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
 
 ### Evaluation
 
@@ -159,8 +159,11 @@
   </p>
 </table>
 
+
+We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal interactive assistant**. Video frames are described in text using OmniLMM-12B, and ChatGPT 3.5 (text-only) is employed to generate response according to the descriptions and user prompts. The demo video is a raw recording without edition. 
+
 <div align="center" >
-  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/c1fd3562-1ab1-4534-8139-79e9137b5398" type="video/mp4" />
+  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/c1fd3562-1ab1-4534-8139-79e9137b5398" type="video/mp4" width=80%/>
 </div>
 
 ## OmniLMM-3B
@@ -256,7 +259,7 @@
 
 ### Examples
 
-OmniLLM-3B is the first LMM deloyed on end devices. The demo video is the raw screen recording without edition.
+OmniLLM-3B is the first LMM deloyed on end devices. The demo video is the raw screen recording on a OnePlus 9R without edition.
 
 <table align="center" >
   <p align="center" > 
