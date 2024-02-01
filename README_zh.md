@@ -353,11 +353,35 @@ res, context, _ = model.chat(
 print(res)
 ```
 
-## ✅ TODO
+## ✅ 待办
 
 - [ ] Fine-tuning support
 - [ ] Local Web-UI deployment
 - [ ] Code release for real-time interactive assistant
+
+## 
+开源协议 License
+
+
+## 模型协议
+
+本仓库中代码依照 Apache-2.0 协议开源
+
+OmniLMMs 模型权重的使用则需要遵循 “[通用模型许可协议-来源说明-宣传限制-商业授权](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)”。
+
+OmniLMMs 模型权重对学术研究完全开放。
+
+如需将模型用于商业用途，请联系 cpm@modelbest.cn 来获取书面授权，在登记后亦允许免费商业使用。
+
+
+## 声明
+
+作为多模态大模型，OmniLMMs 通过学习大量的多模态语料来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
+
+因此用户在使用 OmniLMMs 生成的内容时，应自行负责对其进行评估和验证。
+
+如果由于使用 OmniLMMs 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
+
 
 ## 🏫 机构
 
