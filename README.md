@@ -156,7 +156,7 @@
 [assets/demo_video.mov](./assets/demo_video.mov)
 
 ## OmniLMM-3B
-**OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
+**OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/), connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
 - ⚡️ **High Efficiency.** 
 
@@ -252,7 +252,7 @@ OmniLLM-3B is the first LMM deloyed on end devices. The demo video is the raw sc
 
 <table align="center" >
   <p align="center" > 
-    <img src="assets/Snake_cn_Mushroom_en.gif" width=40%/>
+    <img src="assets/Snake_cn_Mushroom_en.gif" width=36%/>
   </p>
 </table>
 
