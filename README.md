@@ -237,9 +237,9 @@
 
 ### Examples
 
-<table align="center">
+<table align="center" >
   <p align="center" > 
-    <img src="assets/Snake_cn_Mushroom_en.gif" width="400"/>
+    <img src="assets/Snake_cn_Mushroom_en.gif" width=48%/>
   </p>
 </table>
 
