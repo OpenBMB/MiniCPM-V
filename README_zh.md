@@ -24,7 +24,7 @@
 ## 目录
 - [OmniLMM-12B](#omnilmm-12b)
 - [OmniLMM-3B](#omnilmm-3b)
-- [演示](#demo)
+- [体验](#demo)
 - [安装](#install)
 - [推理](#inference)
 - [模型库](#model-zoo)
@@ -153,19 +153,19 @@
 
 ## OmniLMM-3B
 
-**OmniLMM-3B**（即 MiniCPM-V）是一种我们的高效率版本模型，可用于终端机器上的部署。该模型基于SigLip-400M和MiniCPM-2.4B构建，通过感知器重采样器连接。OmniLMM-3B的显著特点包括：
+**OmniLMM-3B**（即 MiniCPM-V）是一种我们的高效率版本模型，可用于终端机器上的部署。该模型基于 SigLip-400M 和 MiniCPM-2.4B 构建，通过感知器重采样器连接。OmniLMM-3B的显著特点包括：
 
 - ⚡️ **高效率。**
 
-  OmniLMM-3B可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等边缘设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为64个令牌，远远少于基于MLP架构的其他LMMs（通常> 512个令牌）。这使得OmniLMM-3B在推理期间**内存成本更低且速度更快**。
+  OmniLMM-3B 可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等边缘设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于MLP架构的其他LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
 
-- 🔥 **有望的性能。**
+- 🔥 **优秀的性能。**
 
-  OmniLMM-3B在与相似大小模型相比的多个基准测试中实现了**最先进的性能**，超过了基于Phi-2构建的现有LMMs。它甚至**实现了与9.6B Qwen-VL-Chat相媲美或更好的性能**。
+  OmniLMM-3B 在与相似大小模型相比的多个基准测试中实现了**最先进的性能**，超过了基于 Phi-2构建的现有 LMMs。它甚至**实现了与9.6B Qwen-VL-Chat 相媲美或更好的性能**。
 
 - 🙌 **双语支持。**
 
-  OmniLMM-3B是**第一个支持英语和中文双语多模态交互的边缘可部署LMM**。这是通过跨语言泛化多模态能力实现的，这是我们ICLR 2024焦点[论文](https://arxiv.org/abs/2308.12038)中的一项技术。
+  OmniLMM-3B是**第一个支持英语和中文双语多模态交互的边缘可部署 LMM**。这是通过跨语言泛化多模态能力实现的，这是我们 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038)中的一项技术。
 
 ### Evaluation
 
@@ -243,7 +243,7 @@
 
 </div>
 
-### Examples
+### 样例展示
 
 <table align="center" >
   <p align="center" > 
@@ -251,10 +251,11 @@
   </p>
 </table>
 
-## Demo
-Click here to try out the Demo of [OmniLMM-12B](http://120.92.209.146:8081) and [OmniLMM-3B](http://120.92.209.146:80).
+## 体验
 
-## Install
+你可以通过以下链接尝试使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [OmniLMM-3B](http://120.92.209.146:80).
+
+## 安装
 
 1. Clone this repository and navigate to the source folder
 
@@ -276,23 +277,26 @@ conda activate OmniLMM
 pip install -r requirements.txt
 ```
 
-## Inference
+## 推理
 
-### Model Zoo
-| Model                | Description       | Download Link |
+### 模型库
+
+| 模型                | 简介       | 下载链接 |
 |:----------------------|:-------------------|:---------------:|
-| OmniLMM-12B | The most capable version with strong performance.                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
-| OmniLMM-3B  | The efficient version for edge device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-12B | 更强大的性能表现                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-3B  | 支持终端设备上的高效部署，性能优秀          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
 
 
-### Multi-turn Conversation
-Please refer to the following codes to run `OmniLMM`.
+### 多轮对话
+
+请参考以下代码运行  `OmniLMM` 的推理服务。
 
 <div align="center">
 <img src="assets/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
 ##### OmniLMM-12B
+
 ```python
 from chat import OmniLMMChat, img2base64
 
