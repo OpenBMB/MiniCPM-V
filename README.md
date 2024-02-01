@@ -203,6 +203,15 @@ TODO：case画图展示 @蔡天驰
     <td>- </td>
   </tr>
   <tr>
+    <td nowrap="nowrap" align="left" >CogVLM</td>
+    <td align="right">17.4B </td>
+    <td>1438 </td>
+    <td>63.7 </td>
+    <td>53.8 </td>
+    <td>32.1 </td>
+    <td>- </td>
+  </tr>
+  <tr>
     <td align="left" >Qwen-VL-Chat</td>
     <td align="right" >9.6B</td>
     <td>1487</td>
