@@ -153,6 +153,10 @@
 
 ### Examples
 
+<div align="center" >
+  <video controls src="assets/demo_video.mov" type="video/mov" />
+</div>
+
 ## OmniLMM 3B
 **OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
