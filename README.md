@@ -17,11 +17,7 @@
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-<<<<<<< HEAD
 - **OmniLMM-3B**: Pioneer edge device multi-modal conversation with promising performance.
-=======
-- **OmniLMM-3B**: Recommended for deployment on edge devices with promising performance.
->>>>>>> 5770a8390da31068738631bbdef1c717120784ea
 
 
 ## Contents
@@ -41,7 +37,7 @@
 
 - 🏆 **Trustworthy Behavior.** 
 
-  LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM-12B is **the first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior** (using our recent [RLHF-V](https://rlhf-v.github.io/) technique) and **ranked #1** among open-source models on [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench).
+  LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM-12B is **the first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior** (using our recent [RLHF-V](https://rlhf-v.github.io/) technique). It **ranks #1** among open-source models on [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench), and **outperforms GPT-4V** on [Object HalBench](https://arxiv.org/abs/2312.00849).
 
 - 🕹 **Real-time Multimodal Interaction.** 
 
