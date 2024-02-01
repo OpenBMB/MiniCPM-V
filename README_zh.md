@@ -165,7 +165,7 @@
 
 - 🙌 **双语支持。**
 
-  OmniLMM-3B是**第一个支持英语和中文双语多模态交互的边缘可部署 LMM**。这是通过跨语言泛化多模态能力实现的，这是我们ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038)中的一项技术。
+  OmniLMM-3B是**第一个支持英语和中文双语多模态交互的边缘可部署 LMM**。这是通过跨语言泛化多模态能力实现的，这是我们 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038)中的一项技术。
 
 ### Evaluation
 
