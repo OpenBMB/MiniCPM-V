@@ -23,14 +23,14 @@
 [中文文档](./README_zh.md)
 
 ## Contents
-- [OmniLMM 12B](#omnilmm-12b)
-- [OmniLMM 3B](#omnilmm-3b)
+- [OmniLMM-12B](#omnilmm-12b)
+- [OmniLMM-3B](#omnilmm-3b)
 - [Demo](#demo)
 - [Install](#install)
 - [Inference](#inference)
 - [Model Zoo](#model-zoo)
 
-## OmniLMM 12B
+## OmniLMM-12B
 **OmniLMM-12B** is the most capable version. The model is built based on EVA02-5B and Zephyr-7B-β, connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
 
 - 🔥 **Strong Performance.** 
@@ -155,7 +155,7 @@
 
 [assets/demo_video.mov](./assets/demo_video.mov)
 
-## OmniLMM 3B
+## OmniLMM-3B
 **OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
 - ⚡️ **High Efficiency.** 
@@ -248,7 +248,7 @@
 
 ### Examples
 
-OmniLLM 3B is the first LMM deloyed on end devices. The demo video is the raw screen recording without edition.
+OmniLLM-3B is the first LMM deloyed on end devices. The demo video is the raw screen recording without edition.
 
 <table align="center" >
   <p align="center" > 
