@@ -155,7 +155,7 @@
 
 <table align="center" >
   <p align="center" > 
-    <img src="assets/omnilmm-12b-examples.png" />
+    <img src="assets/omnilmm-12b-examples_2.png" />
   </p>
 </table>
 
