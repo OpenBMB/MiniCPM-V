@@ -363,7 +363,7 @@ TODO：使用文档（安装、使用，包括3B和12B） @朱宏吉
 
 This project is developed by the following institutions:
 
-- <img src="figures/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
-- <img src="figures/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
-- <img src="figures/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
+- <img src="assets/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
+- <img src="assets/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
+- <img src="assets/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
 
