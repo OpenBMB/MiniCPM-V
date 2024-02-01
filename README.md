@@ -17,7 +17,7 @@
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-- **OmniLMM-3B**: Pioneer edge device multi-modal conversation with promising performance.
+- **OmniLMM-3B**: Pioneer end device multi-modal conversation with promising performance.
 
 
 [中文文档](./README_zh.md)
@@ -39,7 +39,7 @@
 
 - 🏆 **Trustworthy Behavior.** 
 
-  LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM-12B is **the first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior** (using our recent [RLHF-V](https://rlhf-v.github.io/) technique) and **ranked #1** among open-source models on [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench).
+  LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM-12B is **the first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior** (using our recent [RLHF-V](https://rlhf-v.github.io/) technique). It **ranks #1** among open-source models on [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench), and **outperforms GPT-4V** on [Object HalBench](https://arxiv.org/abs/2312.00849).
 
 - 🕹 **Real-time Multimodal Interaction.** 
 
@@ -153,12 +153,16 @@
 
 ### Examples
 
+<div align="center" >
+  <video controls src="assets/demo_video.mov" type="video/mov" />
+</div>
+
 ## OmniLMM 3B
 **OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
 - ⚡️ **High Efficiency.** 
 
-  OmniLMM-3B can be **efficiently deployed on most GPU cards and personal computers**, and **even on edge devices such as mobile phones**. In terms of visual encoding, we compress the image representations into 64 tokens via a perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically > 512 tokens). This allows OmniLMM-3B to operate with **much less memory cost and higher speed during inference**.
+  OmniLMM-3B can be **efficiently deployed on most GPU cards and personal computers**, and **even on end devices such as mobile phones**. In terms of visual encoding, we compress the image representations into 64 tokens via a perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically > 512 tokens). This allows OmniLMM-3B to operate with **much less memory cost and higher speed during inference**.
 
 - 🔥 **Promising Performance.** 
 
@@ -246,6 +250,8 @@
 
 ### Examples
 
+OmniLLM 3B is the first LMM deloyed on end devices. The demo video is the raw screen recording without edition.
+
 <table align="center" >
   <p align="center" > 
     <img src="assets/Snake_cn_Mushroom_en.gif" width=48%/>
@@ -283,7 +289,7 @@ pip install -r requirements.txt
 | Model                | Description       | Download Link |
 |:----------------------|:-------------------|:---------------:|
 | OmniLMM-12B | The most capable version with strong performance.                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
-| OmniLMM-3B  | The efficient version for edge device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-3B  | The efficient version for end device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
 
 
 ### Multi-turn Conversation
