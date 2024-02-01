@@ -13,11 +13,11 @@
 </div>
 
 
-**OmniLMM** is a family of open-source large multimodal models (LMMs) that are adept at vision & language modeling. This model processes both images and text inputs and delivers high-quality text outputs. We release two distinct versions of OmniLMM that are targeted at **strong performance and efficient deployment**:
+**OmniLMM** is a family of open-source large multimodal models (LMMs) adept at vision & language modeling. The model processes images and text inputs and delivers high-quality text outputs. We release two featured versions of OmniLMM that are targeted at **strong performance and efficient deployment**:
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-- **OmniLMM-3B**: Perfect for deployment on edge devices with promising performance.
+- **OmniLMM-3B**: Pioneer edge device multi-modal conversation with promising performance.
 
 
 ## Contents
@@ -29,7 +29,7 @@
 - [Model Zoo](#model-zoo)
 
 ## OmniLMM 12B
-**OmniLMM-12B** is the most capable version. The model is built based on [EVA02-5B](https://github.com/baaivision/EVA/tree/master/EVA-CLIP) and [Zephyr-7B-β](https://huggingface.co/HuggingFaceH4/zephyr-7b-beta), connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
+**OmniLMM-12B** is the most capable version. The model is built based on EVA02-5B and Zephyr-7B-β, connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
 
 - 🔥 **Strong Performance.** 
 
@@ -61,7 +61,7 @@
 </thead>
 <tbody align="center">
   <tr>
-    <td align="left">GPT-4V †</td>
+    <td align="left">GPT-4V†</td>
     <td>-</td>
     <td>1409</td>
     <td>56.8</td>
@@ -72,7 +72,7 @@
     <td>75.1 </td>
   </tr>
   <tr>
-    <td nowrap="nowrap" align="left">Qwen-VL-Plus †</td>
+    <td nowrap="nowrap" align="left">Qwen-VL-Plus†</td>
     <td>-</td>
     <td>1681</td>
     <td>45.2</td>
@@ -139,12 +139,12 @@
   </tr>
 </tbody>
 </table>
-<small>†: closed-source models</small>
+<small>†: Proprietary models</small>
 
 ### Examples
 
 ## OmniLMM 3B
-**OmniLMM-3B** (i.e., MiniCPM-Omni) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
+**OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
 - 🚀 **High Efficiency.** 
 
