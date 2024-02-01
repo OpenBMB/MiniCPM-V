@@ -259,7 +259,7 @@ We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal
 
 ### Examples
 
-OmniLLM-3B is the first LMM deloyed on end devices. The demo video is the raw screen recording on a OnePlus 9R without edition.
+We deploy OmniLLM-3B on end devices. The demo video is the raw screen recording on a OnePlus 9R without edition.
 
 <table align="center" >
   <p align="center" > 
