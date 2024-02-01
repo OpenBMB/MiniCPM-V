@@ -24,7 +24,7 @@
 ## 目录
 - [OmniLMM-12B](#omnilmm-12b)
 - [OmniLMM-3B](#omnilmm-3b)
-- [演示](#demo)
+- [体验](#demo)
 - [安装](#install)
 - [推理](#inference)
 - [模型库](#model-zoo)
@@ -251,7 +251,7 @@
   </p>
 </table>
 
-## 在线推理试用
+## 体验
 
 你可以通过以下链接尝试使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [OmniLMM-3B](http://120.92.209.146:80).
 
@@ -277,7 +277,7 @@ conda activate OmniLMM
 pip install -r requirements.txt
 ```
 
-## Inference
+## 推理
 
 ### Model Zoo
 | Model                | Description       | Download Link |
