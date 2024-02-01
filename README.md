@@ -238,7 +238,7 @@ TODO：case画图展示 @蔡天驰
 
 <table align="center">
   <p align="center" > 
-    <img src="data/Snake_cn_Mushroom_en.gif" width="400"/>
+    <img src="assets/Snake_cn_Mushroom_en.gif" width="400"/>
   </p>
 </table>
 
@@ -280,7 +280,7 @@ pip install -r requirements.txt
 Please refer to the following codes to run `OmniLMM`.
 
 <div align="center">
-<img src="data/COCO_test2015_000000262144.jpg" width="660px">
+<img src="assets/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
 ##### OmniLMM-12B
@@ -289,7 +289,7 @@ from chat import OmniLMMChat, img2base64
 
 chat_model = OmniLMMChat('openbmb/OmniLMM-12B')
 
-im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
+im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
 
 # First round chat 
 msgs = [{"role": "user", "content": "What are the people doing?"}]
@@ -326,7 +326,7 @@ model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=t
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model.eval().cuda()
 
-image = Image.open('./data/COCO_test2015_000000262144.jpg').convert('RGB')
+image = Image.open('./assets/COCO_test2015_000000262144.jpg').convert('RGB')
 
 question = '请描述一下该图像'
 res, context, _ = model.chat(

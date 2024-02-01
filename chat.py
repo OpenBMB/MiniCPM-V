@@ -141,7 +141,7 @@ if __name__ == '__main__':
     model_path = 'openbmb/OmniLMM-12B'
     chat_model = OmniLMMChat(model_path)
 
-    im_64 = img2base64('./data/COCO_test2015_000000262144.jpg')
+    im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
 
     # first round chat 
     msgs = [{"role": "user", "content": "What are the people doing?"}]
