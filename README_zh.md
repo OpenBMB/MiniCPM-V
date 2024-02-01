@@ -4,7 +4,7 @@
 
 <img src="./assets/title-2.png" width="200em" ></img> 
 
-**大型多模态模型，性能强大且高效部署**
+**性能强大、部署高效的多模态大模型**
 <p align="center">
   OmniLMM-3B  <a href="https://huggingface.co/openbmb/MiniCPM-V/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
   OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
