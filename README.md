@@ -52,10 +52,10 @@
     <th align="left">Model</th>
     <th>Size</th>
     <th>MME</th>
+    <th nowrap="nowrap">MMB dev (en)</th>
     <th nowrap="nowrap" >MMMU val</th>
     <th nowrap="nowrap" >MMHal-Bench</th>
     <th nowrap="nowrap" >SeedBench-I</th>
-    <th nowrap="nowrap">MMB dev (en)</th>
     <th>MathVista</th>
     <th nowrap="nowrap" >LLaVA Bench W</th>
   </tr>
@@ -65,10 +65,10 @@
     <td align="left">GPT-4V†</td>
     <td>-</td>
     <td>1409</td>
+    <td>75.1 </td>
     <td>56.8</td>
     <td>3.53 / 70.8</td>
     <td>71.6 </td>
-    <td>75.1 </td>
     <td>47.8 </td>
     <td>93.1 </td>
   </tr>
@@ -76,10 +76,10 @@
     <td nowrap="nowrap" align="left">Qwen-VL-Plus†</td>
     <td>-</td>
     <td>1681</td>
+    <td>66.2 </td>
     <td>45.2</td>
     <td>- </td>
     <td>65.7 </td>
-    <td>66.2 </td>
     <td>36.0 </td>
     <td>73.7 </td>
   </tr>
@@ -87,10 +87,10 @@
     <td align="left">Yi-VL 6B</td>
     <td align="right">6.7B </td>
     <td>- </td>
+    <td>68.2 </td>
     <td>39.1 </td>
     <td>- </td>
     <td>66.1 </td>
-    <td>68.2 </td>
     <td>28.0 </td>
     <td>39.9 </td>
   </tr>
@@ -98,10 +98,10 @@
     <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
     <td align="right">9.6B</td>
     <td>1488</td>
+    <td>60.6 </td>
     <td>35.9</td>
     <td>2.93 / 59.4</td>
     <td>64.8 </td>
-    <td>60.6 </td>
     <td>33.8 </td>
     <td>67.7 </td>
   </tr>
@@ -109,10 +109,10 @@
     <td align="left" >CogVLM</td>
     <td align="right">17.4B</td>
     <td>1438</td>
+    <td>63.7 </td>
     <td>32.1 </td>
     <td>2.68 / 52.1 </td>
     <td>68.8 </td>
-    <td>63.7 </td>
     <td>34.7 </td>
     <td>73.9 </td>
   </tr>
@@ -120,10 +120,10 @@
     <td align="left" >LLaVA 1.5</td>
     <td align="right">13.6B </td>
     <td>1531 </td>
+    <td>68.2 </td>
     <td>36.4 </td>
     <td>2.71 / 51.0 </td>
     <td>68.1 </td>
-    <td>68.2 </td>
     <td>26.4 </td>
     <td>64.6 </td>
   </tr>
@@ -131,10 +131,10 @@
     <td nowrap="nowrap" align="left" ><b>OmniLMM-12B</b></td>
     <td align="right">11.6B </td>
     <td>1637 </td>
+    <td>71.6 </td>
     <td>40.7 </td>
     <td>3.45 / 68.8 </td>
     <td>71.1 </td>
-    <td>71.6 </td>
     <td>34.9 </td>
     <td>72.0 </td>
   </tr>
@@ -169,10 +169,10 @@
     <th align="left">Model</th>
     <th>Size</th>
     <th>MME</th>
-    <th nowrap="nowrap" >MMMU val</th>
-    <th nowrap="nowrap" >CMMMU val</th>
     <th nowrap="nowrap" >MMB dev (en)</th>
     <th nowrap="nowrap" >MMB dev (zh)</th>
+    <th nowrap="nowrap" >MMMU val</th>
+    <th nowrap="nowrap" >CMMMU val</th>
   </tr>
 </thead>
 <tbody align="center">
@@ -180,55 +180,55 @@
     <td align="left">LLaVA-Phi</td>
     <td align="right">3B</td>
     <td>1335</td>
-    <td>- </td>
-    <td>- </td>
     <td>59.8</td>
+    <td>- </td>
+    <td>- </td>
     <td>- </td>
   </tr>
   <tr>
     <td nowrap="nowrap" align="left">MobileVLM</td>
     <td align="right">3B</td>
     <td>1289</td>
-    <td>- </td>
-    <td>- </td>
     <td>59.6</td>
+    <td>- </td>
+    <td>- </td>
     <td>- </td>
   </tr>
   <tr>
     <td nowrap="nowrap" align="left" >Imp-v1</td>
     <td align="right">3B</td>
     <td>1434</td>
-    <td>- </td>
-    <td>- </td>
     <td>66.5</td>
+    <td>- </td>
+    <td>- </td>
     <td>- </td>
   </tr>
   <tr>
     <td align="left" >Qwen-VL-Chat</td>
     <td align="right" >9.6B</td>
     <td>1487</td>
-    <td>35.9 </td>
-    <td>30.7 </td>
     <td>60.6 </td>
     <td>56.7 </td>
+    <td>35.9 </td>
+    <td>30.7 </td>
   </tr>
   <tr>
     <td nowrap="nowrap" align="left" >CogVLM</td>
     <td align="right">17.4B </td>
     <td>1438 </td>
-    <td>32.1 </td>
-    <td>- </td>
     <td>63.7 </td>
     <td>53.8 </td>
+    <td>32.1 </td>
+    <td>- </td>
   </tr>
   <tr>
     <td nowrap="nowrap" align="left" ><b>OmniLMM-3B</b></td>
     <td align="right">3B </td>
     <td>1452 </td>
-    <td>34.7 </td>
-    <td>32.1 </td>
     <td>67.3 </td>
     <td>61.9 </td>
+    <td>34.7 </td>
+    <td>32.1 </td>
   </tr>
 </tbody>
 </table>
