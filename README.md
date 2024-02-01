@@ -147,7 +147,7 @@
 ## OmniLMM 3B
 **OmniLMM-3B** (i.e., MiniCPM-V) is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and MiniCPM-2.4B, connected by a perceiver resampler. Notable features of OmniLMM-3B include:
 
-- 🚀 **High Efficiency.** 
+- ⚡️ **High Efficiency.** 
 
   OmniLMM-3B can be **efficiently deployed on most GPU cards and personal computers**, and **even on edge devices such as mobile phones**. In terms of visual encoding, we compress the image representations into 64 tokens via a perceiver resampler, which is significantly fewer than other LMMs based on MLP architecture (typically > 512 tokens). This allows OmniLMM-3B to operate with **much less memory cost and higher speed during inference**.
 
