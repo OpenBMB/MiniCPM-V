@@ -13,7 +13,7 @@
 </div>
 
 
-**OmniLMM** 是一系列善于视觉和语言建模的开源多模态大模型（LMMs）。该系列模型接受图像和文本输入，并提供高质量的文本输出。我们发布了两个版本的 OmniLMM，旨在实现**强大的性能和高效的部署**：
+**OmniLMM** 是一系列善于处理图文输入的开源多模态大模型（LMMs）。该系列模型接受图像和文本输入，并提供高质量的文本输出。我们发布了两个版本的 OmniLMM，旨在实现**强大的性能和高效的部署**：
 
 - **OmniLMM-12B**：相比同规模其他模型在多个基准测试中具有领先性能。
 
@@ -38,11 +38,11 @@
 
 - 🏆 **可信行为。**
 
-  LMMs 的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，信誓旦旦地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的最新开源 LMM 来实现可信行为**（通过我们最近提出的 [RLHF-V](https://rlhf-v.github.io/) 技术），并在[MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench)幻觉评测基准上**排名第一**。
+  LMMs 的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，信誓旦旦地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的最新开源 LMM 来实现可信行为**（通过我们最近提出的 [RLHF-V](https://rlhf-v.github.io/) 技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上位列开源模型中**第一**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**超过了 GPT-4V**。
 
 - 🕹 **实时多模态交互。**
 
-  我们将 OmniLMM-12B 和 GPT-3.5 结合成一个**实时多模态交互助手**。该助手接受来自相机的视频流和来自麦克风的语音流，并发出语音输出。我们发现该模型**无需进行任何视频编辑**就可以**复现出现在 Gemini 演示视频中的一些有趣例子**。
+  我们将 OmniLMM-12B 和 GPT-3.5 结合成一个**实时多模态交互助手**。该助手接受来自相机的视频流和来自麦克风的语音流，并发出语音输出。虽然还处于初级阶段，但我们也发现该模型**无需视频编辑**就可以**复现出现在 Gemini 演示视频中的一些有趣例子**。
 
 ### 性能评估
 
@@ -148,7 +148,7 @@
   </tr>
 </tbody>
 </table>
-<small>†: Proprietary models</small>
+<small>†: 闭源模型</small>
 
 
 ## OmniLMM-3B
@@ -157,7 +157,7 @@
 
 - ⚡️ **高效率。**
 
-  OmniLMM-3B 可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等边缘设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于MLP架构的其他LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
+  OmniLMM-3B 可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等终端设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于MLP架构的其他LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
 
 - 🔥 **优秀的性能。**
 
@@ -165,7 +165,7 @@
 
 - 🙌 **双语支持。**
 
-  OmniLMM-3B是**第一个支持英语和中文双语多模态交互的边缘可部署 LMM**。这是通过跨语言泛化多模态能力实现的，这是我们 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038)中的一项技术。
+  OmniLMM-3B 是**第一个支持英语和中文双语多模态交互的终端可部署 LMM**。这是通过跨语言泛化多模态能力实现的，这是我们 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038)中的一项技术。
 
 ### Evaluation
 
@@ -353,14 +353,11 @@ res, context, _ = model.chat(
 print(res)
 ```
 
-## ✅ 待办
+## ✅ 未来计划
 
-- [ ] Fine-tuning support
-- [ ] Local Web-UI deployment
-- [ ] Code release for real-time interactive assistant
-
-## 
-开源协议 License
+- [ ] 支持模型微调
+- [ ] 本地可视化部署
+- [ ] 实时多模态交互代码开源
 
 
 ## 模型协议
