@@ -17,11 +17,8 @@
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-<<<<<<< HEAD
 - **OmniLMM-3B**: Pioneer edge device multi-modal conversation with promising performance.
-=======
-- **OmniLMM-3B**: Recommended for deployment on edge devices with promising performance.
->>>>>>> 5770a8390da31068738631bbdef1c717120784ea
+
 
 
 ## Contents
