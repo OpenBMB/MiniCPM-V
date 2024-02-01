@@ -252,7 +252,7 @@ OmniLLM 3B is the first LMM deloyed on end devices. The demo video is the raw sc
 
 <table align="center" >
   <p align="center" > 
-    <img src="assets/Snake_cn_Mushroom_en.gif" width=48%/>
+    <img src="assets/Snake_cn_Mushroom_en.gif" width=40%/>
   </p>
 </table>
 
