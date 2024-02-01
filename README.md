@@ -1,4 +1,4 @@
-<div align="center">
+![image](https://github.com/OpenBMB/OmniLMM/assets/42668396/84b82457-31ce-4859-b9e7-99faf3767530)<div align="center">
 
 <!-- <!-- <h1 style="color: #33A6B8; font-family: Helvetica"> OmniLMM </h1> -->
 
@@ -55,6 +55,7 @@
     <th nowrap="nowrap">MMB dev (en)</th>
     <th nowrap="nowrap" >MMMU val</th>
     <th nowrap="nowrap" >MMHal-Bench</th>
+    <th nowrap="nowrap" >Object HalBench</th>
     <th nowrap="nowrap" >SeedBench-I</th>
     <th>MathVista</th>
     <th nowrap="nowrap" >LLaVA Bench W</th>
@@ -68,6 +69,7 @@
     <td>75.1 </td>
     <td>56.8</td>
     <td>3.53 / 70.8</td>
+    <td>86.4 / 92.7</td>
     <td>71.6 </td>
     <td>47.8 </td>
     <td>93.1 </td>
@@ -78,6 +80,7 @@
     <td>1681</td>
     <td>66.2 </td>
     <td>45.2</td>
+    <td>- </td>
     <td>- </td>
     <td>65.7 </td>
     <td>36.0 </td>
@@ -90,6 +93,7 @@
     <td>68.2 </td>
     <td>39.1 </td>
     <td>- </td>
+    <td>- </td>
     <td>66.1 </td>
     <td>28.0 </td>
     <td>39.9 </td>
@@ -101,6 +105,7 @@
     <td>60.6 </td>
     <td>35.9</td>
     <td>2.93 / 59.4</td>
+    <td>56.2 / 80.0</td>
     <td>64.8 </td>
     <td>33.8 </td>
     <td>67.7 </td>
@@ -112,6 +117,7 @@
     <td>63.7 </td>
     <td>32.1 </td>
     <td>2.68 / 52.1 </td>
+    <td>73.6 / 87.4 </td>
     <td>68.8 </td>
     <td>34.7 </td>
     <td>73.9 </td>
@@ -123,6 +129,7 @@
     <td>68.2 </td>
     <td>36.4 </td>
     <td>2.71 / 51.0 </td>
+    <td>53.7 / 77.4 </td>
     <td>68.1 </td>
     <td>26.4 </td>
     <td>64.6 </td>
@@ -134,6 +141,7 @@
     <td>71.6 </td>
     <td>40.7 </td>
     <td>3.45 / 68.8 </td>
+    <td>90.3 / 95.5 </td>
     <td>71.1 </td>
     <td>34.9 </td>
     <td>72.0 </td>
