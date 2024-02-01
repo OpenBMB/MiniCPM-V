@@ -154,7 +154,7 @@
 ### Examples
 
 <div align="center" >
-  <video controls src="assets/demo_video.mov" type="video/mov" />
+  <video controls src="assets/demo_video.mp4" type="video/mp4" />
 </div>
 
 ## OmniLMM 3B
