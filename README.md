@@ -17,7 +17,7 @@
 
 - **OmniLMM-12B**: Leading performance among comparable-sized models on multiple benchmarks.
 
-- **OmniLMM-3B**: Pioneer end device multi-modal conversation with promising performance.
+- **OmniLMM-3B**: Frontier end device multi-modal conversation with promising performance.
 
 
 [中文文档](./README_zh.md)
