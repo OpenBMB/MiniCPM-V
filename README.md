@@ -23,19 +23,29 @@
 [中文文档](./README_zh.md)
 
 ## Contents
+- [Contents](#contents)
 - [OmniLMM-12B](#omnilmm-12b)
+  - [Evaluation](#evaluation)
+  - [Examples](#examples)
 - [OmniLMM-3B](#omnilmm-3b)
+  - [Evaluation](#evaluation-1)
+  - [Examples](#examples-1)
 - [Demo](#demo)
 - [Install](#install)
 - [Inference](#inference)
-- [Model Zoo](#model-zoo)
+  - [Model Zoo](#model-zoo)
+  - [Multi-turn Conversation](#multi-turn-conversation)
+- [✅ TODO](#-todo)
+- [Model License](#model-license)
+- [Statement](#statement)
+- [🏫 Institutions](#-institutions)
 
 ## OmniLMM-12B
 **OmniLMM-12B** is the most capable version. The model is built based on EVA02-5B and Zephyr-7B-β, connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
 
 - 🔥 **Strong Performance.** 
 
-  OmniLMM-12B achieves **leading performance** among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MME, MMBench, SEED-Bench, etc). The model endows **rich multimodal world knowledge**.
+  OmniLMM-12B achieves **leading performance** among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MME, MMBench, SEED-Bench, etc). 
 
 - 🏆 **Trustworthy Behavior.** 
 
@@ -43,9 +53,15 @@
 
 - 🕹 **Real-time Multimodal Interaction.** 
 
-  We combine the OmniLMM-12B and GPT-3.5 into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
+  We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
+
 
 ### Evaluation
+<div align="center">
+    <img src=assets/eval_radar.png width=50% />
+</div>
+<details>
+<summary>Click to view results on MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista. </summary>
 
 <table>
 <thead>
@@ -150,17 +166,21 @@
 </tbody>
 </table>
 <small>†: Proprietary models</small>
+</details>
 
 ### Examples
 
 <table align="center" >
   <p align="center" > 
-    <img src="assets/omnilmm-12b-examples.png" />
+    <img src="assets/omnilmm-12b-examples_2.png" />
   </p>
 </table>
 
+
+We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal interactive assistant**. Video frames are described in text using OmniLMM-12B, and ChatGPT 3.5 (text-only) is employed to generate response according to the descriptions and user prompts. The demo video is a raw recording without edition. 
+
 <div align="center" >
-  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/c1fd3562-1ab1-4534-8139-79e9137b5398" type="video/mp4" />
+  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/c1fd3562-1ab1-4534-8139-79e9137b5398" type="video/mp4" width=80%/>
 </div>
 
 ## OmniLMM-3B
@@ -256,7 +276,7 @@
 
 ### Examples
 
-OmniLLM-3B is the first LMM deloyed on end devices. The demo video is the raw screen recording without edition.
+We deploy OmniLLM-3B on end devices. The demo video is the raw screen recording on a OnePlus 9R without edition.
 
 <table align="center" >
   <p align="center" > 
@@ -294,8 +314,8 @@ pip install -r requirements.txt
 ### Model Zoo
 | Model                | Description       | Download Link |
 |:----------------------|:-------------------|:---------------:|
-| OmniLMM-12B | The most capable version with strong performance.                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
-| OmniLMM-3B  | The efficient version for end device deployment.          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-12B | The most capable version with strong performance.   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
+| OmniLMM-3B  | The efficient version for end device deployment.    |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
 
 
 ### Multi-turn Conversation
