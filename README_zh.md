@@ -22,19 +22,33 @@
 [English Document](./README.md)
 
 ## 目录
-- [OmniLMM-12B](#omnilmm-12b)
-- [OmniLMM-3B](#omnilmm-3b)
-- [体验](#demo)
-- [安装](#install)
-- [推理](#inference)
-- [模型库](#model-zoo)
+<!-- TOC -->
 
+- [目录](#目录)
+- [OmniLMM-12B](#omnilmm-12b)
+  - [性能评估](#性能评估)
+  - [样例展示](#样例展示)
+- [OmniLMM-3B](#omnilmm-3b)
+  - [Evaluation](#evaluation)
+  - [样例展示](#样例展示-1)
+- [体验](#体验)
+- [安装](#安装)
+- [推理](#推理)
+  - [模型库](#模型库)
+  - [多轮对话](#多轮对话)
+- [✅ 未来计划](#-未来计划)
+- [模型协议](#模型协议)
+- [声明](#声明)
+- [🏫 机构](#-机构)
+
+<!-- /TOC -->
+<!-- /TOC -->
 ## OmniLMM-12B
 **OmniLMM-12B** 是当前系列中性能最强大的版本。该模型使用一个感知重采样层连接 EVA02-5B 和 Zephyr-7B-β 来构建，采用了课程学习的方法在多模态数据上进行训练。该模型具有三个显著特征：
 
 - 🔥 **卓越性能。**
 
-  OmniLMM-12B 相比其他同规模模型在多个基准测试中取得**领先的性能**（包括 MME、MMBench、SEED-Bench 等）。模型掌握了**丰富的多模态世界知识**。
+  OmniLMM-12B 相比其他同规模模型在多个基准测试中取得**领先的性能**（包括 MME、MMBench、SEED-Bench 等）。
 
 - 🏆 **可信行为。**
 
@@ -45,6 +59,12 @@
   我们将 OmniLMM-12B 和 GPT-3.5 结合成一个**实时多模态交互助手**。该助手接受来自相机的视频流和来自麦克风的语音流，并发出语音输出。虽然还处于初级阶段，但我们也发现该模型**无需视频编辑**就可以**复现出现在 Gemini 演示视频中的一些有趣例子**。
 
 ### 性能评估
+
+<div align="center">
+    <img src=assets/eval_radar.png width=50% />
+</div>
+<details>
+<summary> MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista 上的详细评测结果. </summary>
 
 <table>
 <thead>
@@ -149,7 +169,22 @@
 </tbody>
 </table>
 <small>†: 闭源模型</small>
+</details>
 
+### 样例展示
+
+<table align="center" >
+  <p align="center" > 
+    <img src="assets/omnilmm-12b-examples_2.png" />
+  </p>
+</table>
+
+
+我们结合 OmniLMM-12B 和 GPT-3.5 (纯文本模型) 构建了一个 **实时多模态交互助手**. OmniLMM-12B 将视频帧转为对应的图像描述并输入给 GPT-3.5 来生成对用户指令的响应。**以下展示视频未经任何视频编辑**。
+
+<div align="center" >
+  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/c1fd3562-1ab1-4534-8139-79e9137b5398" type="video/mp4" width=80%/>
+</div>
 
 ## OmniLMM-3B
 
@@ -283,8 +318,8 @@ pip install -r requirements.txt
 
 | 模型                | 简介       | 下载链接 |
 |:----------------------|:-------------------|:---------------:|
-| OmniLMM-12B | 更强大的性能表现                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
-| OmniLMM-3B  | 支持终端设备上的高效部署，性能优秀          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; <a url="https://modelscope.cn/models/OpenBMB/MiniCPM-V/files"> <img src="./assets/modelscope_logo.png" width="20px"></img></a> |
+| OmniLMM-12B | 更强大的性能表现                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
+| OmniLMM-3B  | 支持终端设备上的高效部署，性能优秀          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
 
 
 ### 多轮对话
@@ -295,17 +330,16 @@ pip install -r requirements.txt
 <img src="assets/COCO_test2015_000000262144.jpg" width="660px">
 </div>
 
-##### OmniLMM-12B
 
 ```python
 from chat import OmniLMMChat, img2base64
 
-chat_model = OmniLMMChat('openbmb/OmniLMM-12B')
+chat_model = OmniLMMChat('openbmb/OmniLMM-12B') # or 'openbmb/MiniCPM-V'
 
 im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
 
 # First round chat 
-msgs = [{"role": "user", "content": "What are the people doing?"}]
+msgs = [{"role": "user", "content": "What are the people doing?"}] # or Chinese input [{"role": "user", "content": "请描述一下图像"}]
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.process(inputs)
@@ -321,37 +355,13 @@ answer = chat_model.process(inputs)
 print(answer)
 ```
 
-We can obtain the following results:
+可以得到以下输出:
 ```
 "The people in the image are playing baseball. One person is pitching a ball, another one is swinging a bat to hit it, and there's also an umpire present who appears to be watching the game closely."
 
 "The image depicts a baseball game in progress. A pitcher is throwing the ball, while another player is swinging his bat to hit it. An umpire can be seen observing the play closely."
 ```
 
-##### OmniLMM-3B
-```python
-import torch
-from PIL import Image
-from transformers import AutoModel, AutoTokenizer
-
-model_path='openbmb/MiniCPM-V'
-model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
-tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-model.eval().cuda()
-
-image = Image.open('./assets/COCO_test2015_000000262144.jpg').convert('RGB')
-
-question = '请描述一下该图像'
-res, context, _ = model.chat(
-    image=image,
-    question=question,
-    context=None,
-    tokenizer=tokenizer,
-    sampling=True,
-    temperature=0.7
-)
-print(res)
-```
 
 ## ✅ 未来计划
 
@@ -376,9 +386,7 @@ OmniLMMs 模型权重对学术研究完全开放。
 
 作为多模态大模型，OmniLMMs 通过学习大量的多模态语料来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
 
-因此用户在使用 OmniLMMs 生成的内容时，应自行负责对其进行评估和验证。
-
-如果由于使用 OmniLMMs 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
+因此用户在使用 OmniLMMs 生成的内容时，应自行负责对其进行评估和验证。如果由于使用 OmniLMMs 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
 
 
 ## 🏫 机构
