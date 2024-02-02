@@ -52,7 +52,7 @@
 
 - 🏆 **可信行为。**
 
-  LMMs 的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，信誓旦旦地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的最新开源 LMM 来实现可信行为**（通过我们最近提出的 [RLHF-V](https://rlhf-v.github.io/) 技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上位列开源模型中**第一**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**超过了 GPT-4V**。
+  LMMs 的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，确信地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的综合能力优秀的开源多模态大模型**（通过我们最近提出的 [RLHF-V](https://rlhf-v.github.io/) 技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上位列开源模型中**第一**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**超过了 GPT-4V**。
 
 - 🕹 **实时多模态交互。**
 
