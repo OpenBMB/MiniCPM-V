@@ -363,6 +363,8 @@ print(answer)
 
 "In the image, China is located on the right side of the pan. It is one of the nuggets shaped like the continents of the world, and its placement on the right side of the pan is consistent with its geographical location in the real world"
 ```
+### 手机端部署
+OmniLMM-3B (即MiniCPM-V) 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
 
 
 ## 未来计划

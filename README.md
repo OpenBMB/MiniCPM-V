@@ -356,7 +356,8 @@ We can obtain the following results:
 
 "In the image, China is located on the right side of the pan. It is one of the nuggets shaped like the continents of the world, and its placement on the right side of the pan is consistent with its geographical location in the real world"
 ```
-
+### Deployment on Mobile Phone
+Currently OmniLMM-3B (i.e., MiniCPM-V) can be deployed on mobile phones with Android and Harmony operating systems. 🚀 Try it out [here](https://github.com/OpenBMB/mlc-MiniCPM).
 
 ## TODO
 
