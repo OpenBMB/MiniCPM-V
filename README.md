@@ -167,6 +167,7 @@
 </tbody>
 </table>
 <small>†: Proprietary models</small>
+<br>
 </details>
 
 ### Examples
