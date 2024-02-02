@@ -61,7 +61,7 @@
 ### 评测结果
 
 <div align="center">
-    <img src=assets/eval_radar.png width=50% />
+    <img src=assets/eval_radar.png width=66% />
 </div>
 <details>
 <summary> MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista 上的详细评测结果. </summary>
