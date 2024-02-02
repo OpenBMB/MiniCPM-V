@@ -363,6 +363,7 @@ We can obtain the following results:
 - [ ] Fine-tuning support
 - [ ] Local Web-UI deployment
 - [ ] Code release for real-time interactive assistant
+- [ ] Improved OCR capability
 
 ## Model License
 
