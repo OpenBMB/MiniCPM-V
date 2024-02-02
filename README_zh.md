@@ -329,7 +329,7 @@ pip install -r requirements.txt
 请参考以下代码使用 `OmniLMM` 进行推理。
 
 <div align="center">
-<img src="assets/COCO_test2015_000000262144.jpg" width="660px">
+<img src="assets/worldmap_ck.jpg" width="500px">
 </div>
 
 
@@ -338,10 +338,10 @@ from chat import OmniLMMChat, img2base64
 
 chat_model = OmniLMMChat('openbmb/OmniLMM-12B') # or 'openbmb/MiniCPM-V'
 
-im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
+im_64 = img2base64('./assets/worldmap_ck.jpg')
 
 # First round chat 
-msgs = [{"role": "user", "content": "What are the people doing?"}] # or Chinese input [{"role": "user", "content": "请描述一下图像"}]
+msgs = [{"role": "user", "content": "What is interesting about this image?"}]
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.process(inputs)
@@ -350,7 +350,7 @@ print(answer)
 # Second round chat 
 # pass history context of multi-turn conversation
 msgs.append({"role": "assistant", "content": answer})
-msgs.append({"role": "user", "content": "Describe the image"})
+msgs.append({"role": "user", "content": "Where is China in the image"})
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.process(inputs)
@@ -359,9 +359,9 @@ print(answer)
 
 可以得到以下输出:
 ```
-"The people in the image are playing baseball. One person is pitching a ball, another one is swinging a bat to hit it, and there's also an umpire present who appears to be watching the game closely."
+"The interesting aspect of this image is the shape of the chicken nuggets on the pan. The nuggets are shaped like the continents of the world, which is an unusual and creative way to present the food. It adds a fun and playful element to the meal, making it more visually appealing and engaging."
 
-"The image depicts a baseball game in progress. A pitcher is throwing the ball, while another player is swinging his bat to hit it. An umpire can be seen observing the play closely."
+"In the image, China is located on the right side of the pan. It is one of the nuggets shaped like the continents of the world, and its placement on the right side of the pan is consistent with its geographical location in the real world"
 ```
 
 
