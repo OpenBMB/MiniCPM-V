@@ -35,10 +35,10 @@
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
   - [Multi-turn Conversation](#multi-turn-conversation)
-- [✅ TODO](#-todo)
+- [TODO](#todo)
 - [Model License](#model-license)
 - [Statement](#statement)
-- [🏫 Institutions](#-institutions)
+- [Institutions](#institutions)
 
 ## OmniLMM-12B
 **OmniLMM-12B** is the most capable version. The model is built based on EVA02-5B and Zephyr-7B-β, connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
@@ -358,7 +358,7 @@ We can obtain the following results:
 ```
 
 
-## ✅ TODO
+## TODO
 
 - [ ] Fine-tuning support
 - [ ] Local Web-UI deployment
@@ -381,7 +381,7 @@ As LMMs, OmniLMMs generate contents by learning a large mount of multimodal corp
 We will not be liable for any problems arising from the use of OmniLMM open source models, including but not limited to data security issues, risk of public opinion, or any risks and problems arising from the misdirection, misuse, dissemination or misuse of the model.
 
 
-## 🏫 Institutions
+## Institutions
 
 This project is developed by the following institutions:
 

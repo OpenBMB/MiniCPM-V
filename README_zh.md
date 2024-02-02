@@ -36,10 +36,10 @@
 - [推理](#推理)
   - [模型库](#模型库)
   - [多轮对话](#多轮对话)
-- [✅ 未来计划](#-未来计划)
+- [未来计划](#未来计划)
 - [模型协议](#模型协议)
 - [声明](#声明)
-- [🏫 机构](#-机构)
+- [机构](#机构)
 
 <!-- /TOC -->
 <!-- /TOC -->
@@ -196,9 +196,9 @@
 
 **OmniLMM-3B**（即 MiniCPM-V）可以高效部署到终端设备。该模型基于 SigLip-400M 和 [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/)构建，通过perceiver resampler连接。OmniLMM-3B的特点包括：
 
-- ⚡️ **高效率。**
+- ⚡️ **高效部署。**
 
-  OmniLMM-3B 可以**高效部署在大多数 GPU 和个人电脑上**，包括**移动手机等终端设备**。在视觉编码方面，我们通过perceiver resampler将图像表示压缩为64个token，远远少于基于MLP架构的其他多模态大模型（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**存储占用更低并且速度更快**。
+  OmniLMM-3B 可以**高效部署在大多数 GPU 和个人电脑上**，包括**移动手机等终端设备**。在视觉编码方面，我们通过perceiver resampler将图像表示压缩为64个token，远远少于基于MLP架构的其他多模态大模型（通常大于512个token）。这使得 OmniLMM-3B 在推理期间**存储占用更低并且速度更快**。
 
 - 🔥 **优秀的性能。**
 
@@ -300,21 +300,21 @@
 
 ## 安装
 
-1. Clone this repository and navigate to the source folder
+1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
 git clone https://github.com/OpenBMB/OmniLMM.git
 cd OmniLMM
 ```
 
-2. Create conda environment
+1. 创建 conda 环境
 
 ```Shell
 conda create -n OmniLMM python=3.10 -y
 conda activate OmniLMM
 ```
 
-3. Install dependencies
+3. 安装依赖
 
 ```shell
 pip install -r requirements.txt
@@ -371,7 +371,7 @@ print(answer)
 ```
 
 
-## ✅ 未来计划
+## 未来计划
 
 - [ ] 支持模型微调
 - [ ] 本地用户图形界面部署
@@ -397,7 +397,7 @@ OmniLMM 模型权重对学术研究完全开放。
 因此用户在使用 OmniLMM 生成的内容时，应自行负责对其进行评估和验证。如果由于使用 OmniLMM 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
 
 
-## 🏫 机构
+## 机构
 
 本项目由以下机构共同开发：
 
