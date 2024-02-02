@@ -45,7 +45,7 @@
 
 - 🔥 **Strong Performance.** 
 
-  OmniLMM-12B achieves **leading performance** among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MME, MMBench, SEED-Bench, etc). The model also **supports OCR capability** and endows **rich multimodal world knowledge**.
+  OmniLMM-12B achieves **leading performance** among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MME, MMBench, SEED-Bench, etc). 
 
 - 🏆 **Trustworthy Behavior.** 
 
