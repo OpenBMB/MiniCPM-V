@@ -177,17 +177,17 @@ if __name__ == '__main__':
     model_path = 'openbmb/OmniLMM-12B'
     chat_model = OmniLMMChat(model_path)
 
-    im_64 = img2base64('./assets/COCO_test2015_000000262144.jpg')
+    im_64 = img2base64('./assets/worldmap_ck.jpg')
 
     # first round chat 
-    msgs = [{"role": "user", "content": "What are the people doing?"}]
+    msgs = [{"role": "user", "content": "What is interesting about this image?"}]
     input = {"image": im_64, "question": json.dumps(msgs, ensure_ascii=True)}
     answer = chat_model.chat(input)
     print(msgs[-1]["content"]+'\n', answer)
 
     # second round chat 
     msgs.append({"role": "assistant", "content": answer})
-    msgs.append({"role": "user", "content": "Describe the image"})
+    msgs.append({"role": "user", "content": "Where is China in the image"})
     input = {"image": im_64,"question": json.dumps(msgs, ensure_ascii=True)}
     answer = chat_model.chat(input)
     print(msgs[-1]["content"]+'\n', answer)
