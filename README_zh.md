@@ -52,13 +52,19 @@
 
 - 🏆 **行为可信。**
 
-  多模态大模型的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，确信地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的综合能力优秀的开源多模态大模型**（借助我们最近提出的 [RLHF-V](https://rlhf-v.github.io/) 技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上达到**开源模型最佳水平**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**优于GPT-4V**。
+  多模态大模型的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，确信地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的综合能力优秀的开源多模态大模型**（借助最新的 [RLHF-V](https://rlhf-v.github.io/) 技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上达到**开源模型最佳水平**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**优于GPT-4V**。
 
 - 🕹 **实时多模态交互。**
 
   我们尝试结合OmniLMM-12B和GPT-3.5 (纯文本模型) ，实现**实时多模态交互助手**。该模型接受来自摄像头的视频流，并借助工具处理语音输入输出。虽然还很初步，我们发现该模型无需视频编辑可以**复现Gemini演示视频中的一些有趣例子**。
 
 ### 评测结果
+
+<div align="center">
+    <img src=assets/eval_radar.png width=50% />
+</div>
+<details>
+<summary> MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista 上的详细评测结果. </summary>
 
 <div align="center">
     <img src=assets/eval_radar.png width=50% />
@@ -188,19 +194,19 @@
 
 ## OmniLMM-3B
 
-**OmniLMM-3B**（即 MiniCPM-V）是一种我们的高效率版本模型，可用于终端机器上的部署。该模型基于 SigLip-400M 和 MiniCPM-2.4B 构建，通过感知器重采样器连接。OmniLMM-3B的显著特点包括：
+**OmniLMM-3B**（即 MiniCPM-V）可以高效部署到终端设备。该模型基于 SigLip-400M 和 [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/)构建，通过perceiver resampler连接。OmniLMM-3B的特点包括：
 
 - ⚡️ **高效率。**
 
-  OmniLMM-3B 可以**高效地部署在大多数GPU卡和个人电脑上**，甚至**在移动手机等终端设备上**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于MLP架构的其他LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
+  OmniLMM-3B 可以**高效部署在大多数 GPU 和个人电脑上**，包括**移动手机等终端设备**。在视觉编码方面，我们通过perceiver resampler将图像表示压缩为64个token，远远少于基于MLP架构的其他多模态大模型（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**存储占用更低并且速度更快**。
 
 - 🔥 **优秀的性能。**
 
-  OmniLMM-3B 在与相似大小模型相比的多个基准测试中实现了**最先进的性能**，超过了基于 Phi-2构建的现有 LMMs。它甚至**实现了与9.6B Qwen-VL-Chat 相媲美或更好的性能**。
+  OmniLMM-3B 在多个测试基准中实现了同规模**最佳性能**，超过了基于Phi-2构建的多模态大模型。该模型甚至在部分基准中实现了**与9.6B Qwen-VL-Chat匹配或更好的性能**。
 
 - 🙌 **双语支持。**
-
-  OmniLMM-3B 是**第一个支持英语和中文双语多模态交互的终端可部署 LMM**。这是通过跨语言泛化多模态能力实现的，这是我们 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038)中的一项技术。
+  OmniLMM-3B 是**第一个支持中英双语的端侧多模态大模型**。
+  该能力通过ICLR 2024 spotlight [论文](https://arxiv.org/abs/2308.12038)中提出的多模态能力的跨语言泛化技术实现。
 
 ### 性能评估
 
@@ -278,7 +284,9 @@
 
 </div>
 
-### 样例展示
+### 部署示例
+
+我们在手机上部署了OmniLMM-3B。演示视频是OnePlus 9R上的原始录屏结果。
 
 <table align="center" >
   <p align="center" > 
@@ -286,9 +294,9 @@
   </p>
 </table>
 
-## 体验
+## Demo
 
-你可以通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [OmniLMM-3B](http://120.92.209.146:80).
+欢迎通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [OmniLMM-3B](http://120.92.209.146:80).
 
 ## 安装
 
@@ -318,13 +326,13 @@ pip install -r requirements.txt
 
 | 模型                | 简介       | 下载链接 |
 |:----------------------|:-------------------|:---------------:|
-| OmniLMM-12B | 更强大的性能表现                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
-| OmniLMM-3B  | 支持终端设备上的高效部署，性能优秀          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
+| OmniLMM-12B | 性能最强的版本                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
+| OmniLMM-3B  | 支持端侧高效部署，性能优秀          |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
 
 
 ### 多轮对话
 
-请参考以下代码运行  `OmniLMM` 的推理服务。
+请参考以下代码使用 `OmniLMM` 进行推理。
 
 <div align="center">
 <img src="assets/COCO_test2015_000000262144.jpg" width="660px">
@@ -366,27 +374,27 @@ print(answer)
 ## ✅ 未来计划
 
 - [ ] 支持模型微调
-- [ ] 本地可视化部署
+- [ ] 本地用户图形界面部署
 - [ ] 实时多模态交互代码开源
-- [ ] 更新 OCR 能力增强版本
+
 
 
 ## 模型协议
 
 本仓库中代码依照 Apache-2.0 协议开源
 
-OmniLMMs 模型权重的使用则需要遵循 “[通用模型许可协议-来源说明-宣传限制-商业授权](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)”。
+OmniLMM 模型权重的使用遵循 “[通用模型许可协议-来源说明-宣传限制-商业授权](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)”。
 
-OmniLMMs 模型权重对学术研究完全开放。
+OmniLMM 模型权重对学术研究完全开放。
 
-如需将模型用于商业用途，请联系 cpm@modelbest.cn 来获取书面授权，在登记后亦允许免费商业使用。
+如需将模型用于商业用途，请联系 cpm@modelbest.cn 来获取书面授权，登记后可以免费商业使用。
 
 
 ## 声明
 
-作为多模态大模型，OmniLMMs 通过学习大量的多模态语料来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
+作为多模态大模型，OmniLMM 通过学习大量的多模态数据来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
 
-因此用户在使用 OmniLMMs 生成的内容时，应自行负责对其进行评估和验证。如果由于使用 OmniLMMs 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
+因此用户在使用 OmniLMM 生成的内容时，应自行负责对其进行评估和验证。如果由于使用 OmniLMM 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
 
 
 ## 🏫 机构
