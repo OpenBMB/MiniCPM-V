@@ -192,15 +192,15 @@
 
 - ⚡️ **高效率。**
 
-  OmniLMM-3B 可以**高效地部署在大多数 GPU 和个人电脑上**，甚至**是移动手机等终端设备**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于 MLP 架构的其他 LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存成本更低且速度更快**。
+  OmniLMM-3B 可以**高效地部署在大多数 GPU 和个人电脑上**，甚至**是移动手机等终端设备**。在视觉编码方面，我们通过感知器重采样器将图像表示压缩为 64 个 token，远远少于基于 MLP 架构的其他 LMMs（通常大于 512 个 token）。这使得 OmniLMM-3B 在推理期间**内存开销更低且速度更快**。
 
 - 🔥 **优秀的性能。**
 
   OmniLMM-3B 在多个基准测试中实现了与相似大小模型相比**最先进的性能**，超过了基于 Phi-2 构建的LMMs。它甚至**实现了与9.6B Qwen-VL-Chat 相媲美或更好的性能**。
 
-- 🙌 **双语支持。**
+- 🙌 **中英双语。**
 
-  借助于我们在 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038) 中提出的跨语言多模态能力泛化技术， OmniLMM-3B 是**第一个支持英语和中文双语多模态交互的终端可部署 LMM**。
+  得益于我们在 ICLR 2024 [spotlight 论文](https://arxiv.org/abs/2308.12038) 中提出的跨语言多模态能力泛化技术， OmniLMM-3B 是**第一个支持中英双语多模态交互的终端可部署 LMM**。
 
 ### 性能评估
 
@@ -292,21 +292,21 @@
 
 ## 安装
 
-1. Clone this repository and navigate to the source folder
+1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
 git clone https://github.com/OpenBMB/OmniLMM.git
 cd OmniLMM
 ```
 
-2. Create conda environment
+1. 创建 conda 环境
 
 ```Shell
 conda create -n OmniLMM python=3.10 -y
 conda activate OmniLMM
 ```
 
-3. Install dependencies
+3. 安装依赖
 
 ```shell
 pip install -r requirements.txt
