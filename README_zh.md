@@ -285,12 +285,18 @@
 
 我们在手机上部署了OmniLMM-3B。演示视频是OnePlus 9R上的原始录屏结果。
 
-<table align="center" >
-  <p align="center" > 
-    <img src="assets/Snake_cn_Mushroom_en.gif" width=48%/>
-  </p>
+<table align="center">
+  <tr>
+    <td>
+      <h2> 中文 </h2>
+      <img src="assets/gif_cases/蛇_cn.gif" width=36%/>
+    </td>
+    <td>
+      <h2> 英文 </h2>
+      <img src="assets/gif_cases/Mushroom_en.gif" width=36%/>
+    </td>
+  </tr>
 </table>
-
 ## Demo
 
 欢迎通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [OmniLMM-3B](http://120.92.209.146:80).
