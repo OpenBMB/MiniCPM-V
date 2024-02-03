@@ -198,7 +198,7 @@ We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal
 
 - 🙌 **Bilingual Support.** 
 
-  OmniLMM-3B is **the first edge-deployable LMM supporting bilingual multimodal interaction in English and Chinese**. This is achieved by generalizing multimodal capabilities across languages, a technique from the ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
+  OmniLMM-3B is **the first end-deployable LMM supporting bilingual multimodal interaction in English and Chinese**. This is achieved by generalizing multimodal capabilities across languages, a technique from the ICLR 2024 spotlight [paper](https://arxiv.org/abs/2308.12038).
 
 ### Evaluation
 
