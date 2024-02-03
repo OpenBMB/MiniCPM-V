@@ -280,10 +280,17 @@ We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal
 
 We deploy OmniLLM-3B on end devices. The demo video is the raw screen recording on a OnePlus 9R without edition.
 
-<table align="center" >
-  <p align="center" > 
-    <img src="assets/Snake_cn_Mushroom_en.gif" width=36%/>
-  </p>
+<table align="center">
+  <tr>
+    <td>
+      <h2> Chinese </h2>
+      <img src="assets/gif_cases/蛇_cn.gif" width=36%/>
+    </td>
+    <td>
+      <h2> English </h2>
+      <img src="assets/gif_cases/Mushroom_en.gif" width=36%/>
+    </td>
+  </tr>
 </table>
 
 ## Demo
