@@ -348,7 +348,7 @@ im_64 = img2base64('./assets/worldmap_ck.jpg')
 msgs = [{"role": "user", "content": "What is interesting about this image?"}]
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
-answer = chat_model.process(inputs)
+answer = chat_model.chat(inputs)
 print(answer)
 
 # Second round chat 
@@ -357,7 +357,7 @@ msgs.append({"role": "assistant", "content": answer})
 msgs.append({"role": "user", "content": "Where is China in the image"})
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
-answer = chat_model.process(inputs)
+answer = chat_model.chat(inputs)
 print(answer)
 ```
 
