@@ -35,6 +35,7 @@
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
   - [Multi-turn Conversation](#multi-turn-conversation)
+  - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
 - [TODO](#todo)
 - [Model License](#model-license)
