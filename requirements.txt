@@ -18,8 +18,8 @@ seaborn==0.13.0
 shortuuid==1.0.11
 spacy==3.7.2
 timm==0.9.10
-torch==2.0.1
-torchvision==0.15.2
+torch==2.1.2
+torchvision==0.16.2
 tqdm==4.66.1
 protobuf==4.25.0
 transformers==4.36.0

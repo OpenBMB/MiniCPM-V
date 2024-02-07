@@ -365,6 +365,42 @@ We can obtain the following results:
 "The interesting aspect of this image is the shape of the chicken nuggets on the pan. The nuggets are shaped like the continents of the world, which is an unusual and creative way to present the food. It adds a fun and playful element to the meal, making it more visually appealing and engaging."
 
 "In the image, China is located on the right side of the pan. It is one of the nuggets shaped like the continents of the world, and its placement on the right side of the pan is consistent with its geographical location in the real world"
+
+### Inference on Mac
+<details>
+<summary>Click to view example, OmniLMM-3B (i.e., MiniCPM-V) can run on Mac with MPS (Apple silicon or AMD GPUs). </summary>
+
+```python
+# test.py
+import torch
+from PIL import Image
+from transformers import AutoModel, AutoTokenizer
+
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V', trust_remote_code=True, torch_dtype=torch.bfloat16)
+model = model.to(device='mps', dtype=torch.float16)
+
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V', trust_remote_code=True)
+model.eval()
+
+image = Image.open('./assets/worldmap_ck.jpg').convert('RGB')
+question = 'What is interesting about this image?'
+msgs = [{'role': 'user', 'content': question}]
+
+answer, context, _ = model.chat(
+    image=image,
+    msgs=msgs,
+    context=None,
+    tokenizer=tokenizer,
+    sampling=True
+)
+print(answer)
+```
+Run with command:
+```shell
+PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
+```
+</details>
+
 ```
 ### Deployment on Mobile Phone
 Currently OmniLMM-3B (i.e., MiniCPM-V) can be deployed on mobile phones with Android and Harmony operating systems. 🚀 Try it out [here](https://github.com/OpenBMB/mlc-MiniCPM).
