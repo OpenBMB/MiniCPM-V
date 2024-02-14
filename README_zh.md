@@ -279,9 +279,9 @@
     <td align="right">3B </td>
     <td>64</td>
     <td>1452 </td>
-    <td>67.3 </td>
-    <td>61.9 </td>
-    <td>34.7 </td>
+    <td>67.9 </td>
+    <td>65.3 </td>
+    <td>37.2 </td>
     <td>32.1 </td>
   </tr>
 </tbody>
