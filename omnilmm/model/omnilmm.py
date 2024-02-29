@@ -62,7 +62,7 @@ class OmniLMMModel(MistralModel):
         if hasattr(config, "mm_vision_tower"):
             vision_tower, resampler = create_vision_module(config)
 
-            print(__file__, 'skip loading vision tower weights')
+            # print(__file__, 'skip loading vision tower weights')
 
             # HACK: for FSDP
             self.vision_tower = [vision_tower]
