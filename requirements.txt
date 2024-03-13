@@ -1,6 +1,5 @@
 packaging==23.2
 addict==2.4.0
-base_utils==1.0.14
 editdistance==0.6.2
 einops==0.7.0
 fairscale==0.4.0
