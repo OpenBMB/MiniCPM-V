@@ -321,7 +321,7 @@
 <table align="center">
     <p align="center">
       <img src="assets/gif_cases/station.gif" width=36%/>
-      <img src="assets/gif_cases/english_menu.gif" width=36%/>
+      <img src="assets/gif_cases/london_car.gif" width=36%/>
     </p>
 </table>
 
