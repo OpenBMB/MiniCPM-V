@@ -512,9 +512,11 @@ Please refer to the following codes to run `MiniCPM-V` and `OmniLMM`.
 
 
 ```python
+import torch
 from chat import OmniLMMChat, img2base64
+torch.manual_seed(0)
 
-chat_model = OmniLMMChat('openbmb/OmniLMM-12B') # or 'openbmb/MiniCPM-V-2'
+chat_model = OmniLMMChat('openbmb/MiniCPM-V-2.0') # or 'openbmb/OmniLMM-12B'
 
 im_64 = img2base64('./assets/hk_OCR.jpg')
 
