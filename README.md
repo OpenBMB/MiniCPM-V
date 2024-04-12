@@ -27,7 +27,9 @@
 
 ## 更新日志 <!-- omit in toc -->
 
-* [2024.04.12] 我们开源了 <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">MiniCPM-V-2.0</a>，在综合了 11 个主流多模态大模型评测基准的 <a href="https://rank.opencompass.org.cn/leaderboard-multimodal">OpenCompass</a> 榜单上超过了 Qwen-VL-Chat 9.6B、CogVLM-Chat 17.4B 和 Yi-VL 34B 等更大参数规模的模型！点击<a href="https://openbmb.vercel.app/minicpm-v-2">这里</a>查看 MiniCPM-V 2.0 技术博客
+* [2024.04.12] 我们开源了 MiniCPM-V-2.0，在综合了 11 个主流多模态大模型评测基准的 <a href="https://rank.opencompass.org.cn/leaderboard-multimodal">OpenCompass</a> 榜单上超过了 Qwen-VL-Chat 9.6B 和 Yi-VL 34B 等更大参数规模的模型！点击<a href="https://openbmb.vercel.app/minicpm-v-2">这里</a>查看 MiniCPM-V 2.0 技术博客
+* [2024.03.01] MiniCPM-V 现在支持在 Mac 电脑上进行部署！
+* [2024.02.01] 我们开源了 MiniCPM-V 和 OmniLMM-12B，分别可以支持高效的端侧部署和同规模强大的多模态能力。
 
 
 ## 目录 <!-- omit in toc -->
