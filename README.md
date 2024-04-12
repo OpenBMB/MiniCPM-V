@@ -1,77 +1,83 @@
 <div align="center">
 
+<!-- <!-- <h1 style="color: #33A6B8; font-family: Helvetica"> OmniLMM </h1> -->
+
 <img src="./assets/minicpmv-omnilmm.png" width="400em" ></img> 
 
-**Large multi-modal models for strong performance and efficient deployment**
+**性能领先且部署高效的多模态大模型**
 
-  [中文](./README_zh.md) |
-  English
+  <strong>中文 |
+  [English](./README_en.md)</strong>
 
 <p align="center">
   MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2.0/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
-  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a> | <a href="https://openbmb.vercel.app/minicpm-v-2-en"> Technical Blog </a>
+  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a> |
+  <a href="https://openbmb.vercel.app/minicpm-v-2">MiniCPM-V 2.0 技术博客</a>
 </p>
 
 </div>
 
 
-**MiniCPM-V** and **OmniLMM** are a family of open-source large multimodal models (LMMs) adept at vision & language modeling. The models process images and text inputs and deliver high-quality text outputs. We release two featured versions that are targeted at **strong performance and efficient deployment**:
+**MiniCPM-V**和**OmniLMM** 是面向图文理解的开源多模态大模型系列。该系列模型接受图像和文本输入，并提供高质量的文本输出。我们发布了两个版本的模型，旨在实现**领先的性能和高效的部署**：
 
-- **MiniCPM-V 2.8B**: State-of-the-art end-side large multimodal models. Our latest MiniCPM-V 2.0 can accept 1.8 million pixels (e.g., 1344x1344) images at any aspect ratio, and is adept at OCR capability. It achieves comparable performance with Gemini Pro in understanding scene-text and matches GPT-4V in preventing hallucinations.
+- **MiniCPM-V 2.8B**：可在终端设备上部署的先进多模态大模型。最新发布的 MiniCPM-V 2.0 可以接受 180 万像素的任意长宽比图像输入，实现了和 Gemini Pro 相近的场景文字识别能力以及和 GPT-4V 相匹的低幻觉率。
 
-- **OmniLMM 12B**: The most capable version with leading performance among comparable-sized models on multiple benchmarks. The model also achieves state-of-the-art performance in trustworthy behaviors, with even less hallucination than GPT-4V.
-
-
+- **OmniLMM-12B**：相比同规模其他模型在多个基准测试中具有领先性能，实现了相比 GPT-4V 更低的幻觉率。
 
 
 
-## Contents <!-- omit in toc -->
-
+## 目录 <!-- omit in toc -->
+<!-- TOC -->
 
 - [MiniCPM-V 2.8B](#minicpm-v-28b)
 - [OmniLMM-12B](#omnilmm-12b)
 - [Demo](#demo)
-- [Install](#install)
-- [Inference](#inference)
-  - [Model Zoo](#model-zoo)
-  - [Multi-turn Conversation](#multi-turn-conversation)
-  - [Inference on Mac](#inference-on-mac)
-  - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
-- [TODO](#todo)
+- [安装](#安装)
+- [推理](#推理)
+  - [模型库](#模型库)
+  - [多轮对话](#多轮对话)
+  - [Mac 推理](#mac-推理)
+  - [手机端部署](#手机端部署)
+- [未来计划](#未来计划)
 
+<!-- /TOC -->
+<!-- /TOC -->
 
 ## MiniCPM-V 2.8B
-**MiniCPM-V 2.8B** is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/), connected by a perceiver resampler. Our latest version, MiniCPM-V 2.0 has several notable features. 
 
-- 🔥 **State-of-the-art Performance.** 
+**MiniCPM-V 2.8B**可以高效部署到终端设备。该模型基于 SigLip-400M 和 [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/)构建，通过perceiver resampler连接。最新发布的 MiniCPM-V 2.0 的特点包括：
 
-  MiniCPM-V 2.0 achieves **state-of-the-art performance** on multiple benchmarks (including OCRBench, TextVQA, MME, MMB, MathVista, etc) among models under 7B parameters. It even **outperforms strong Qwen-VL-Chat 9.6B, CogVLM-Chat 17.4B, and Yi-VL 34B on OpenCompass, a comprehensive evaluation over 11 popular benchmarks**. Notably, MiniCPM-V 2.0 shows **strong OCR capability**, achieving **comparable performance to Gemini Pro in scene-text understanding**, and **state-of-the-art performance on OCRBench** among open-source models.
+- 🔥 **优秀的性能。**
 
-- 🏆 **Trustworthy Behavior.** 
+  MiniCPM-V 2.0 在多个测试基准（如 OCRBench, TextVQA, MME, MMB, MathVista 等）中实现了 7B 以下模型的**最佳性能**。**在综合了 11 个主流多模态大模型评测基准的 OpenCompass 榜单上超过了 Qwen-VL-Chat 9.6B、CogVLM-Chat 17.4B 和 Yi-VL 34B 等更大参数规模的模型**。MiniCPM-V 2.0 还展现出**领先的 OCR 能力**，在场景文字识别能力上**接近 Gemini Pro**，OCRBench 得分达到**开源模型第一**。
+  
 
-  LMMs are known for suffering from hallucination, often generating text not factually grounded in images. MiniCPM-V 2.0 is **the first end-side LMM aligned via multimodal RLHF for trustworthy behavior** (using the recent [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] series technique). This allows the model to **match GPT-4V in preventing hallucinations** on Object HalBench.
+- 🏆 **可信行为。** 
 
-- 🌟 **High-Resolution Images at Any Aspect Raito.**
-
-  MiniCPM-V 2.0 can accept **1.8 million pixels (e.g., 1344x1344) images at any aspect ratio**. This enables better perception of fine-grained visual information such as small objects and optical characters, which is achieved via a recent technique from [LLaVA-UHD](https://arxiv.org/pdf/2403.11703.pdf).
-
-- ⚡️ **High Efficiency.** 
-
-  MiniCPM-V 2.0 can be **efficiently deployed on most GPU cards and personal computers**, and **even on end devices such as mobile phones**. For visual encoding, we compress the image representations into much fewer tokens via a perceiver resampler. This allows MiniCPM-V 2.0 to operate with **favorable memory cost and speed during inference even when dealing with high-resolution images**.
+  多模态大模型深受幻觉问题困扰，模型经常生成和图像中的事实不符的文本。MiniCPM-V 2.0 是 **第一个通过多模态 RLHF 对齐的端侧多模态大模型**（借助 [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] 系列技术）。该模型在 [Object HalBench](https://arxiv.org/abs/2312.00849) 达到**和 GPT-4V 相仿**的性能。
 
 
+- 🌟 **高清图像高效编码。**
 
-- 🙌 **Bilingual Support.** 
+  MiniCPM-V 2.0 可以接受 **180 万像素的任意长宽比图像输入**（基于最新的[LLaVA-UHD](https://arxiv.org/pdf/2403.11703.pdf) 技术），这使得模型可以感知到小物体、密集文字等更加细粒度的视觉信息。 
 
-  MiniCPM-V 2.0 **supports strong bilingual multimodal capabilities in both English and Chinese**. This is enabled by generalizing multimodal capabilities across languages, a technique from [VisCPM](https://arxiv.org/abs/2308.12038) [ICLR'24].
 
-### Evaluation <!-- omit in toc -->
+- ⚡️ **高效部署。**
+
+  MiniCPM-V 2.0 可以**高效部署在大多数 GPU 和个人电脑上**，包括**移动手机等终端设备**。在视觉编码方面，我们通过perceiver resampler将图像表示压缩为更少的 token。这使得 MiniCPM-V 2.0 即便是**面对高分辨率图像，也能占用较低的存储并展现优秀的推理速度**。
+
+- 🙌 **双语支持。**
+
+  MiniCPM-V 2.0 **提供领先的中英双语多模态能力支持**。
+  该能力通过 [VisCPM](https://arxiv.org/abs/2308.12038) [ICLR'24] 论文中提出的多模态能力的跨语言泛化技术实现。
+
+### 性能评估 <!-- omit in toc -->
 
 <div align="center">
     <img src=assets/minicpmv-2-peformance.png width=66% />
 </div>
 <details>
-<summary>Click to view results on TextVQA, DocVQA, OCRBench, OpenCompass, MME, MMBench, MMMU, MathVista, LLaVA Bench, Object HalBench. </summary>
+<summary>TextVQA, DocVQA, OCRBench, OpenCompass, MME, MMBench, MMMU, MathVista, LLaVA Bench, Object HalBench 上的详细评测结果。 </summary>
 <div align="center">
 
 <table style="margin: 0px auto;">
@@ -301,11 +307,12 @@
 </table>
 
 </div>
-* We evaluate the officially released checkpoint by ourselves.
+* 我们自己评测了正式开源的模型权重。
 
 </details>
 
-### Examples <!-- omit in toc -->
+### 典型示例 <!-- omit in toc -->
+
 
 <table align="center">
     <p align="center">
@@ -313,7 +320,7 @@
     </p>
 </table>
 
-We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recording on a Xiaomi 14 Pro without edition.
+我们将 MiniCPM-V 2.0 部署在小米 14 Pro 上，并录制了以下演示视频，未经任何视频剪辑。
 
 <table align="center">
     <p align="center">
@@ -323,31 +330,32 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 </table>
 
 ### MiniCPM-V 1.0 <!-- omit in toc -->
-Please see the info about MiniCPM-V 1.0 [here](./minicpm_v1.md).
+
+请参考[这里](./minicpm_v1.md)了解 MiniCPM-V 1.0 的信息和使用教程。
 
 
 ## OmniLMM-12B
-**OmniLMM-12B** is the most capable version. The model is built based on EVA02-5B and Zephyr-7B-β, connected with a perceiver resampler layer, and trained on multimodal data in a curriculum fashion. The model has three notable features:
+**OmniLMM-12B** 是当前系列中性能最佳的版本。该模型基于EVA02-5B和Zephyr-7B-β初始化构建，并使用perceiver resampler连接，采用了课程学习的方法在多模态数据上进行训练。该模型具有三个特点：
 
-- 🔥 **Strong Performance.** 
+- 🔥 **性能领先。**
 
-  OmniLMM-12B achieves **leading performance** among models with comparable sizes, surpassing established LMMs on multiple benchmarks (including MME, MMBench, SEED-Bench, etc). The model also endows rich multi-modal world knowledge.
+  OmniLMM-12B 相比其他同规模模型在多个基准测试中取得**领先的性能**（包括 MME、MMBench、SEED-Bench 等），模型掌握了较为丰富的多模态世界知识。
 
-- 🏆 **Trustworthy Behavior.** 
+- 🏆 **行为可信。**
 
-  LMMs are known for suffering from hallucination, often generating text that is not factually grounded in images (e.g., faithfully describing non-existing objects in images). OmniLMM-12B is **the first state-of-the-art open-source LMM aligned via multimodal RLHF for trustworthy behavior** (using the recent [RLHF-V](https://rlhf-v.github.io/) technique). It **ranks #1** among open-source models on [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench), and **outperforms GPT-4V** on [Object HalBench](https://arxiv.org/abs/2312.00849).
+  多模态大模型的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，确信地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的综合能力优秀的开源多模态大模型**（借助 [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] 系列技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上达到**开源模型最佳水平**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**优于GPT-4V**。
 
-- 🕹 **Real-time Multimodal Interaction.** 
+- 🕹 **实时多模态交互。**
 
-  We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal interactive assistant**. The assistant accepts video streams from the camera and speech streams from the microphone and emits speech output. While still primary, we find the model can **replicate some of the fun cases shown in the Gemini Demo video, without any video edition**.
+  我们尝试结合OmniLMM-12B和GPT-3.5 (纯文本模型) ，实现**实时多模态交互助手**。该模型接受来自摄像头的视频流，并借助工具处理语音输入输出。虽然还很初步，我们发现该模型无需视频编辑可以**复现Gemini演示视频中的一些有趣例子**。
 
+### 评测结果 <!-- omit in toc -->
 
-### Evaluation <!-- omit in toc -->
 <div align="center">
     <img src=assets/radar_omnilmm12b.png width=66% />
 </div>
 <details>
-<summary>Click to view results on MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench, MathVista. </summary>
+<summary> MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista 上的详细评测结果。 </summary>
 
 <table>
 <thead>
@@ -451,11 +459,11 @@ Please see the info about MiniCPM-V 1.0 [here](./minicpm_v1.md).
   </tr>
 </tbody>
 </table>
-<small>†: Proprietary models</small>
+<small>†: 闭源模型</small>
 <br>
 </details>
 
-### Examples <!-- omit in toc -->
+### 典型示例 <!-- omit in toc -->
 
 <table align="center" >
   <p align="center" > 
@@ -464,49 +472,52 @@ Please see the info about MiniCPM-V 1.0 [here](./minicpm_v1.md).
 </table>
 
 
-We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal interactive assistant**. Video frames are described in text using OmniLMM-12B, and ChatGPT 3.5 (text-only) is employed to generate response according to the descriptions and user prompts. The demo video is a raw recording without edition. 
+我们结合 OmniLMM-12B 和 ChatGPT-3.5 (纯文本模型) 尝试构建 **实时多模态交互助手**. OmniLMM-12B 将视频帧转为对应的图像描述并输入给ChatGPT-3.5来生成对用户指令的响应。演示视频未经编辑。
 
 <div align="center" >
-  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/485a8f52-fb4d-4eca-8fee-506347efcfc6" type="video/mp4" width=80%/>
+  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/8fec13bf-bb47-4bf8-8f8c-d0b716a964ec" type="video/mp4" width=80%/>
 </div>
 
-
 ## Demo
-Click here to try out the Demo of [MiniCPM-V 2.0](http://120.92.209.146:80/) and [OmniLMM-12B](http://120.92.209.146:8081).
 
-## Install
+欢迎通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [MiniCPM-V 2.0](http://120.92.209.146:80).
 
-1. Clone this repository and navigate to the source folder
+## 安装
+
+1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
-git clone https://github.com/OpenBMB/MiniCPM-V.git
-cd MiniCPM-V
+git clone https://github.com/OpenBMB/OmniLMM.git
+cd OmniLMM
 ```
 
-2. Create conda environment
+1. 创建 conda 环境
 
 ```Shell
-conda create -n MiniCPM-V python=3.10 -y
-conda activate MiniCPM-V
+conda create -n OmniLMM python=3.10 -y
+conda activate OmniLMM
 ```
 
-3. Install dependencies
+3. 安装依赖
 
 ```shell
 pip install -r requirements.txt
 ```
 
-## Inference
+## 推理
 
-### Model Zoo
-| Model                | Description       | Download Link |
+### 模型库
+
+| 模型                | 简介       | 下载链接 |
 |:----------------------|:-------------------|:---------------:|
-| MiniCPM-V 2.0  | The latest version for state-of-the-art end-side capabilities with high efficiency.    |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2/files) |
-| MiniCPM-V  | The first version of MiniCPM-V.    |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
-| OmniLMM-12B | The most capable version with leading performance.   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
+| MiniCPM-V 2.0  | 最新版本，提供高效而领先的端侧双语多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2.0) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2.0/files) |
+| MiniCPM-V  | 第一版 MiniCPM-V    |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
+| OmniLMM-12B | 性能最强的版本                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
 
-### Multi-turn Conversation
-Please refer to the following codes to run `MiniCPM-V` and `OmniLMM`.
+
+### 多轮对话
+
+请参考以下代码使用 `MiniCPM-V` 和 `OmniLMM` 进行推理。
 
 <div align="center">
 <img src="assets/hk_OCR.jpg" width="500px">
@@ -514,11 +525,9 @@ Please refer to the following codes to run `MiniCPM-V` and `OmniLMM`.
 
 
 ```python
-import torch
 from chat import OmniLMMChat, img2base64
-torch.manual_seed(0)
 
-chat_model = OmniLMMChat('openbmb/MiniCPM-V-2') # or 'openbmb/OmniLMM-12B'
+chat_model = OmniLMMChat('openbmb/OmniLMM-12B') # or 'openbmb/MiniCPM-V-2'
 
 im_64 = img2base64('./assets/hk_OCR.jpg')
 
@@ -539,7 +548,7 @@ answer = chat_model.chat(inputs)
 print(answer)
 ```
 
-We can obtain the following results:
+可以得到以下输出:
 
 ```
 "You should go to the Canon store for a camera."
@@ -549,9 +558,9 @@ We can obtain the following results:
 
 
 
-### Inference on Mac
+### Mac 推理
 <details>
-<summary>Click to view an example, to run MiniCPM-V 2.0 on 💻 Mac with MPS (Apple silicon or AMD GPUs). </summary>
+<summary>点击查看 MiniCPM-V 2.0 基于Mac MPS运行 (Apple silicon or AMD GPUs)的示例。 </summary>
 
 ```python
 # test.py
@@ -559,10 +568,10 @@ import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True, torch_dtype=torch.bfloat16)
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2.0', trust_remote_code=True, torch_dtype=torch.bfloat16)
 model = model.to(device='mps', dtype=torch.float16)
 
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2.0', trust_remote_code=True)
 model.eval()
 
 image = Image.open('./assets/hk_OCR.jpg').convert('RGB')
@@ -578,43 +587,48 @@ answer, context, _ = model.chat(
 )
 print(answer)
 ```
-Run with command:
+运行:
 ```shell
 PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
 
-### Deployment on Mobile Phone
-Currently MiniCPM-V 2.0 can be deployed on mobile phones with Android and Harmony operating systems. 🚀 Try it out [here](https://github.com/OpenBMB/mlc-MiniCPM).
 
-## TODO
-
-- [ ] Fine-tuning support
-- [ ] Local Web-UI deployment
-- [ ] Code release for real-time interactive assistant
-
-## Model License <!-- omit in toc -->
-
-The code in this repo is released according to [Apache-2.0](https://github.com/OpenBMB/MiniCPM/blob/main/LICENSE)
-
-The usage of MiniCPM-V's and OmniLMM's parameters is subject to "[General Model License Agreement - Source Notes - Publicity Restrictions - Commercial License](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)"
-
-The parameters are fully open to academic research
-
-Please contact cpm@modelbest.cn to obtain written authorization for commercial uses. Free commercial use is also allowed after registration.
-
-## Statement <!-- omit in toc -->
-
-As LMMs, OmniLMMs generate contents by learning a large amount of multimodal corpora, but they cannot comprehend, express personal opinions or make value judgement. Anything generated by OmniLMMs does not represent the views and positions of the model developers
-
-We will not be liable for any problems arising from the use of OmniLMM open source models, including but not limited to data security issues, risk of public opinion, or any risks and problems arising from the misdirection, misuse, dissemination or misuse of the model.
+### 手机端部署
+MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
 
 
-## Institutions  <!-- omit in toc -->
+## 未来计划
 
-This project is developed by the following institutions:
+- [ ] 支持模型微调
+- [ ] 本地用户图形界面部署
+- [ ] 实时多模态交互代码开源
 
-- <img src="assets/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
-- <img src="assets/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
-- <img src="assets/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
+
+
+## 模型协议 <!-- omit in toc -->
+
+本仓库中代码依照 Apache-2.0 协议开源
+
+OmniLMM 模型权重的使用遵循 “[通用模型许可协议-来源说明-宣传限制-商业授权](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)”。
+
+OmniLMM 模型权重对学术研究完全开放。
+
+如需将模型用于商业用途，请联系 cpm@modelbest.cn 来获取书面授权，登记后可以免费商业使用。
+
+
+## 声明 <!-- omit in toc -->
+
+作为多模态大模型，MiniCPM-V 和 OmniLMM 通过学习大量的多模态数据来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
+
+因此用户在使用 MiniCPM-V 和 OmniLMM 生成的内容时，应自行负责对其进行评估和验证。如果由于使用 OmniLMM 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
+
+
+## 机构 <!-- omit in toc -->
+
+本项目由以下机构共同开发：
+
+- <img src="assets/thunlp.png" width="28px"> [清华大学自然语言处理实验室](https://nlp.csai.tsinghua.edu.cn/)
+- <img src="assets/modelbest.png" width="28px"> [面壁智能](https://modelbest.cn/)
+- <img src="assets/zhihu.webp" width="28px"> [知乎](https://www.zhihu.com/ )
 
