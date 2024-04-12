@@ -501,7 +501,7 @@ pip install -r requirements.txt
 ### Model Zoo
 | Model                | Description       | Download Link |
 |:----------------------|:-------------------|:---------------:|
-| MiniCPM-V 2.0  | The latest version for state-of-the-art end-side capabilities with high efficiency.    |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2.0) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2.0/files) |
+| MiniCPM-V 2.0  | The latest version for state-of-the-art end-side capabilities with high efficiency.    |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2/files) |
 | MiniCPM-V  | The first version of MiniCPM-V.    |  [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
 | OmniLMM-12B | The most capable version with leading performance.   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
 
@@ -518,7 +518,7 @@ import torch
 from chat import OmniLMMChat, img2base64
 torch.manual_seed(0)
 
-chat_model = OmniLMMChat('openbmb/MiniCPM-V-2.0') # or 'openbmb/OmniLMM-12B'
+chat_model = OmniLMMChat('openbmb/MiniCPM-V-2') # or 'openbmb/OmniLMM-12B'
 
 im_64 = img2base64('./assets/hk_OCR.jpg')
 
@@ -559,10 +559,10 @@ import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2.0', trust_remote_code=True, torch_dtype=torch.bfloat16)
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True, torch_dtype=torch.bfloat16)
 model = model.to(device='mps', dtype=torch.float16)
 
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2.0', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True)
 model.eval()
 
 image = Image.open('./assets/hk_OCR.jpg').convert('RGB')
