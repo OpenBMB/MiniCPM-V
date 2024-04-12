@@ -5,9 +5,14 @@
 <img src="./assets/minicpmv-omnilmm.png" width="400em" ></img> 
 
 **性能领先且部署高效的多模态大模型**
+
+  中文 |
+  [English](./README.md)
+
 <p align="center">
   MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2.0/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
-  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
+  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a> |
+  <a href="https://openbmb.vercel.app/minicpm-v-2">MiniCPM-V 2.0 技术博客</a>
 </p>
 
 </div>
@@ -20,7 +25,6 @@
 - **OmniLMM-12B**：相比同规模其他模型在多个基准测试中具有领先性能，实现了相比 GPT-4V 更低的幻觉率。
 
 
-[English Document](./README.md)
 
 ## 目录 <!-- omit in toc -->
 <!-- TOC -->

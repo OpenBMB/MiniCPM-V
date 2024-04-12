@@ -3,6 +3,10 @@
 <img src="./assets/minicpmv-omnilmm.png" width="400em" ></img> 
 
 **Large multi-modal models for strong performance and efficient deployment**
+
+  [中文](./README_zh.md) |
+  English
+
 <p align="center">
   MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2.0/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
   OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a>
