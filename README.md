@@ -495,15 +495,15 @@
 1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
-git clone https://github.com/OpenBMB/OmniLMM.git
-cd OmniLMM
+git clone https://github.com/OpenBMB/MiniCPM-V.git
+cd MiniCPM-V
 ```
 
 1. 创建 conda 环境
 
 ```Shell
-conda create -n OmniLMM python=3.10 -y
-conda activate OmniLMM
+conda create -n MiniCPMV python=3.10 -y
+conda activate MiniCPMV
 ```
 
 3. 安装依赖
