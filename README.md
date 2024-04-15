@@ -535,7 +535,7 @@ pip install -r requirements.txt
 ```python
 from chat import OmniLMMChat, img2base64
 
-chat_model = OmniLMMChat('openbmb/OmniLMM-12B') # or 'openbmb/MiniCPM-V-2'
+chat_model = OmniLMMChat('openbmb/MiniCPM-V-2') # or 'openbmb/OmniLMM-12B'
 
 im_64 = img2base64('./assets/hk_OCR.jpg')
 
@@ -576,10 +576,10 @@ import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2.0', trust_remote_code=True, torch_dtype=torch.bfloat16)
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True, torch_dtype=torch.bfloat16)
 model = model.to(device='mps', dtype=torch.float16)
 
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2.0', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True)
 model.eval()
 
 image = Image.open('./assets/hk_OCR.jpg').convert('RGB')
