@@ -10,7 +10,7 @@
   [English](./README_en.md)</strong>
 
 <p align="center">
-  MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2.0/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
+  MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
   OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a> |
   <a href="https://openbmb.vercel.app/minicpm-v-2">MiniCPM-V 2.0 技术博客</a>
 </p>
@@ -518,7 +518,7 @@ pip install -r requirements.txt
 
 | 模型                | 简介       | 下载链接 |
 |:----------------------|:-------------------|:---------------:|
-| MiniCPM-V 2.0  | 最新版本，提供高效而领先的端侧双语多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2.0) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2.0/files) |
+| MiniCPM-V 2.0  | 最新版本，提供高效而领先的端侧双语多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2/files) |
 | MiniCPM-V  | 第一版 MiniCPM-V    |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
 | OmniLMM-12B | 性能最强的版本                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
 
