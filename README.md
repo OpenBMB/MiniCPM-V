@@ -644,7 +644,7 @@ OmniLMM 模型权重对学术研究完全开放。
 
 👏 欢迎了解我们更多的多模态项目：
 
-[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [Muffin](https://github.com/thunlp/Muffin/tree/main)
+[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD)
 
 ## 引用
 
