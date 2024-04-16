@@ -640,3 +640,33 @@ OmniLMM 模型权重对学术研究完全开放。
 - <img src="assets/modelbest.png" width="28px"> [面壁智能](https://modelbest.cn/)
 - <img src="assets/zhihu.webp" width="28px"> [知乎](https://www.zhihu.com/ )
 
+## 我们的其他多模态项目
+
+👏 欢迎了解我们更多的多模态项目：
+
+[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [Muffin](https://github.com/thunlp/Muffin/tree/main)
+
+## 引用
+
+如果您觉得我们模型/代码/论文有帮助，请给我们 ⭐ 和 引用 📝，感谢！
+
+```bib
+@article{yu2023rlhf,
+  title={Rlhf-v: Towards trustworthy mllms via behavior alignment from fine-grained correctional human feedback},
+  author={Yu, Tianyu and Yao, Yuan and Zhang, Haoye and He, Taiwen and Han, Yifeng and Cui, Ganqu and Hu, Jinyi and Liu, Zhiyuan and Zheng, Hai-Tao and Sun, Maosong and others},
+  journal={arXiv preprint arXiv:2312.00849},
+  year={2023}
+}
+@article{viscpm,
+    title={Large Multilingual Models Pivot Zero-Shot Multimodal Learning across Languages}, 
+    author={Jinyi Hu and Yuan Yao and Chongyi Wang and Shan Wang and Yinxu Pan and Qianyu Chen and Tianyu Yu and Hanghao Wu and Yue Zhao and Haoye Zhang and Xu Han and Yankai Lin and Jiao Xue and Dahai Li and Zhiyuan Liu and Maosong Sun},
+    journal={arXiv preprint arXiv:2308.12038},
+    year={2023}
+}
+@article{xu2024llava-uhd,
+  title={{LLaVA-UHD}: an LMM Perceiving Any Aspect Ratio and High-Resolution Images},
+  author={Xu, Ruyi and Yao, Yuan and Guo, Zonghao and Cui, Junbo and Ni, Zanlin and Ge, Chunjiang and Chua, Tat-Seng and Liu, Zhiyuan and Huang, Gao},
+  journal={arXiv preprint arXiv:2403.11703},
+  year={2024}
+}
+```
