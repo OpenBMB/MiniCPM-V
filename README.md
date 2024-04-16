@@ -640,7 +640,7 @@ OmniLMM 模型权重对学术研究完全开放。
 - <img src="assets/modelbest.png" width="28px"> [面壁智能](https://modelbest.cn/)
 - <img src="assets/zhihu.webp" width="28px"> [知乎](https://www.zhihu.com/ )
 
-## 我们的其他多模态项目
+## 我们的其他多模态项目 <!-- omit in toc -->
 
 👏 欢迎了解我们更多的多模态项目：
 
