@@ -44,6 +44,7 @@
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
 - [TODO](#todo)
+- [Citation](#citation)
 
 
 ## MiniCPM-V 2.8B
@@ -630,7 +631,7 @@ This project is developed by the following institutions:
 
 [VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD)
 
-## 引用
+## Citation
 
 If you find your model/code/paper helpful, please consider cite the following papers:
 
