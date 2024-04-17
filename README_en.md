@@ -43,6 +43,7 @@
   - [Multi-turn Conversation](#multi-turn-conversation)
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
+  - [WebUI Demo](#webui-demo)
 - [TODO](#todo)
 - [Citation](#citation)
 
@@ -594,10 +595,31 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ### Deployment on Mobile Phone
 Currently MiniCPM-V 2.0 can be deployed on mobile phones with Android and Harmony operating systems. 🚀 Try it out [here](https://github.com/OpenBMB/mlc-MiniCPM).
 
+### WebUI Demo
+
+<details>
+<summary>Click to see how to deploy WebUI demo on different devices </summary>
+  
+```shell
+pip install -r requirements.txt
+```
+  
+```shell
+# For Nvidia GPUs support BF16 (like A100, H100, RTX3090), run:
+python web_demo.py --device cuda --dtype bf16
+
+# For Nvidia GPUs do NOT support BF16 (like V100, T4, RTX2080), run:
+python web_demo.py --device cuda --dtype fp16
+
+# For Mac with MPS (Apple silicon or AMD GPUs), run:
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
+```
+</details>
+
+
 ## TODO
 
 - [ ] Fine-tuning support
-- [ ] Local Web-UI deployment
 - [ ] Code release for real-time interactive assistant
 
 ## Model License <!-- omit in toc -->
