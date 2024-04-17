@@ -36,7 +36,7 @@
 
 - [MiniCPM-V 2.8B](#minicpm-v-28b)
 - [OmniLMM-12B](#omnilmm-12b)
-- [Demo](#demo)
+- [Online Demo](#online-demo)
 - [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
@@ -479,7 +479,7 @@ We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal
 </div>
 
 
-## Demo
+## Online Demo
 Click here to try out the Demo of [MiniCPM-V 2.0](http://120.92.209.146:80/) and [OmniLMM-12B](http://120.92.209.146:8081).
 
 ## Install
