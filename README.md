@@ -39,14 +39,14 @@
 
 - [MiniCPM-V 2.8B](#minicpm-v-28b)
 - [OmniLMM-12B](#omnilmm-12b)
-- [Demo](#demo)
+- [Online Demo](#online-demo)
 - [安装](#安装)
 - [推理](#推理)
   - [模型库](#模型库)
   - [多轮对话](#多轮对话)
   - [Mac 推理](#mac-推理)
   - [手机端部署](#手机端部署)
-  - [本地Web demo部署](#本地demo部署)
+  - [本地WebUI Demo部署](#本地webui-demo部署)
 - [未来计划](#未来计划)
 - [引用](#引用)
 
@@ -488,7 +488,7 @@
   <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/8fec13bf-bb47-4bf8-8f8c-d0b716a964ec" type="video/mp4" width=80%/>
 </div>
 
-## Demo
+## Online Demo
 
 欢迎通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [MiniCPM-V 2.0](http://120.92.209.146:80).
 
@@ -607,9 +607,9 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ### 手机端部署
 MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
 
-### 本地demo部署
+### 本地WebUI Demo部署
 <details>
-<summary>点击查看本地Web demo在Nvidia GPU, Mac等不同设备部署方法 </summary>
+<summary>点击查看本地WebUI demo在Nvidia GPU, Mac等不同设备部署方法 </summary>
   
 ```shell
 pip install -r requirements.txt
