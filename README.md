@@ -46,6 +46,7 @@
   - [多轮对话](#多轮对话)
   - [Mac 推理](#mac-推理)
   - [手机端部署](#手机端部署)
+  - [本地Web demo部署](#本地demo部署)
 - [未来计划](#未来计划)
 - [引用](#引用)
 
@@ -606,11 +607,29 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ### 手机端部署
 MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
 
+### 本地demo部署
+<details>
+<summary>点击查看本地Web demo在Nvidia GPU, Mac等不同设备部署方法 </summary>
+  
+```shell
+pip install -r requirements.txt
+```
+  
+```shell
+# For Nvidia GPUs support BF16 (like A100, H100, RTX3090), run:
+python web_demo.py --device cuda --dtype bf16
+
+# For Nvidia GPUs do NOT support BF16 (like V100, T4, RTX2080), run:
+python web_demo.py --device cuda --dtype fp16
+
+# For Mac with MPS (Apple silicon or AMD GPUs), run:
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
+```
+</details>
 
 ## 未来计划
 
 - [ ] 支持模型微调
-- [ ] 本地用户图形界面部署
 - [ ] 实时多模态交互代码开源
 
 
