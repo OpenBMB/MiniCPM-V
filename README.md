@@ -635,7 +635,8 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
 
 ## 未来计划
 
-- [ ] 支持模型微调
+- [x] 支持 MiniCPM-V 系列模型微调
+- [ ] 支持 OmniLMM 系列模型微调
 - [ ] 实时多模态交互代码开源
 
 

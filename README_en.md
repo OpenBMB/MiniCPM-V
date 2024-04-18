@@ -630,7 +630,8 @@ Best Practices：[MiniCPM-V](https://github.com/modelscope/swift/blob/main/docs/
 
 ## TODO
 
-- [ ] Fine-tuning support
+- [x] MiniCPM-V fine-tuning support
+- [ ] OmniLMM fine-tuning support
 - [ ] Code release for real-time interactive assistant
 
 ## Model License <!-- omit in toc -->
