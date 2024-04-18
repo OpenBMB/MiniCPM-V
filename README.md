@@ -38,13 +38,14 @@
 
 - [MiniCPM-V 2.8B](#minicpm-v-28b)
 - [OmniLMM-12B](#omnilmm-12b)
-- [Demo](#demo)
+- [Online Demo](#online-demo)
 - [安装](#安装)
 - [推理](#推理)
   - [模型库](#模型库)
   - [多轮对话](#多轮对话)
   - [Mac 推理](#mac-推理)
   - [手机端部署](#手机端部署)
+  - [本地WebUI Demo部署](#本地webui-demo部署)
 - [微调](#微调)
 - [未来计划](#未来计划)
 - [引用](#引用)
@@ -485,7 +486,7 @@
   <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/8fec13bf-bb47-4bf8-8f8c-d0b716a964ec" type="video/mp4" width=80%/>
 </div>
 
-## Demo
+## Online Demo
 
 欢迎通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [MiniCPM-V 2.0](http://120.92.209.146:80).
 
@@ -604,6 +605,25 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ### 手机端部署
 MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
 
+### 本地WebUI Demo部署
+<details>
+<summary>点击查看本地WebUI demo在Nvidia GPU, Mac等不同设备部署方法 </summary>
+  
+```shell
+pip install -r requirements.txt
+```
+  
+```shell
+# For Nvidia GPUs support BF16 (like A100, H100, RTX3090), run:
+python web_demo.py --device cuda --dtype bf16
+
+# For Nvidia GPUs do NOT support BF16 (like V100, T4, RTX2080), run:
+python web_demo.py --device cuda --dtype fp16
+
+# For Mac with MPS (Apple silicon or AMD GPUs), run:
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
+```
+</details>
 
 ## 微调
 
@@ -616,7 +636,6 @@ MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 
 ## 未来计划
 
 - [ ] 支持模型微调
-- [ ] 本地用户图形界面部署
 - [ ] 实时多模态交互代码开源
 
 

@@ -36,13 +36,14 @@
 
 - [MiniCPM-V 2.8B](#minicpm-v-28b)
 - [OmniLMM-12B](#omnilmm-12b)
-- [Demo](#demo)
+- [Online Demo](#online-demo)
 - [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
   - [Multi-turn Conversation](#multi-turn-conversation)
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
+  - [WebUI Demo](#webui-demo)
 - [Finetune](#finetune)
 - [TODO](#todo)
 - [Citation](#citation)
@@ -479,7 +480,7 @@ We combine the OmniLMM-12B and GPT-3.5 (text-only) into a **real-time multimodal
 </div>
 
 
-## Demo
+## Online Demo
 Click here to try out the Demo of [MiniCPM-V 2.0](http://120.92.209.146:80/) and [OmniLMM-12B](http://120.92.209.146:8081).
 
 ## Install
@@ -595,6 +596,28 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ### Deployment on Mobile Phone
 Currently MiniCPM-V 2.0 can be deployed on mobile phones with Android and Harmony operating systems. 🚀 Try it out [here](https://github.com/OpenBMB/mlc-MiniCPM).
 
+### WebUI Demo
+
+<details>
+<summary>Click to see how to deploy WebUI demo on different devices </summary>
+  
+```shell
+pip install -r requirements.txt
+```
+  
+```shell
+# For Nvidia GPUs support BF16 (like A100, H100, RTX3090), run:
+python web_demo.py --device cuda --dtype bf16
+
+# For Nvidia GPUs do NOT support BF16 (like V100, T4, RTX2080), run:
+python web_demo.py --device cuda --dtype fp16
+
+# For Mac with MPS (Apple silicon or AMD GPUs), run:
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
+```
+</details>
+
+
 ## Finetune
 
 ### MiniCPM-V <!-- omit in toc -->
@@ -604,10 +627,10 @@ We now support finetune MiniCPM-V series with the SWIFT framework. SWIFT support
 Best Practices：[MiniCPM-V](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V-2](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
 
 
+
 ## TODO
 
 - [ ] Fine-tuning support
-- [ ] Local Web-UI deployment
 - [ ] Code release for real-time interactive assistant
 
 ## Model License <!-- omit in toc -->
