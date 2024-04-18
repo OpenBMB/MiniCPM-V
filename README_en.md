@@ -43,6 +43,7 @@
   - [Multi-turn Conversation](#multi-turn-conversation)
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
+- [Finetune](#finetune)
 - [TODO](#todo)
 - [Citation](#citation)
 
@@ -593,6 +594,15 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 ### Deployment on Mobile Phone
 Currently MiniCPM-V 2.0 can be deployed on mobile phones with Android and Harmony operating systems. 🚀 Try it out [here](https://github.com/OpenBMB/mlc-MiniCPM).
+
+## Finetune
+
+### MiniCPM-V <!-- omit in toc -->
+
+We now support finetune MiniCPM-V series with the SWIFT framework. SWIFT supports training, inference, evaluation and deployment of nearly 200 LLMs and MLLMs (multimodal large models). It supports the lightweight training solutions provided by PEFT and a complete Adapters Library including techniques such as NEFTune, LoRA+ and LLaMA-PRO.
+
+Best Practices：[MiniCPM-V](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V-2](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
+
 
 ## TODO
 

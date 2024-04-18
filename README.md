@@ -35,7 +35,6 @@
 
 ## 目录 <!-- omit in toc -->
 
-<!-- TOC -->
 
 - [MiniCPM-V 2.8B](#minicpm-v-28b)
 - [OmniLMM-12B](#omnilmm-12b)
@@ -46,11 +45,10 @@
   - [多轮对话](#多轮对话)
   - [Mac 推理](#mac-推理)
   - [手机端部署](#手机端部署)
+- [微调](#微调)
 - [未来计划](#未来计划)
 - [引用](#引用)
 
-<!-- /TOC -->
-<!-- /TOC -->
 
 ## MiniCPM-V 2.8B
 
@@ -607,6 +605,14 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
 
 
+## 微调
+
+### MiniCPM-V <!-- omit in toc -->
+
+我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种 LLM 和 MLLM（多模态大模型）的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
+
+参考文档：[MiniCPM-V](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V-2](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
+
 ## 未来计划
 
 - [ ] 支持模型微调
@@ -641,7 +647,7 @@ OmniLMM 模型权重对学术研究完全开放。
 - <img src="assets/modelbest.png" width="28px"> [面壁智能](https://modelbest.cn/)
 - <img src="assets/zhihu.webp" width="28px"> [知乎](https://www.zhihu.com/ )
 
-## 我们的其他多模态项目 <!-- omit in toc -->
+## 其他多模态项目 <!-- omit in toc -->
 
 👏 欢迎了解我们更多的多模态项目：
 
