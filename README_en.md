@@ -8,7 +8,7 @@
   English</strong>
 
 <p align="center">
-  MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">🤗</a> <a href="http://120.92.209.146:80/">🤖</a> |
+  MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2">🤖</a> |
   OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a> | <a href="https://openbmb.vercel.app/minicpm-v-2-en"> Technical Blog </a>
 </p>
 
