@@ -640,7 +640,7 @@ pip install -e .
 ```shell
 pip install timm=0.9.10
 ```
-4. Run our demo python file:
+4. Run our demo:
 ```shell
 python examples/minicpmv_example.py 
 ```
