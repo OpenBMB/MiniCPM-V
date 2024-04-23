@@ -27,6 +27,7 @@
 
 ## 更新日志 <!-- omit in toc -->
 
+* [2024.04.23] 我们增加了对 [vllm](#vllm) 的支持，欢迎体验！
 * [2024.04.18] 我们在 HuggingFace Space 新增了 MiniCPM-V 2.0 的 [demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)，欢迎体验！
 * [2024.04.17] MiniCPM-V 2.0 现在支持用户部署本地 [WebUI Demo](#本地webui-demo部署) 了，欢迎试用!
 * [2024.04.15] MiniCPM-V 2.0 现在可以通过 SWIFT 框架 [微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) 了，支持流式输出!
@@ -627,6 +628,33 @@ python web_demo.py --device cuda --dtype fp16
 PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
 ```
 </details>
+
+### vLLM 部署 <a id='vllm'></a>
+<details>
+<summary>点击查看 vLLM 部署运行的方法</summary>
+由于我们对 vLLM 提交的 PR 还在 review 中，因此目前我们 fork 了一个 vLLM 仓库以供测试使用。
+
+1. 首先克隆我们 fork 的 vLLM 库:
+```shell
+git clone https://github.com/OpenBMB/vllm.git
+```
+2. 安装 vLLM 库:
+```shell
+cd vllm
+pip install -e .
+```
+3. 安装 timm 库: 
+```shell
+pip install timm=0.9.10
+```
+4. 测试运行示例程序:
+```shell
+python examples/minicpmv_example.py 
+```
+
+
+</details>
+
 
 ## 微调
 
