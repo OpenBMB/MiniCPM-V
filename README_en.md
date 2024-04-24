@@ -25,6 +25,7 @@
 
 ## News <!-- omit in toc -->
 
+* [2024.04.23] MiniCPM-V-2.0 supports vLLM now! Click [here](#vllm) to view more details.
 * [2024.04.18] We create a HuggingFace Space to host the demo of MiniCPM-V 2.0 at [here](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)!
 * [2024.04.17] MiniCPM-V-2.0 supports deploying [WebUI Demo](#webui-demo) now!
 * [2024.04.15] MiniCPM-V-2.0 now also supports [fine-tuning](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) with the SWIFT framework!
@@ -620,6 +621,30 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
 ```
 </details>
 
+### Inference with vLLM<a id="vllm"></a>
+
+<details>
+<summary>Click to see how to inference with vLLM </summary>
+Because our pull request to vLLM is still waiting for reviewing, we fork this repository to build and test our vLLM demo. Here are the steps:
+
+1. Clone our version of vLLM:
+```shell
+git clone https://github.com/OpenBMB/vllm.git
+```
+2. Install vLLM:
+```shell
+cd vllm
+pip install -e .
+```
+3. Install timm: 
+```shell
+pip install timm=0.9.10
+```
+4. Run our demo:
+```shell
+python examples/minicpmv_example.py 
+```
+</details>
 
 ## Finetune
 
