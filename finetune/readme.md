@@ -64,6 +64,3 @@ sh finetune_ds.sh
 ```
 #### Customizing Hyperparameters
 To tailor the training process according to your specific requirements, you can adjust various hyperparameters. For comprehensive documentation on available hyperparameters and their functionalities, you can refer to the [official Transformers documentation](https://huggingface.co/docs/transformers/main_classes/trainer#transformers.TrainingArguments). Experimentation and fine-tuning of these parameters are essential for achieving optimal model performance tailored to your specific task and dataset.
-### LoRA finetuning
-
-**This part is still unfinished, and we will complete it as soon as possible.**
