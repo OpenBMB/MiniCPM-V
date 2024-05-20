@@ -21,10 +21,10 @@ torch==2.1.2
 torchvision==0.16.2
 tqdm==4.66.1
 protobuf==4.25.0
-transformers==4.36.0
+transformers==4.40.0
 typing_extensions==4.8.0
 uvicorn==0.24.0.post1
 #xformers==0.0.22.post7
 #flash_attn==2.3.4
 sentencepiece==0.1.99
-accelerate==0.24.1
+accelerate==0.30.1
