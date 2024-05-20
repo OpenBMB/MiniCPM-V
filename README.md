@@ -349,7 +349,7 @@
 <div align="center">
     <img src="assets/llavabench_compare.png" width="66%" />
     <br>
-    多语言LLaVABench评测结果
+    多语言LLaVA Bench评测结果
 </div>
 
 
