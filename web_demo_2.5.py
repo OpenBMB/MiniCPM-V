@@ -25,10 +25,15 @@ assert device in ['cuda', 'mps']
 
 # Load model
 model_path = 'openbmb/MiniCPM-Llama3-V-2_5'
-model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.float16)
+if 'int4' in model_path:
+    if device == 'mps':
+        print('Error: running int4 model with bitsandbytes on Mac is not supported right now.')
+        exit()
+    model = AutoModel.from_pretrained(model_path, trust_remote_code=True)
+else:
+    model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.float16)
+    model = model.to(device=device)
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-
-model = model.to(device=device)
 model.eval()
 
 
