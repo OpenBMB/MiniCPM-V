@@ -482,21 +482,20 @@ pip install -r requirements.txt
 请参考以下代码进行推理。
 
 <div align="center">
-<img src="assets/hk_OCR.jpg" width="500px">
+<img src="assets/airplane.jpeg" width="500px">
 </div>
 
 
 ```python
 from chat import OmniLMMChat, img2base64
-import torch
-torch.manual_seed(20)
+torch.manual_seed(0)
 
 chat_model = OmniLMMChat('openbmb/MiniCPM-Llama3-V-2_5')
 
-im_64 = img2base64('./assets/hk_OCR.jpg')
+im_64 = img2base64('./assets/airplane.jpeg')
 
 # First round chat 
-msgs = [{"role": "user", "content": "Where should I go to buy a camera?"}]
+msgs = [{"role": "user", "content": "Tell me the model of this aircraft."}]
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.chat(inputs)
@@ -505,7 +504,7 @@ print(answer)
 # Second round chat 
 # pass history context of multi-turn conversation
 msgs.append({"role": "assistant", "content": answer})
-msgs.append({"role": "user", "content": "请用中文回答"})
+msgs.append({"role": "user", "content": "Introduce something about Airbus A380."})
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.chat(inputs)
@@ -515,10 +514,11 @@ print(answer)
 可以得到以下输出:
 
 ```
-"You should go to the Nikon store, as indicated by the neon sign on the right side of the image."
+"The aircraft in the image is an Airbus A380, which can be identified by its large size, double-deck structure, and the distinctive shape of its wings and engines. The A380 is a wide-body aircraft known for being the world's largest passenger airliner, designed for long-haul flights. It has four engines, which are characteristic of large commercial aircraft. The registration number on the aircraft can also provide specific information about the model if looked up in an aviation database."
 
-"你应该去到尼康店，正如指示在图片的右侧。"
+"The Airbus A380 is a double-deck, wide-body, four-engine jet airliner made by Airbus. It is the world's largest passenger airliner and is known for its long-haul capabilities. The aircraft was developed to improve efficiency and comfort for passengers traveling over long distances. It has two full-length passenger decks, which can accommodate more passengers than a typical single-aisle airplane. The A380 has been operated by airlines such as Lufthansa, Singapore Airlines, and Emirates, among others. It is widely recognized for its unique design and significant impact on the aviation industry."
 ```
+
 
 
 
