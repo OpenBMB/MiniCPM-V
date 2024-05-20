@@ -1,4 +1,8 @@
 ## MiniCPM-V 1.0
+
+
+> Archive at：2024-05-19
+
 MiniCPM-V 1.0 is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/), connected by a perceiver resampler. Notable features of MiniCPM-V 1.0 include:
 
 - ⚡️ **High Efficiency.** 
