@@ -186,7 +186,7 @@
             <td>36.8</td>
             <td>77.8</td>
             <td>54.2</td>
-            <td></td>
+            <td>-</td>
         </tr>        
         <tr>
             <td nowrap="nowrap" align="left">Yi-VL-34B</td>
@@ -237,7 +237,7 @@
             <td>-</td>
         </tr>
         <tr>
-          <td nowrap="nowrap" align="left">IDEFICS2-8B</td>
+          <td nowrap="nowrap" align="left">Idefics2</td>
           <td>8.0B</td>
           <td>-</td>
           <td>73.0</td>
