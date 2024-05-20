@@ -86,7 +86,7 @@
     <img src="assets/MiniCPM-Llama3-V-2.5-peformance.png" width="66%" />
 </div>
 <details>
-<summary>TextVQA, DocVQA, OCRBench, OpenCompass, MME, MMBench, MMMU, MathVista, LLaVA Bench, RealWorld QA, Object HalBench上的详细评测结果。 </summary>
+<summary>TextVQA, DocVQA, OCRBench, OpenCompass MultiModal Avg Score, MME, MMBench, MMMU, MathVista, LLaVA Bench, RealWorld QA, Object HalBench上的详细评测结果。 </summary>
 <div align="center">
 
 <table style="margin: 0px auto;">
@@ -202,7 +202,7 @@
             <td>43.4*</td>
             <td>16.9*</td>
             <td>52.2</td>
-            <td>2050.2</td>
+            <td><strong>2050.2</strong></td>
             <td>72.4</td>
             <td>70.7</td>
             <td>45.1</td>

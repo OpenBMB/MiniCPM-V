@@ -195,7 +195,7 @@
             <td>43.4*</td>
             <td>16.9*</td>
             <td>52.2</td>
-            <td>2050.2</td>
+            <td><strong>2050.2</strong></td>
             <td>72.4</td>
             <td>70.7</td>
             <td>45.1</td>
