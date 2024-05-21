@@ -10,7 +10,7 @@
   [English](./README_en.md)</strong>
 
 <p align="center">
-  MiniCPM-Llama3-V  2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="http://120.92.209.146:8889/">🤖</a> |
+  MiniCPM-Llama3-V  2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5">🤖</a> |
   MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2">🤖</a> |
   <a href="https://openbmb.vercel.app/minicpm-v-2">MiniCPM-V 2.0 技术博客</a>
 </p>
@@ -440,7 +440,7 @@
 
 ## Online Demo
 
-欢迎通过以下链接使用我们的网页端推理服务： [MiniCPM-Llama3-V 2.5](http://120.92.209.146:8889/) ｜ [MiniCPM-V 2.0](http://120.92.209.146:80).
+欢迎通过以下链接使用我们的网页端推理服务： [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2).
 
 ## 安装
 
