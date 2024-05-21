@@ -30,6 +30,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py \
     --bf16_full_eval true \
     --do_train \
     --do_eval \
+    --model_max_length 2048 \
     --max_steps 80000 \
     --eval_steps 200 \
     --output_dir output/output_minicpmv2 \
