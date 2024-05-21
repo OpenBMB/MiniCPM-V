@@ -28,3 +28,6 @@ uvicorn==0.24.0.post1
 #flash_attn==2.3.4
 sentencepiece==0.1.99
 accelerate==0.30.1
+socksio==1.0.0
+gradio==4.31.4
+gradio_client==0.16.4
