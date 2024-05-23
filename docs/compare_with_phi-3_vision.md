@@ -18,9 +18,9 @@ With int4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference with only
 
 ## Model Size and Peformance （模型参数和性能）
 
-In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compared with Phi-3-vision-128K-Instruct.
+In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compared with Phi-3-vision-128K-Instruct. Moreover, MiniCPM-Llama3-V 2.5 also exhibits **lower latency and better throughtput even without quantization**.
 
-在大多数评测集上， MiniCPM-Llama3-V 2.5 相比于 Phi-3-vision-128K-Instruct 都展现出了**更优的性能表现**.
+在大多数评测集上， MiniCPM-Llama3-V 2.5 相比于 Phi-3-vision-128K-Instruct 都展现出了**更优的性能表现**。 即使未经量化，MiniCPM-Llama3-V 2.5 的**推理延迟和吞吐率也都更具优势**。
 
 | | Phi-3-vision-128K-Instruct | MiniCPM-Llama3-V 2.5|
 |:-|:----------:|:-------------------:|
