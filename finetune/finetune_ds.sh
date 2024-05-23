@@ -6,11 +6,12 @@ NODE_RANK=0
 MASTER_ADDR=localhost
 MASTER_PORT=6001
 
-MODEL="path/to/minicpmv2" 
+MODEL="openbmb/MiniCPM-Llama3-V-2_5" # or openbmb/MiniCPM-V-2
 # ATTENTION: specify the path to your training data, which should be a json file consisting of a list of conversations.
 # See the section for finetuning in README for more information.
 DATA="path/to/trainging_data"
 EVAL_DATA="path/to/test_data"
+LLM_TYPE="llama3" # if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm
 
 DISTRIBUTED_ARGS="
     --nproc_per_node $GPUS_PER_NODE \
@@ -21,6 +22,7 @@ DISTRIBUTED_ARGS="
 "
 torchrun $DISTRIBUTED_ARGS finetune.py \
     --model_name_or_path $MODEL \
+    --llm_type $LLM_TYPE \
     --data_path $DATA \
     --eval_data_path $EVAL_DATA \
     --remove_unused_columns false \
