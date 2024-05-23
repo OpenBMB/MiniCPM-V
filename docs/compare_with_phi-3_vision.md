@@ -1,8 +1,8 @@
 ## Phi-3-vision-128K-Instruct vs MiniCPM-Llama3-V 2.5
 
-Comparison results of Phi-3-vision-128K-Instruct and MiniCPM-Llama3-V 2.5, regarding the model size, hardware requirements, and performances on multiple popular benchmarks.
+Comparison results of Phi-3-vision-128K-Instruct and MiniCPM-Llama3-V 2.5, regarding the model size, hardware requirements, and performances.
 
-我们提供了从模型参数、硬件需求、全面性能指标等方面对比 Phi-3-vision-128K-Instruct 和 MiniCPM-Llama3-V 2.5 的结果。
+我们提供了从模型参数、硬件需求、性能指标等方面对比 Phi-3-vision-128K-Instruct 和 MiniCPM-Llama3-V 2.5 的结果。
  
  ## Hardeware Requirements （硬件需求）
 
@@ -18,7 +18,9 @@ With in4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference with only 
 
 ## Model Size and Peformance （模型参数和性能）
 
+In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compared with Phi-3-vision-128K-Instruct.
 
+在大多数评测集上， MiniCPM-Llama3-V 2.5 相比于 Phi-3-vision-128K-Instruct 都展现出了**更优的性能表现**.
 
 | | Phi-3-vision-128K-Instruct | MiniCPM-Llama3-V 2.5|
 |:-|:----------:|:-------------------:|
@@ -29,3 +31,19 @@ With in4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference with only 
 | TextVQA | 72.2 | **76.6** |
 | ScienceQA| **90.8** | 89.0 | 
 | POPE | 83.4 | **87.2** |
+
+
+## Multilingual Capabilities
+
+
+MiniCPM-Llama3-V 2.5 exhibits **stronger multilingual** capabilities compared with Phi-3-vision-128K-Instruct on LLaVA Bench.
+
+MiniCPM-Llama3-V 2.5 在对话和推理评测榜单 LLaVA Bench 上展现出了比 Phi-3-vision-128K-Instruct **更强的多语言的性能**。
+
+<div align="center">
+    <img src="../assets/llavabench_compare_3.png" width="85%" />
+    <br>
+    Evaluation results of LLaVABench in multiple languages
+    <br>
+    多语言LLaVA Bench评测结果
+</div>
