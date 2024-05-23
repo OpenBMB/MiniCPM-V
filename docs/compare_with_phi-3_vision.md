@@ -19,7 +19,7 @@ MiniCPM-Llama3-V 2.5 exhibits **stronger multilingual** capabilities compared wi
 MiniCPM-Llama3-V 2.5 在对话和推理评测榜单 LLaVA Bench 上展现出了比 Phi-3-vision-128K-Instruct **更强的多语言的性能**。
 
 <div align="center">
-    <img src="../assets/llavabench_compare_phi3.png" width="85%" />
+    <img src="../assets/llavabench_compare_phi3.png" width="100%" />
     <br>
     Evaluation results of LLaVABench in multiple languages
     <br>

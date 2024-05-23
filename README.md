@@ -361,7 +361,7 @@
 </details>
 
 <div align="center">
-    <img src="assets/llavabench_compare_3.png" width="85%" />
+    <img src="assets/llavabench_compare_3.png" width="100%" />
     <br>
     Evaluation results of LLaVABench in multiple languages
 </div>
