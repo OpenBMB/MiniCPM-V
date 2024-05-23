@@ -55,6 +55,7 @@
   - [Inference with vLLM](#inference-with-vllm)
 - [Fine-tuning](#fine-tuning)
 - [TODO](#todo)
+- [🌟 Star History](#-star-history)
 - [Citation](#citation)
 
 ## MiniCPM-Llama3-V 2.5
@@ -664,6 +665,27 @@ This project is developed by the following institutions:
 👏 Welcome to explore other multimodal projects of our team:
 
 [VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [RLAIF-V](https://github.com/RLHF-V/RLAIF-V)
+
+## 🌟 Star History
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
+  />
+</picture>
 
 ## Citation
 

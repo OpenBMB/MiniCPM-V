@@ -58,6 +58,7 @@
   - [vLLM 部署 ](#vllm-部署-)
 - [微调](#微调)
 - [未来计划](#未来计划)
+- [🌟 Star History](#-star-history)
 - [引用](#引用)
 
 
@@ -675,6 +676,27 @@ python examples/minicpmv_example.py
 👏 欢迎了解我们更多的多模态项目：
 
 [VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [RLAIF-V](https://github.com/RLHF-V/RLAIF-V)
+
+## 🌟 Star History
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
+  />
+</picture>
 
 ## 引用
 
