@@ -507,6 +507,9 @@ pip install -r requirements.txt
 
 ```python
 from chat import OmniLMMChat, img2base64
+import torch
+import json
+
 torch.manual_seed(0)
 
 chat_model = OmniLMMChat('openbmb/MiniCPM-Llama3-V-2_5')
