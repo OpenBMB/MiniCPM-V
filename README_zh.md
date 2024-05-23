@@ -28,6 +28,7 @@
 
 ## 更新日志 <!-- omit in toc -->
 
+* [2024.05.23] 我们添加了Phi-3-vision-128k-instruct与MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估和多语言能力 🌟📊🌍。点击[这里](#性能评估)查看详细信息。
 <!-- * [2024.05.22] 我们进一步提升了端侧推理速度！实现了 6-8 tokens/s 的流畅体验，欢迎试用！ -->
 * [2024.05.20] 我们开源了 MiniCPM-Llama3-V 2.5，增强了 OCR 能力，支持 30 多种语言，并首次在端侧实现了 GPT-4V 级的多模态能力！我们提供了[高效推理](#手机端部署)和[简易微调](./finetune/readme.md)的支持，欢迎试用！
 * [2024.04.23] 我们增加了对 [vLLM](#vllm) 的支持，欢迎体验！
@@ -292,6 +293,22 @@
             <td>60.0</td>
             <td>-</td>
         </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">Phi-3-vision-128k-instruct</td>
+            <td>4.2B</td>
+            <td>639*</td>
+            <td>70.9</td>
+            <td>-</td>
+            <td>-</td>
+            <td>1537.5*</td>
+            <td>-</td>
+            <td>-</td>
+            <td>40.4</td>
+            <td>44.5</td>
+            <td>64.2*</td>
+            <td>58.8*</td>
+            <td>-</td>
+        </tr>
         <tr style="background-color: #e6f2ff;">
             <td nowrap="nowrap" align="left">MiniCPM-V 1.0</td>
             <td>2.8B</td>
@@ -348,7 +365,7 @@
 </details>
 
 <div align="center">
-    <img src="assets/llavabench_compare.png" width="66%" />
+    <img src="assets/llavabench_compare_3.png" width="80%" />
     <br>
     多语言LLaVA Bench评测结果
 </div>
