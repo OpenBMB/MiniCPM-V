@@ -42,6 +42,12 @@ In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compare
 1: L(ow): 448pxl, M(edium): 896pxl, H(igh): 1344pxl input images.
 <br>
 1. Evaluation environment: A800 GPU, flash-attn=2.4.3, batch-size=1.
+<br>
+<span style="color:grey">
+MiniCPM-Llama3-V 2.5 shows better first token latency and throughput performance even though the number of parameters is twice as large as that of Phi-3-vision-128k-instruct due to its efficient image encoding method and adaptive resolution encoding strategy.  For example, for an input images with a 448x448 resolution, MiniCPM-Llama3-V 2.5 encodes it into 96 tokens, while Phi-3-vision-128k-instruct encodes it into 2500+ tokens. Longer image token sequence significantly affects the first token latency and throughput. MiniCPM-V series models insist on obtaining stronger performance with more efficient encoding, thus achieves efficient end-device deployment and providing better experience for end users.
+<br>
+得益于 MiniCPM-Llama3-V 2.5 高效的图像编码方式和自适应分辨率编码策略，即使参数量比 Phi-3-vision-128k-instruct 大一倍，依然展现出了更出色的首 token 延迟和吞吐量表现。例如两个模型对输入分辨率为448x448 的图像，MiniCPM-Llama3-V 2.5 的图像编码长度为 96， 而Phi-3-vision-128k-instruct 的图像编码长度为 2500+。更长的图像编码长度会显著影响首token延迟和吞吐量，MiniCPM-V系列坚持用更高效的编码方式撬动更强的性能，进而实现高效的终端设备部署，为端侧用户提供更良好的体验。
+</span>
 </small>
 
 
