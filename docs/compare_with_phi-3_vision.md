@@ -6,9 +6,9 @@ Comparison results of Phi-3-vision-128K-Instruct and MiniCPM-Llama3-V 2.5, regar
  
  ## Hardeware Requirements （硬件需求）
 
-With in4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference of 6-8 tokens/s on edge devices with only 8GB of GPU memory.
+With in4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference with only 8GB of GPU memory.
 
-通过 in4 量化，MiniCPM-Llama3-V 2.5 仅需 8GB 显存即可提供端侧 6-8 tokens/s 的流畅推理。
+通过 in4 量化，MiniCPM-Llama3-V 2.5 仅需 8GB 显存即可推理。
 
 | Model（模型）                | GPU Memory（显存）        |
 |:----------------------|:-------------------:|
