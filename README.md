@@ -287,7 +287,7 @@
         </tr>
                 <tr>
             <td nowrap="nowrap" align="left">Phi-3-vision-128k-instruct</td>
-            <td>8.4B</td>
+            <td>4.2B</td>
             <td>639*</td>
             <td>70.9</td>
             <td>-</td>
