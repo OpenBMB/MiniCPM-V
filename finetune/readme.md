@@ -52,12 +52,13 @@ For the vision-language example with image, you are required to provide **\<imag
 
 ### Full-parameter finetuning
 
-Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. Please specify the correct MODEL path and DATA path in the shell scripts.
+Full-parameter parameter finetuning requires updating all parameters of LLM in the whole training process. Please specify the correct MODEL path, DATA path and LLM_TYPE in the shell scripts.
 
 ```shell
 MODEL="openbmb/MiniCPM-Llama3-V-2_5" # or openbmb/MiniCPM-V-2
 DATA="path/to/trainging_data" # json file
 EVAL_DATA="path/to/test_data" # json file
+LLM_TYPE="llama3" # if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm
 ```
 
 To launch your training, run the following script:
