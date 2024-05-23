@@ -4,7 +4,7 @@
 
 **A GPT-4V Level Multimodal LLM on Your Phone**
 
-  <strong>[中文](./README.md) |
+  <strong>[中文](./README_zh.md) |
   English</strong>
 
 <p align="center">
