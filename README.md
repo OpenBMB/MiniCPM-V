@@ -25,7 +25,7 @@
 
 ## News <!-- omit in toc -->
 
-* [2024.05.24] We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, and multilingual capabilities 🌟📊🌍. Click [here](#Evaluation) to view more details.
+* [2024.05.24] We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, and multilingual capabilities 🌟📊🌍. Click [here](#evaluation) to view more details.
 * [2024.05.20] We open-soure MiniCPM-Llama3-V 2.5, it has improved OCR capability and supports 30+ languages, representing the first edge-side MLLM achieving GPT-4V level performance! We provide [efficient inference](#deployment-on-mobile-phone) and [simple fine-tuning](./finetune/readme.md). Try it now!
 * [2024.04.23] MiniCPM-V-2.0 supports vLLM now! Click [here](#vllm) to view more details.
 * [2024.04.18] We create a HuggingFace Space to host the demo of MiniCPM-V 2.0 at [here](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)!
@@ -41,6 +41,7 @@
 
 
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
+  - [Evaluation](#evaluation)
 - [MiniCPM-V 2.0](#minicpm-v-20)
 - [Online Demo](#online-demo)
 - [Install](#install)
@@ -75,7 +76,7 @@
 - 🚀 **Efficient Deployment.**
   MiniCPM-Llama3-V 2.5 systematically employs **model quantization, CPU optimizations, NPU optimizations and compilation optimizations**, achieving high-efficiency deployment on edge devices. For mobile phones with Qualcomm chips, we have integrated the NPU acceleration framework QNN into llama.cpp for the first time. After systematic optimization, MiniCPM-Llama3-V 2.5 has realized a **150-fold acceleration in multimodal large model edge-side image encoding** and a **3-fold increase in language decoding speed**.
 
-### Evaluation <!-- omit in toc -->
+### Evaluation 
 
 <div align="center">
     <img src=assets/MiniCPM-Llama3-V-2.5-peformance.png width=66% />
