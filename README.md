@@ -363,7 +363,7 @@
 <div align="center">
     <img src="assets/llavabench_compare_3.png" width="100%" />
     <br>
-    Evaluation results of LLaVABench in multiple languages
+    Evaluation results of multilingual LLaVA Bench
 </div>
 
 ### Examples <!-- omit in toc -->
