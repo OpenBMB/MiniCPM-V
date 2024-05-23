@@ -1,14 +1,14 @@
 ## Phi-3-vision-128K-Instruct vs MiniCPM-Llama3-V 2.5
 
-Comparison results of Phi-3-vision-128K-Instruct and MiniCPM-Llama3-V 2.5, regarding the model size, hardware requirements, and performances on multiple popular benchmarks.
+Comparison results of Phi-3-vision-128K-Instruct and MiniCPM-Llama3-V 2.5, regarding the model size, hardware requirements, and performances.
 
-我们提供了从模型参数、硬件需求、全面性能指标等方面对比 Phi-3-vision-128K-Instruct 和 MiniCPM-Llama3-V 2.5 的结果。
+我们提供了从模型参数、硬件需求、性能指标等方面对比 Phi-3-vision-128K-Instruct 和 MiniCPM-Llama3-V 2.5 的结果。
  
  ## Hardeware Requirements （硬件需求）
 
-With in4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference of 6-8 tokens/s with only 8GB of GPU memory.
+With int4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference with only 8GB of GPU memory.
 
-通过 in4 量化，MiniCPM-Llama3-V 2.5 仅需 8GB 显存即可提供 6-8 tokens/s 的流畅推理。
+通过 int4 量化，MiniCPM-Llama3-V 2.5 仅需 8GB 显存即可推理。
 
 | Model（模型）                | GPU Memory（显存）        |
 |:----------------------|:-------------------:|
@@ -18,14 +18,32 @@ With in4 quantization, MiniCPM-Llama3-V 2.5 delivers smooth inference of 6-8 tok
 
 ## Model Size and Peformance （模型参数和性能）
 
+In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compared with Phi-3-vision-128K-Instruct.
 
+在大多数评测集上， MiniCPM-Llama3-V 2.5 相比于 Phi-3-vision-128K-Instruct 都展现出了**更优的性能表现**.
 
 | | Phi-3-vision-128K-Instruct | MiniCPM-Llama3-V 2.5|
 |:-|:----------:|:-------------------:|
 | Size（参数） | **4B** | 8B|
-| OpenCompass | 53.7 | **58.8** |
+| OpenCompass 2024/05 | 53.7 | **58.8** |
 | OCRBench | 639.0  | **725.0**|
 | RealworldQA | 58.8 | **63.5**|
 | TextVQA | 72.2 | **76.6** |
 | ScienceQA| **90.8** | 89.0 | 
 | POPE | 83.4 | **87.2** |
+
+
+## Multilingual Capabilities
+
+
+MiniCPM-Llama3-V 2.5 exhibits **stronger multilingual** capabilities compared with Phi-3-vision-128K-Instruct on LLaVA Bench.
+
+MiniCPM-Llama3-V 2.5 在对话和推理评测榜单 LLaVA Bench 上展现出了比 Phi-3-vision-128K-Instruct **更强的多语言的性能**。
+
+<div align="center">
+    <img src="../assets/llavabench_compare_phi-3.png" width="85%" />
+    <br>
+    Evaluation results of LLaVABench in multiple languages
+    <br>
+    多语言LLaVA Bench评测结果
+</div>
