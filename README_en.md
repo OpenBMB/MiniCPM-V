@@ -470,13 +470,13 @@ Please refer to the following codes to run `MiniCPM-V` and `OmniLMM`.
 
 
 ```python
-from chat import OmniLMMChat, img2base64
+from chat import MiniCPMVChat, img2base64
 import torch
 import json
 
 torch.manual_seed(0)
 
-chat_model = OmniLMMChat('openbmb/MiniCPM-Llama3-V-2_5')
+chat_model = MiniCPMVChat('openbmb/MiniCPM-Llama3-V-2_5')
 
 im_64 = img2base64('./assets/airplane.jpeg')
 
