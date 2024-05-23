@@ -25,8 +25,8 @@ In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compare
 | | Phi-3-vision-128K-Instruct | MiniCPM-Llama3-V 2.5|
 |:-|:----------:|:-------------------:|
 | Size（参数） | **4B** | 8B|
-| First Token Latency（首token延迟）$^1$ | L: 330ms, M: 330ms, H: 330ms | **L: 48ms, M: 145ms, H: 278ms** |
-| Throughtput（吞吐率）$^2$| 30 tokens/s | **41 tokens/s**|
+| First Token Latency（首token延迟）<sup>2</sup> | L: 330ms, M: 330ms, H: 330ms | **L: 48ms, M: 145ms, H: 278ms** |
+| Throughtput（吞吐率）<sup>2</sup>| 30 tokens/s | **41 tokens/s**|
 | OpenCompass 2024/05 | 53.7 | **58.8** |
 | OCRBench | 639.0  | **725.0**|
 | RealworldQA | 58.8 | **63.5**|
@@ -41,7 +41,7 @@ In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compare
 <small>
 1: L(ow): 448pxl, M(edium): 896pxl, H(igh): 1344pxl input images.
 <br>
-2. Evaluation environment: A800 GPU, flash-attn=2.4.3, batch-size=1.
+1. Evaluation environment: A800 GPU, flash-attn=2.4.3, batch-size=1.
 </small>
 
 
@@ -53,7 +53,7 @@ MiniCPM-Llama3-V 2.5 exhibits **stronger multilingual** capabilities compared wi
 MiniCPM-Llama3-V 2.5 在对话和推理评测榜单 LLaVA Bench 上展现出了比 Phi-3-vision-128K-Instruct **更强的多语言的性能**。
 
 <div align="center">
-    <img src="../assets/llavabench_compare_phi-3.png" width="85%" />
+    <img src="../assets/llavabench_compare_phi3.png" width="85%" />
     <br>
     Evaluation results of LLaVABench in multiple languages
     <br>
