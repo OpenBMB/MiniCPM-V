@@ -355,7 +355,7 @@
   </p>
 </table>
 
-We deploy MiniCPM-Llama3-V 2.5 on end devices. The demo video is the raw screen recording on a Xiaomi 14 Pro at double speed.
+We deploy MiniCPM-Llama3-V 2.5 on end devices. The demo video is the raw screen recording on a Xiaomi 14 Pro without edition.
 
 <table align="center">
     <p align="center">
