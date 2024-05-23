@@ -285,6 +285,22 @@
             <td>60.0</td>
             <td>-</td>
         </tr>
+                <tr>
+            <td nowrap="nowrap" align="left">Phi-3-vision-128k-instruct</td>
+            <td>8.4B</td>
+            <td>639*</td>
+            <td>70.9</td>
+            <td>-</td>
+            <td>-</td>
+            <td>1537.5*</td>
+            <td>-</td>
+            <td>-</td>
+            <td>40.4</td>
+            <td>44.5</td>
+            <td>64.2*</td>
+            <td>58.8*</td>
+            <td>-</td>
+        </tr>
         <tr style="background-color: #e6f2ff;">
             <td nowrap="nowrap" align="left">MiniCPM-V 1.0</td>
             <td>2.8B</td>
