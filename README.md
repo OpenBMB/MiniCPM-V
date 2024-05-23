@@ -285,6 +285,22 @@
             <td>60.0</td>
             <td>-</td>
         </tr>
+                <tr>
+            <td nowrap="nowrap" align="left">Phi-3-vision-128k-instruct</td>
+            <td>8.4B</td>
+            <td>639*</td>
+            <td>70.9</td>
+            <td>-</td>
+            <td>-</td>
+            <td>1537.5*</td>
+            <td>-</td>
+            <td>-</td>
+            <td>40.4</td>
+            <td>44.5</td>
+            <td>64.2*</td>
+            <td>58.8*</td>
+            <td>-</td>
+        </tr>
         <tr style="background-color: #e6f2ff;">
             <td nowrap="nowrap" align="left">MiniCPM-V 1.0</td>
             <td>2.8B</td>
@@ -504,7 +520,7 @@ answer = chat_model.chat(inputs)
 print(answer)
 ```
 
-可以得到以下输出:
+You will get the following output:
 
 ```
 "The aircraft in the image is an Airbus A380, which can be identified by its large size, double-deck structure, and the distinctive shape of its wings and engines. The A380 is a wide-body aircraft known for being the world's largest passenger airliner, designed for long-haul flights. It has four engines, which are characteristic of large commercial aircraft. The registration number on the aircraft can also provide specific information about the model if looked up in an aviation database."
