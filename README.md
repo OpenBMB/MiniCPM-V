@@ -360,7 +360,7 @@
     </p>
 </table>
 
-我们将 MiniCPM-Llama3-V 2.5 部署在小米 14 Pro 上，并录制了以下演示视频，我们以2倍速播放视频。
+我们将 MiniCPM-Llama3-V 2.5 部署在小米 14 Pro 上，并录制了以下演示视频。
 
 <table align="center">
     <p align="center">
