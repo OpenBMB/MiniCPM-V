@@ -55,6 +55,7 @@
   - [Mac 推理](#mac-推理)
   - [手机端部署](#手机端部署)
   - [本地WebUI Demo部署](#本地webui-demo部署)
+  - [llama.cpp部署](#llamacpp)
   - [vLLM 部署 ](#vllm-部署-)
 - [微调](#微调)
 - [未来计划](#未来计划)
@@ -599,6 +600,9 @@ python web_demo_2.5.py --device cuda
 PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 ```
 </details>
+
+### llama.cpp 部署<a id="llamacpp"></a>
+MiniCPM-Llama3-V 2.5 现在支持llama.cpp啦! 用法请参考我们的fork [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) .
 
 ### vLLM 部署 <a id='vllm'></a>
 <details>
