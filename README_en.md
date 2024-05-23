@@ -51,6 +51,7 @@
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
   - [WebUI Demo](#webui-demo)
+  - [Inference with llama.cpp](#llamacpp)
   - [Inference with vLLM](#inference-with-vllm)
 - [Fine-tuning](#fine-tuning)
 - [TODO](#todo)
@@ -584,6 +585,9 @@ python web_demo_2.5.py --device cuda
 PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 ```
 </details>
+
+### Inference with llama.cpp<a id="llamacpp"></a>
+MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail.
 
 ### Inference with vLLM<a id="vllm"></a>
 
