@@ -25,12 +25,24 @@ In most benchmarks, MiniCPM-Llama3-V 2.5 achieves **better performance** compare
 | | Phi-3-vision-128K-Instruct | MiniCPM-Llama3-V 2.5|
 |:-|:----------:|:-------------------:|
 | Size（参数） | **4B** | 8B|
+| First Token Latency（首token延迟）$^1$ | L: 330ms, M: 330ms, H: 330ms | **L: 48ms, M: 145ms, H: 278ms** |
+| Throughtput（吞吐率）$^2$| 30 tokens/s | **41 tokens/s**|
 | OpenCompass 2024/05 | 53.7 | **58.8** |
 | OCRBench | 639.0  | **725.0**|
 | RealworldQA | 58.8 | **63.5**|
 | TextVQA | 72.2 | **76.6** |
 | ScienceQA| **90.8** | 89.0 | 
 | POPE | 83.4 | **87.2** |
+| MathVista | 44.5 | **54.3** |
+| MMStar | 47.4 | **51.8** |
+| LLaVA Bench | 64.2 | **86.7** |
+| AI2D | 76.7 | **78.4** |
+
+<small>
+1: L(ow): 448pxl, M(edium): 896pxl, H(igh): 1344pxl input images.
+<br>
+2. Evaluation environment: A800 GPU, flash-attn=2.4.3, batch-size=1.
+</small>
 
 
 ## Multilingual Capabilities
