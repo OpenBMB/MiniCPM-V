@@ -25,6 +25,7 @@
 
 ## News <!-- omit in toc -->
 
+* [2024.05.24] MiniCPM-Llama3-V 2.5 supports [llama.cpp](#inference-with-llamacpp) now, providing a smooth inference of 6-8 tokens/s on mobile phones. Try it now!
 * [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, and multilingual capabilities 🌟📊🌍. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
 * [2024.05.20] We open-soure MiniCPM-Llama3-V 2.5, it has improved OCR capability and supports 30+ languages, representing the first end-side MLLM achieving GPT-4V level performance! We provide [efficient inference](#deployment-on-mobile-phone) and [simple fine-tuning](./finetune/readme.md). Try it now!
 * [2024.04.23] MiniCPM-V-2.0 supports vLLM now! Click [here](#vllm) to view more details.
@@ -51,7 +52,7 @@
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
   - [WebUI Demo](#webui-demo)
-  - [Inference with llama.cpp](#llamacpp)
+  - [Inference with llama.cpp](#inference-with-llamacpp)
   - [Inference with vLLM](#inference-with-vllm)
 - [Fine-tuning](#fine-tuning)
 - [TODO](#todo)
@@ -586,8 +587,12 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 ```
 </details>
 
-### Inference with llama.cpp<a id="llamacpp"></a>
-MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail.
+### Inference with llama.cpp<a id="inference-with-llamacpp"></a>
+MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail. This implementation supports smooth inference of 6~8 token/s on mobile phone<sup>1</sup>.
+
+<small>
+1. Test environment：Xiaomi 14 pro + Snapdragon 8 Gen 3
+</small>
 
 ### Inference with vLLM<a id="vllm"></a>
 
