@@ -695,7 +695,7 @@ This project is developed by the following institutions:
 
 ## Citation
 
-If you find your model/code/paper helpful, please consider cite the following papers:
+If you find your model/code/paper helpful, please consider cite our papers 📝 and star us ⭐️！
 
 ```bib
 @article{yu2023rlhf,
