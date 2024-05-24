@@ -25,7 +25,7 @@
 
 ## News <!-- omit in toc -->
 
-* [2024.05.24] MiniCPM-Llama3-V 2.5 supports [llama.cpp](#inference-with-llamacpp) now, providing a smooth inference of 6-8 tokens/s on mobile phones. Try it now!
+* [2024.05.24] We release the [MiniCPM-Llama3-V 2.5 gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf), which supports [llama.cpp](#inference-with-llamacpp) inference and provides a 6~8 token/s smooth decoding on mobile phones. Try it now!
 * [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, and multilingual capabilities 🌟📊🌍. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
 * [2024.05.20] We open-soure MiniCPM-Llama3-V 2.5, it has improved OCR capability and supports 30+ languages, representing the first end-side MLLM achieving GPT-4V level performance! We provide [efficient inference](#deployment-on-mobile-phone) and [simple fine-tuning](./finetune/readme.md). Try it now!
 * [2024.04.23] MiniCPM-V-2.0 supports vLLM now! Click [here](#vllm) to view more details.
