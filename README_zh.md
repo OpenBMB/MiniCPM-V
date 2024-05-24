@@ -28,8 +28,8 @@
 
 ## 更新日志 <!-- omit in toc -->
 
-* [2024.05.24] 我们开源了 [MiniCPM-Llama3-V 2.5 gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf)，支持 [llama.cpp](#llamacpp-部署) 推理！实现端侧 6-8 tokens/s 的流畅解码，欢迎试用！
-* [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Gradio 官方账户转发，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
+* [2024.05.24] 我们开源了 MiniCPM-Llama3-V 2.5 [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf)，支持 [llama.cpp](#llamacpp-部署) 推理！实现端侧 6-8 tokens/s 的流畅解码，欢迎试用！
+* [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Hugging Face 的 Gradio 官方账户推荐，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
 * [2024.05.23] 🔍 我们添加了Phi-3-vision-128k-instruct 与 MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估和多语言能力 🌟📊🌍。点击[这里](./docs/compare_with_phi-3_vision.md)查看详细信息。
 * [2024.05.20] 我们开源了 MiniCPM-Llama3-V 2.5，增强了 OCR 能力，支持 30 多种语言，并首次在端侧实现了 GPT-4V 级的多模态能力！我们提供了[高效推理](#手机端部署)和[简易微调](./finetune/readme.md)的支持，欢迎试用！
 * [2024.04.23] 我们增加了对 [vLLM](#vllm) 的支持，欢迎体验！
@@ -489,13 +489,13 @@ pip install -r requirements.txt
 
 ### 模型库
 
-| 模型           | 显存占用     | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 简介       | 下载链接 |
-|:--------------|:--------:|:-------------------|:---------------:|
-| MiniCPM-Llama3-V 2.5| 19 GB  | 最新版本，提供最佳的端侧多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5) |
-| MiniCPM-Llama3-V 2.5 gguf  | 5 GB | gguf 版本,更低的内存占用和更高的推理效率。  |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-gguf) |
-| MiniCPM-Llama3-V 2.5 int4 | 8 GB | int4量化版，更低显存占用。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-int4/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-int4) |
-| MiniCPM-V 2.0 | 8 GB  | 轻量级版本，平衡计算开销和多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2) |
-| MiniCPM-V 1.0 | 7 GB | 最轻量版本， 提供最快的推理速度。    |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V) |
+| 模型           | 设备 | 资源     | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 简介       | 下载链接 |
+|:--------------|:-:|:----------:|:-------------------|:---------------:|
+| MiniCPM-Llama3-V 2.5| GPU | 19 GB  | 最新版本，提供最佳的端侧多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5) |
+| MiniCPM-Llama3-V 2.5 gguf| CPU  | 5 GB | gguf 版本,更低的内存占用和更高的推理效率。  |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-gguf) |
+| MiniCPM-Llama3-V 2.5 int4 | GPU | 8 GB | int4量化版，更低显存占用。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-int4/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-int4) |
+| MiniCPM-V 2.0 | GPU | 8 GB  | 轻量级版本，平衡计算开销和多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2) |
+| MiniCPM-V 1.0 | GPU | 7 GB | 最轻量版本， 提供最快的推理速度。    |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V) |
 
 更多[历史版本模型](#legacy-models)
 
@@ -604,11 +604,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 </details>
 
 ### llama.cpp 部署<a id="llamacpp-部署"></a>
-MiniCPM-Llama3-V 2.5 现在支持llama.cpp啦! 用法请参考我们的fork [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv)， 在手机上可以支持 6~8 token/s 的流畅推理<sup>1</sup>。
-
-<small>
-1. 测试环境：Xiaomi 14 pro + Snapdragon 8 Gen 3
-</small>
+MiniCPM-Llama3-V 2.5 现在支持llama.cpp啦! 用法请参考我们的fork [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv)， 在手机上可以支持 6~8 token/s 的流畅推理（测试环境：Xiaomi 14 pro + Snapdragon 8 Gen 3）。
 
 ### vLLM 部署 <a id='vllm'></a>
 <details>
