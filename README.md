@@ -588,7 +588,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 </details>
 
 ### Inference with llama.cpp<a id="inference-with-llamacpp"></a>
-MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail. This implementation supports smooth inference of 6~8 token/s on mobile phone<sup>1</sup>.
+MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail. This implementation supports smooth inference of 6~8 token/s on mobile phones<sup>1</sup>.
 
 <small>
 1. Test environment：Xiaomi 14 pro + Snapdragon 8 Gen 3
