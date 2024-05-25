@@ -52,8 +52,6 @@
 ## 目录 <!-- omit in toc -->
 
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
-  - [性能评估](#性能评估)
-  - [典型示例](#典型示例)
 - [MiniCPM-V 2.0](#minicpm-v-20)
 - [Online Demo](#online-demo)
 - [安装](#安装)
@@ -92,7 +90,7 @@
 
 
 
-### 性能评估
+### 性能评估 <!-- omit in toc -->
 
 <div align="center">
     <img src="assets/MiniCPM-Llama3-V-2.5-peformance.png" width="66%" />
@@ -381,7 +379,7 @@
 </div>
 
 
-### 典型示例
+### 典型示例 <!-- omit in toc -->
 <table align="center">
     <p align="center">
       <img src="assets/minicpmv-llama3-v2.5/cases_all.png" width=95%/>

@@ -50,7 +50,6 @@
 
 
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
-  - [Evaluation](#evaluation)
 - [MiniCPM-V 2.0](#minicpm-v-20)
 - [Online Demo](#online-demo)
 - [Install](#install)
@@ -86,7 +85,7 @@
 - 🚀 **Efficient Deployment.**
   MiniCPM-Llama3-V 2.5 systematically employs **model quantization, CPU optimizations, NPU optimizations and compilation optimizations**, achieving high-efficiency deployment on edge devices. For mobile phones with Qualcomm chips, we have integrated the NPU acceleration framework QNN into llama.cpp for the first time. After systematic optimization, MiniCPM-Llama3-V 2.5 has realized a **150x acceleration in end-side MLLM image encoding** and a **3x speedup in language decoding**.
 
-### Evaluation 
+### Evaluation  <!-- omit in toc -->
 
 <div align="center">
     <img src=assets/MiniCPM-Llama3-V-2.5-peformance.png width=66% />
