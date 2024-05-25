@@ -16,7 +16,7 @@
 </div>
 
 
-**MiniCPM-V** is a series of end-side multimodal LLMs (MLLMs) designed for vision-language understanding. Models take image and text as inputs and provide high-quality text outputs. Since February 2024, we have released 4 versions of the model, aiming to achieve **strong performance and efficient deployment**! The most notable models in this series currently include:
+**MiniCPM-V** is a series of end-side multimodal LLMs (MLLMs) designed for vision-language understanding. The models take image and text as inputs and provide high-quality text outputs. Since February 2024, we have released 4 versions of the model, aiming to achieve **strong performance and efficient deployment**! The most notable models in this series currently include:
 
 - **MiniCPM-Llama3-V 2.5**: 🔥🔥🔥 The latest and most capable model in the MiniCPM-V series. With a total of 8B parameters, the model **surpasses proprietary models such as GPT-4V-1106, Gemini Pro, Qwen-VL-Max and Claude 3** in overall performance. Equipped with the enhanced OCR and instruction-following capability, the model can also support multimodal conversation for **over 30 languages** including English, Chinese, French, Spanish, German etc. With help of quantization, compilation optimizations, and several efficient inference techniques on CPUs and NPUs, MiniCPM-Llama3-V 2.5 can be **efficiently deployed on end-side devices**.
 
