@@ -27,6 +27,7 @@
 
 #### 📌 Pinned
 
+* [2024.05.26] ⚙️ We notice some reported issues from compromising MiniCPM-Llama3-V 2.5's adaptive visual encoding with Ollama & Llama.cpp's vanilla fixed encoding implementation. We are reimplementing this part for Ollama & Llama.cpp to fully support MiniCPM-Llama3-V 2.5's feature and fix the issue. This update will hopefully be available within a day. Please stay tuned!
 * [2024.05.25] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 now supports [Ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) for efficient inference. Try it now!
 * [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, multilingual capabilities, and inference efficiency 🌟📊🌍🚀. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
 * [2024.05.23] 🔥🔥🔥 MiniCPM-V tops GitHub Trending and Hugging Face Trending! Our demo, recommended by Hugging Face Gradio’s official account, is available [here](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5). Come and try it out!
