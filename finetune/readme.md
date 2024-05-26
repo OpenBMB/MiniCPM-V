@@ -98,7 +98,7 @@ A: If your environment supports `flash_attn2`, you can add an argument `_attn_im
 
 ```python
 model = AutoModel.from_pretrained('model_name', _attn_implementation="flash_attention_2")
-
+```
 > Q: What if our data is resized to 512? Can we use the original image size instead?
 
 A: Our model supports up to 1344x1344 lossless encoding. If you are currently resizing your images to 512, you might want to try using the original image sizes instead. Our system automatically includes a high-definition image encoding scheme by default.
