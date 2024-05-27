@@ -30,19 +30,19 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --prediction_loss_only false \
     --bf16 true \
     --bf16_full_eval true \
-    --fp16 false \
-    --fp16_full_eval false \
     --do_train \
     --do_eval \
     --tune_vision false \
     --tune_llm false \
+    --use_lora true \
+    --lora_target_modules "llm\..*layers\.\d+\.self_attn\.(q_proj|k_proj)" \
     --model_max_length 2048 \
     --max_steps 10000 \
     --eval_steps 1000 \
-    --output_dir output/output_minicpmv2 \
-    --logging_dir output/output_minicpmv2 \
+    --output_dir output/output_minicpmv2_lora \
+    --logging_dir output/output_minicpmv2_lora \
     --logging_strategy "steps" \
-    --per_device_train_batch_size 2 \
+    --per_device_train_batch_size w \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 1 \
     --evaluation_strategy "steps" \
@@ -57,4 +57,5 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --logging_steps 1 \
     --gradient_checkpointing true \
     --deepspeed ds_config_zero2.json \
-    --report_to "tensorboard" 
+    --report_to "tensorboard" \ # wandb
+

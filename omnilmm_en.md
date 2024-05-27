@@ -1,6 +1,6 @@
 ## OmniLMM-12B
 
-> OmniLMM-12B is released at early time of this project. We recommond you to use our [recently released models](./README.md), for better performance and efficiency.
+> OmniLMM-12B is released at early time of this project. We recommond you to use our [recently released models](./README_en.md), for better performance and efficiency.
 
 > Archieve at: 2024-05-19
 

@@ -13,14 +13,10 @@ class CPMTrainer(Trainer):
             labels = inputs.pop("labels")
         else:
             labels = None
-
-        vllm_embedding, vision_hidden_states = self.model.get_vllm_embedding(
-            inputs)
-
-        outputs = self.model.llm(
-            inputs_embeds=vllm_embedding,
-            use_cache=False,
-        )
+        if not self. args.use_lora:
+            outputs = self.model(data = inputs, use_cache=False)
+        else:
+            outputs = self.model.base_model(data = inputs, use_cache=False)
 
         if labels is not None:
             # Flatten the tokens
@@ -35,8 +31,7 @@ class CPMTrainer(Trainer):
             if isinstance(outputs, dict) and "loss" not in outputs:
                 raise ValueError(
                     "The model did not return a loss from the inputs, only the following keys: "
-                    f"{','.join(outputs.keys())}. For reference, the inputs it received are {
-                        ','.join(inputs.keys())}."
+                    f"{','.join(outputs.keys())}. For reference, the inputs it received are {','.join(inputs.keys())}."
                 )
             # We don't use .loss here since the model may return tuples instead of ModelOutput.
             loss = outputs["loss"] if isinstance(outputs, dict) else outputs[0]

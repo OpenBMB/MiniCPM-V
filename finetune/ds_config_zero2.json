@@ -1,6 +1,6 @@
 {
     "fp16": {
-        "enabled": false,
+        "enabled": "auto",
         "loss_scale": 0,
         "loss_scale_window": 1000,
         "initial_scale_power": 16,
@@ -9,7 +9,7 @@
     },
 
     "bf16": {
-        "enabled": true
+        "enabled": "auto"
     },
 
     "optimizer": {
