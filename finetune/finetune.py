@@ -45,7 +45,6 @@ class TrainingArguments(transformers.TrainingArguments):
             "help": "Maximum sequence length. Sequences will be right padded (and possibly truncated)."
         },
     )
-    tune_vision: Optional[bool] = field(default=False)
     tune_llm: Optional[bool] = field(default=False)
     llm_type: str = field(default="minicpm")
     use_lora: Optional[bool] = field(default=False)
