@@ -13,14 +13,10 @@ class CPMTrainer(Trainer):
             labels = inputs.pop("labels")
         else:
             labels = None
-
-        vllm_embedding, vision_hidden_states = self.model.get_vllm_embedding(
-            inputs)
-
-        outputs = self.model.llm(
-            inputs_embeds=vllm_embedding,
-            use_cache=False,
-        )
+        if not self. args.use_lora:
+            outputs = self.model(data = inputs, use_cache=False)
+        else:
+            outputs = self.model.base_model(data = inputs, use_cache=False)
 
         if labels is not None:
             # Flatten the tokens
