@@ -49,7 +49,6 @@ class TrainingArguments(transformers.TrainingArguments):
     tune_llm: Optional[bool] = field(default=False)
     llm_type: str = field(default="minicpm")
     use_lora: Optional[bool] = field(default=False)
-    llm_type: str = field(default="minicpm")
 
 
 @dataclass
