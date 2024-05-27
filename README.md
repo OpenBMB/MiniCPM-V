@@ -1,330 +1,433 @@
 <div align="center">
 
-<!-- <!-- <h1 style="color: #33A6B8; font-family: Helvetica"> OmniLMM </h1> -->
+<img src="./assets/minicpmv.png" width="300em" ></img> 
 
-<img src="./assets/minicpmv-omnilmm.png" width="400em" ></img> 
+**A GPT-4V Level Multimodal LLM on Your Phone**
 
-**性能领先且部署高效的多模态大模型**
-
-  <strong>中文 |
-  [English](./README_en.md)</strong>
+  <strong>[中文](./README_zh.md) |
+  English</strong>
 
 <p align="center">
+  MiniCPM-Llama3-V  2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5">🤖</a> |
   MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2">🤖</a> |
-  OmniLMM-12B <a href="https://huggingface.co/openbmb/OmniLMM-12B/">🤗</a> <a href="http://120.92.209.146:8081">🤖</a> |
-  <a href="https://openbmb.vercel.app/minicpm-v-2">MiniCPM-V 2.0 技术博客</a>
+  <a href="https://openbmb.vercel.app/minicpm-v-2-en"> Technical Blog </a>
 </p>
 
 </div>
 
 
-**MiniCPM-V**和**OmniLMM** 是面向图文理解的开源多模态大模型系列。该系列模型接受图像和文本输入，并提供高质量的文本输出。我们发布了两个版本的模型，旨在实现**领先的性能和高效的部署**：
+**MiniCPM-V** is a series of end-side multimodal LLMs (MLLMs) designed for vision-language understanding. The models take image and text as inputs and provide high-quality text outputs. Since February 2024, we have released 4 versions of the model, aiming to achieve **strong performance and efficient deployment**. The most notable models in this series currently include:
 
-- **MiniCPM-V 2.8B**：可在终端设备上部署的先进多模态大模型。最新发布的 MiniCPM-V 2.0 可以接受 180 万像素的任意长宽比图像输入，实现了和 Gemini Pro 相近的场景文字识别能力以及和 GPT-4V 相匹的低幻觉率。
+- **MiniCPM-Llama3-V 2.5**: 🔥🔥🔥 The latest and most capable model in the MiniCPM-V series. With a total of 8B parameters, the model **surpasses proprietary models such as GPT-4V-1106, Gemini Pro, Qwen-VL-Max and Claude 3** in overall performance. Equipped with the enhanced OCR and instruction-following capability, the model can also support multimodal conversation for **over 30 languages** including English, Chinese, French, Spanish, German etc. With help of quantization, compilation optimizations, and several efficient inference techniques on CPUs and NPUs, MiniCPM-Llama3-V 2.5 can be **efficiently deployed on end-side devices**.
 
-- **OmniLMM-12B**：相比同规模其他模型在多个基准测试中具有领先性能，实现了相比 GPT-4V 更低的幻觉率。
-
-
-## 更新日志 <!-- omit in toc -->
-
-* [2024.04.23] 我们增加了对 [vllm](#vllm) 的支持，欢迎体验！
-* [2024.04.18] 我们在 HuggingFace Space 新增了 MiniCPM-V 2.0 的 [demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)，欢迎体验！
-* [2024.04.17] MiniCPM-V 2.0 现在支持用户部署本地 [WebUI Demo](#本地webui-demo部署) 了，欢迎试用!
-* [2024.04.15] MiniCPM-V 2.0 现在可以通过 SWIFT 框架 [微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) 了，支持流式输出!
-* [2024.04.12] 我们开源了 MiniCPM-V 2.0，该模型刷新了 OCRBench 开源模型最佳成绩，在场景文字识别能力上比肩 Gemini Pro，同时还在综合了 11 个主流多模态大模型评测基准的 <a href="https://rank.opencompass.org.cn/leaderboard-multimodal">OpenCompass</a> 榜单上超过了 Qwen-VL-Chat 10B、CogVLM-Chat 17B 和 Yi-VL 34B 等更大参数规模的模型！点击<a href="https://openbmb.vercel.app/minicpm-v-2">这里</a>查看 MiniCPM-V 2.0 技术博客。
-* [2024.03.14] MiniCPM-V 现在支持 SWIFT 框架下的[微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)了，感谢 [Jintao](https://github.com/Jintao-Huang) 的贡献！
-* [2024.03.01] MiniCPM-V 现在支持在 Mac 电脑上进行部署！
-* [2024.02.01] 我们开源了 MiniCPM-V 和 OmniLMM-12B，分别可以支持高效的端侧部署和同规模领先的多模态能力！
+- **MiniCPM-V 2.0**: The lightest model in the MiniCPM-V series. With 2B parameters, it surpasses larger models such as Yi-VL 34B, CogVLM-Chat 17B, and Qwen-VL-Chat 10B in overall performance. It can accept image inputs of any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344), achieving comparable performance with Gemini Pro in understanding scene-text and matches GPT-4V in low hallucination rates.
 
 
-## 目录 <!-- omit in toc -->
+## News <!-- omit in toc -->
+
+#### 📌 Pinned
+
+* [2024.05.26] ⚙️ We notice some reported issues from compromising MiniCPM-Llama3-V 2.5's adaptive visual encoding with Ollama & Llama.cpp's vanilla fixed encoding implementation. We are reimplementing this part for Ollama & Llama.cpp to fully support MiniCPM-Llama3-V 2.5's feature and fix the issue. This update will hopefully be available within a day. Please stay tuned!
+* [2024.05.25] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 now supports [Ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) for efficient inference. Try it now!
+* [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, multilingual capabilities, and inference efficiency 🌟📊🌍🚀. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
+* [2024.05.23] 🔥🔥🔥 MiniCPM-V tops GitHub Trending and Hugging Face Trending! Our demo, recommended by Hugging Face Gradio’s official account, is available [here](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5). Come and try it out!
+
+<br>
+
+* [2024.05.25] MiniCPM-Llama3-V 2.5 now supports streaming outputs and customized system prompts. Try it [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)!
+* [2024.05.24] We release the MiniCPM-Llama3-V 2.5 [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf), which supports [llama.cpp](#inference-with-llamacpp) inference and provides a 6~8 token/s smooth decoding on mobile phones. Try it now!
+* [2024.05.20] We open-soure MiniCPM-Llama3-V 2.5, it has improved OCR capability and supports 30+ languages, representing the first end-side MLLM achieving GPT-4V level performance! We provide [efficient inference](#deployment-on-mobile-phone) and [simple fine-tuning](./finetune/readme.md). Try it now!
+* [2024.04.23] MiniCPM-V-2.0 supports vLLM now! Click [here](#vllm) to view more details.
+* [2024.04.18] We create a HuggingFace Space to host the demo of MiniCPM-V 2.0 at [here](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)!
+* [2024.04.17] MiniCPM-V-2.0 supports deploying [WebUI Demo](#webui-demo) now!
+* [2024.04.15] MiniCPM-V-2.0 now also supports [fine-tuning](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) with the SWIFT framework!
+* [2024.04.12] We open-source MiniCPM-V 2.0, which achieves comparable performance with Gemini Pro in understanding scene text and outperforms strong Qwen-VL-Chat 9.6B and Yi-VL 34B on <a href="https://rank.opencompass.org.cn/leaderboard-multimodal">OpenCompass</a>, a comprehensive evaluation over 11 popular benchmarks. Click <a href="https://openbmb.vercel.app/minicpm-v-2">here</a> to view the MiniCPM-V 2.0 technical blog.
+* [2024.03.14] MiniCPM-V now supports [fine-tuning](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md) with the SWIFT framework. Thanks to [Jintao](https://github.com/Jintao-Huang) for the contribution！
+* [2024.03.01] MiniCPM-V now can be deployed on Mac!
+* [2024.02.01] We open-source MiniCPM-V and OmniLMM-12B, which support efficient end-side deployment and powerful multimodal capabilities correspondingly.
 
 
-- [MiniCPM-V 2.8B](#minicpm-v-28b)
-- [OmniLMM-12B](#omnilmm-12b)
+## Contents <!-- omit in toc -->
+
+
+- [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
+- [MiniCPM-V 2.0](#minicpm-v-20)
 - [Online Demo](#online-demo)
-- [安装](#安装)
-- [推理](#推理)
-  - [模型库](#模型库)
-  - [多轮对话](#多轮对话)
-  - [Mac 推理](#mac-推理)
-  - [手机端部署](#手机端部署)
-  - [本地WebUI Demo部署](#本地webui-demo部署)
-- [微调](#微调)
-- [未来计划](#未来计划)
-- [引用](#引用)
+- [Install](#install)
+- [Inference](#inference)
+  - [Model Zoo](#model-zoo)
+  - [Multi-turn Conversation](#multi-turn-conversation)
+  - [Inference on Mac](#inference-on-mac)
+  - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
+  - [WebUI Demo](#webui-demo)
+  - [Inference with llama.cpp](#inference-with-llamacpp)
+  - [Inference with vLLM](#inference-with-vllm)
+- [Fine-tuning](#fine-tuning)
+- [TODO](#todo)
+- [🌟 Star History](#-star-history)
+- [Citation](#citation)
 
+## MiniCPM-Llama3-V 2.5
 
-## MiniCPM-V 2.8B
+**MiniCPM-Llama3-V 2.5** is the latest model in the MiniCPM-V series. The model is built on SigLip-400M and Llama3-8B-Instruct with a total of 8B parameters. It exhibits a significant performance improvement over MiniCPM-V 2.0. Notable features of MiniCPM-Llama3-V 2.5 include:
 
-**MiniCPM-V 2.8B**可以高效部署到终端设备。该模型基于 SigLip-400M 和 [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/)构建，通过perceiver resampler连接。最新发布的 MiniCPM-V 2.0 的特点包括：
+- 🔥 **Leading Performance.**
+  MiniCPM-Llama3-V 2.5 has achieved an average score of 65.1 on OpenCompass, a comprehensive evaluation over 11 popular benchmarks. **With only 8B parameters, it surpasses widely used proprietary models like GPT-4V-1106, Gemini Pro, Claude 3 and Qwen-VL-Max** and greatly outperforms other Llama 3-based MLLMs.
 
-- 🔥 **优秀的性能。**
+- 💪 **Strong OCR Capabilities.**
+  MiniCPM-Llama3-V 2.5 can process images with any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344), achieving a **700+ score on OCRBench, surpassing proprietary models such as GPT-4o, GPT-4V-0409, Qwen-VL-Max and Gemini Pro**. Based on recent user feedback, MiniCPM-Llama3-V 2.5 has now enhanced full-text OCR extraction, table-to-markdown conversion, and other high-utility capabilities, and has further strengthened its instruction-following and complex reasoning abilities, enhancing multimodal interaction experiences.
 
-  MiniCPM-V 2.0 在多个测试基准（如 OCRBench, TextVQA, MME, MMB, MathVista 等）中实现了 7B 以下模型的**最佳性能**。**在综合了 11 个主流多模态大模型评测基准的 OpenCompass 榜单上超过了 Qwen-VL-Chat 9.6B、CogVLM-Chat 17.4B 和 Yi-VL 34B 等更大参数规模的模型**。MiniCPM-V 2.0 还展现出**领先的 OCR 能力**，在场景文字识别能力上**接近 Gemini Pro**，OCRBench 得分达到**开源模型第一**。
-  
+- 🏆 **Trustworthy Behavior.**
+  Leveraging the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) method (the newest technique in the [RLHF-V](https://github.com/RLHF-V) [CVPR'24] series), MiniCPM-Llama3-V 2.5 exhibits more trustworthy behavior. It achieves a **10.3%** hallucination rate on Object HalBench, lower than GPT-4V-1106 (13.6%), achieving the best-level performance within the open-source community. [Data released](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset).
 
-- 🏆 **可信行为。** 
+- 🌏 **Multilingual Support.**
+  Thanks to the strong multilingual capabilities of Llama 3 and the cross-lingual generalization technique from [VisCPM](https://github.com/OpenBMB/VisCPM), MiniCPM-Llama3-V 2.5 extends its bilingual (Chinese-English) multimodal capabilities to **over 30 languages including German, French, Spanish, Italian, Portuguese etc.** [All Supported Languages](./assets/minicpm-llama-v-2-5_languages.md).
 
-  多模态大模型深受幻觉问题困扰，模型经常生成和图像中的事实不符的文本。MiniCPM-V 2.0 是 **第一个通过多模态 RLHF 对齐的端侧多模态大模型**（借助 [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] 系列技术）。该模型在 [Object HalBench](https://arxiv.org/abs/2312.00849) 达到**和 GPT-4V 相仿**的性能。
+- 🚀 **Efficient Deployment.**
+  MiniCPM-Llama3-V 2.5 systematically employs **model quantization, CPU optimizations, NPU optimizations and compilation optimizations**, achieving high-efficiency deployment on end-side devices. For mobile phones with Qualcomm chips, we have integrated the NPU acceleration framework QNN into llama.cpp for the first time. After systematic optimization, MiniCPM-Llama3-V 2.5 has realized a **150x acceleration in end-side MLLM image encoding** and a **3x speedup in language decoding**.
 
-
-- 🌟 **高清图像高效编码。**
-
-  MiniCPM-V 2.0 可以接受 **180 万像素的任意长宽比图像输入**（基于最新的[LLaVA-UHD](https://arxiv.org/pdf/2403.11703.pdf) 技术），这使得模型可以感知到小物体、密集文字等更加细粒度的视觉信息。 
-
-
-- ⚡️ **高效部署。**
-
-  MiniCPM-V 2.0 可以**高效部署在大多数消费级显卡和个人电脑上**，包括**移动手机等终端设备**。在视觉编码方面，我们通过perceiver resampler将图像表示压缩为更少的 token。这使得 MiniCPM-V 2.0 即便是**面对高分辨率图像，也能占用较低的存储并展现优秀的推理速度**。
-
-- 🙌 **双语支持。**
-
-  MiniCPM-V 2.0 **提供领先的中英双语多模态能力支持**。
-  该能力通过 [VisCPM](https://arxiv.org/abs/2308.12038) [ICLR'24] 论文中提出的多模态能力的跨语言泛化技术实现。
-
-### 性能评估 <!-- omit in toc -->
+### Evaluation  <!-- omit in toc -->
 
 <div align="center">
-    <img src=assets/minicpmv-2-peformance.png width=66% />
+    <img src=assets/MiniCPM-Llama3-V-2.5-peformance.png width=66% />
 </div>
 <details>
-<summary>TextVQA, DocVQA, OCRBench, OpenCompass, MME, MMBench, MMMU, MathVista, LLaVA Bench, Object HalBench 上的详细评测结果。 </summary>
+<summary>Click to view results on TextVQA, DocVQA, OCRBench, OpenCompass, MME, MMBench, MMMU, MathVista, LLaVA Bench, RealWorld QA, Object HalBench. </summary>
 <div align="center">
 
 <table style="margin: 0px auto;">
-<thead>
-  <tr>
-    <th align="left">Model</th>
-    <th>Size</th>
-    <th>TextVQA val</th>
-    <th>DocVQA test</th>
-    <th>OCRBench</th>
-    <th>OpenCompass</th>
-    <th nowrap="nowrap" >MME</th>
-    <th>MMB dev(en)</th>
-    <th>MMB dev(zh)</th>
-    <th>MMMU val</th>
-    <th>MathVista</th>
-    <th>LLaVA Bench</th>
-    <th nowrap="nowrap">Object HalBench</th>
-  </tr>
-</thead>
-<tbody align="center">
-  <tr>
-    <td colspan="12" align="left"><strong>Proprietary models</strong></td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap" align="left">Gemini Pro Vision</td>
-    <td>- </td>
-    <td>74.6</td>
-    <td>88.1</td>
-    <td>680</td>
-    <td>63.8</td>
-    <td>2148.9</td>
-    <td>75.2</td>
-    <td>74.0</td>
-    <td>48.9</td>
-    <td>45.8</td>
-    <td>79.9</td>
-    <td>- </td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap" align="left">GPT-4V</td>
-    <td>- </td>
-    <td>78.0</td>
-    <td>88.4</td>
-    <td>645</td>
-    <td>63.2</td>
-    <td>1771.5</td>
-    <td>75.1</td>
-    <td>75.0</td>
-    <td>53.8</td>
-    <td>47.8</td>
-    <td>93.1</td>
-    <td>86.4 / 92.7</td>
-  </tr>
-  <tr>
-    <td colspan="12" align="left"><strong>Open-source models 6B~34B</strong></td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >Yi-VL-6B</td>
-    <td align="right" >6.7B</td>
-    <td>45.5*</td>
-    <td>17.1*</td>
-    <td>290</td>
-    <td>49.3</td>
-    <td>1915.1 </td>
-    <td>68.6 </td>
-    <td>68.3 </td>
-    <td>40.3 </td>
-    <td>28.8 </td>
-    <td>51.9 </td>
-    <td>- </td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
-    <td align="right" >9.6B</td>
-    <td>61.5</td>
-    <td>62.6</td>
-    <td>488 </td>
-    <td>52.1 </td>
-    <td>1860.0 </td>
-    <td>60.6 </td>
-    <td>56.7 </td>
-    <td>37.0 </td>
-    <td>33.8 </td>
-    <td>67.7 </td>
-    <td>56.2 / 80.0</td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap" align="left" >Yi-VL-34B</td>
-    <td align="right" >34B</td>
-    <td>43.4*</td>
-    <td>16.9*</td>
-    <td>290</td>
-    <td>52.6 </td>
-    <td>2050.2</td>
-    <td>71.1</td>
-    <td>71.4</td>
-    <td>45.1</td>
-    <td>30.7</td>
-    <td>62.3</td>
-    <td>- </td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >DeepSeek-VL-7B</td>
-    <td align="right" >7.3B</td>
-    <td>64.7*</td>
-    <td>47.0* </td>
-    <td>435</td>
-    <td>55.6 </td>
-    <td>1765.4 </td>
-    <td>74.1 </td>
-    <td>72.8 </td>
-    <td>38.3 </td>
-    <td>36.8</td>
-    <td>77.8 </td>
-    <td>- </td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >TextMonkey</td>
-    <td align="right" >9.7B</td>
-    <td>64.3</td>
-    <td>66.7 </td>
-    <td>558</td>
-    <td>- </td>
-    <td>- </td>
-    <td>- </td>
-    <td>- </td>
-    <td>- </td>
-    <td>-</td>
-    <td>- </td>
-    <td>- </td>
-  </tr>
-    <tr>
-    <td  nowrap="nowrap" align="left" >CogVLM-Chat</td>
-    <td align="right" >17.4B</td>
-    <td>70.4</td>
-    <td>33.3*</td>
-    <td>590 </td>
-    <td>52.5 </td>
-    <td>1736.6 </td>
-    <td>63.7 </td>
-    <td>53.8 </td>
-    <td>37.3 </td>
-    <td>34.7 </td>
-    <td>73.9 </td>
-    <td>73.6 / 87.4 </td>
-  </tr>
-  <tr>
-    <td colspan="12" align="left"><strong>Open-source models 1B~3B </strong></td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >DeepSeek-VL-1.3B</td>
-    <td align="right" >1.7B</td>
-    <td>58.4*</td>
-    <td>37.9*</td>
-    <td>413</td>
-    <td>46.0 </td>
-    <td>1531.6 </td>
-    <td>64.0 </td>
-    <td>61.2 </td>
-    <td>33.8 </td>
-    <td>29.4 </td>
-    <td>51.1 </td>
-    <td>- </td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >MobileVLM V2</td>
-    <td align="right" >3.1B</td>
-    <td>57.5</td>
-    <td>19.4*</td>
-    <td>-</td>
-    <td>-</td>
-    <td>1440.5(P) </td>
-    <td>63.2 </td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-    <td>-</td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >Mini-Gemini</td>
-    <td align="right" >2.2B</td>
-    <td>56.2</td>
-    <td>34.2*</td>
-    <td>-</td>
-    <td>-</td>
-    <td>1653.0 </td>
-    <td>59.8 </td>
-    <td>- </td>
-    <td>31.7 </td>
-    <td>-</td>
-    <td>- </td>
-    <td>- </td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" >MiniCPM-V</td>
-    <td align="right" >2.8B </td>
-    <td>60.6</td>
-    <td>38.2 </td>
-    <td>366</td>
-    <td>47.6</td>
-    <td>1650.2 </td>
-    <td>67.9 </td>
-    <td>65.3 </td>
-    <td><strong>38.3</strong></td>
-    <td>28.9</td>
-    <td>51.3 </td>
-    <td>78.4 / 88.5 </td>
-  </tr>
-  <tr>
-    <td  nowrap="nowrap" align="left" ><strong>MiniCPM-V 2.0</strong></td>
-    <td align="right" >2.8B </td>
-    <td><strong>74.1</strong></td>
-    <td><strong>71.9</strong> </td>
-    <td><strong>605</strong></td>
-    <td><strong>55.0</strong></td>
-    <td><strong>1808.6</strong> </td>
-    <td><strong>69.6</strong> </td>
-    <td><strong>68.1</strong> </td>
-    <td>38.2 </td>
-    <td><strong>38.7</strong></td>
-    <td><strong>69.2</strong> </td>
-    <td><strong>85.5 / 92.2 </strong></td>
-  </tr>
-</tbody>
+    <thead>
+        <tr>
+            <th align="left">Model</th>
+            <th>Size</th>
+            <th>OCRBench</th>
+            <th>TextVQA val</th>
+            <th>DocVQA test</th>
+            <th>Open-Compass</th>
+            <th>MME</th>
+            <th>MMB test (en)</th>
+            <th>MMB test (cn)</th>
+            <th>MMMU val</th>
+            <th>Math-Vista</th>
+            <th>LLaVA Bench</th>
+            <th>RealWorld QA</th>
+            <th>Object HalBench</th>
+        </tr>
+    </thead>
+    <tbody align="center">
+        <tr>
+            <td colspan="14" align="left"><strong>Proprietary</strong></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">Gemini Pro</td>
+            <td>-</td>
+            <td>680</td>
+            <td>74.6</td>
+            <td>88.1</td>
+            <td>62.9</td>
+            <td>2148.9</td>
+            <td>73.6</td>
+            <td>74.3</td>
+            <td>48.9</td>
+            <td>45.8</td>
+            <td>79.9</td>
+            <td>60.4</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">GPT-4V (2023.11.06)</td>
+            <td>-</td>
+            <td>645</td>
+            <td>78.0</td>
+            <td>88.4</td>
+            <td>63.5</td>
+            <td>1771.5</td>
+            <td>77.0</td>
+            <td>74.4</td>
+            <td>53.8</td>
+            <td>47.8</td>
+            <td>93.1</td>
+            <td>63.0</td>
+            <td>86.4</td>
+        </tr>
+        <tr>
+            <td colspan="14" align="left"><strong>Open-source</strong></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">Mini-Gemini</td>
+            <td>2.2B</td>
+            <td>-</td>
+            <td>56.2</td>
+            <td>34.2*</td>
+            <td>-</td>
+            <td>1653.0</td>
+            <td>-</td>
+            <td>-</td>
+            <td>31.7</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">Qwen-VL-Chat</td>
+            <td>9.6B</td>
+            <td>488</td>
+            <td>61.5</td>
+            <td>62.6</td>
+            <td>51.6</td>
+            <td>1860.0</td>
+            <td>61.8</td>
+            <td>56.3</td>
+            <td>37.0</td>
+            <td>33.8</td>
+            <td>67.7</td>
+            <td>49.3</td>
+            <td>56.2</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">DeepSeek-VL-7B</td>
+            <td>7.3B</td>
+            <td>435</td>
+            <td>64.7*</td>
+            <td>47.0*</td>
+            <td>54.6</td>
+            <td>1765.4</td>
+            <td>73.8</td>
+            <td>71.4</td>
+            <td>38.3</td>
+            <td>36.8</td>
+            <td>77.8</td>
+            <td>54.2</td>
+            <td>-</td>
+        </tr>        
+        <tr>
+            <td nowrap="nowrap" align="left">Yi-VL-34B</td>
+            <td>34B</td>
+            <td>290</td>
+            <td>43.4*</td>
+            <td>16.9*</td>
+            <td>52.2</td>
+            <td><strong>2050.2</strong></td>
+            <td>72.4</td>
+            <td>70.7</td>
+            <td>45.1</td>
+            <td>30.7</td>
+            <td>62.3</td>
+            <td>54.8</td>
+            <td>79.3</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">CogVLM-Chat</td>
+            <td>17.4B</td>
+            <td>590</td>
+            <td>70.4</td>
+            <td>33.3*</td>
+            <td>54.2</td>
+            <td>1736.6</td>
+            <td>65.8</td>
+            <td>55.9</td>
+            <td>37.3</td>
+            <td>34.7</td>
+            <td>73.9</td>
+            <td>60.3</td>
+            <td>73.6</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">TextMonkey</td>
+            <td>9.7B</td>
+            <td>558</td>
+            <td>64.3</td>
+            <td>66.7</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
+          <td nowrap="nowrap" align="left">Idefics2</td>
+          <td>8.0B</td>
+          <td>-</td>
+          <td>73.0</td>
+          <td>74.0</td>
+          <td>57.2</td>
+          <td>1847.6</td>
+          <td>75.7</td>
+          <td>68.6</td>
+          <td>45.2</td>
+          <td>52.2</td>
+          <td>49.1</td>
+          <td>60.7</td>
+          <td>-</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">Bunny-LLama-3-8B</td>
+            <td>8.4B</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>54.3</td>
+            <td>1920.3</td>
+            <td>77.0</td>
+            <td>73.9</td>
+            <td>41.3</td>
+            <td>31.5</td>
+            <td>61.2</td>
+            <td>58.8</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">LLaVA-NeXT Llama-3-8B</td>
+            <td>8.4B</td>
+            <td>-</td>
+            <td>-</td>
+            <td>78.2</td>
+            <td>-</td>
+            <td>1971.5</td>
+            <td>-</td>
+            <td>-</td>
+            <td>41.7</td>
+            <td>37.5</td>
+            <td>80.1</td>
+            <td>60.0</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">Phi-3-vision-128k-instruct</td>
+            <td>4.2B</td>
+            <td>639*</td>
+            <td>70.9</td>
+            <td>-</td>
+            <td>-</td>
+            <td>1537.5*</td>
+            <td>-</td>
+            <td>-</td>
+            <td>40.4</td>
+            <td>44.5</td>
+            <td>64.2*</td>
+            <td>58.8*</td>
+            <td>-</td>
+        </tr>
+        <tr style="background-color: #e6f2ff;">
+            <td nowrap="nowrap" align="left">MiniCPM-V 1.0</td>
+            <td>2.8B</td>
+            <td>366</td>
+            <td>60.6</td>
+            <td>38.2</td>
+            <td>47.5</td>
+            <td>1650.2</td>
+            <td>64.1</td>
+            <td>62.6</td>
+            <td>38.3</td>
+            <td>28.9</td>
+            <td>51.3</td>
+            <td>51.2</td>
+            <td>78.4</td>
+        </tr>
+        <tr style="background-color: #e6f2ff;">
+            <td nowrap="nowrap" align="left">MiniCPM-V 2.0</td>
+            <td>2.8B</td>
+            <td>605</td>
+            <td>74.1</td>
+            <td>71.9</td>
+            <td>54.5</td>
+            <td>1808.6</td>
+            <td>69.1</td>
+            <td>66.5</td>
+            <td>38.2</td>
+            <td>38.7</td>
+            <td>69.2</td>
+            <td>55.8</td>
+            <td>85.5</td>
+        </tr>
+        <tr style="background-color: #e6f2ff;">
+            <td nowrap="nowrap" align="left">MiniCPM-Llama3-V 2.5</td>
+            <td>8.5B</td>
+            <td><strong>725</strong></td>
+            <td><strong>76.6</strong></td>
+            <td><strong>84.8</strong></td>
+            <td><strong>65.1</strong></td>
+            <td>2024.6</td>
+            <td><strong>77.2</strong></td>
+            <td><strong>74.2</strong></td>
+            <td><strong>45.8</strong></td>
+            <td><strong>54.3</strong></td>
+            <td><strong>86.7</strong></td>
+            <td><strong>63.5</strong></td>
+            <td><strong>89.7</strong></td>
+        </tr>
+    </tbody>
 </table>
 
+
 </div>
-* 我们自己评测了正式开源的模型权重。
+* We evaluate the officially released checkpoint by ourselves.
 
 </details>
 
-### 典型示例 <!-- omit in toc -->
+<div align="center">
+    <img src="assets/llavabench_compare_3.png" width="100%" />
+    <br>
+    Evaluation results of multilingual LLaVA Bench
+</div>
 
+### Examples <!-- omit in toc -->
+
+<table align="center" >
+  <p align="center" > 
+  <img src="assets/minicpmv-llama3-v2.5/cases_all.png" />
+  </p>
+</table>
+
+We deploy MiniCPM-Llama3-V 2.5 on end devices. The demo video is the raw screen recording on a Xiaomi 14 Pro without edition.
+
+<table align="center">
+    <p align="center">
+      <img src="assets/gif_cases/ticket.gif" width=32%/>
+      <img src="assets/gif_cases/meal_plan.gif" width=32%/>
+    </p>
+</table>
+
+<table align="center">
+    <p align="center">
+      <img src="assets/gif_cases/1-4.gif" width=64%/>
+    </p>
+</table>
+
+## MiniCPM-V 2.0
+
+<details>
+<summary>Click to view more details of MiniCPM-V 2.0</summary>
+
+
+**MiniCPM-V 2.0** is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/), connected by a perceiver resampler. Our latest version, MiniCPM-V 2.0 has several notable features. 
+
+- 🔥 **State-of-the-art Performance.** 
+
+  MiniCPM-V 2.0 achieves **state-of-the-art performance** on multiple benchmarks (including OCRBench, TextVQA, MME, MMB, MathVista, etc) among models under 7B parameters. It even **outperforms strong Qwen-VL-Chat 9.6B, CogVLM-Chat 17.4B, and Yi-VL 34B on OpenCompass, a comprehensive evaluation over 11 popular benchmarks**. Notably, MiniCPM-V 2.0 shows **strong OCR capability**, achieving **comparable performance to Gemini Pro in scene-text understanding**, and **state-of-the-art performance on OCRBench** among open-source models.
+
+- 🏆 **Trustworthy Behavior.** 
+
+  LMMs are known for suffering from hallucination, often generating text not factually grounded in images. MiniCPM-V 2.0 is **the first end-side LMM aligned via multimodal RLHF for trustworthy behavior** (using the recent [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] series technique). This allows the model to **match GPT-4V in preventing hallucinations** on Object HalBench.
+
+- 🌟 **High-Resolution Images at Any Aspect Raito.**
+
+  MiniCPM-V 2.0 can accept **1.8 million pixels (e.g., 1344x1344) images at any aspect ratio**. This enables better perception of fine-grained visual information such as small objects and optical characters, which is achieved via a recent technique from [LLaVA-UHD](https://arxiv.org/pdf/2403.11703.pdf).
+
+- ⚡️ **High Efficiency.** 
+
+  MiniCPM-V 2.0 can be **efficiently deployed on most GPU cards and personal computers**, and **even on end devices such as mobile phones**. For visual encoding, we compress the image representations into much fewer tokens via a perceiver resampler. This allows MiniCPM-V 2.0 to operate with **favorable memory cost and speed during inference even when dealing with high-resolution images**.
+
+- 🙌 **Bilingual Support.** 
+
+  MiniCPM-V 2.0 **supports strong bilingual multimodal capabilities in both English and Chinese**. This is enabled by generalizing multimodal capabilities across languages, a technique from [VisCPM](https://arxiv.org/abs/2308.12038) [ICLR'24].
+
+### Examples <!-- omit in toc -->
 
 <table align="center">
     <p align="center">
@@ -332,7 +435,7 @@
     </p>
 </table>
 
-我们将 MiniCPM-V 2.0 部署在小米 14 Pro 上，并录制了以下演示视频，未经任何视频剪辑。
+We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recording on a Xiaomi 14 Pro without edition.
 
 <table align="center">
     <p align="center">
@@ -341,210 +444,77 @@
     </p>
 </table>
 
-### MiniCPM-V 1.0 <!-- omit in toc -->
-
-请参考[这里](./minicpm_v1.md)了解 MiniCPM-V 1.0 的信息和使用教程。
-
-
-## OmniLMM-12B
-**OmniLMM-12B** 是当前系列中性能最佳的版本。该模型基于EVA02-5B和Zephyr-7B-β初始化构建，并使用perceiver resampler连接，采用了课程学习的方法在多模态数据上进行训练。该模型具有三个特点：
-
-- 🔥 **性能领先。**
-
-  OmniLMM-12B 相比其他同规模模型在多个基准测试中取得**领先的性能**（包括 MME、MMBench、SEED-Bench 等），模型掌握了较为丰富的多模态世界知识。
-
-- 🏆 **行为可信。**
-
-  多模态大模型的幻觉问题备受关注，模型经常生成和图像中的事实不符的文本（例如，确信地描述图片中并不存在的物体）。OmniLMM-12B是 **第一个通过多模态 RLHF 对齐的综合能力优秀的开源多模态大模型**（借助 [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] 系列技术）。该模型在 [MMHal-Bench](https://huggingface.co/datasets/Shengcao1006/MMHal-Bench) 幻觉评测基准上达到**开源模型最佳水平**，并在 [Object HalBench](https://arxiv.org/abs/2312.00849) 中**优于GPT-4V**。
-
-- 🕹 **实时多模态交互。**
-
-  我们尝试结合OmniLMM-12B和GPT-3.5 (纯文本模型) ，实现**实时多模态交互助手**。该模型接受来自摄像头的视频流，并借助工具处理语音输入输出。虽然还很初步，我们发现该模型无需视频编辑可以**复现Gemini演示视频中的一些有趣例子**。
-
-### 评测结果 <!-- omit in toc -->
-
-<div align="center">
-    <img src=assets/radar_omnilmm12b.png width=66% />
-</div>
-<details>
-<summary> MME, MMBench, MMMU, MMBench, MMHal-Bench, Object HalBench, SeedBench, LLaVA Bench W, MathVista 上的详细评测结果。 </summary>
-
-<table>
-<thead>
-  <tr>
-    <th align="left">Model</th>
-    <th>Size</th>
-    <th>MME</th>
-    <th nowrap="nowrap">MMB dev (en)</th>
-    <th nowrap="nowrap" >MMMU val</th>
-    <th nowrap="nowrap" >MMHal-Bench</th>
-    <th nowrap="nowrap" >Object HalBench</th>
-    <th nowrap="nowrap" >SeedBench-I</th>
-    <th>MathVista</th>
-    <th nowrap="nowrap" >LLaVA Bench</th>
-  </tr>
-</thead>
-<tbody align="center">
-  <tr>
-    <td align="left">GPT-4V†</td>
-    <td>-</td>
-    <td>1771.5</td>
-    <td>75.1 </td>
-    <td>56.8</td>
-    <td>3.53 / 70.8</td>
-    <td>86.4 / 92.7</td>
-    <td>71.6 </td>
-    <td>47.8 </td>
-    <td>93.1 </td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap" align="left">Qwen-VL-Plus†</td>
-    <td>-</td>
-    <td>2183.4</td>
-    <td>66.2 </td>
-    <td>45.2</td>
-    <td>- </td>
-    <td>- </td>
-    <td>65.7 </td>
-    <td>36.0 </td>
-    <td>73.7 </td>
-  </tr>
-  <tr>
-    <td align="left">Yi-VL 6B</td>
-    <td align="right">6.7B </td>
-    <td>1915.1 </td>
-    <td>68.6 </td>
-    <td>40.3 </td>
-    <td>- </td>
-    <td>- </td>
-    <td>67.5 </td>
-    <td>28.8 </td>
-    <td>51.9 </td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap" align="left" >Qwen-VL-Chat</td>
-    <td align="right">9.6B</td>
-    <td>1860.0</td>
-    <td>60.6 </td>
-    <td>35.9</td>
-    <td>2.93 / 59.4</td>
-    <td>56.2 / 80.0</td>
-    <td>64.8 </td>
-    <td>33.8 </td>
-    <td>67.7 </td>
-  </tr>
-  <tr>
-    <td align="left" >CogVLM-Chat</td>
-    <td align="right">17.4B</td>
-    <td>1736.6</td>
-    <td>63.7 </td>
-    <td>32.1 </td>
-    <td>2.68 / 52.1 </td>
-    <td>73.6 / 87.4 </td>
-    <td>68.8 </td>
-    <td>34.7 </td>
-    <td>73.9 </td>
-  </tr>
-  <tr>
-    <td align="left" >LLaVA 1.5</td>
-    <td align="right">13.6B </td>
-    <td>1808.4 </td>
-    <td>68.2 </td>
-    <td>36.4 </td>
-    <td>2.71 / 51.0 </td>
-    <td>53.7 / 77.4 </td>
-    <td>68.1 </td>
-    <td>26.4 </td>
-    <td>64.6 </td>
-  </tr>
-  <tr>
-    <td nowrap="nowrap" align="left" ><b>OmniLMM-12B</b></td>
-    <td align="right">11.6B </td>
-    <td>1935.8 </td>
-    <td>71.6 </td>
-    <td>40.7 </td>
-    <td>3.45 / 68.8 </td>
-    <td>90.3 / 95.5 </td>
-    <td>71.1 </td>
-    <td>34.9 </td>
-    <td>72.0 </td>
-  </tr>
-</tbody>
-</table>
-<small>†: 闭源模型</small>
-<br>
 </details>
 
-### 典型示例 <!-- omit in toc -->
+## Legacy Models <!-- omit in toc --> 
 
-<table align="center" >
-  <p align="center" > 
-    <img src="assets/omnilmm-12b-examples_2.png" />
-  </p>
-</table>
+| Model                | Introduction and Guidance       |
+|:----------------------|:-------------------:|
+| MiniCPM-V 1.0  | [Document](./minicpm_v1.md)   | 
+| OmniLMM-12B  | [Document](./omnilmm_en.md)   |  
 
 
-我们结合 OmniLMM-12B 和 ChatGPT-3.5 (纯文本模型) 尝试构建 **实时多模态交互助手**. OmniLMM-12B 将视频帧转为对应的图像描述并输入给ChatGPT-3.5来生成对用户指令的响应。演示视频未经编辑。
-
-<div align="center" >
-  <video controls src="https://github.com/OpenBMB/OmniLMM/assets/157115220/8fec13bf-bb47-4bf8-8f8c-d0b716a964ec" type="video/mp4" width=80%/>
-</div>
 
 ## Online Demo
+Click here to try out the Demo of [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2).
 
-欢迎通过以下链接使用我们的网页端推理服务： [OmniLMM-12B](http://120.92.209.146:8081) ｜ [MiniCPM-V 2.0](http://120.92.209.146:80).
+## Install
 
-## 安装
-
-1. 克隆我们的仓库并跳转到相应目录
+1. Clone this repository and navigate to the source folder
 
 ```bash
 git clone https://github.com/OpenBMB/MiniCPM-V.git
 cd MiniCPM-V
 ```
 
-1. 创建 conda 环境
+2. Create conda environment
 
 ```Shell
-conda create -n MiniCPMV python=3.10 -y
-conda activate MiniCPMV
+conda create -n MiniCPM-V python=3.10 -y
+conda activate MiniCPM-V
 ```
 
-3. 安装依赖
+3. Install dependencies
 
 ```shell
 pip install -r requirements.txt
 ```
 
-## 推理
-
-### 模型库
-
-| 模型                | 简介       | 下载链接 |
-|:----------------------|:-------------------|:---------------:|
-| MiniCPM-V 2.0  | 最新版本，提供高效而领先的端侧双语多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2/files) |
-| MiniCPM-V  | 第一版 MiniCPM-V    |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V/files) |
-| OmniLMM-12B | 性能最强的版本                   |  [🤗](https://huggingface.co/openbmb/OmniLMM-12B) &nbsp;&nbsp;  [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/OmniLMM-12B/files) |
+## Inference
 
 
-### 多轮对话
+### Model Zoo
 
-请参考以下代码使用 `MiniCPM-V` 和 `OmniLMM` 进行推理。
+| Model           | Device | Memory    | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Description       | Download |
+|:-----------|:--:|:-----------:|:-------------------|:---------------:|
+| MiniCPM-Llama3-V 2.5 | GPU | 19 GB | The lastest version, achieving state-of-the end-side multimodal performance.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5) |
+| MiniCPM-Llama3-V 2.5 gguf | CPU  | 5 GB | The gguf version, lower GPU memory and faster inference.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) &nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-gguf) |
+| MiniCPM-Llama3-V 2.5 int4 | GPU | 8 GB | The int4 quantized version，lower GPU memory usage. |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-int4/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-int4) |
+| MiniCPM-V 2.0 | GPU | 8 GB | Light version, balance the performance the computation cost.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2) |
+| MiniCPM-V 1.0 | GPU | 7 GB | Lightest version, achieving the fastest inference. |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V) |
+
+### Multi-turn Conversation
+
+Please refer to the following codes to run.
 
 <div align="center">
-<img src="assets/hk_OCR.jpg" width="500px">
+<img src="assets/airplane.jpeg" width="500px">
 </div>
 
 
 ```python
-from chat import OmniLMMChat, img2base64
+from chat import MiniCPMVChat, img2base64
+import torch
+import json
 
-chat_model = OmniLMMChat('openbmb/MiniCPM-V-2') # or 'openbmb/OmniLMM-12B'
+torch.manual_seed(0)
 
-im_64 = img2base64('./assets/hk_OCR.jpg')
+chat_model = MiniCPMVChat('openbmb/MiniCPM-Llama3-V-2_5')
+
+im_64 = img2base64('./assets/airplane.jpeg')
 
 # First round chat 
-msgs = [{"role": "user", "content": "Where should I go to buy a camera?"}]
+msgs = [{"role": "user", "content": "Tell me the model of this aircraft."}]
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.chat(inputs)
@@ -553,37 +523,37 @@ print(answer)
 # Second round chat 
 # pass history context of multi-turn conversation
 msgs.append({"role": "assistant", "content": answer})
-msgs.append({"role": "user", "content": "Where is this store in the image?"})
+msgs.append({"role": "user", "content": "Introduce something about Airbus A380."})
 
 inputs = {"image": im_64, "question": json.dumps(msgs)}
 answer = chat_model.chat(inputs)
 print(answer)
 ```
 
-可以得到以下输出:
+You will get the following output:
 
 ```
-"You should go to the Canon store for a camera."
+"The aircraft in the image is an Airbus A380, which can be identified by its large size, double-deck structure, and the distinctive shape of its wings and engines. The A380 is a wide-body aircraft known for being the world's largest passenger airliner, designed for long-haul flights. It has four engines, which are characteristic of large commercial aircraft. The registration number on the aircraft can also provide specific information about the model if looked up in an aviation database."
 
-"The Canon store is located on the right side of the image."
+"The Airbus A380 is a double-deck, wide-body, four-engine jet airliner made by Airbus. It is the world's largest passenger airliner and is known for its long-haul capabilities. The aircraft was developed to improve efficiency and comfort for passengers traveling over long distances. It has two full-length passenger decks, which can accommodate more passengers than a typical single-aisle airplane. The A380 has been operated by airlines such as Lufthansa, Singapore Airlines, and Emirates, among others. It is widely recognized for its unique design and significant impact on the aviation industry."
 ```
 
 
 
-### Mac 推理
+### Inference on Mac
 <details>
-<summary>点击查看 MiniCPM-V 2.0 基于Mac MPS运行 (Apple silicon or AMD GPUs)的示例。 </summary>
+<summary>Click to view an example, to run MiniCPM-Llama3-V 2.5 on 💻 Mac with MPS (Apple silicon or AMD GPUs). </summary>
 
 ```python
-# test.py
+# test.py  Need more than 16GB memory.
 import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True, torch_dtype=torch.bfloat16)
-model = model.to(device='mps', dtype=torch.float16)
+model = AutoModel.from_pretrained('openbmb/MiniCPM-Llama3-V-2_5', trust_remote_code=True, low_cpu_mem_usage=True)
+model = model.to(device='mps')
 
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-Llama3-V-2_5', trust_remote_code=True)
 model.eval()
 
 image = Image.open('./assets/hk_OCR.jpg').convert('RGB')
@@ -599,114 +569,137 @@ answer, context, _ = model.chat(
 )
 print(answer)
 ```
-运行:
+Run with command:
 ```shell
 PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
 
+### Deployment on Mobile Phone
+MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [here](https://github.com/OpenBMB/mlc-MiniCPM) to install apk. MiniCPM-Llama3-V 2.5 coming soon.
 
-### 手机端部署
-MiniCPM-V 2.0 目前可以部署在Android和Harmony操作系统的手机上。 🚀 点击[这里](https://github.com/OpenBMB/mlc-MiniCPM)开始手机端部署。
+### WebUI Demo
 
-### 本地WebUI Demo部署
 <details>
-<summary>点击查看本地WebUI demo在Nvidia GPU, Mac等不同设备部署方法 </summary>
+<summary>Click to see how to deploy WebUI demo on different devices </summary>
   
 ```shell
 pip install -r requirements.txt
 ```
   
 ```shell
-# For Nvidia GPUs support BF16 (like A100, H100, RTX3090), run:
-python web_demo.py --device cuda --dtype bf16
-
-# For Nvidia GPUs do NOT support BF16 (like V100, T4, RTX2080), run:
-python web_demo.py --device cuda --dtype fp16
+# For NVIDIA GPUs, run:
+python web_demo_2.5.py --device cuda
 
 # For Mac with MPS (Apple silicon or AMD GPUs), run:
-PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
 ```
 </details>
 
-### vLLM 部署 <a id='vllm'></a>
-<details>
-<summary>点击查看 vLLM 部署运行的方法</summary>
-由于我们对 vLLM 提交的 PR 还在 review 中，因此目前我们 fork 了一个 vLLM 仓库以供测试使用。
+### Inference with llama.cpp<a id="inference-with-llamacpp"></a>
+MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail. This implementation supports smooth inference of 6~8 token/s on mobile phones (test environment：Xiaomi 14 pro + Snapdragon 8 Gen 3).
 
-1. 首先克隆我们 fork 的 vLLM 库:
+### Inference with vLLM<a id="vllm"></a>
+
+<details>
+<summary>Click to see how to inference with vLLM </summary>
+Because our pull request to vLLM is still waiting for reviewing, we fork this repository to build and test our vLLM demo. Here are the steps:
+
+1. Clone our version of vLLM:
 ```shell
 git clone https://github.com/OpenBMB/vllm.git
 ```
-2. 安装 vLLM 库:
+2. Install vLLM:
 ```shell
 cd vllm
 pip install -e .
 ```
-3. 安装 timm 库: 
+3. Install timm: 
 ```shell
 pip install timm=0.9.10
 ```
-4. 测试运行示例程序:
+4. Run our demo:
 ```shell
 python examples/minicpmv_example.py 
 ```
-
-
 </details>
 
+## Fine-tuning
 
-## 微调
+### Simple Fine-tuning <!-- omit in toc -->
 
-### MiniCPM-V <!-- omit in toc -->
+We support simple fine-tuning with Hugging Face for MiniCPM-V 2.0 and MiniCPM-Llama3-V 2.5.
 
-我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种 LLM 和 MLLM（多模态大模型）的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
+[Reference Document](./finetune/readme.md)
 
-参考文档：[MiniCPM-V](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V-2](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
+### With the SWIFT Framework <!-- omit in toc -->
 
-## 未来计划
+We now support MiniCPM-V series fine-tuning with the SWIFT framework. SWIFT supports training, inference, evaluation and deployment of nearly 200 LLMs and MLLMs . It supports the lightweight training solutions provided by PEFT and a complete Adapters Library including techniques such as NEFTune, LoRA+ and LLaMA-PRO.
 
-- [x] 支持 MiniCPM-V 系列模型微调
-- [ ] 支持 OmniLMM 系列模型微调
-- [ ] 实时多模态交互代码开源
-
+Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
 
 
-## 模型协议 <!-- omit in toc -->
 
-本仓库中代码依照 Apache-2.0 协议开源
+## TODO
 
-OmniLMM 模型权重的使用遵循 “[通用模型许可协议-来源说明-宣传限制-商业授权](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)”。
+- [x] MiniCPM-V fine-tuning support
+- [ ] Code release for real-time interactive assistant
 
-OmniLMM 模型权重对学术研究完全开放。
+## Model License <!-- omit in toc -->
 
-如需将模型用于商业用途，请联系 cpm@modelbest.cn 来获取书面授权，登记后可以免费商业使用。
+The code in this repo is released according to [Apache-2.0](https://github.com/OpenBMB/MiniCPM/blob/main/LICENSE)
+
+The usage of MiniCPM-V's and OmniLMM's parameters is subject to "[General Model License Agreement - Source Notes - Publicity Restrictions - Commercial License](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)"
+
+The parameters are fully open to academic research
+
+Please contact cpm@modelbest.cn to obtain written authorization for commercial uses. Free commercial use is also allowed after registration.
+
+## Statement <!-- omit in toc -->
+
+As LMMs, MiniCPM-V models (including OmniLMM) generate contents by learning a large amount of multimodal corpora, but they cannot comprehend, express personal opinions or make value judgement. Anything generated by MiniCPM-V models does not represent the views and positions of the model developers
+
+We will not be liable for any problems arising from the use of MiniCPMV-V models, including but not limited to data security issues, risk of public opinion, or any risks and problems arising from the misdirection, misuse, dissemination or misuse of the model.
 
 
-## 声明 <!-- omit in toc -->
+## Institutions  <!-- omit in toc -->
 
-作为多模态大模型，MiniCPM-V 和 OmniLMM 通过学习大量的多模态数据来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
+This project is developed by the following institutions:
 
-因此用户在使用 MiniCPM-V 和 OmniLMM 生成的内容时，应自行负责对其进行评估和验证。如果由于使用 OmniLMM 开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
+- <img src="assets/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
+- <img src="assets/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
+- <img src="assets/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
 
+## Other Multimodal Projects from Our Team <!-- omit in toc -->
 
-## 机构 <!-- omit in toc -->
+👏 Welcome to explore other multimodal projects of our team:
 
-本项目由以下机构共同开发：
+[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [RLAIF-V](https://github.com/RLHF-V/RLAIF-V)
 
-- <img src="assets/thunlp.png" width="28px"> [清华大学自然语言处理实验室](https://nlp.csai.tsinghua.edu.cn/)
-- <img src="assets/modelbest.png" width="28px"> [面壁智能](https://modelbest.cn/)
-- <img src="assets/zhihu.webp" width="28px"> [知乎](https://www.zhihu.com/ )
+## 🌟 Star History
 
-## 其他多模态项目 <!-- omit in toc -->
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
+  />
+</picture>
 
-👏 欢迎了解我们更多的多模态项目：
+## Citation
 
-[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD)
-
-## 引用
-
-如果您觉得我们模型/代码/论文有帮助，请给我们 ⭐ 和 引用 📝，感谢！
+If you find our model/code/paper helpful, please consider cite our papers 📝 and star us ⭐️！
 
 ```bib
 @article{yu2023rlhf,

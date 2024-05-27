@@ -9,8 +9,9 @@ MASTER_PORT=6001
 MODEL="openbmb/MiniCPM-Llama3-V-2_5" # or openbmb/MiniCPM-V-2
 # ATTENTION: specify the path to your training data, which should be a json file consisting of a list of conversations.
 # See the section for finetuning in README for more information.
-DATA="path/data/train/"
-EVAL_DATA="path/data/eval/"
+
+DATA="path/to/trainging_data"
+EVAL_DATA="path/to/test_data"
 LLM_TYPE="llama3" # if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm
 
 DISTRIBUTED_ARGS="
@@ -59,4 +60,3 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
 --gradient_checkpointing true \
 --deepspeed ds_config_zero2.json \
 --report_to "tensorboard" 
-

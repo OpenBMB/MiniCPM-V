@@ -5,14 +5,15 @@ import os
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Union, Literal, Tuple
 from types import MethodType
-
 import torch
 import transformers
 from accelerate.utils import DistributedType
 from deepspeed import zero
 from deepspeed.runtime.zero.partition_parameters import ZeroParamStatus
+
 from transformers import AutoModel, AutoTokenizer
 from transformers.integrations import deepspeed
+from transformers import AutoModel, AutoTokenizer
 
 from dataset import SupervisedDataset, data_collator
 from trainer import CPMTrainer
@@ -49,6 +50,10 @@ class TrainingArguments(transformers.TrainingArguments):
     tune_resampler: Optional[bool] = field(default=False)
     llm_type: str = field(default="minicpm")
     use_lora: Optional[bool] = field(default=False)
+
+    tune_vision: Optional[bool] = field(default=True)
+    tune_llm: Optional[bool] = field(default=True)
+    llm_type: str = field(default="minicpm")
 
 
 @dataclass
@@ -175,7 +180,7 @@ def make_supervised_data_module(
 
 def get_parameter_number(model):
     trainable_params, all_param = 0, 0
-    for name, param in model.named_parameters():
+    for param in model.parameters():
         num_params = param.numel()
         # if using DS Zero 3 and the weights are initialized empty
         if num_params == 0 and hasattr(param, "ds_numel"):
@@ -216,14 +221,8 @@ def train():
     local_rank = training_args.local_rank
     world_size = int(os.environ.get("WORLD_SIZE", 1))
     ddp = world_size != 1
-    device_map = None
-    if lora_args.q_lora:
-        device_map = {"": int(os.environ.get("LOCAL_RANK") or 0)} if ddp else None
-        if len(training_args.fsdp) > 0 or deepspeed.is_deepspeed_zero3_enabled():
-            logging.warning(
-                "FSDP or ZeRO3 are not incompatible with QLoRA."
-            )
-
+    device_map = {"": int(os.environ.get("LOCAL_RANK") or 0)} if ddp else None
+    
     model = AutoModel.from_pretrained(
         model_args.model_name_or_path,
         trust_remote_code=True,
@@ -231,7 +230,6 @@ def train():
         device_map=device_map,
     )
 
-    
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.model_name_or_path, trust_remote_code=True
     )
@@ -266,10 +264,7 @@ def train():
         model = get_peft_model(model, lora_config)
         if training_args.gradient_checkpointing:
             model.enable_input_require_grads()
-            
-        
-        
- 
+
     rank0_print(get_parameter_number(model))
 
     llm_type = training_args.llm_type    

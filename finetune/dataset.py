@@ -130,7 +130,7 @@ def conversation_to_ids(conversation, tokenizer, llm_type=None):
     image_end_tokens = torch.where(ids == tokenizer.im_end_id)[0]
     if len(image_start_tokens) != len(image_end_tokens):
         print("image start token != image end tokens")
-    
+        
     if len(image_start_tokens) > 0:
         image_bound = torch.hstack(
             [image_start_tokens.unsqueeze(-1), image_end_tokens.unsqueeze(-1)]
