@@ -96,7 +96,6 @@ def data_collator(examples, padding_value=0):
 
 
 def conversation_to_ids(conversation, tokenizer, llm_type=None):
-    sss=copy.deepcopy(conversation)
     """
     for single image multi-turn conversation
     conversation: [{'role': 'user', 'content': 'Describe this image'},

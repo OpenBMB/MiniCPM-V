@@ -183,7 +183,6 @@ def get_parameter_number(model):
 
         all_param += num_params
         if param.requires_grad:
-            print(name)
             trainable_params += num_params
         
     return {'Total': all_param, 'Trainable': trainable_params}
@@ -205,7 +204,7 @@ def train():
         lora_args,
     ) = parser.parse_args_into_dataclasses()
 
-    if getattr(training_args, "deepspeed", None) and getattr(lora_args, 'q_lora', False): 
+    if getattr(training_args, "deepspeed", None) : 
         training_args.distributed_state.distributed_type = DistributedType.DEEPSPEED
 
     compute_dtype = (
