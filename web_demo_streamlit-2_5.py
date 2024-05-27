@@ -17,6 +17,7 @@ st.set_page_config(
     layout="wide"
 )
 
+
 # Load model and tokenizer
 @st.cache_resource
 def load_model_and_tokenizer():
@@ -25,9 +26,11 @@ def load_model_and_tokenizer():
     tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
     return model, tokenizer
 
+
 # Initialize session state
 if 'model' not in st.session_state:
     st.session_state.model, st.session_state.tokenizer = load_model_and_tokenizer()
+    st.session_state.model.eval()
     print("model and tokenizer had loaded completed!")
 
 # Initialize session state
@@ -37,7 +40,9 @@ if 'chat_history' not in st.session_state:
 # Sidebar settings
 sidebar_name = st.sidebar.title("MiniCPM-Llama3-V-2_5 Streamlit")
 max_length = st.sidebar.slider("max_length", 0, 4096, 2048, step=2)
+repetition_penalty = st.sidebar.slider("repetition_penalty", 0.0, 2.0, 1.05, step=0.01)
 top_p = st.sidebar.slider("top_p", 0.0, 1.0, 0.8, step=0.01)
+top_k = st.sidebar.slider("top_k", 0, 100, 100, step=1)
 temperature = st.sidebar.slider("temperature", 0.0, 1.0, 0.7, step=0.01)
 
 # Clear chat history button
@@ -66,7 +71,8 @@ for i, message in enumerate(st.session_state.chat_history):
 selected_mode = st.sidebar.selectbox("Select mode", ["Text", "Image"])
 if selected_mode == "Image":
     # Image mode
-    uploaded_image = st.sidebar.file_uploader("Upload image", key=1, type=["jpg", "jpeg", "png"], accept_multiple_files=False)
+    uploaded_image = st.sidebar.file_uploader("Upload image", key=1, type=["jpg", "jpeg", "png"],
+                                              accept_multiple_files=False)
     if uploaded_image is not None:
         st.image(uploaded_image, caption='User uploaded image', width=468, use_column_width=False)
         # Add uploaded image to chat history
@@ -91,8 +97,12 @@ if user_text:
 
         msgs = [{"role": "user", "content": user_text}]
         res = model.chat(image=imagefile, msgs=msgs, context=None, tokenizer=tokenizer,
-                                     sampling=True,top_p=top_p,temperature=temperature)
-        st.markdown(f"{A_NAME}: {res}")
-        st.session_state.chat_history.append({"role": "model", "content": res, "image": None})
+                         sampling=True, top_p=top_p, top_k=top_k, repetition_penalty=repetition_penalty,
+                         temperature=temperature, stream=True)
+
+        # Collect the generated_text str
+        generated_text = st.write_stream(res)
+
+        st.session_state.chat_history.append({"role": "model", "content": generated_text, "image": None})
 
     st.divider()
