@@ -37,10 +37,9 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
 --do_eval \
 --tune_vision false \
 --tune_llm false \
---tune_resampler true \
 --model_max_length 2048 \
---max_steps 50 \
---eval_steps 10 \
+--max_steps 80000 \
+--eval_steps 2000 \
 --output_dir output/output_minicpmv2 \
 --logging_dir output/output_minicpmv2 \
 --logging_strategy "steps" \
@@ -49,9 +48,9 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
 --gradient_accumulation_steps 1 \
 --evaluation_strategy "steps" \
 --save_strategy "steps" \
---save_steps 26 \
+--save_steps 2000 \
 --save_total_limit 10 \
---learning_rate 5e-7 \
+--learning_rate 1e-6 \
 --weight_decay 0.1 \
 --adam_beta2 0.95 \
 --warmup_ratio 0.01 \

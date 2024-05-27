@@ -34,7 +34,6 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
 --do_eval \
 --tune_vision false \
 --tune_llm false \
---tune_resampler false \
 --use_lora true \
 --lora_target_modules "llm\..*layers\.\d+\.self_attn\.(q_proj|k_proj)" \
 --model_max_length 2048 \

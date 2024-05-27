@@ -47,7 +47,6 @@ class TrainingArguments(transformers.TrainingArguments):
     )
     tune_vision: Optional[bool] = field(default=False)
     tune_llm: Optional[bool] = field(default=False)
-    tune_resampler: Optional[bool] = field(default=False)
     llm_type: str = field(default="minicpm")
     use_lora: Optional[bool] = field(default=False)
 
@@ -238,8 +237,6 @@ def train():
         model.vpm.requires_grad_(False)
     if not training_args.tune_llm:
         model.llm.requires_grad_(False)
-    if not training_args.tune_resampler:
-        model.resampler.requires_grad_(False)
         
     if training_args.use_lora:
         if training_args.use_lora and training_args.tune_llm:
@@ -262,6 +259,7 @@ def train():
                 return self.llm.get_input_embeddings()
             model.get_input_embeddings = MethodType(get_input_embeddings, model)
         model = get_peft_model(model, lora_config)
+        model.base_model.llm.model.embed_tokens.weight.requires_grad_(True)
         if training_args.gradient_checkpointing:
             model.enable_input_require_grads()
 
