@@ -30,7 +30,7 @@
 
 #### 📌 置顶
 
-* [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5) 中完全支持其功能！请拉取最新的 llama.cpp 和 ollama 代码。我们还发布了各种大小的 GGUF 版本，[请点击这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)。Ollama 使用的FAQ将在一天内发布，敬请关注！
+* [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) 中完全支持其功能！请拉取最新的 llama.cpp 和 ollama 代码。我们还发布了各种大小的 GGUF 版本，请点击[这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)查看。ollama 使用的 FAQ 将在一天内发布，敬请关注！
 * [2024.05.28] 💫 我们现在支持 MiniCPM-Llama3-V 2.5 的 LoRA 微调，更多内存使用统计信息可以在[这里](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics)找到。
 * [2024.05.23] 🔍 我们添加了Phi-3-vision-128k-instruct 与 MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估、多语言能力和推理效率 🌟📊🌍🚀。点击[这里](./docs/compare_with_phi-3_vision.md)查看详细信息。
 * [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Hugging Face 的 Gradio 官方账户推荐，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
@@ -79,7 +79,6 @@
 - 💪 **优秀的 OCR 能力。**
   MiniCPM-Llama3-V 2.5 可接受 180 万像素的任意宽高比图像输入，**OCRBench 得分达到 725，超越 GPT-4o、GPT-4V、Gemini Pro、Qwen-VL-Max 等商用闭源模型**，达到最佳水平。基于近期用户反馈建议，MiniCPM-Llama3-V 2.5 增强了全文 OCR 信息提取、表格图像转 markdown 等高频实用能力，并且进一步加强了指令跟随、复杂推理能力，带来更好的多模态交互体感。
 
-  
 - 🏆 **可信行为。** 
   借助最新的 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) 对齐技术（[RLHF-V](https://github.com/RLHF-V/) [CVPR'24]系列的最新技术），MiniCPM-Llama3-V 2.5 具有更加可信的多模态行为，在 Object HalBench 的幻觉率降低到了 **10.3%**，显著低于 GPT-4V-1106 (13.6%)，达到开源社区最佳水平。[数据集已发布](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset)。
 
@@ -89,7 +88,8 @@
 - 🚀 **高效部署。**
   MiniCPM-Llama3-V 2.5 较为系统地通过**模型量化、CPU、NPU、编译优化**等高效加速技术，实现高效的终端设备部署。对于高通芯片的移动手机，我们首次将 NPU 加速框架 QNN 整合进了 llama.cpp。经过系统优化后，MiniCPM-Llama3-V 2.5 实现了多模态大模型端侧**语言解码速度 3 倍加速**、**图像编码 150 倍加速**的巨大提升。
 
-
+- 💫 **易于使用。**
+  MiniCPM-Llama3-V 2.5 可以通过多种方式轻松使用：（1）[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) 支持在本地设备上进行高效的 CPU 推理；（2）提供 16 种尺寸的 [GGUF](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) 格式量化模型；（3）仅需 2 张 V100 GPU 即可进行高效的 [LoRA](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#lora-finetuning) 微调；（	4）支持[流式输出](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)；（5）快速搭建 [Gradio](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_2.5.py) 和 [Streamlit](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_streamlit-2_5.py) 本地 WebUI demo；（	6.）[HuggingFace Spaces](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) 交互式 demo。
 
 ### 性能评估 <!-- omit in toc -->
 
@@ -590,11 +590,11 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 
 ### 手机端部署
-MiniCPM-V 2.0 可运行在Android手机上, 点击[2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; MiniCPM-Llama3-V 2.5 将很快推出，敬请期待。
+MiniCPM-V 2.0 可运行在Android手机上，点击[2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; MiniCPM-Llama3-V 2.5 将很快推出，敬请期待。
 
 ### 本地WebUI Demo部署
 <details>
-<summary>点击查看本地WebUI demo 在 NVIDIA GPU, Mac等不同设备部署方法 </summary>
+<summary>点击查看本地WebUI demo 在 NVIDIA GPU、Mac等不同设备部署方法 </summary>
   
 ```shell
 pip install -r requirements.txt
@@ -651,7 +651,7 @@ python examples/minicpmv_example.py
 
 我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种大语言模型和多模态大模型的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
 
-参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
+参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)，[MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
 
 ## 未来计划
 
@@ -694,24 +694,10 @@ python examples/minicpmv_example.py
 
 ## 🌟 Star History
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
-    "
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
-    "
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
-  />
-</picture>
+<div>
+<img src="./assets/Star-History.png" width="500em" ></img> 
+</div>
+
 
 ## 引用
 
