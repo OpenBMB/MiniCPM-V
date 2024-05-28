@@ -721,4 +721,10 @@ If you find our model/code/paper helpful, please consider cite our papers 📝 a
   journal={arXiv preprint arXiv:2403.11703},
   year={2024}
 }
+@article{yu2024rlaifv,
+  title={RLAIF-V: Aligning MLLMs through Open-Source AI Feedback for Super GPT-4V Trustworthiness}, 
+  author={Yu, Tianyu and Zhang, Haoye and Yao, Yuan and Dang, Yunkai and Chen, Da and Lu, Xiaoman and Cui, Ganqu and He, Taiwen and Liu, Zhiyuan and Chua, Tat-Seng and Sun, Maosong},
+  journal={arXiv preprint arXiv:2405.17220},
+  year={2024}
+}
 ```
