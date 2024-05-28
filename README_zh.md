@@ -30,7 +30,7 @@
 
 #### 📌 置顶
 
-* [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5) 中完全支持其功能！请拉取最新的 llama.cpp 和 ollama 代码。我们还发布了各种大小的 GGUF 版本，[请点击这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)。Ollama 使用的FAQ将在一天内发布，敬请关注！
+* [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) 中完全支持其功能！请拉取最新的 llama.cpp 和 ollama 代码。我们还发布了各种大小的 GGUF 版本，请点击[这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)查看。ollama 使用的 FAQ 将在一天内发布，敬请关注！
 * [2024.05.28] 💫 我们现在支持 MiniCPM-Llama3-V 2.5 的 LoRA 微调，更多内存使用统计信息可以在[这里](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics)找到。
 * [2024.05.23] 🔍 我们添加了Phi-3-vision-128k-instruct 与 MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估、多语言能力和推理效率 🌟📊🌍🚀。点击[这里](./docs/compare_with_phi-3_vision.md)查看详细信息。
 * [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Hugging Face 的 Gradio 官方账户推荐，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
@@ -79,12 +79,17 @@
 - 💪 **优秀的 OCR 能力。**
   MiniCPM-Llama3-V 2.5 可接受 180 万像素的任意宽高比图像输入，**OCRBench 得分达到 725，超越 GPT-4o、GPT-4V、Gemini Pro、Qwen-VL-Max 等商用闭源模型**，达到最佳水平。基于近期用户反馈建议，MiniCPM-Llama3-V 2.5 增强了全文 OCR 信息提取、表格图像转 markdown 等高频实用能力，并且进一步加强了指令跟随、复杂推理能力，带来更好的多模态交互体感。
 
-  
 - 🏆 **可信行为。** 
   借助最新的 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) 对齐技术（[RLHF-V](https://github.com/RLHF-V/) [CVPR'24]系列的最新技术），MiniCPM-Llama3-V 2.5 具有更加可信的多模态行为，在 Object HalBench 的幻觉率降低到了 **10.3%**，显著低于 GPT-4V-1106 (13.6%)，达到开源社区最佳水平。[数据集已发布](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset)。
 
 - 🌏 **多语言支持。**
   得益于 Llama 3 强大的多语言能力和 VisCPM 的跨语言泛化技术，MiniCPM-Llama3-V 2.5 在中英双语多模态能力的基础上，仅通过少量翻译的多模态数据的指令微调，高效泛化支持了**德语、法语、西班牙语、意大利语、韩语等 30+ 种语言**的多模态能力，并表现出了良好的多语言多模态对话性能。[查看所有支持语言](./assets/minicpm-llama-v-2-5_languages.md)
+
+-  👍  **Easy Usage.**
+  In response to user demand, we have added the following convenient features: **[ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) support** for easy deployment and inference on local machines, 16 [gguf format quantized models](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) for **[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) inference**, **efficient [LoRA fine-tuning](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#lora-finetuning)** with just 2 V100 GPUs, and [streaming output](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage) with a simple parameter addition (stream=True). Additionally, we offer interactive demos via [Gradio](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_2.5.py) and [Streamlit](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_streamlit-2_5.py), enabling quick local WebUI setup, and online demon on [HuggingFace Spaces](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5). 
+
+- 👍 **易于使用。**
+  响应用户需求，我们提供了以下便捷功能：**[ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) 支持**，方便用户在本地机器上进行部署和推理；**[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 支持**，我们提供了 16 种版本的**gguf 格式**量化模型；高效微调，仅需 2 张 V100 即可进行 [LoRA 微调](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#lora-finetuning)，流式输出，传参 stream=True 即可轻松体验[流式输出](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)。 此外，我们支持 [Gradio](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_2.5.py) 和 [Streamlit](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_streamlit-2_5.py) 两种本地 WebUI demo 部署方案，也在 [HuggingFace Spaces](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) 提供了在线体验 demo。
 
 - 🚀 **高效部署。**
   MiniCPM-Llama3-V 2.5 较为系统地通过**模型量化、CPU、NPU、编译优化**等高效加速技术，实现高效的终端设备部署。对于高通芯片的移动手机，我们首次将 NPU 加速框架 QNN 整合进了 llama.cpp。经过系统优化后，MiniCPM-Llama3-V 2.5 实现了多模态大模型端侧**语言解码速度 3 倍加速**、**图像编码 150 倍加速**的巨大提升。
@@ -590,11 +595,11 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 
 ### 手机端部署
-MiniCPM-V 2.0 可运行在Android手机上, 点击[2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; MiniCPM-Llama3-V 2.5 将很快推出，敬请期待。
+MiniCPM-V 2.0 可运行在Android手机上，点击[2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; MiniCPM-Llama3-V 2.5 将很快推出，敬请期待。
 
 ### 本地WebUI Demo部署
 <details>
-<summary>点击查看本地WebUI demo 在 NVIDIA GPU, Mac等不同设备部署方法 </summary>
+<summary>点击查看本地WebUI demo 在 NVIDIA GPU、Mac等不同设备部署方法 </summary>
   
 ```shell
 pip install -r requirements.txt
@@ -651,7 +656,7 @@ python examples/minicpmv_example.py
 
 我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种大语言模型和多模态大模型的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
 
-参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
+参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)，[MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md)
 
 ## 未来计划
 
