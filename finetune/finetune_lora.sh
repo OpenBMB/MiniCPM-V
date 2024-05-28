@@ -42,7 +42,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --output_dir output/output_minicpmv2_lora \
     --logging_dir output/output_minicpmv2_lora \
     --logging_strategy "steps" \
-    --per_device_train_batch_size w \
+    --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 1 \
     --gradient_accumulation_steps 1 \
     --evaluation_strategy "steps" \
@@ -57,5 +57,4 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --logging_steps 1 \
     --gradient_checkpointing true \
     --deepspeed ds_config_zero2.json \
-    --report_to "tensorboard" \ # wandb
-
+    --report_to "tensorboard" # wandb

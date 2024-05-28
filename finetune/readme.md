@@ -90,6 +90,22 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 ).eval()
 ```
 
+
+### Model Fine-tuning Memory Usage Statistics
+
+The following table presents the memory usage of the model when fine-tuning using NVIDIA A100 (80GiB) GPUs under different numbers of GPUs. The fine-tuning was performed with the DeepSpeed Zero-2 optimization and Gradient Checkpointing techniques, with a maximum length set to 2048 and batch size set to 1.
+
+| Fine-tuning Method | GPUs: 2 | GPUs: 4 | GPUs: 8 |
+|--------------------|---------|---------|---------|
+| LoRA Fine-tuning   | 31.2 GiB| 29.3 GiB|    28.4GiB   |
+| Full Parameters Fine-tuning | Out of memory | 75.0 GiB | 51.2GiB |
+
+### Notes
+- **Fine-tuning Method**: Displays two different fine-tuning strategies, LoRA fine-tuning and Full parameters fine-tuning.
+- **Number of GPUs**: The table lists the memory usage for configurations with 2, 4, and 8 GPUs.
+- **Memory Usage**: Expressed in GiB, this shows the required memory for each fine-tuning method under corresponding GPU configurations.
+- **Out of memory**: Indicates that the memory was insufficient for full parameters fine-tuning under the current GPU configurations.
+
 ### Finetuning FAQs
 <details>
 <summary>Q: How do I use the `flash_attention_2` implementation when loading a pretrained model?</summary>
