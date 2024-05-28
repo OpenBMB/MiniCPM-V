@@ -69,7 +69,7 @@ class SupervisedDataset(Dataset):
 def data_collator(examples, padding_value=0, max_length=2048):
     def trim_and_pad(seq,batch_first,padding_value):
         return pad_sequence([s[:max_length] for s in seq], batch_first=True, padding_value=padding_value)
-        
+
     input_ids = pad_sequence(
         [example["input_ids"] for example in examples],
         batch_first=True,
@@ -83,7 +83,7 @@ def data_collator(examples, padding_value=0, max_length=2048):
     targets = pad_sequence(
         [example["labels"] for example in examples],
         batch_first=True,
-        padding_value=padding_value,
+        padding_value=-100,
     )
     attention_mask = pad_sequence(
         [example["attention_mask"] for example in examples],
