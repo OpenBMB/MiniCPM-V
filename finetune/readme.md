@@ -92,12 +92,12 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 
 ### Model Fine-tuning Memory Usage Statistics
 
-The following table presents the memory usage of the model when fine-tuning using NVIDIA A100 (80GiB) GPUs under different numbers of GPUs. The fine-tuning was performed with the DeepSpeed Zero-2 optimization and Gradient Checkpointing techniques, with a maximum length set to 2048.
+The following table presents the memory usage of the model when fine-tuning using NVIDIA A100 (80GiB) GPUs under different numbers of GPUs. The fine-tuning was performed with the DeepSpeed Zero-2 optimization and Gradient Checkpointing techniques, with a maximum length set to 2048 and batch size set to 1.
 
 | Fine-tuning Method | GPUs: 2 | GPUs: 4 | GPUs: 8 |
 |--------------------|---------|---------|---------|
-| LoRA Fine-tuning   | 30.9 GiB| 38.0 GiB|    -    |
-| Full Parameters Fine-tuning | Out of memory |  | - |
+| LoRA Fine-tuning   | 31.2 GiB| 29.3 GiB|    -    |
+| Full Parameters Fine-tuning | Out of memory | 75.0 GiB | - |
 
 ### Notes
 - **Fine-tuning Method**: Displays two different fine-tuning strategies, LoRA fine-tuning and Full parameters fine-tuning.

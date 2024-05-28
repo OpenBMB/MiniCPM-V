@@ -66,8 +66,10 @@ class SupervisedDataset(Dataset):
 
         return ret
 
-
-def data_collator(examples, padding_value=0):
+def data_collator(examples, padding_value=0, max_length=2048):
+    def trim_and_pad(seq,batch_first,padding_value):
+        return pad_sequence([s[:max_length] for s in seq], batch_first=True, padding_value=padding_value)
+        
     input_ids = pad_sequence(
         [example["input_ids"] for example in examples],
         batch_first=True,
