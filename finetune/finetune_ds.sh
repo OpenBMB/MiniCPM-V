@@ -34,8 +34,8 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --fp16_full_eval false \
     --do_train \
     --do_eval \
-    --tune_vision false \
-    --tune_llm false \
+    --tune_vision true \
+    --tune_llm true \
     --model_max_length 2048 \
     --max_steps 10000 \
     --eval_steps 1000 \
