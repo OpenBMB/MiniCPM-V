@@ -147,7 +147,7 @@ def conversation_to_ids(conversation, tokenizer, llm_type=None):
     else:
         image_bound = []
 
-    position_ids = torch.where(ids != 0, torch.arange(ids.size(0)), torch.tensor(0)).long()
+    position_ids = torch.arange(ids.size(0)).long()
     return {
         "input_ids": ids,
         "target": target,
