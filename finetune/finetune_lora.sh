@@ -32,7 +32,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --bf16_full_eval true \
     --do_train \
     --do_eval \
-    --tune_vision false \
+    --tune_vision true \
     --tune_llm false \
     --use_lora true \
     --lora_target_modules "llm\..*layers\.\d+\.self_attn\.(q_proj|k_proj)" \
