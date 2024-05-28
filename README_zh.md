@@ -30,8 +30,8 @@
 
 #### 📌 置顶
 
-* [2024.05.26] ⚙️ 我们注意到有社区反馈在使用 Ollama & Llama.cpp 的固定分辨率编码替代 MiniCPM-Llama3-V 2.5 的自适应图像编码时出现了一些问题。我们正在为 Ollama & Llama.cpp 重新实现这一部分，以完全支持 MiniCPM-Llama3-V 2.5 的功能。此更新预计在一天内完成，请继续关注！
-* [2024.05.25] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 现在支持通过 [Ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) 进行高效推理了，欢迎试用！
+* [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5) 中完全支持其功能！请拉取最新的 llama.cpp 和 ollama 代码。我们还发布了各种大小的 GGUF 版本，[请点击这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)。Ollama 使用的FAQ将在一天内发布，敬请关注！
+* [2024.05.28] 💫 我们现在支持 MiniCPM-Llama3-V 2.5 的 LoRA 微调，更多内存使用统计信息可以在[这里](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics)找到。
 * [2024.05.23] 🔍 我们添加了Phi-3-vision-128k-instruct 与 MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估、多语言能力和推理效率 🌟📊🌍🚀。点击[这里](./docs/compare_with_phi-3_vision.md)查看详细信息。
 * [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Hugging Face 的 Gradio 官方账户推荐，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
 
