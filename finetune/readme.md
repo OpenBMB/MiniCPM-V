@@ -97,7 +97,7 @@ The following table presents the memory usage of the model when fine-tuning usin
 | Fine-tuning Method | GPUs: 2 | GPUs: 4 | GPUs: 8 |
 |--------------------|---------|---------|---------|
 | LoRA Fine-tuning   | 31.2 GiB| 29.3 GiB|    28.4GiB   |
-| Full Parameters Fine-tuning | Out of memory | 75.0 GiB | - |
+| Full Parameters Fine-tuning | Out of memory | 75.0 GiB | 51.2GiB |
 
 ### Notes
 - **Fine-tuning Method**: Displays two different fine-tuning strategies, LoRA fine-tuning and Full parameters fine-tuning.
