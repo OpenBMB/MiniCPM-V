@@ -694,24 +694,10 @@ python examples/minicpmv_example.py
 
 ## 🌟 Star History
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
-    "
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
-    "
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
-  />
-</picture>
+<div>
+<img src="./assets/Star-History.png" width="500em" ></img> 
+</div>
+
 
 ## 引用
 
