@@ -154,7 +154,7 @@ def chat(img, msgs, ctx, params=None, vision_hidden_states=None):
         res = res.replace('</ref>', '')
         res = res.replace('<box>', '')
         answer = res.replace('</box>', '')
-        return -1, answer, None, None
+        return 0, answer, None, None
     except Exception as err:
         print(err)
         traceback.print_exc()
