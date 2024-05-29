@@ -253,10 +253,9 @@ def train():
             task_type="CAUSAL_LM",
         )
         if not hasattr(model, 'get_input_embeddings'):
-            if training_args.gradient_checkpointing:
-                def get_input_embeddings(self):
-                    return self.llm.get_input_embeddings()
-                model.get_input_embeddings = MethodType(get_input_embeddings, model)
+            def get_input_embeddings(self):
+                return self.llm.get_input_embeddings()
+            model.get_input_embeddings = MethodType(get_input_embeddings, model)
         model = get_peft_model(model, lora_config)
         model.base_model.llm.model.embed_tokens.weight.requires_grad_(True)
         if training_args.tune_vision:
