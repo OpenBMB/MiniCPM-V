@@ -123,7 +123,7 @@ A: 1. **Reload the Fine-Tuned Model:** Make sure you correctly load the checkpoi
    ).eval()
    ```
    2.<p>**Update the `model_minicpmv.py` File:** Verify and update your `model_minicpmv.py` file to ensure you are using the latest version.</p>
-     - <p>**Update Hugging Face Library Code:** If the problem persists after updating the file, consider updating the related code in the Hugging Face library.</p>
+     - **Update Hugging Face Library Code:** If the problem persists after updating the file, consider updating the related code in the Hugging Face library.
      - **Direct File Copy:** For a quick resolution, you can directly download and copy the latest `model_minicpmv.py` file into your project. This file is available from the following sources:
         -- [MiniCPM-Llama3-V-2_5 on Hugging Face](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/tree/main)
         -- [MiniCPM-V-2 on Hugging Face](https://huggingface.co/openbmb/MiniCPM-V-2)
