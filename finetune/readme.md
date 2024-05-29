@@ -111,7 +111,7 @@ The following table presents the memory usage of the model when fine-tuning usin
 <details>
 <summary>Q: Encounter an error while using the AutoPeftModelForCausalLM to load a checkpoint that has undergone lora fine-tuning</summary>
 
-A: The error as described in [issues](https://github.com/OpenBMB/MiniCPM-V/issues/168) occurs because the model lacks `get_input_embeddings` and `set_input_embeddings` methods. Follow these steps to resolve this issue:
+A: The error as described in [issues 169](https://github.com/OpenBMB/MiniCPM-V/issues/168) occurs because the model lacks `get_input_embeddings` and `set_input_embeddings` methods. Follow these steps to resolve this issue: 
   1.**Reload the Fine-Tuned Model:** Make sure you correctly load the checkpoint that has been fine-tuned using lora techniques. Use the following code example to guide you:
    ```python
    from peft import AutoPeftModelForCausalLM
