@@ -107,6 +107,31 @@ The following table presents the memory usage of the model when fine-tuning usin
 - **Out of memory**: Indicates that the memory was insufficient for full parameters fine-tuning under the current GPU configurations.
 
 ### Finetuning FAQs
+
+<details>
+<summary>Q: Encounter an error while using the AutoPeftModelForCausalLM to load a checkpoint that has undergone lora fine-tuning</summary>
+
+A: The error as described in [issues 168](https://github.com/OpenBMB/MiniCPM-V/issues/168) occurs because the model lacks `get_input_embeddings` and `set_input_embeddings` methods. Follow these steps to resolve this issue: 
+
+1.**Reload the Fine-Tuned Model:** Make sure you correctly load the checkpoint that has been fine-tuned using lora techniques. Use the following code example to guide you:
+   ```python
+   from peft import AutoPeftModelForCausalLM
+
+   model = AutoPeftModelForCausalLM.from_pretrained(
+       'path_to_your_fine_tuned_checkpoint',  # Path to your fine-tuned checkpoint directory
+       output='output/minicpmv2_lora',
+       device_map='auto',
+       trust_remote_code=True
+   ).eval()
+   ```
+  2.**Update the `model_minicpmv.py` File:**
+   - **Verification:** Make sure you verify and update your `model_minicpmv.py` file to ensure it is the latest version.
+   - **Update Hugging Face Library Code:** If the issue persists after updating the file, consider updating the related code in the Hugging Face library.
+   - **Direct File Copy:** For a quick resolution, directly download and copy the latest `model_minicpmv.py` file into your project. This file is available from the following sources:
+     - [MiniCPM-Llama3-V-2_5 on Hugging Face](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/tree/main)
+     - [MiniCPM-V-2 on Hugging Face](https://huggingface.co/openbmb/MiniCPM-V-2)
+</details>
+
 <details>
 <summary>Q: How do I use the `flash_attention_2` implementation when loading a pretrained model?</summary>
 
