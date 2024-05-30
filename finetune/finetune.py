@@ -50,6 +50,8 @@ class TrainingArguments(transformers.TrainingArguments):
     tune_llm: Optional[bool] = field(default=True)
     llm_type: str = field(default="minicpm")
     use_lora: Optional[bool] = field(default=False)
+    max_slice_nums: Optional[int] = field(default=9)
+    scale_resolution: Optional[int] = field(default=448)
 
 
 @dataclass
@@ -282,6 +284,8 @@ def train():
     else:
         batch_vision = False
 
+    slice_config['max_slice_nums'] = training_args.max_slice_nums
+    slice_config['scale_resolution'] = training_args.scale_resolution
     data_module = make_supervised_data_module(
         tokenizer=tokenizer,
         data_args=data_args,
