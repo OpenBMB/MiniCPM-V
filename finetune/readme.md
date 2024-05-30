@@ -162,6 +162,7 @@ A：When you face Out of Memory (OOM) issues during training large models, the f
   }
 }
 ```
+You can visit [huggingface deepspeed](https://huggingface.co/docs/transformers/deepspeed) to find out more about how to use DeepSpeed.
 </details>
 <details>
 <summary>Q: Encounter an error while using the AutoPeftModelForCausalLM to load a checkpoint that has undergone lora fine-tuning</summary>
