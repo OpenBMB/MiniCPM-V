@@ -459,7 +459,7 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 
 ## Chat with Our Demo on Gradio
 
-We provide online and local demo powered by HuggingFace [Gradio](https://www.gradio.app/guides/quickstart), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
+We provide online and local demos powered by HuggingFace [Gradio](https://www.gradio.app/guides/quickstart), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
 
 ### Online Demo <!-- omit in toc --> 
 
@@ -467,7 +467,7 @@ Click here to try out the online demo of [MiniCPM-Llama3-V 2.5](https://huggingf
 
 ### Local WebUI Demo <!-- omit in toc --> 
   
-You can easily build your own local WebUI demo with Gradio use the following commands.
+You can easily build your own local WebUI demo with Gradio using the following commands.
   
 ```shell
 pip install -r requirements.txt
