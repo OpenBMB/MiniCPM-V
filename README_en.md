@@ -27,7 +27,7 @@
 
 #### 📌 Pinned
 
-* [2024.05.28] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 now fully supports its feature in llama.cpp and ollama! Please pull the latest code **of our provided forks** ([llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md), [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5)). GGUF models in various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main). We are working hard to merge PRs into official repositories. Please stay tuned!
+* [2024.05.28] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 now fully supports its feature in llama.cpp and ollama! Please pull the latest code **of our provided forks** ([llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md), [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5)). GGUF models in various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main). We are working hard to merge PRs into official repositories. Please stay tuned!
 * [2024.05.28] 💫 We now support LoRA fine-tuning for MiniCPM-Llama3-V 2.5, using only 2 V100 GPUs! See more statistics [here](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics).
 * [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, multilingual capabilities, and inference efficiency 🌟📊🌍🚀. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
 * [2024.05.23] 🔥🔥🔥 MiniCPM-V tops GitHub Trending and Hugging Face Trending! Our demo, recommended by Hugging Face Gradio’s official account, is available [here](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5). Come and try it out!
@@ -600,7 +600,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 </details>
 
 ### Deployment on Mobile Phone
-MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [here](https://github.com/OpenBMB/mlc-MiniCPM) to install apk. MiniCPM-Llama3-V 2.5 coming soon.
+MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [MiniCPM-Llama3-V 2.5](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk) / [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM) to install apk.
 
 ### Inference with llama.cpp<a id="inference-with-llamacpp"></a>
 MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail. This implementation supports smooth inference of 6~8 token/s on mobile phones (test environment：Xiaomi 14 pro + Snapdragon 8 Gen 3).
