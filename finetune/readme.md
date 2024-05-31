@@ -109,6 +109,62 @@ The following table presents the memory usage of the model when fine-tuning usin
 ### Finetuning FAQs
 
 <details>
+<summary>Q:When you encounter Out of Memory (OOM) issues during training large models, you can try the following methods to resolve or mitigate the issue:</summary>
+
+A：When you face Out of Memory (OOM) issues during training large models, the following strategies may help resolve or mitigate the problem:
+#### Adjust Model Hyperparameters
+- **Reduce `max_model_length`**: Decreasing the maximum sequence length the model processes can significantly reduce the memory required for each operation. For example, reducing the maximum length from 2048 to 1200 or another value suitable for your dataset.
+```
+--model_max_length 1200
+
+```
+- **Lower `batch_size`**: Reducing the amount of data processed in each batch helps decrease memory consumption.
+```
+--batch_size 1
+ ```
+- **Lower image resolution**: If your model processes image data, reducing the input resolution of images can effectively decrease memory usage.
+```
+--scale_resolution 448 
+```
+- **Reduce the number of slices (`slice`)**: When handling large datasets such as large images files, reducing the number of slices processed each time can lower memory requirements.
+```
+--max_slice_nums 9 
+```
+
+#### Reduce Training Model Parameters
+- **Do not train VPM (Visual Processing Module)**: You can adjust hyperparameters in the finetune script to opt out of training the visual processing module to save memory.
+```
+--tune_vision false
+```
+- **Use LoRA finetuning**: Refer to the [LoRA finetuning](#LoRA-finetuning) section.
+
+#### Optimize with DeepSpeed
+- **Configure DeepSpeed Zero Stage 2**: Use the following configuration to offload optimizer parameters to the CPU, reducing memory pressure on the GPU:
+  ```json
+  "zero_optimization": {
+    "stage": 2,
+    "offload_optimizer": {
+      "device": "cpu",
+      "pin_memory": true
+    }
+  }
+- **Configure DeepSpeed Zero Stage 3**：Further offload model parameters and optimizer parameters to the CPU, further reducing GPU memory usage:
+```json
+"zero_optimization": {
+  "stage": 3,
+  "offload_optimizer": {
+    "device": "cpu",
+    "pin_memory": true
+  },
+  "offload_param": {
+    "device": "cpu",
+    "pin_memory": true
+  }
+}
+```
+You can visit [huggingface deepspeed](https://huggingface.co/docs/transformers/deepspeed) to find out more about how to use DeepSpeed.
+</details>
+<details>
 <summary>Q: Encounter an error while using the AutoPeftModelForCausalLM to load a checkpoint that has undergone lora fine-tuning</summary>
 
 A: The error as described in [issues 168](https://github.com/OpenBMB/MiniCPM-V/issues/168) occurs because the model lacks `get_input_embeddings` and `set_input_embeddings` methods. Follow these steps to resolve this issue: 
