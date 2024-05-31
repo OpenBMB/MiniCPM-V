@@ -16,7 +16,7 @@ class CPMTrainer(Trainer):
             labels = None
         self.model.resampler.pos_embed = self.model.resampler.pos_embed.to(self.model.device)
         if is_deepspeed_zero3_enabled():
-            with deepspeed.zero.GatheredParameters(self.model.parameters(), modifier_rank=0):
+            with deepspeed.zero.GatheredParameters(self.model.resampler.attn.parameters(), modifier_rank=0):
                 if not self.args.use_lora:
                     outputs = self.model(data = inputs, use_cache=False)
                 else:
@@ -213,7 +213,7 @@ class CPMTrainer(Trainer):
                 scaled_loss.backward()
         else:
             if is_deepspeed_zero3_enabled():
-                with deepspeed.zero.GatheredParameters(self.model.parameters(), modifier_rank=0):
+                with deepspeed.zero.GatheredParameters(self.model.resampler.attn.parameters(), modifier_rank=0):
                     self.accelerator.backward(loss)
             else:
                 self.accelerator.backward(loss)

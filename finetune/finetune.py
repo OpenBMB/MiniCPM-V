@@ -274,18 +274,22 @@ def train():
     
     rank0_print(f'llm_type={llm_type}')
 
+    
     # Load data
     if hasattr(model.config, "slice_config"):
+        model.config.slice_config.max_slice_nums = training_args.max_slice_nums
+        model.config.slice_config.scale_resolution = training_args.scale_resolution
         slice_config = model.config.slice_config.to_dict()
     else:
+        model.config.max_slice_nums = training_args.max_slice_nums
+        model.config.scale_resolution = training_args.scale_resolution
         slice_config = model.config.to_dict()
+
     if hasattr(model.config, "batch_vision_input"):
         batch_vision = model.config.batch_vision_input
     else:
         batch_vision = False
 
-    slice_config['max_slice_nums'] = training_args.max_slice_nums
-    slice_config['scale_resolution'] = training_args.scale_resolution
     data_module = make_supervised_data_module(
         tokenizer=tokenizer,
         data_args=data_args,
