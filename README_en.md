@@ -53,14 +53,13 @@
 
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
 - [MiniCPM-V 2.0](#minicpm-v-20)
-- [Online Demo](#online-demo)
+- [Chat with Our Demo on Gradio](#chat-with-our-demo-on-gradio)
 - [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
   - [Multi-turn Conversation](#multi-turn-conversation)
   - [Inference on Mac](#inference-on-mac)
   - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
-  - [WebUI Demo](#webui-demo)
   - [Inference with llama.cpp](#inference-with-llamacpp)
   - [Inference with vLLM](#inference-with-vllm)
 - [Fine-tuning](#fine-tuning)
@@ -458,9 +457,30 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 | OmniLMM-12B  | [Document](./omnilmm_en.md)   |  
 
 
+## Chat with Our Demo on Gradio
 
-## Online Demo
-Click here to try out the Demo of [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2).
+We provide online and local demo powered by HuggingFace [Gradio](https://www.gradio.app/guides/quickstart), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
+
+### Online Demo <!-- omit in toc --> 
+
+Click here to try out the online demo of [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2) on HuggingFace Spaces.
+
+### Local WebUI Demo <!-- omit in toc --> 
+  
+You can easily build your own local WebUI demo with Gradio use the following commands.
+  
+```shell
+pip install -r requirements.txt
+```
+  
+```shell
+# For NVIDIA GPUs, run:
+python web_demo_2.5.py --device cuda
+
+# For Mac with MPS (Apple silicon or AMD GPUs), run:
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
+```
+
 
 ## Install
 
@@ -581,24 +601,6 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 ### Deployment on Mobile Phone
 MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [here](https://github.com/OpenBMB/mlc-MiniCPM) to install apk. MiniCPM-Llama3-V 2.5 coming soon.
-
-### WebUI Demo
-
-<details>
-<summary>Click to see how to deploy WebUI demo on different devices </summary>
-  
-```shell
-pip install -r requirements.txt
-```
-  
-```shell
-# For NVIDIA GPUs, run:
-python web_demo_2.5.py --device cuda
-
-# For Mac with MPS (Apple silicon or AMD GPUs), run:
-PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
-```
-</details>
 
 ### Inference with llama.cpp<a id="inference-with-llamacpp"></a>
 MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpm-v2.5/examples/minicpmv) for more detail. This implementation supports smooth inference of 6~8 token/s on mobile phones (test environment：Xiaomi 14 pro + Snapdragon 8 Gen 3).

@@ -53,8 +53,7 @@
 
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
 - [MiniCPM-V 2.0](#minicpm-v-20)
-- [Online Demo](#online-demo)
-- [Gradio-based Demo](#gradio-based-demo)
+- [Chat with Our Demo on Gradio](#chat-with-our-demo-on-gradio)
 - [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
@@ -458,14 +457,17 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 | OmniLMM-12B  | [Document](./omnilmm_en.md)   |  
 
 
+## Chat with Our Demo on Gradio
 
-## Online Demo
-Click here to try out the Demo of [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2).
+We provide online and local demo powered by HuggingFace [Gradio](https://www.gradio.app/guides/quickstart), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
 
-## Gradio-based Demo
+### Online Demo <!-- omit in toc --> 
 
-We supports buliding local WebUI demo with [Gradio](https://www.gradio.app/guides/quickstart), which inherently supports queuing, streaming outputs, alerts, progress_bars and other useful features!
+Click here to try out the online demo of [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2) on HuggingFace Spaces.
 
+### Local WebUI Demo <!-- omit in toc --> 
+  
+You can easily build your own local WebUI demo with Gradio use the following commands.
   
 ```shell
 pip install -r requirements.txt
