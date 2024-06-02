@@ -54,7 +54,7 @@
 
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
 - [MiniCPM-V 2.0](#minicpm-v-20)
-- [Online Demo](#online-demo)
+- [Demo](#demo)
 - [安装](#安装)
 - [推理](#推理)
   - [模型库](#模型库)
@@ -465,9 +465,31 @@
 | OmniLMM-12B  | [文档](./omnilmm.md)   |  
 
 
-## Online Demo
+## Demo
 
-欢迎通过以下链接使用我们的网页端推理服务： [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2).
+我们提供由 Hugging Face [Gradio](https://www.gradio.app/guides/quickstart) 支持的在线和本地 Demo。Gradio 是目前最流行的模型部署框架，支持流式输出、进度条、process bars 和其他常用功能。
+
+### Online Demo <!-- omit in toc --> 
+
+欢迎试用 Hugging Face Spaces 上的 [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) ｜ [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2) Online Demo。
+
+### 本地 WebUI Demo <!-- omit in toc --> 
+
+您可以使用以下命令轻松构建自己的本地 WebUI Demo。
+
+```shell
+pip install -r requirements.txt
+```
+
+```shell
+# 对于 NVIDIA GPU，请运行：
+python web_demo_2.5.py --device cuda
+
+# 对于搭载 MPS 的 Mac（Apple 芯片或 AMD GPU），请运行：
+PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
+```
+
+
 
 ## 安装
 
@@ -590,7 +612,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 
 ### 手机端部署
-MiniCPM-V 2.0 可运行在Android手机上，点击[2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; MiniCPM-Llama3-V 2.5 将很快推出，敬请期待。
+MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-Llama3-V 2.5](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk) / [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
 
 ### 本地WebUI Demo部署
 <details>
