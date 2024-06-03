@@ -608,7 +608,7 @@ MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](htt
 ### Inference with vLLM<a id="vllm"></a>
 
 <details>
-<summary>Click to see how to inference with vLLM </summary>
+<summary>Click to see how to inference MiniCPM-V 2.0 with vLLM (MiniCPM-Llama3-V 2.5 coming soon) </summary>
 Because our pull request to vLLM is still waiting for reviewing, we fork this repository to build and test our vLLM demo. Here are the steps:
 
 1. Clone our version of vLLM:
