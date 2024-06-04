@@ -43,7 +43,7 @@ gpu_device_ids = [0, 1] # Define which gpu to use (now we have two GPUs, each ha
 no_split_module_classes = ["LlamaDecoderLayer"]
 
 max_memory = {
-    device_id: memory for device_id in gpu_device_ids
+    device_id: max_memory_each_gpu for device_id in gpu_device_ids
 }
 
 config = AutoConfig.from_pretrained(
