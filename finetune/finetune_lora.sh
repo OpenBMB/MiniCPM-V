@@ -30,6 +30,8 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --prediction_loss_only false \
     --bf16 true \
     --bf16_full_eval true \
+    --fp16 true \
+    --fp16_full_eval true \
     --do_train \
     --do_eval \
     --tune_vision true \
