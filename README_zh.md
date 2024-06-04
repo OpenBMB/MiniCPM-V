@@ -36,11 +36,11 @@
 * [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Hugging Face 的 Gradio 官方账户推荐，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
 
 <br>
-
+* [2024.06.03] 现在，你可以利用多张低显存显卡（12G/16G）进行GPU串行推理。详情请参见该[文档](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md)配置。
 * [2024.05.25] MiniCPM-Llama3-V 2.5 [支持流式输出和自定义系统提示词](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)了，欢迎试用!
 * [2024.05.24] 我们开源了 MiniCPM-Llama3-V 2.5 [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf)，支持 [llama.cpp](#llamacpp-部署) 推理！实现端侧 6-8 tokens/s 的流畅解码，欢迎试用！
 * [2024.05.20] 我们开源了 MiniCPM-Llama3-V 2.5，增强了 OCR 能力，支持 30 多种语言，并首次在端侧实现了 GPT-4V 级的多模态能力！我们提供了[高效推理](#手机端部署)和[简易微调](./finetune/readme.md)的支持，欢迎试用！
-* [2024.04.23] 我们增加了对 [vLLM](#vllm) 的支持，欢迎体验！
+* [2024.04.23] 我们增加了MiniCPM-V 2.0对 [vLLM](#vllm) 的支持，欢迎体验！
 * [2024.04.18] 我们在 HuggingFace Space 新增了 MiniCPM-V 2.0 的 [demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)，欢迎体验！
 * [2024.04.17] MiniCPM-V 2.0 现在支持用户部署本地 [WebUI Demo](#本地webui-demo部署) 了，欢迎试用!
 * [2024.04.15] MiniCPM-V 2.0 现在可以通过 SWIFT 框架 [微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) 了，支持流式输出!
@@ -636,7 +636,7 @@ MiniCPM-Llama3-V 2.5 现在支持llama.cpp啦! 用法请参考我们的fork [lla
 
 ### vLLM 部署 <a id='vllm'></a>
 <details>
-<summary>点击查看 vLLM 部署运行的方法</summary>
+<summary>点击查看 MiniCPM-V 2.0 利用vLLM 部署运行的方法（MiniCPM-Llama3-V 2.5 支持vLLM将在近期推出）</summary>
 由于我们对 vLLM 提交的 PR 还在 review 中，因此目前我们 fork 了一个 vLLM 仓库以供测试使用。
 
 1. 首先克隆我们 fork 的 vLLM 库:
@@ -716,9 +716,25 @@ python examples/minicpmv_example.py
 
 ## 🌟 Star History
 
-<div>
-<img src="./assets/Star-History.png" width="500em" ></img> 
-</div>
+
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
+  />
+</picture>
 
 
 ## 引用

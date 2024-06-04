@@ -26,7 +26,11 @@ args = parser.parse_args()
 device = args.device
 assert device in ['cuda', 'mps']
 if args.dtype == 'bf16':
-    dtype = torch.bfloat16
+    if device == 'mps':
+        print('Warning: MPS does not support bf16, will use fp16 instead')
+        dtype = torch.float16
+    else:
+        dtype = torch.bfloat16
 else:
     dtype = torch.float16
 
