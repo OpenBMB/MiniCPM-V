@@ -93,7 +93,7 @@ modified device_map OrderedDict([('llm.model.embed_tokens', 0), ('llm.model.laye
 ```python
 load_checkpoint_in_model(
     model, 
-    model_path, 
+    MODEL_PATH, 
     device_map=device_map)
 
 model = dispatch_model(
