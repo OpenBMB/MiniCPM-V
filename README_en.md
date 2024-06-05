@@ -7,7 +7,7 @@
   <strong>[中文](./README_zh.md) |
   English</strong>
 
-Join our <a href="resources/WECHAT.md" target="_blank"> 💬 WeChat</a> 
+Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> 
 
 
 <p align="center">
