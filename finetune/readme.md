@@ -93,12 +93,12 @@ model = AutoPeftModelForCausalLM.from_pretrained(
 
 ### Model Fine-tuning Memory Usage Statistics
 
-The following table presents the memory usage of the model when fine-tuning using NVIDIA A100 (80GiB) GPUs under different numbers of GPUs. The fine-tuning was performed with the DeepSpeed Zero-2 optimization and Gradient Checkpointing techniques, with a maximum length set to 2048 and batch size set to 1.
+The following table presents the memory usage of the model when fine-tuning using NVIDIA A100 (80GiB) GPUs under different numbers of GPUs. The fine-tuning was performed with the DeepSpeed Zero-3 optimization, Gradient Checkpointing techniques and offloading optimizer as well as parameters memory to cpu, with a maximum length set to 2048 and batch size set to 1. You refer to [deepspeed zero stage](https://huggingface.co/docs/transformers/v4.41.2/en/deepspeed#select-a-zero-stage) to reduce memory cost.
 
 | Fine-tuning Method | GPUs: 2 | GPUs: 4 | GPUs: 8 |
 |--------------------|---------|---------|---------|
-| LoRA Fine-tuning   | 31.2 GiB| 29.3 GiB|    28.4GiB   |
-| Full Parameters Fine-tuning | Out of memory | 75.0 GiB | 51.2GiB |
+| LoRA Fine-tuning   | 14.4 GiB| 13.6 GiB|   13.1 GiB   |
+| Full Parameters Fine-tuning | 16.0 GiB | 15.8 GiB | 15.63GiB |
 
 ### Notes
 - **Fine-tuning Method**: Displays two different fine-tuning strategies, LoRA fine-tuning and Full parameters fine-tuning.
