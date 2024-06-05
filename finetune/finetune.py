@@ -270,9 +270,9 @@ def train():
             )
         model = get_peft_model(model, lora_config)
         model.base_model.resampler.requires_grad_(True)
+        model.base_model.llm.model.embed_tokens.weight.requires_grad_(True)
         if training_args.tune_vision:
             model.base_model.vpm.requires_grad_(True)
-            model.base_model.llm.model.embed_tokens.weight.requires_grad_(True)
         if training_args.gradient_checkpointing:
             model.enable_input_require_grads()
 
