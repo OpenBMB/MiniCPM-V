@@ -9,6 +9,8 @@
   <strong>中文 |
   [English](./README_en.md)</strong>
 
+ 加入我们的 <a href="resources/WECHAT.md" target="_blank"> 💬 微信社区</a> 
+
 <p align="center">
   MiniCPM-Llama3-V  2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5">🤖</a> |
   MiniCPM-V 2.0  <a href="https://huggingface.co/openbmb/MiniCPM-V-2/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2">🤖</a> |
