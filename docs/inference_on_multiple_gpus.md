@@ -43,7 +43,7 @@ gpu_device_ids = [0, 1] # Define which gpu to use (now we have two GPUs, each ha
 no_split_module_classes = ["LlamaDecoderLayer"]
 
 max_memory = {
-    device_id: memory for device_id in gpu_device_ids
+    device_id: max_memory_each_gpu for device_id in gpu_device_ids
 }
 
 config = AutoConfig.from_pretrained(
@@ -93,7 +93,7 @@ modified device_map OrderedDict([('llm.model.embed_tokens', 0), ('llm.model.laye
 ```python
 load_checkpoint_in_model(
     model, 
-    model_path, 
+    MODEL_PATH, 
     device_map=device_map)
 
 model = dispatch_model(
