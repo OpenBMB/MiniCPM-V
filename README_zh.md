@@ -472,7 +472,7 @@
 
 ## Demo
 
-我们提供由 Hugging Face [Gradio](https://www.gradio.app/guides/quickstart) 支持的在线和本地 Demo。Gradio 是目前最流行的模型部署框架，支持流式输出、进度条、process bars 和其他常用功能。
+我们提供由 Hugging Face [Gradio](https://github.com/gradio-app/gradio) 支持的在线和本地 Demo。Gradio 是目前最流行的模型部署框架，支持流式输出、进度条、process bars 和其他常用功能。
 
 ### Online Demo <!-- omit in toc --> 
 
