@@ -74,13 +74,15 @@ Specially, Llama3 has a different chat_template for training and inference, we m
 The LoRA allows light-weight model tuning with only a small subset of parameters updated. We provide the LoRA implementation based on `peft`. To launch your training, run the following script:
 
 ```
-sh finetune_ds_lora.sh
+sh finetune_lora.sh
 ```
 
 After training, you could load the model with the path to the adapter. We advise you to use absolute path for your pretrained model. This is because LoRA only saves the adapter and the absolute path in the adapter configuration json file is used for finding out the pretrained model to load.
 
 ```
 from peft import AutoPeftModelForCausalLM
+
+path_to_adapter="path_to_adapter"
 
 model = AutoPeftModelForCausalLM.from_pretrained(
     # path to the output directory
@@ -126,10 +128,6 @@ A：When you face Out of Memory (OOM) issues during training large models, the f
 ```
 --batch_size 1
  ```
-- **Lower image resolution**: If your model processes image data, reducing the input resolution of images can effectively decrease memory usage.
-```
---scale_resolution 448 
-```
 - **Reduce the number of slices (`slice`)**: When handling large datasets such as large images files, reducing the number of slices processed each time can lower memory requirements.
 ```
 --max_slice_nums 9 
