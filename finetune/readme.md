@@ -88,6 +88,10 @@ model = AutoPeftModelForCausalLM.from_pretrained(
     device_map="auto",
     trust_remote_code=True
 ).eval()
+
+vpm_resampler_embedtokens_weight = torch.load(f"{path_to_adapter}/vpm_resampler_embedtokens.pt")
+
+msg = model.load_state_dict(vpm_resampler_embedtokens_weight, strict=False)
 ```
 
 
