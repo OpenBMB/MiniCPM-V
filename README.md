@@ -462,7 +462,8 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 
 ## Chat with Our Demo on Gradio
 
-We provide online and local demos powered by HuggingFace [Gradio](https://www.gradio.app/guides/quickstart), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
+We provide online and local demos powered by HuggingFace [Gradio](https://github.com/gradio-app/gradio), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
+
 
 ### Online Demo <!-- omit in toc --> 
 
@@ -656,13 +657,12 @@ Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/d
 
 ## Model License <!-- omit in toc -->
 
-The code in this repo is released according to [Apache-2.0](https://github.com/OpenBMB/MiniCPM/blob/main/LICENSE)
+* This repository is released under the [Apache-2.0](https://github.com/OpenBMB/MiniCPM/blob/main/LICENSE) License. 
 
-The usage of MiniCPM-V's and OmniLMM's parameters is subject to "[General Model License Agreement - Source Notes - Publicity Restrictions - Commercial License](https://github.com/OpenBMB/General-Model-License/blob/main/通用模型许可协议-来源说明-宣传限制-商业授权.md)"
+* The usage of MiniCPM-V model weights must strictly follow [MiniCPM Model License.md](https://github.com/OpenBMB/MiniCPM/blob/main/MiniCPM%20Model%20License.md).
 
-The parameters are fully open to academic research
-
-Please contact cpm@modelbest.cn to obtain written authorization for commercial uses. Free commercial use is also allowed after registration.
+* The models and weights of MiniCPM are completely free for academic research. after filling out a ["questionnaire"](https://modelbest.feishu.cn/share/base/form/shrcnpV5ZT9EJ6xYjh3Kx0J6v8g) for registration, are also available for free commercial use.
+  
 
 ## Statement <!-- omit in toc -->
 
