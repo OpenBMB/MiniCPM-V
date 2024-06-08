@@ -38,7 +38,6 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --tune_llm true \
     --model_max_length 2048 \
     --max_slice_nums 9 \
-    --scale_resolution 448 \
     --max_steps 10000 \
     --eval_steps 1000 \
     --output_dir output/output_minicpmv2 \
