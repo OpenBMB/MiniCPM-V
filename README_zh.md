@@ -717,7 +717,13 @@ python examples/minicpmv_example.py
 ## 🌟 Star History
 
 
-<picture>
+<table align="center">
+    <p align="center">
+      <img src="assets/star_history.svg"/>
+    </p>
+</table>
+
+<!-- <picture>
   <source
     media="(prefers-color-scheme: dark)"
     srcset="
@@ -734,7 +740,7 @@ python examples/minicpmv_example.py
     alt="Star History Chart"
     src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
   />
-</picture>
+</picture> -->
 
 
 ## 引用
