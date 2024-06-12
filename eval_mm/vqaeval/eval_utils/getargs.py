@@ -56,7 +56,7 @@ def parse_args():
     parser.add_argument("--device", type=str, default="cuda:0")
     parser.add_argument('--batchsize', type=int, default=1, help='Batch size for processing.')
 
-    parser.add_argument("--ckpt", type=str, default="")
+    parser.add_argument("--ckpt", type=str, default=None)
 
     args = parser.parse_args()
     return args

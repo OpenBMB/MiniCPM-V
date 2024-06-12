@@ -84,6 +84,7 @@ class MiniCPM_V:
         msgs = [{'role': 'user', 'content': content}]
 
         res = self.model.chat(
+            image=None,
             msgs=msgs,
             context=None,
             tokenizer=self.tokenizer,
