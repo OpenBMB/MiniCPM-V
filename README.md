@@ -626,7 +626,7 @@ pip install -e .
 ```
 3. Install timm: 
 ```shell
-pip install timm=0.9.10
+pip install timm==0.9.10
 ```
 4. Run our demo:
 ```shell
