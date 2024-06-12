@@ -5,8 +5,8 @@ from transformers import Trainer
 from transformers.trainer_pt_utils import nested_detach
 from transformers.utils import is_sagemaker_mp_enabled
 from transformers.trainer import *
-import deepspeed
 from transformers.integrations import is_deepspeed_zero3_enabled
+
 
 class CPMTrainer(Trainer):
     def compute_loss(self, model, inputs, return_outputs=False):
