@@ -16,12 +16,11 @@ class CPMTrainer(Trainer):
             labels = None
         self.model.resampler.pos_embed = self.model.resampler.pos_embed.to(self.model.device)
         if is_deepspeed_zero3_enabled():
-            with deepspeed.zero.GatheredParameters(self.model.resampler.attn.parameters(), modifier_rank=0):
-                if not self.args.use_lora:
-                    outputs = self.model(data = inputs, use_cache=False)
-                else:
-                    with self.model._enable_peft_forward_hooks(**inputs):
-                        outputs = self.model.base_model(data = inputs, use_cache=False)
+            if not self.args.use_lora:
+                outputs = self.model(data = inputs, use_cache=False)
+            else:
+                with self.model._enable_peft_forward_hooks(**inputs):
+                    outputs = self.model.base_model(data = inputs, use_cache=False)
         else:
             if not self.args.use_lora:
                 outputs = self.model(data = inputs, use_cache=False)
@@ -215,11 +214,7 @@ class CPMTrainer(Trainer):
             with amp.scale_loss(loss, self.optimizer) as scaled_loss:
                 scaled_loss.backward()
         else:
-            if is_deepspeed_zero3_enabled():
-                with deepspeed.zero.GatheredParameters(self.model.resampler.attn.parameters(), modifier_rank=0):
-                    self.accelerator.backward(loss)
-            else:
-                self.accelerator.backward(loss)
+            self.accelerator.backward(loss)
 
         return loss.detach() / self.args.gradient_accumulation_steps
     
