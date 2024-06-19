@@ -214,7 +214,11 @@ class CPMTrainer(Trainer):
             with amp.scale_loss(loss, self.optimizer) as scaled_loss:
                 scaled_loss.backward()
         else:
-            self.accelerator.backward(loss)
+            if self.args.llm_type=='minicpm' and is_deepspeed_zero3_enabled():
+                with deepspeed.zero.GatheredParameters(self.model.vpm.pos_embed):
+                    self.accelerator.backward(loss)
+            else:
+                self.accelerator.backward(loss)
 
         return loss.detach() / self.args.gradient_accumulation_steps
     
