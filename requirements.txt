@@ -31,3 +31,6 @@ accelerate==0.30.1
 socksio==1.0.0
 gradio
 gradio_client
+deepspeed==0.14.4
+peft==0.11.1
+tensorboard==2.17.0
