@@ -40,12 +40,12 @@ quantization_config = BitsAndBytesConfig(
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model = AutoModel.from_pretrained(
     model_path,
-    device_map="cuda:0",  # 分配模型到GPU0
+    device_map=device,  # 分配模型到device
     quantization_config=quantization_config,
     trust_remote_code=True
 )
-gpu_usage = GPUtil.getGPUs()[0].memoryUsed 
-        
+
+gpu_usage = GPUtil.getGPUs()[0].memoryUsed  
 start=time.time()
 response = model.chat(
     image=Image.open(image_path).convert("RGB"),
@@ -58,7 +58,7 @@ response = model.chat(
     tokenizer=tokenizer
 ) # 模型推理
 print('量化后输出',response)
-print('量化后用时',time.time()-start)
+print('量化后推理用时',time.time()-start)
 print(f"量化后显存占用: {round(gpu_usage/1024,2)}GB")
 
 """
