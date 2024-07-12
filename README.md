@@ -70,6 +70,14 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 - [🌟 Star History](#-star-history)
 - [Citation](#citation)
 
+## MiniCPM-Llama3-V 2.5 Common Module Navigation <!-- omit in toc -->
+| Functional Categories  |  | |  |  | |  |  ||
+|:--------:|:------:|:--------------:|:--------:|:-------:|:-----------:|:-----------:|:--------:|:-----------:|
+| inference | [transformers](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) | [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) | [swift](./docs/swift_train_and_infer.md) | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) | [xinfrence](./docs/xinference_infer.md) | [gradio](./web_demo_2.5.py) | [streamlit](./web_demo_streamlit-2_5.py) |
+| finetuen      | [finetune](./finetune/readme.md) |   [lora](./finetune/readme.md)     | [swift](./docs/swift_train_and_infer.md)           |  |             |             |          |             |
+| Edge Deployment  | [apk](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk)  | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md)               |  |        |             |             |          |             |
+| quantize | [bnb](./quantize/bnb_quantize.py)  |           
+
 ## MiniCPM-Llama3-V 2.5
 
 **MiniCPM-Llama3-V 2.5** is the latest model in the MiniCPM-V series. The model is built on SigLip-400M and Llama3-8B-Instruct with a total of 8B parameters. It exhibits a significant performance improvement over MiniCPM-V 2.0. Notable features of MiniCPM-Llama3-V 2.5 include:
