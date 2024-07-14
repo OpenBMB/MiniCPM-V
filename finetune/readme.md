@@ -80,20 +80,16 @@ sh finetune_lora.sh
 After training, you could load the model with the path to the adapter. We advise you to use absolute path for your pretrained model. This is because LoRA only saves the adapter and the absolute path in the adapter configuration json file is used for finding out the pretrained model to load.
 
 ```
-from peft import AutoPeftModelForCausalLM
+from peft import AutoPeftModel
 
-path_to_adapter="path_to_adapter"
+path_to_adapter="path_to_your_fine_tuned_checkpoint"
 
-model = AutoPeftModelForCausalLM.from_pretrained(
+model = AutoPeftModel.from_pretrained(
     # path to the output directory
     path_to_adapter,
     device_map="auto",
     trust_remote_code=True
-).eval()
-
-vpm_resampler_embedtokens_weight = torch.load(f"{path_to_adapter}/vpm_resampler_embedtokens.pt")
-
-msg = model.load_state_dict(vpm_resampler_embedtokens_weight, strict=False)
+).eval().cuda()
 ```
 
 
@@ -173,14 +169,16 @@ A: The error as described in [issues 168](https://github.com/OpenBMB/MiniCPM-V/i
 
 1.**Reload the Fine-Tuned Model:** Make sure you correctly load the checkpoint that has been fine-tuned using lora techniques. Use the following code example to guide you:
    ```python
-   from peft import AutoPeftModelForCausalLM
+ from peft import AutoPeftModel
 
-   model = AutoPeftModelForCausalLM.from_pretrained(
-       'path_to_your_fine_tuned_checkpoint',  # Path to your fine-tuned checkpoint directory
-       output='output/minicpmv2_lora',
-       device_map='auto',
-       trust_remote_code=True
-   ).eval()
+path_to_adapter="path_to_your_fine_tuned_checkpoint"
+
+model = AutoPeftModel.from_pretrained(
+    # path to the output directory
+    path_to_adapter,
+    device_map="auto",
+    trust_remote_code=True
+).eval().cuda()
    ```
   2.**Update the `model_minicpmv.py` File:**
    - **Verification:** Make sure you verify and update your `model_minicpmv.py` file to ensure it is the latest version.
