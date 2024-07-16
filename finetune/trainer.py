@@ -14,7 +14,6 @@ class CPMTrainer(Trainer):
             labels = inputs.pop("labels")
         else:
             labels = None
-        self.model.resampler.pos_embed = self.model.resampler.pos_embed.to(self.model.device)
         
         if not self.args.use_lora:
             outputs = self.model(data = inputs, use_cache=False)
