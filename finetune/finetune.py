@@ -260,6 +260,7 @@ def train():
             lora_dropout=lora_args.lora_dropout,
             bias=lora_args.lora_bias,
             layers_to_transform=lora_args.lora_layers_to_transform,
+            modules_to_save=modules_to_save,
         )
         if not hasattr(model, 'get_input_embeddings'):
             def get_input_embeddings(self):
