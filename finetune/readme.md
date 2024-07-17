@@ -80,12 +80,18 @@ sh finetune_lora.sh
 After training, you could load the model with the path to the adapter. We advise you to use absolute path for your pretrained model. This is because LoRA only saves the adapter and the absolute path in the adapter configuration json file is used for finding out the pretrained model to load.
 
 ```
-from peft import AutoPeftModel
-
+from peft import PeftModel
+from transformers import AutoModel
+model_type="openbmb/MiniCPM-Llama3-V-2_5" # or openbmb/MiniCPM-V-2
 path_to_adapter="path_to_your_fine_tuned_checkpoint"
 
-model = AutoPeftModel.from_pretrained(
-    # path to the output directory
+model =  AutoModel.from_pretrained(
+        model_type,
+        trust_remote_code=True
+        )
+
+lora_model = PeftModel.from_pretrained(
+    model,
     path_to_adapter,
     device_map="auto",
     trust_remote_code=True
