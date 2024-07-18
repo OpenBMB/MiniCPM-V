@@ -1,4 +1,6 @@
-## swift install
+## Swift install
+You can quickly install Swift using bash commands.
+
 ``` bash
     git clone https://github.com/modelscope/swift.git
     cd swift
@@ -6,14 +8,18 @@
     pip install -e '.[llm]'
 ```
 
-## Swift infer
-### quick start
-1. run the bash code will download the model of MiniCPM-Llama3-V-2_5 and run the inference
+## Swift Infer
+Inference using Swift can be carried out in two ways: through a command line interface and via Python code.
+
+### Quick start
+Here are the steps to launch Swift from the Bash command line:
+
+1. Run the bash code will download the model of MiniCPM-Llama3-V-2_5 and run the inference
 ``` shell
 CUDA_VISIBLE_DEVICES=0 swift infer --model_type minicpm-v-v2_5-chat
 ```
 
-2. you can also run the code with more arguments below to run the inference:
+2. You can also run the code with more arguments below to run the inference:
 ``` 
     model_id_or_path # 可以写huggingface的模型id或者本地模型地址
     infer_backend ['AUTO', 'vllm', 'pt'] # 后段推理，默认auto
@@ -30,14 +36,15 @@ CUDA_VISIBLE_DEVICES=0 swift infer --model_type minicpm-v-v2_5-chat
     quant_method ['bnb', 'hqq', 'eetq', 'awq', 'gptq', 'aqlm'] # 模型的量化方式
     quantization_bit [0, 1, 2, 3, 4, 8] 默认是0，代表不使用量化
 ```
-3. example:
+3. Example:
 ``` shell
     CUDA_VISIBLE_DEVICES=0，1 swift infer \
     --model_type minicpm-v-v2_5-chat \
     --model_id_or_path /root/ld/ld_model_pretrain/MiniCPM-Llama3-V-2_5 \
     --dtype bf16 
 ```
-### python code with swift infer
+### Python code with swift infer
+The following demonstrates using Python code to initiate inference with the MiniCPM-Llama3-V-2_5 model through Swift.
 
 ```python
     import os
@@ -82,15 +89,16 @@ CUDA_VISIBLE_DEVICES=0 swift infer --model_type minicpm-v-v2_5-chat
 ```
 
 ## Swift train
-1. make the train data like this:
+Swift supports training on the local dataset,the training steps are as follows:
+1. Make the train data like this:
 ```jsonl
 {"query": "这张图片描述了什么", "response": "这张图片有一个大熊猫", "images": ["local_image_path"]}
 {"query": "这张图片描述了什么", "response": "这张图片有一个大熊猫", "history": [], "images": ["image_path"]}
 {"query": "竹子好吃么", "response": "看大熊猫的样子挺好吃呢", "history": [["这张图有什么", "这张图片有大熊猫"], ["大熊猫在干嘛", "吃竹子"]], "images": ["image_url"]}
 ```
-2. lora turning:
- the lora target model are k and v weight in llm
- you should pay attention to the eval_steps,  maybe you should set the eval_steps to a large value, like 200000,beacuase in the eval time , swift will return a memory bug so you should set the eval_steps to a very large value.
+2. Lora Tuning:
+
+    The lora target model are k and v weight in llm you should pay attention to the eval_steps,maybe you should set the eval_steps to a large value, like 200000,beacuase in the eval time , swift will return a memory bug so you should set the eval_steps to a very large value.
 ```shell
     # Experimental environment: A100
     # 32GB GPU memory
@@ -98,8 +106,9 @@ CUDA_VISIBLE_DEVICES=0 swift infer --model_type minicpm-v-v2_5-chat
         --model_type minicpm-v-v2_5-chat \
         --dataset coco-en-2-mini \
 ```
-3. all parameters finetune:
-when the argument of lora_target_modules is ALL, the model will finetune all the parameters.
+3. All parameters finetune:
+
+    When the argument of lora_target_modules is ALL, the model will finetune all the parameters.
 ```shell
 CUDA_VISIBLE_DEVICES=0,1 swift sft \
     --model_type minicpm-v-v2_5-chat \
@@ -108,14 +117,17 @@ CUDA_VISIBLE_DEVICES=0,1 swift sft \
     --eval_steps 200000
 ```
 
-## lora merge and infer
-1. load the lora weight to infer run the follow code:
+## Lora Merge and Infer
+The lora weight can be merge to the base model and then load to infer.
+
+1. Load the lora weight to infer run the follow code:
 ```shell
 CUDA_VISIBLE_DEVICES=0 swift infer    \
  --ckpt_dir /your/lora/save/checkpoint
 ```
-2. merge the lora weight to the base model:
-the code will load and merge the lora weight to the base model, save the merge model to the lora save path and load the merge model to infer
+2. Merge the lora weight to the base model:
+
+    The code will load and merge the lora weight to the base model, save the merge model to the lora save path and load the merge model to infer
 ```shell
 CUDA_VISIBLE_DEVICES=0 swift infer \
     --ckpt_dir your/lora/save/checkpoint \
