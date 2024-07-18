@@ -77,10 +77,10 @@
 ## MiniCPM-Llama3-V 2.5快速导航 <!-- omit in toc -->
 | 功能分类 |  | |  |  | |  |  ||
 |:--------:|:------:|:--------------:|:--------:|:-------:|:-----------:|:-----------:|:--------:|:-----------:|
-| 推理 | [transformers](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) | [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) | [swift](./docs/swift_train_and_infer.md) | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) | [xinfrence](./docs/xinference_infer.md) | [gradio](./web_demo_2.5.py) | [streamlit](./web_demo_streamlit-2_5.py) |
-| 微调      | [finetune](./finetune/readme.md) |   [lora](./finetune/readme.md)     | [swift](./docs/swift_train_and_infer.md)           |  |             |             |          |             |
-| 安卓部署  | [apk安装](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk)  | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md)               |  |        |             |             |          |             |
-| 量化      | [bnb量化](./quantize/bnb_quantize.py)  |                            
+| 推理 | [Transformers](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) | [Ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) | [Swift](./docs/swift_train_and_infer.md) | [Llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) | [Xinfrence](./docs/xinference_infer.md) | [Gradio](./web_demo_2.5.py) | [Streamlit](./web_demo_streamlit-2_5.py) |
+| 微调      | [Finetune](./finetune/readme.md) |   [Lora](./finetune/readme.md)     | [Swift](./docs/swift_train_and_infer.md)           |  |             |             |          |             |
+| 安卓部署  | [Apk安装](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk)  | [Llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md)               |  |        |             |             |          |             |
+| 量化      | [Bnb量化](./quantize/bnb_quantize.py)  |                            
 
 
 ## MiniCPM-Llama3-V 2.5
