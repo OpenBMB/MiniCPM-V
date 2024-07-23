@@ -29,7 +29,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 ## News <!-- omit in toc -->
 
 #### 📌 Pinned
-
+* [2024.07.19] MiniCPM-Llama3-V 2.5 supports vLLM now! See [here](#vllm).
 * [2024.05.28] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 now fully supports its feature in llama.cpp and ollama! Please pull the latest code **of our provided forks** ([llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md), [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5)). GGUF models in various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main). MiniCPM-Llama3-V 2.5 series is **not supported by the official repositories yet**, and we are working hard to merge PRs. Please stay tuned!
 * [2024.05.28] 💫 We now support LoRA fine-tuning for MiniCPM-Llama3-V 2.5, using only 2 V100 GPUs! See more statistics [here](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics).
 * [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, multilingual capabilities, and inference efficiency 🌟📊🌍🚀. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
@@ -622,7 +622,7 @@ MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](htt
 ### Inference with vLLM<a id="vllm"></a>
 
 <details>
-<summary>Click to see how to inference MiniCPM-V 2.0 with vLLM (MiniCPM-Llama3-V 2.5 coming soon) </summary>
+<summary>Click to see how to inference MiniCPM-V 2.0 and MiniCPM-Llama3-V 2.5 with vLLM </summary>
 Because our pull request to vLLM is still waiting for reviewing, we fork this repository to build and test our vLLM demo. Here are the steps:
 
 1. Clone our version of vLLM:
@@ -632,6 +632,7 @@ git clone https://github.com/OpenBMB/vllm.git
 2. Install vLLM:
 ```shell
 cd vllm
+git checkout minicpmv
 pip install -e .
 ```
 3. Install timm: 
