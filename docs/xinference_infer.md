@@ -10,7 +10,7 @@ pip install "xinference[all]"
 
 ### Quick start
 The initial steps for conducting inference with Xinference involve downloading the model during the first launch.
-1. Start xinference in the terminal:
+1. Start Xinference in the terminal:
 ```shell
 xinference
 ```
@@ -37,9 +37,9 @@ Replica      : 1
 
 ### Local MiniCPM-Llama3-V-2_5 Launch
 If you have already downloaded the MiniCPM-Llama3-V-2_5 model locally, you can proceed with Xinference inference following these steps:
-1. Start xinference
+1. Start Xinference
 ```shell
-    xinference
+xinference
 ```
 2. Start the web ui.
 3. To register a new model, follow these steps: the settings highlighted in red are fixed and cannot be changed, whereas others are customizable according to your needs. Complete the process by clicking the 'Register Model' button.
@@ -50,12 +50,12 @@ If you have already downloaded the MiniCPM-Llama3-V-2_5 model locally, you can p
 4. After completing the model registration, proceed to 'Custom Models' and locate the model you just registered.
 5. Follow the config and launch the model.
 ```plaintext
-    Model engine : Transformers
-    model format : pytorch
-    Model size   : 8
-    quantization : none
-    N-GPU        : auto
-    Replica      : 1
+Model engine : Transformers
+model format : pytorch
+Model size   : 8
+quantization : none
+N-GPU        : auto
+Replica      : 1
 ```
 6. After first click the launch button,Xinference will download the model from Huggingface. we should click the chat button.
 ![alt text](../assets/xinferenc_demo_image/xinference_webui_button.png)
@@ -64,4 +64,4 @@ If you have already downloaded the MiniCPM-Llama3-V-2_5 model locally, you can p
 ### FAQ
 1. Why can't the sixth step open the WebUI?
 
-    Maybe your firewall or mac os to prevent the web to open.
+Maybe your firewall or mac os to prevent the web to open.

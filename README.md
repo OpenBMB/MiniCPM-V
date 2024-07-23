@@ -71,12 +71,14 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 - [Citation](#citation)
 
 ## MiniCPM-Llama3-V 2.5 Common Module Navigation <!-- omit in toc -->
+You can click on the following table to quickly access the commonly used content you need.
+
 | Functional Categories  |  | |  |  | |  |  ||
 |:--------:|:------:|:--------------:|:--------:|:-------:|:-----------:|:-----------:|:--------:|:-----------:|
-| Inference | [Transformers](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) | [Ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) | [Swift](./docs/swift_train_and_infer.md) | [Llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) | [Xinfrence](./docs/xinference_infer.md) | [Gradio](./web_demo_2.5.py) | [Streamlit](./web_demo_streamlit-2_5.py) |
-| Finetune     | [Finetune](./finetune/readme.md) |   [Lora](./finetune/readme.md)     | [Swift](./docs/swift_train_and_infer.md)           |  |             |             |          |             |
-| Edge Deployment  | [Apk](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk)  | [Llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md)               |  |        |             |             |          |             |
-| Quantize | [Bnb](./quantize/bnb_quantize.py)  |           
+| Inference | [Transformers](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) | [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) | [SWIFT](./docs/swift_train_and_infer.md) | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) | [Xinfrence](./docs/xinference_infer.md) | [Gradio](./web_demo_2.5.py) | [Streamlit](./web_demo_streamlit-2_5.py) |[vLLM](#vllm)
+| Finetune     | [Finetune](./finetune/readme.md) |   [Lora](./finetune/readme.md)     | [SWIFT](./docs/swift_train_and_infer.md)           |  |             |             |          |             |
+| Edge Deployment  | [apk](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk)  | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md)               |  |        |             |             |          |             |
+| Quantize | [Bnb](./quantize/bnb_quantize.py)  |            
 
 ## MiniCPM-Llama3-V 2.5
 
