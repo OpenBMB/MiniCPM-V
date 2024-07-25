@@ -47,7 +47,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --logging_strategy "steps" \
     --per_device_train_batch_size 2 \
     --per_device_eval_batch_size 1 \
-    --gradient_accumulation_steps 1 \
+    --gradient_accumulation_steps 8 \
     --evaluation_strategy "steps" \
     --save_strategy "steps" \
     --save_steps 1000 \
