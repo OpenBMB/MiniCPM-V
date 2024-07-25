@@ -644,17 +644,15 @@ MiniCPM-Llama3-V 2.5 现在支持llama.cpp啦! 用法请参考我们的fork [lla
 
 ### vLLM 部署 <a id='vllm'></a>
 <details>
-<summary>点击查看 MiniCPM-V 2.0 和 MiniCPM-Llama3-V 2.5 利用vLLM 部署运行的方法</summary>
-由于我们对 vLLM 提交的 PR 还在 review 中，因此目前我们 fork 了一个 vLLM 仓库以供测试使用。
+<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.0 和 MiniCPM-Llama3-V 2.5</summary>
 
-1. 首先克隆我们 fork 的 vLLM 库:
+1. 首先克隆官方的 vLLM 库:
 ```shell
-git clone https://github.com/OpenBMB/vllm.git
+git clone https://github.com/vllm-project/vllm.git
 ```
 2. 安装 vLLM 库:
 ```shell
 cd vllm
-git checkout minicpmv
 pip install -e .
 ```
 3. 安装 timm 库: 
