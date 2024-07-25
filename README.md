@@ -614,24 +614,22 @@ MiniCPM-Llama3-V 2.5 can run with llama.cpp now! See our fork of [llama.cpp](htt
 ### Inference with vLLM<a id="vllm"></a>
 
 <details>
-<summary>Click to see how to inference MiniCPM-V 2.0 and MiniCPM-Llama3-V 2.5 with vLLM </summary>
-Because our pull request to vLLM is still waiting for reviewing, we fork this repository to build and test our vLLM demo. Here are the steps:
+<summary> vLLM now officially supports MiniCPM-V 2.0 and MiniCPM-Llama3-V 2.5, Click to see. </summary>
 
-1. Clone our version of vLLM:
+1. Clone the official vLLM:
 ```shell
-git clone https://github.com/OpenBMB/vllm.git
+git clone https://github.com/vllm-project/vllm.git
 ```
 2. Install vLLM:
 ```shell
 cd vllm
-git checkout minicpmv
 pip install -e .
 ```
 3. Install timm: 
 ```shell
 pip install timm==0.9.10
 ```
-4. Run our demo:
+4. Run the example:
 ```shell
 python examples/minicpmv_example.py 
 ```
