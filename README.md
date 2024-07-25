@@ -629,7 +629,7 @@ pip install -e .
 ```shell
 pip install timm==0.9.10
 ```
-4. Run the example:
+4. Run the example:（If you use model in local path, please update the model code to the latest version on Hugging Face.)
 ```shell
 python examples/minicpmv_example.py 
 ```

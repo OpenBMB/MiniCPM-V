@@ -659,7 +659,7 @@ pip install -e .
 ```shell
 pip install timm=0.9.10
 ```
-4. 测试运行示例程序:
+4. 运行示例代码:（如果使用本地路径的模型，请确保模型代码已更新到Hugging Face上的最新版)
 ```shell
 python examples/minicpmv_example.py 
 ```
