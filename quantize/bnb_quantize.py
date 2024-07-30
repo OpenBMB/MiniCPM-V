@@ -18,29 +18,29 @@ import torch
 import GPUtil
 import os
 
-model_path = '/root/ld/ld_model_pretrain/MiniCPM-Llama3-V-2_5' # 模型下载地址
-device = 'cuda' if torch.cuda.is_available() else 'cpu'
-save_path = '/root/ld/ld_model_pretrain/MiniCPM-Llama3-V-2_5_int4' # 量化模型保存地址
-image_path = './assets/airplane.jpeg'
+model_path = '/root/ld/ld_model_pretrained/MiniCPM-Llama3-V-2_5' # Model download path
+device = 'cpu' # # Select GPU if available, otherwise CPU
+save_path = '/root/ld/ld_model_pretrain/MiniCPM-Llama3-V-2_5_int4' # Quantized model save path
+image_path = '/root/ld/ld_project/pull_request/MiniCPM-V/assets/airplane.jpeg'
 
-# 创建一个配置对象来指定量化参数
+# Create a configuration object to specify quantization parameters
 quantization_config = BitsAndBytesConfig(
-    load_in_4bit= True, # 是否进行4bit量化
-    load_in_8bit=False, # 是否进行8bit量化
-    bnb_4bit_compute_dtype=torch.float16, # 计算精度设置
-    bnb_4bit_quant_storage=torch.uint8, # 量化权重的储存格式
-    bnb_4bit_quant_type="nf4", # 量化格式，这里用的是正太分布的int4
-    bnb_4bit_use_double_quant= True, # 是否采用双量化，即对zeropoint和scaling参数进行量化
-    llm_int8_enable_fp32_cpu_offload=False, # 是否llm使用int8，cpu上保存的参数使用fp32
-    llm_int8_has_fp16_weight=False, # 是否启用混合精度
-    llm_int8_skip_modules=[ "out_proj", "kv_proj", "lm_head" ], # 不进行量化的模块
-    llm_int8_threshold= 6.0 # llm.int8()算法中的离群值，根据这个值区分是否进行量化
+    load_in_4bit=True,  # Whether to perform 4-bit quantization
+    load_in_8bit=False,  # Whether to perform 8-bit quantization
+    bnb_4bit_compute_dtype=torch.float16,  # Computation precision setting
+    bnb_4bit_quant_storage=torch.uint8,  # Storage format for quantized weights
+    bnb_4bit_quant_type="nf4",  # Quantization format, here using normally distributed int4
+    bnb_4bit_use_double_quant=True,  # Whether to use double quantization, i.e., quantizing zeropoint and scaling parameters
+    llm_int8_enable_fp32_cpu_offload=False,  # Whether LLM uses int8, with fp32 parameters stored on the CPU
+    llm_int8_has_fp16_weight=False,  # Whether mixed precision is enabled
+    llm_int8_skip_modules=["out_proj", "kv_proj", "lm_head"],  # Modules not to be quantized
+    llm_int8_threshold=6.0  # Outlier value in the llm.int8() algorithm, distinguishing whether to perform quantization based on this value
 )
 
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model = AutoModel.from_pretrained(
     model_path,
-    device_map=device,  # 分配模型到device
+    device_map=device,  # Allocate model to device
     quantization_config=quantization_config,
     trust_remote_code=True
 )
@@ -52,28 +52,27 @@ response = model.chat(
     msgs=[
         {
             "role": "user",
-            "content": "这张图片中有什么?"
+            "content": "What is in this picture?"
         }
     ],
     tokenizer=tokenizer
 ) # 模型推理
-print('量化后输出',response)
-print('量化后推理用时',time.time()-start)
-print(f"量化后显存占用: {round(gpu_usage/1024,2)}GB")
+print('Output after quantization:',response)
+print('Inference time after quantization:',time.time()-start)
+print(f"GPU memory usage after quantization: {round(gpu_usage/1024,2)}GB")
 
 """
-expected output:
+Expected output:
 
-    量化后输出 这张图片中包含了飞机的特定部件，包括机翼、发动机和尾翼。这些部件是大型商用飞机的关键组成部分。
-    机翼支撑着飞行时的升力，而发动机提供推力使飞机前进。尾翼通常用于稳定飞行，并在航空公司品牌中起到作用。
-    飞机的设计和颜色表明它属于中国航空公司，很可能是一架客机，因为其庞大的尺寸和双引擎配置。
-    飞机上没有任何标记或标志表明具体的型号或注册编号，这些信息可能需要额外的背景信息或更清晰的视角才能辨别。
-    量化后用时 8.583992719650269
-    量化后显存占用: 6.41GB
+    Output after quantization: This picture contains specific parts of an airplane, including wings, engines, and tail sections. These components are key parts of large commercial aircraft.
+    The wings support lift during flight, while the engines provide thrust to move the plane forward. The tail section is typically used for stabilizing flight and plays a role in airline branding.
+    The design and color of the airplane indicate that it belongs to Air China, likely a passenger aircraft due to its large size and twin-engine configuration.
+    There are no markings or insignia on the airplane indicating the specific model or registration number; such information may require additional context or a clearer perspective to discern.
+    Inference time after quantization: 8.583992719650269 seconds
+    GPU memory usage after quantization: 6.41 GB
 """
 
-
-# 保存模型和分词器
+# Save the model and tokenizer
 os.makedirs(save_path, exist_ok=True)
 model.save_pretrained(save_path, safe_serialization=True)
 tokenizer.save_pretrained(save_path)
