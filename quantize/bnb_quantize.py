@@ -18,10 +18,13 @@ import torch
 import GPUtil
 import os
 
+assert torch.cuda.is_available(),"CUDA is not available, but this code requires a GPU."
+
+device = 'cuda'  # Select GPU to use
 model_path = '/root/ld/ld_model_pretrained/MiniCPM-Llama3-V-2_5' # Model download path
-device = 'cuda' # Select GPU if available, otherwise CPU
 save_path = '/root/ld/ld_model_pretrain/MiniCPM-Llama3-V-2_5_int4' # Quantized model save path
 image_path = './assets/airplane.jpeg'
+
 
 # Create a configuration object to specify quantization parameters
 quantization_config = BitsAndBytesConfig(
