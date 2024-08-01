@@ -92,15 +92,6 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 -  💫  **Easy Usage.**
 MiniCPM-Llama3-V 2.5 can be easily used in various ways: (1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) and [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) support for efficient CPU inference on local devices, (2) [GGUF](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) format quantized models in 16 sizes, (3) efficient [LoRA](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#lora-finetuning) fine-tuning with only 2 V100 GPUs, (4) [streaming output](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage), (5) quick local WebUI demo setup with [Gradio](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_2.5.py) and [Streamlit](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_streamlit-2_5.py), and (6) interactive demos on [HuggingFace Spaces](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5).
 
-### MiniCPM-Llama3-V 2.5 Common Module Navigation <!-- omit in toc -->
-You can click links in the following table to quickly access the commonly used functions for MiniCPM-Llama3-V 2.5.
-| Functional Categories  |  | |  |  | |  |  ||
-|:--------:|:------:|:--------------:|:--------:|:-------:|:-----------:|:-----------:|:--------:|:-----------:|
-| Inference | [Transformers](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) | [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) | [SWIFT](./docs/swift_train_and_infer.md) | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) | [Xinfrence](./docs/xinference_infer.md) | [Gradio](./web_demo_2.5.py) | [Streamlit](./web_demo_streamlit-2_5.py) |[vLLM](#vllm)
-| Finetune     | [Full-parameter](./finetune/readme.md) |   [Lora](./finetune/readme.md)     | [SWIFT](./docs/swift_train_and_infer.md)           |  |             |             |          |             |
-| Edge Deployment  | [apk](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk)  | [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md)               |  |        |             |             |          |             |
-| Quantize | [Bnb](./quantize/bnb_quantize.py)  |            
-
 ### Evaluation  <!-- omit in toc -->
 
 <div align="center">
