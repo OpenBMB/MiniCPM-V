@@ -830,13 +830,6 @@ We deploy MiniCPM-V 2.6 on end devices. The demo video is the raw screen recordi
     </p>
 </table> 
 
-<table align="center"> 
-    <p align="center">
-      <img src="assets/gif_cases/ticket.gif" width=32%/>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="assets/gif_cases/wfh.gif" width=32%/>
-    </p>
-</table> 
 
 <table align="center">
     <p align="center">

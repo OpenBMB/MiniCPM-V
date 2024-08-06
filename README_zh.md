@@ -838,14 +838,6 @@
     </p>
 </table>
 
-<table align="center"> 
-    <p align="center">
-      <img src="assets/gif_cases/ticket.gif" width=32%/>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="assets/gif_cases/wfh.gif" width=32%/>
-    </p>
-</table>
-
 <table align="center">
     <p align="center">
       <video src="https://github.com/user-attachments/assets/21f4b818-ede1-4822-920e-91281725c830" width="360" /> </video>
