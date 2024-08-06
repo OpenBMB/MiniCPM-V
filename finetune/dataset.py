@@ -329,7 +329,7 @@ def preprocess(
                 for j in range(len(patches[0])):
                     images.append(patches[i][j])
             if use_image_id:
-                image_placeholder = f'{tokenizer.im_id_start}{idx}{tokenizer.im_id_end}' + image_placeholder
+                image_placeholder = f'{tokenizer.im_id_start}{image_id_cnt}{tokenizer.im_id_end}' + image_placeholder
                 image_id_cnt += 1
             image_placeholder += get_grid_placeholder(
                 tokenizer, best_grid, query_nums, new_schema = new_schema)
