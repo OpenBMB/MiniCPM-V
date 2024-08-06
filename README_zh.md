@@ -1431,7 +1431,7 @@ model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2_6', trust_remote_code=Tru
 model = model.eval().cuda()
 tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2_6', trust_remote_code=True)
 
-MAX_NUM_FRAMES=64
+MAX_NUM_FRAMES=64 # if cuda OOM set a smaller number
 
 def encode_video(video_path):
     def uniform_sample(l, n):
@@ -1457,6 +1457,7 @@ msgs = [
 ]
 
 # Set decode params for video
+params = {}
 params["use_image_id"] = False
 params["max_slice_nums"] = 2 # 如果cuda OOM且视频分辨率大于448*448可设为1
 
