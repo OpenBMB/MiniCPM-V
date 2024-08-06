@@ -279,7 +279,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
             <td>34B</td>
             <td>157</td>
             <td>-</td>
-            <td>2141</td>
+            <td>2141.0</td>
             <td>59.3</td>
             <td>518</td>
             <td>48.0</td>
@@ -830,11 +830,18 @@ We deploy MiniCPM-V 2.6 on end devices. The demo video is the raw screen recordi
     </p>
 </table> 
 
+<table align="center"> 
+    <p align="center">
+      <img src="assets/gif_cases/ticket.gif" width=32%/>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <img src="assets/gif_cases/wfh.gif" width=32%/>
+    </p>
+</table> 
 
 <table align="center">
     <p align="center">
       <video src="https://github.com/user-attachments/assets/21f4b818-ede1-4822-920e-91281725c830" width="360" /> </video>
-      <video src="https://github.com/user-attachments/assets/c835f757-206b-4d9c-8e36-70d67b453628" width="360" /> </video>
+      <!-- <video src="https://github.com/user-attachments/assets/c835f757-206b-4d9c-8e36-70d67b453628" width="360" /> </video> -->
     </p>
 </table>
 
@@ -1416,7 +1423,7 @@ model = AutoModel.from_pretrained('openbmb/MiniCPM-V-2_6', trust_remote_code=Tru
 model = model.eval().cuda()
 tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-2_6', trust_remote_code=True)
 
-MAX_NUM_FRAMES=64
+MAX_NUM_FRAMES=64 # if cuda OOM set a smaller number
 
 def encode_video(video_path):
     def uniform_sample(l, n):
@@ -1442,6 +1449,7 @@ msgs = [
 ]
 
 # Set decode params for video
+params = {}
 params["use_image_id"] = False
 params["max_slice_nums"] = 2 # use 1 if cuda OOM and video resolution > 448*448
 
