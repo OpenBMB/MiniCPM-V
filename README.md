@@ -279,7 +279,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
             <td>34B</td>
             <td>157</td>
             <td>-</td>
-            <td>2141</td>
+            <td>2141.0</td>
             <td>59.3</td>
             <td>518</td>
             <td>48.0</td>
