@@ -29,5 +29,7 @@ uvicorn==0.24.0.post1
 sentencepiece==0.1.99
 accelerate==0.30.1
 socksio==1.0.0
-gradio
+gradio==4.22.0
 gradio_client
+http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_studio-0.4.0.9-py3-none-any.whl
+decord
