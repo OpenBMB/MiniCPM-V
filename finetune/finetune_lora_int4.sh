@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#Fine tuning of MiniCPM-Llama3-V-2_5-int4 on single GPU
 GPUS_PER_NODE=1
 NNODES=1
 NODE_RANK=0
@@ -7,8 +7,8 @@ MASTER_ADDR=localhost
 MASTER_PORT=6001
 
 MODEL="openbmb/MiniCPM-Llama3-V-2_5-int4"
-DATA="/home/stg-ops/Tejas/MiniCPM-V/train_dataset/dataset.json"
-EVAL_DATA="/home/stg-ops/Tejas/MiniCPM-V/test_dataset/dataset.json"
+DATA="" #Path to json file
+EVAL_DATA=""#Path to json file
 LLM_TYPE="llama3"
 
 DISTRIBUTED_ARGS="
