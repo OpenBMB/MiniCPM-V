@@ -380,7 +380,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
 </table>
 
 </div>
-* We evaluate this benchmark using chain-of-thought prompting.
+* We evaluate this benchmark using chain-of-thought prompting. Specifically, for MME, we used this technique only for the Cognition set.
 
 <sup>+</sup> Token Density: number of pixels encoded into each visual token at maximum resolution, i.e., # pixels at maximum resolution / # visual tokens.
 
