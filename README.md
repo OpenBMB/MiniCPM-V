@@ -93,7 +93,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 
 - 💪 **Strong OCR Capability and Others.**
   MiniCPM-V 2.6 can process images with any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344). It achieves **state-of-the-art performance on OCRBench, surpassing proprietary models such as GPT-4o, GPT-4V, and Gemini 1.5 Pro**.
-  Based on the the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) and [VisCPM](https://github.com/OpenBMB/VisCPM) techniques, it features **trustworthy behaviors**, with significantly lower hallucination rates than GPT-4o and GPT-4V on Object HalBench, and supports **multilingual capabilities** on English, Chiense, German, French, Italian, Korean, etc.
+  Based on the the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) and [VisCPM](https://github.com/OpenBMB/VisCPM) techniques, it features **trustworthy behaviors**, with significantly lower hallucination rates than GPT-4o and GPT-4V on Object HalBench, and supports **multilingual capabilities** on English, Chinese, German, French, Italian, Korean, etc.
 
 
 - 🚀 **Superior Efficiency.**
@@ -380,7 +380,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
 </table>
 
 </div>
-* We evaluate this benchmark using chain-of-thought prompting.
+* We evaluate this benchmark using chain-of-thought prompting. Specifically, for MME, we used this technique only for the Cognition set.
 
 <sup>+</sup> Token Density: number of pixels encoded into each visual token at maximum resolution, i.e., # pixels at maximum resolution / # visual tokens.
 
