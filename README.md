@@ -1517,23 +1517,87 @@ MiniCPM-V 2.6 can run with ollama now! See [our fork of ollama](https://github.c
 <details>
 <summary> vLLM now officially supports MiniCPM-V 2.0, MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.6, Click to see. </summary>
 
-1. Clone the official vLLM:
+1. Install vLLM:
 ```shell
-git clone https://github.com/vllm-project/vllm.git
+pip install vLLM
 ```
-2. Install vLLM:
-```shell
-cd vllm
-pip install -e .
-```
-3. Install timm: (optional, MiniCPM-V 2.0 need timm)
+2. Install timm: (optional, MiniCPM-V 2.0 need timm)
 ```shell
 pip install timm==0.9.10
 ```
-4. Run the example:（Attention: If you use model in local path, please update the model code to the latest version on Hugging Face.)
-```shell
-python examples/minicpmv_example.py 
+3. Run the example(for image):
+```python
+from transformers import AutoTokenizer
+from PIL import Image
+from vllm import LLM, SamplingParams
+
+MODEL_NAME = "openbmb/MiniCPM-V-2_6"
+# Also available for previous models
+# MODEL_NAME = "openbmb/MiniCPM-Llama3-V-2_5"
+# MODEL_NAME = "HwwwH/MiniCPM-V-2"
+
+image = Image.open("xxx.png").convert("RGB")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
+llm = LLM(
+    model=MODEL_NAME,
+    trust_remote_code=True,
+    gpu_memory_utilization=1,
+    max_model_len=2048
+)
+
+messages = [{
+    "role":
+    "user",
+    "content":
+    # Number of images
+    "(<image>./</image>)" + \
+    "\nWhat is the content of this image?" 
+}]
+prompt = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True
+)
+
+# Single Inference
+inputs = {
+    "prompt": prompt,
+    "multi_modal_data": {
+        "image": image
+        # Multi images, the number of images should be equal to that of `(<image>./</image>)`
+        # "image": [image, image] 
+    },
+}
+# Batch Inference
+# inputs = [{
+#     "prompt": prompt,
+#     "multi_modal_data": {
+#         "image": image
+#     },
+# } for _ in 2]
+
+
+# 2.6
+stop_tokens = ['<|im_end|>', '<|endoftext|>']
+stop_token_ids = [tokenizer.convert_tokens_to_ids(i) for i in stop_tokens]
+# 2.0
+# stop_token_ids = [tokenizer.eos_id]
+# 2.5
+# stop_token_ids = [tokenizer.eos_id, tokenizer.eot_id]
+
+sampling_params = SamplingParams(
+    stop_token_ids=stop_token_ids, 
+    use_beam_search=True,
+    temperature=0, 
+    best_of=3,
+    max_tokens=64
+)
+
+outputs = llm.generate(inputs, sampling_params=sampling_params)
+
+print(outputs[0].outputs[0].text)
 ```
+4. click [here](https://modelbest.feishu.cn/wiki/C2BWw4ZP0iCDy7kkCPCcX2BHnOf?from=from_copylink) if you want to use it with *video*, or get more details about `vLLM`.
 </details>
 
 ## Fine-tuning
