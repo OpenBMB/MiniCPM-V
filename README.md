@@ -1228,7 +1228,7 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 
 ## Chat with Our Demo on Gradio 🤗
 
-We provide online and local demos powered by Hugging Face **Gradio** <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a>, the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
+We provide online and local demos powered by Hugging Face Gradio <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a>, the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
 
 
 ### Online Demo <!-- omit in toc --> 
