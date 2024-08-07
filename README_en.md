@@ -62,7 +62,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 - [MiniCPM-V 2.6](#minicpm-v-26)
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
 - [MiniCPM-V 2.0](#minicpm-v-20)
-- [Chat with Our Demo on Gradio](#chat-with-our-demo-on-gradio)
+- [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
 - [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
@@ -93,7 +93,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 
 - 💪 **Strong OCR Capability and Others.**
   MiniCPM-V 2.6 can process images with any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344). It achieves **state-of-the-art performance on OCRBench, surpassing proprietary models such as GPT-4o, GPT-4V, and Gemini 1.5 Pro**.
-  Based on the the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) and [VisCPM](https://github.com/OpenBMB/VisCPM) techniques, it features **trustworthy behaviors**, with significantly lower hallucination rates than GPT-4o and GPT-4V on Object HalBench, and supports **multilingual capabilities** on English, Chiense, German, French, Italian, Korean, etc.
+  Based on the the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) and [VisCPM](https://github.com/OpenBMB/VisCPM) techniques, it features **trustworthy behaviors**, with significantly lower hallucination rates than GPT-4o and GPT-4V on Object HalBench, and supports **multilingual capabilities** on English, Chinese, German, French, Italian, Korean, etc.
 
 
 - 🚀 **Superior Efficiency.**
@@ -380,7 +380,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
 </table>
 
 </div>
-* We evaluate this benchmark using chain-of-thought prompting.
+* We evaluate this benchmark using chain-of-thought prompting. Specifically, for MME, we used this technique only for the Cognition set.
 
 <sup>+</sup> Token Density: number of pixels encoded into each visual token at maximum resolution, i.e., # pixels at maximum resolution / # visual tokens.
 
@@ -1226,9 +1226,9 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 | OmniLMM-12B  | [Document](./omnilmm_en.md)   |  
 
 
-## Chat with Our Demo on Gradio
+## Chat with Our Demo on Gradio 🤗
 
-We provide online and local demos powered by HuggingFace [Gradio](https://github.com/gradio-app/gradio), the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
+We provide online and local demos powered by Hugging Face **Gradio** <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a>, the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
 
 
 ### Online Demo <!-- omit in toc --> 
