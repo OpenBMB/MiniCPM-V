@@ -12,7 +12,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 
 <p align="center">
   MiniCPM-V 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-2_6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6">🤖</a> | MiniCPM-Llama3-V 2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5">🤖</a> |
-  <a href=https://github.com/OpenBMB/MiniCPM-V/tree/main/docs/MiniCPM_Llama3_V_25_technical_report.pdf>MiniCPM-Llama3-V 2.5 Technical Report</a> 
+  <a href=https://arxiv.org/abs/2408.01800>MiniCPM-Llama3-V 2.5 Technical Report</a> 
 </p>
 
 </div>
