@@ -1577,12 +1577,6 @@ This project is developed by the following institutions:
 - <img src="assets/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
 - <img src="assets/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
 
-## Other Multimodal Projects from Our Team <!-- omit in toc -->
-
-👏 Welcome to explore other multimodal projects of our team:
-
-[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [RLAIF-V](https://github.com/RLHF-V/RLAIF-V)
-
 ## 🌟 Star History <!-- omit in toc -->
 
 
@@ -1611,33 +1605,22 @@ This project is developed by the following institutions:
   />
 </picture> -->
 
+## Key Techniques and Other Multimodal Projects <!-- omit in toc -->
+
+👏 Welcome to explore key techniques of MiniCPM-V and other multimodal projects of our team:
+
+[VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [RLAIF-V](https://github.com/RLHF-V/RLAIF-V)
+
+
 ## Citation <!-- omit in toc -->
 
 If you find our model/code/paper helpful, please consider cite our papers 📝 and star us ⭐️！
 
 ```bib
-@article{yu2023rlhf,
-  title={Rlhf-v: Towards trustworthy mllms via behavior alignment from fine-grained correctional human feedback},
-  author={Yu, Tianyu and Yao, Yuan and Zhang, Haoye and He, Taiwen and Han, Yifeng and Cui, Ganqu and Hu, Jinyi and Liu, Zhiyuan and Zheng, Hai-Tao and Sun, Maosong and others},
-  journal={arXiv preprint arXiv:2312.00849},
-  year={2023}
-}
-@article{viscpm,
-    title={Large Multilingual Models Pivot Zero-Shot Multimodal Learning across Languages}, 
-    author={Jinyi Hu and Yuan Yao and Chongyi Wang and Shan Wang and Yinxu Pan and Qianyu Chen and Tianyu Yu and Hanghao Wu and Yue Zhao and Haoye Zhang and Xu Han and Yankai Lin and Jiao Xue and Dahai Li and Zhiyuan Liu and Maosong Sun},
-    journal={arXiv preprint arXiv:2308.12038},
-    year={2023}
-}
-@article{xu2024llava-uhd,
-  title={{LLaVA-UHD}: an LMM Perceiving Any Aspect Ratio and High-Resolution Images},
-  author={Xu, Ruyi and Yao, Yuan and Guo, Zonghao and Cui, Junbo and Ni, Zanlin and Ge, Chunjiang and Chua, Tat-Seng and Liu, Zhiyuan and Huang, Gao},
-  journal={arXiv preprint arXiv:2403.11703},
-  year={2024}
-}
-@article{yu2024rlaifv,
-  title={RLAIF-V: Aligning MLLMs through Open-Source AI Feedback for Super GPT-4V Trustworthiness}, 
-  author={Yu, Tianyu and Zhang, Haoye and Yao, Yuan and Dang, Yunkai and Chen, Da and Lu, Xiaoman and Cui, Ganqu and He, Taiwen and Liu, Zhiyuan and Chua, Tat-Seng and Sun, Maosong},
-  journal={arXiv preprint arXiv:2405.17220},
-  year={2024}
+@article{yao2024minicpmv,
+      title={MiniCPM-V: A GPT-4V Level MLLM on Your Phone}, 
+      author={Yao, Yuan and Yu, Tianyu and Zhang, Ao and Wang, Chongyi and Cui, Junbo and Zhu, Hongji and Cai, Tianchi and Li, Haoyu and Zhao, Weilin and He, Zhihui and Chen, Qianyu and Zhou, Huarong and Zou, Zhensheng and Zhang, Haoye and Hu, Shengding and Zheng, Zhi and Zhou, Jie and Cai, Jie and Han, Xu and Zeng, Guoyang and Li, Dahai and Liu, Zhiyuan and Sun, Maosong},
+      journal={arXiv preprint 2408.01800},
+      year={2024},
 }
 ```
