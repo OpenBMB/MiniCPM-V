@@ -1513,7 +1513,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 
 ### 手机端部署
-MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-Llama3-V 2.5](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk) / [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
+MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
 
 ### 本地WebUI Demo部署
 <details>
@@ -1525,10 +1525,7 @@ pip install -r requirements.txt
   
 ```shell
 # For NVIDIA GPUs, run:
-python web_demo_2.5.py --device cuda
-
-# For Mac with MPS (Apple silicon or AMD GPUs), run:
-PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
+python web_demo_2.6.py --device cuda
 ```
 </details>
 
@@ -1540,9 +1537,9 @@ MiniCPM-V 2.6 现在支持ollama啦! 用法请参考[我们的fork ollama](https
 
 ### vLLM 部署 <a id='vllm'></a>
 <details>
-<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.0 、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.6 </summary>
+<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.6、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0  </summary>
 
-1. 安装 vLLM:
+1. 安装 vLLM(>=0.5.4):
 ```shell
 pip install vllm
 ```
