@@ -1504,7 +1504,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 </details>
 
 ### Deployment on Mobile Phone
-MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [MiniCPM-Llama3-V 2.5](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk) / [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM) to install apk.
+MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM) to install apk.
 
 ### Inference with llama.cpp
 MiniCPM-V 2.6 can run with llama.cpp now! See [our fork of llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpmv-main/examples/llava/README-minicpmv2.6.md) for more detail. This implementation supports smooth inference of 16~18 token/s on iPad (test environment：iPad Pro + M4).
@@ -1515,9 +1515,9 @@ MiniCPM-V 2.6 can run with ollama now! See [our fork of ollama](https://github.c
 ### Inference with vLLM
 
 <details>
-<summary> vLLM now officially supports MiniCPM-V 2.0, MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.6, Click to see. </summary>
+<summary> vLLM now officially supports MiniCPM-V 2.6, MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.0, Click to see. </summary>
 
-1. Install vLLM(==0.5.4):
+1. Install vLLM(>=0.5.4):
 ```shell
 pip install vllm
 ```
