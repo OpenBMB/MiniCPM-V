@@ -29,8 +29,13 @@ from accelerate import init_empty_weights, infer_auto_device_map, load_checkpoin
 
 2. Download model weights.
 
+```bash
+# Make sure you have git-lfs installed (https://git-lfs.com)
+git lfs install
+git clone https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5
+```
 ```python
-MODEL_PATH = '/local/path/to/MiniCPM-Llama3-V-2_5' # you can download in advance or use `openbmb/MiniCPM-Llama3-V-2_5`
+MODEL_PATH = '/local/path/to/MiniCPM-Llama3-V-2_5'
 ```
 
 3. Determine the distribution of layers on multiple GPUs. 
