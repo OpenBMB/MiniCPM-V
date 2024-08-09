@@ -1665,14 +1665,14 @@ print(outputs[0].outputs[0].text)
 
 ## 🌟 Star History <!-- omit in toc -->
 
-
+<!-- 
 <table align="center">
     <p align="center">
       <img src="assets/star_history.svg"/>
     </p>
-</table>
+</table> -->
 
-<!-- <picture>
+<picture>
   <source
     media="(prefers-color-scheme: dark)"
     srcset="
@@ -1689,7 +1689,7 @@ print(outputs[0].outputs[0].text)
     alt="Star History Chart"
     src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
   />
-</picture> -->
+</picture>
 
 ## 支持技术和其他多模态项目 <!-- omit in toc -->
 

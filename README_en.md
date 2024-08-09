@@ -1644,11 +1644,11 @@ This project is developed by the following institutions:
 ## 🌟 Star History <!-- omit in toc -->
 
 
-<table align="center">
+<!-- <table align="center">
     <p align="center">
       <img src="assets/star_history.svg"/>
     </p>
-</table>
+</table> -->
 
 <!-- <picture>
   <source
@@ -1667,7 +1667,7 @@ This project is developed by the following institutions:
     alt="Star History Chart"
     src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
   />
-</picture> -->
+</picture> --> -->
 
 ## Key Techniques and Other Multimodal Projects <!-- omit in toc -->
 
