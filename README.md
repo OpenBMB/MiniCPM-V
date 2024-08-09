@@ -1617,10 +1617,10 @@ This project is developed by the following institutions:
 If you find our model/code/paper helpful, please consider cite our papers 📝 and star us ⭐️！
 
 ```bib
-@article{yao2024minicpmv,
-      title={MiniCPM-V: A GPT-4V Level MLLM on Your Phone}, 
-      author={Yao, Yuan and Yu, Tianyu and Zhang, Ao and Wang, Chongyi and Cui, Junbo and Zhu, Hongji and Cai, Tianchi and Li, Haoyu and Zhao, Weilin and He, Zhihui and Chen, Qianyu and Zhou, Huarong and Zou, Zhensheng and Zhang, Haoye and Hu, Shengding and Zheng, Zhi and Zhou, Jie and Cai, Jie and Han, Xu and Zeng, Guoyang and Li, Dahai and Liu, Zhiyuan and Sun, Maosong},
-      journal={arXiv preprint 2408.01800},
-      year={2024},
+@article{yao2024minicpm,
+  title={MiniCPM-V: A GPT-4V Level MLLM on Your Phone},
+  author={Yao, Yuan and Yu, Tianyu and Zhang, Ao and Wang, Chongyi and Cui, Junbo and Zhu, Hongji and Cai, Tianchi and Li, Haoyu and Zhao, Weilin and He, Zhihui and others},
+  journal={arXiv preprint arXiv:2408.01800},
+  year={2024}
 }
 ```
