@@ -35,7 +35,7 @@
 
 * [2024.08.06] 🔥🔥🔥 我们开源了 MiniCPM-V 2.6，该模型在单图、多图和视频理解方面取得了优于 GPT-4V 的表现。我们还进一步提升了 MiniCPM-Llama3-V 2.5 的多项亮点能力，并首次支持了 iPad 上的实时视频理解。欢迎试用！
 * [2024.08.03] MiniCPM-Llama3-V 2.5 技术报告已发布！欢迎点击[这里](https://arxiv.org/abs/2408.01800)查看。
-* [2024.07.19] MiniCPM-Llama3-V 2.5 现已支持[vLLM](#vllm) ！
+* [2024.07.19] MiniCPM-Llama3-V 2.5 现已支持[vLLM](#vllm-部署-) ！
 * [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 llama.cpp 和 ollama 中完全支持其功能！**请拉取我们最新的 fork 来使用**：[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) & [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5)。我们还发布了各种大小的 GGUF 版本，请点击[这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)查看。请注意，**目前官方仓库尚未支持 MiniCPM-Llama3-V 2.5**，我们也正积极推进将这些功能合并到 llama.cpp & ollama 官方仓库，敬请关注！
 * [2024.05.28] 💫 我们现在支持 MiniCPM-Llama3-V 2.5 的 LoRA 微调，更多内存使用统计信息可以在[这里](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics)找到。
 * [2024.05.23] 🔍 我们添加了Phi-3-vision-128k-instruct 与 MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估、多语言能力和推理效率 🌟📊🌍🚀。点击[这里](./docs/compare_with_phi-3_vision.md)查看详细信息。
@@ -51,7 +51,7 @@
 * [2024.05.25] MiniCPM-Llama3-V 2.5 [支持流式输出和自定义系统提示词](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)了，欢迎试用!
 * [2024.05.24] 我们开源了 MiniCPM-Llama3-V 2.5 [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf)，支持 [llama.cpp](#llamacpp-部署) 推理！实现端侧 6-8 tokens/s 的流畅解码，欢迎试用！
 * [2024.05.20] 我们开源了 MiniCPM-Llama3-V 2.5，增强了 OCR 能力，支持 30 多种语言，并首次在端侧实现了 GPT-4V 级的多模态能力！我们提供了[高效推理](#手机端部署)和[简易微调](./finetune/readme.md)的支持，欢迎试用！
-* [2024.04.23] 我们增加了MiniCPM-V 2.0对 [vLLM](#vllm) 的支持，欢迎体验！
+* [2024.04.23] 我们增加了MiniCPM-V 2.0对 [vLLM](#vllm-部署-) 的支持，欢迎体验！
 * [2024.04.18] 我们在 HuggingFace Space 新增了 MiniCPM-V 2.0 的 [demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)，欢迎体验！
 * [2024.04.17] MiniCPM-V 2.0 现在支持用户部署本地 [WebUI Demo](#本地webui-demo部署) 了，欢迎试用!
 * [2024.04.15] MiniCPM-V 2.0 现在可以通过 SWIFT 框架 [微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) 了，支持流式输出!
@@ -1513,7 +1513,7 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 
 
 ### 手机端部署
-MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-Llama3-V 2.5](http://minicpm.modelbest.cn/android/modelbest-release-20240528_182155.apk) / [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
+MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
 
 ### 本地WebUI Demo部署
 <details>
@@ -1525,10 +1525,7 @@ pip install -r requirements.txt
   
 ```shell
 # For NVIDIA GPUs, run:
-python web_demo_2.5.py --device cuda
-
-# For Mac with MPS (Apple silicon or AMD GPUs), run:
-PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo_2.5.py --device mps
+python web_demo_2.6.py --device cuda
 ```
 </details>
 
@@ -1540,26 +1537,89 @@ MiniCPM-V 2.6 现在支持ollama啦! 用法请参考[我们的fork ollama](https
 
 ### vLLM 部署 <a id='vllm'></a>
 <details>
-<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.0 、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.6 </summary>
+<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.6、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0  </summary>
 
-1. 首先克隆官方的 vLLM 库:
+1. 安装 vLLM(>=0.5.4):
 ```shell
-git clone https://github.com/vllm-project/vllm.git
-```
-2. 安装 vLLM 库:
-```shell
-cd vllm
-pip install -e .
+pip install vllm
 ```
 3. 安装 timm 库: （可选，MiniCPM-V 2.0需安装）
 ```shell
 pip install timm=0.9.10
 ```
 4. 运行示例代码:（注意：如果使用本地路径的模型，请确保模型代码已更新到Hugging Face上的最新版)
-```shell
-python examples/minicpmv_example.py 
-```
+```python
+from transformers import AutoTokenizer
+from PIL import Image
+from vllm import LLM, SamplingParams
 
+MODEL_NAME = "openbmb/MiniCPM-V-2_6"
+# Also available for previous models
+# MODEL_NAME = "openbmb/MiniCPM-Llama3-V-2_5"
+# MODEL_NAME = "HwwwH/MiniCPM-V-2"
+
+image = Image.open("xxx.png").convert("RGB")
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
+llm = LLM(
+    model=MODEL_NAME,
+    trust_remote_code=True,
+    gpu_memory_utilization=1,
+    max_model_len=2048
+)
+
+messages = [{
+    "role":
+    "user",
+    "content":
+    # Number of images
+    "(<image>./</image>)" + \
+    "\nWhat is the content of this image?" 
+}]
+prompt = tokenizer.apply_chat_template(
+    messages,
+    tokenize=False,
+    add_generation_prompt=True
+)
+
+# Single Inference
+inputs = {
+    "prompt": prompt,
+    "multi_modal_data": {
+        "image": image
+        # Multi images, the number of images should be equal to that of `(<image>./</image>)`
+        # "image": [image, image] 
+    },
+}
+# Batch Inference
+# inputs = [{
+#     "prompt": prompt,
+#     "multi_modal_data": {
+#         "image": image
+#     },
+# } for _ in 2]
+
+
+# 2.6
+stop_tokens = ['<|im_end|>', '<|endoftext|>']
+stop_token_ids = [tokenizer.convert_tokens_to_ids(i) for i in stop_tokens]
+# 2.0
+# stop_token_ids = [tokenizer.eos_id]
+# 2.5
+# stop_token_ids = [tokenizer.eos_id, tokenizer.eot_id]
+
+sampling_params = SamplingParams(
+    stop_token_ids=stop_token_ids, 
+    use_beam_search=True,
+    temperature=0, 
+    best_of=3,
+    max_tokens=1024
+)
+
+outputs = llm.generate(inputs, sampling_params=sampling_params)
+
+print(outputs[0].outputs[0].text)
+```
+4. [点击此处](https://modelbest.feishu.cn/wiki/C2BWw4ZP0iCDy7kkCPCcX2BHnOf?from=from_copylink)查看带视频推理和其他有关 `vLLM` 的信息。
 
 </details>
 
