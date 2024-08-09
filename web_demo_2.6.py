@@ -15,7 +15,9 @@ import json
 import traceback
 import re
 import modelscope_studio as mgr
-
+from typing import Union
+from transformers.dynamic_module_utils import get_imports
+from unittest.mock import patch
 
 # README, How to run demo on different devices
 
@@ -66,6 +68,9 @@ else:
         model = load_checkpoint_and_dispatch(model, model_path, dtype=torch.bfloat16, device_map=device_map)
     else:
         model = AutoModel.from_pretrained(model_path, trust_remote_code=True, torch_dtype=torch.bfloat16)
+        if device == 'mps':
+            with patch("transformers.dynamic_module_utils.get_imports", fixed_get_imports):
+                pass
         model = model.to(device=device)
 tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 model.eval()
@@ -78,6 +83,12 @@ model_name = 'MiniCPM-V 2.6'
 MAX_NUM_FRAMES = 64
 IMAGE_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.bmp', '.tiff', '.webp'}
 VIDEO_EXTENSIONS = {'.mp4', '.mkv', '.mov', '.avi', '.flv', '.wmv', '.webm', '.m4v'}
+
+def fixed_get_imports(filename: Union[str, os.PathLike]) -> list[str]:
+    imports = get_imports(filename)
+    if not torch.cuda.is_available() and "flash_attn" in imports:
+        imports.remove("flash_attn")
+    return imports
 
 def get_file_extension(filename):
     return os.path.splitext(filename)[1].lower()
