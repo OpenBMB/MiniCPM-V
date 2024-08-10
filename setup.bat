@@ -15,8 +15,7 @@ echo Checking for Git...
 call :check_command git
 if %ERRORLEVEL% NEQ 0 (
     echo Git is not installed. Downloading and installing Git...
-    echo Visit the following URL to download Git: https://git-scm.com/download/win
-    pause
+    start "" "https://git-scm.com/download/win"
     exit /b 1
 )
 
@@ -25,8 +24,7 @@ echo Checking for Conda...
 call :check_command conda
 if %ERRORLEVEL% NEQ 0 (
     echo Conda is not installed. Downloading and installing Miniconda...
-    echo Visit the following URL to download Miniconda: https://docs.conda.io/en/latest/miniconda.html
-    pause
+    start "" "https://docs.conda.io/en/latest/miniconda.html"
     exit /b 1
 )
 
@@ -35,8 +33,7 @@ echo Checking for Python...
 call :check_command python
 if %ERRORLEVEL% NEQ 0 (
     echo Python is not installed. Installing Python...
-    echo Visit the following URL to download Python: https://www.python.org/downloads/
-    pause
+    start "" "https://www.python.org/downloads/"
     exit /b 1
 )
 
@@ -49,7 +46,6 @@ echo Cloning the repository...
 git clone %REPO_URL%
 if %ERRORLEVEL% NEQ 0 (
     echo Failed to clone the repository.
-    pause
     exit /b 1
 )
 
@@ -61,16 +57,12 @@ echo Creating Conda environment...
 conda create -n MiniCPM-V python=3.10 -y
 if %ERRORLEVEL% NEQ 0 (
     echo Failed to create Conda environment.
-    pause
     exit /b 1
 )
-
-REM Activate Conda environment
 echo Activating Conda environment...
 conda activate MiniCPM-V
 if %ERRORLEVEL% NEQ 0 (
     echo Failed to activate Conda environment.
-    pause
     exit /b 1
 )
 
@@ -79,11 +71,13 @@ echo Installing dependencies...
 pip install -r requirements.txt
 if %ERRORLEVEL% NEQ 0 (
     echo Failed to install dependencies.
-    pause
     exit /b 1
 )
 
 echo Setup completed successfully.
+
+REM Pause to keep command prompt open
+echo Press any key to exit...
 pause
 
 endlocal
