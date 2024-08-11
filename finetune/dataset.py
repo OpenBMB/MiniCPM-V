@@ -485,9 +485,14 @@ def split_to_patches(image, grid):
 
 
 def get_grid_placeholder(tokenizer, grid, query_num, new_schema=False):
-    image_placeholder = (
-        tokenizer.im_start + tokenizer.unk_token * query_num + tokenizer.im_end
-    )
+    if new_schema:
+        image_placeholder = (
+            tokenizer.slice_start + tokenizer.unk_token * query_num + tokenizer.slice_end
+        )
+    else:
+        image_placeholder = (
+            tokenizer.im_start + tokenizer.unk_token * query_num + tokenizer.im_end
+        )
 
     cols = grid[0]
     rows = grid[1]
