@@ -205,6 +205,7 @@ def train():
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.model_name_or_path, trust_remote_code=True
     )
+    tokenizer.model_max_length = training_args.model_max_length
 
     if not training_args.tune_vision:
         model.vpm.requires_grad_(False)
@@ -276,6 +277,7 @@ def train():
         max_length=training_args.model_max_length,
     )
     
+    training_args.gradient_checkpointing_kwargs={"use_reentrant":False}
     trainer = CPMTrainer(
         model=model,
         tokenizer=tokenizer,
