@@ -53,7 +53,9 @@ If your input consists of a single image, you can use a single placeholder **\<i
 </details>
 
 #### Multiple Images Example
-For inputs with multiple images, you should use a dictionary where each key represents a unique placeholder (e.g., **\<image_00\>**, **\<image_01\>**), and the corresponding value is the image path. You can then use these placeholders in the conversation to insert the images at specific positions.
+For inputs containing multiple images, utilize a dictionary where each key represents a unique placeholder (e.g., \textbf{\textbackslash image\_00}, \textbf{\textbackslash image\_01}) with the corresponding image path as its value. These placeholders can then be used within the conversation to seamlessly insert images at specific positions.
+
+Additionally, to optimize resource management, especially when dealing with large batches of images during training or inference, consider reducing \texttt{max\_slice\_nums}. If you are performing multi-image supervised fine-tuning (SFT), it's recommended to set \texttt{MODEL\_MAX\_LENGTH=4096} in your script for better performance.
 
 <details>
   <summary>

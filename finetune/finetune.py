@@ -108,6 +108,7 @@ def make_supervised_data_module(
         patch_size=patch_size,
         query_nums=query_nums,
         batch_vision=batch_vision,
+        max_length=max_length,
     )
 
     if data_args.eval_data_path:
@@ -121,6 +122,7 @@ def make_supervised_data_module(
             patch_size=patch_size,
             query_nums=query_nums,
             batch_vision=batch_vision,
+            max_length=max_length,
         )
     else:
         eval_dataset = None
@@ -205,7 +207,6 @@ def train():
     tokenizer = AutoTokenizer.from_pretrained(
         model_args.model_name_or_path, trust_remote_code=True
     )
-    tokenizer.model_max_length = training_args.model_max_length
 
     if not training_args.tune_vision:
         model.vpm.requires_grad_(False)
