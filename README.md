@@ -28,6 +28,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 ## News <!-- omit in toc -->
 
 #### 📌 Pinned
+
 * [2024.08.15] We now also support multi-image SFT. For more details, please refer to the [finetune/README.md](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune) file.
 * [2024.08.14] MiniCPM-V 2.6 now also supports [fine-tuning](https://github.com/modelscope/ms-swift/issues/1613) with the SWIFT framework!
 * [2024.08.10] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf).
