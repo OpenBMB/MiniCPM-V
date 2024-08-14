@@ -55,9 +55,10 @@ If your input consists of a single image, you can use a single placeholder **\<i
 #### Multiple Images Example
 For inputs containing multiple images, utilize a dictionary where each key represents a unique placeholder (e.g., **\<image_00\>**, **\<image_01\**) with the corresponding image path as its value. These placeholders can then be used within the conversation to seamlessly insert images at specific positions.
 
-Additionally, to optimize resource management, especially when dealing with large batches of images during training or inference, consider reducing `max_slice_nums`. For example, when an image has a maximum resolution of 1344x1344, setting `slice=9` will occupy approximately 640 tokens, while `slice=2` will occupy around 192 tokens. If the total token count exceeds `max_length`, truncation will be applied.
+Additionally, to optimize resource management, especially when dealing with large batches of images during training or inference, consider reducing `max_slice_nums`. For example, in version 2.6, a single image is represented by 64 tokens. When `slice=9`, an image with a maximum resolution of 1344x1344 will consume nearly 64*(9+1) tokens. To minimize the number of tokens used per image, you can set `slice=1`, resulting in a single image being represented by 64 tokens.
 
-If you are performing multi-image supervised fine-tuning (SFT), it's recommended to set `MODEL_MAX_LENGTH=4096` in your script for better performance.
+If the total token count exceeds `max_length`, truncation will be applied. For multi-image supervised fine-tuning (SFT), it's recommended to set `MODEL_MAX_LENGTH=4096` in your script for better performance.
+
 
 
 <details>
