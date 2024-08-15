@@ -1,117 +1,122 @@
 <div align="center">
 
+<!-- <!-- <h1 style="color: #33A6B8; font-family: Helvetica"> OmniLMM </h1> -->
+
 <img src="./assets/minicpmv.png" width="300em" ></img> 
 
-**A GPT-4V Level MLLM for Single Image, Multi Image and Video on Your Phone**
+**端侧可用的 GPT-4V 级单图、多图、视频多模态大模型**
 
-  <strong>[中文](./README_zh.md) |
-  English</strong>
+  <strong>中文 |
+  [English](./README_en.md)</strong>
 
-Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> 
-
+ 加入我们的 <a href="docs/wechat.md" target="_blank"> 💬 微信社区</a> 
 
 <p align="center">
   MiniCPM-V 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-2_6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6">🤖</a> | MiniCPM-Llama3-V 2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5">🤖</a> |
-  <a href=https://arxiv.org/abs/2408.01800>MiniCPM-Llama3-V 2.5 Technical Report</a> 
+  <a href=https://arxiv.org/abs/2408.01800>MiniCPM-Llama3-V 2.5 技术报告</a> 
 </p>
+
 
 </div>
 
 
-**MiniCPM-V** is a series of end-side multimodal LLMs (MLLMs) designed for vision-language understanding. The models take image, video and text as inputs and provide high-quality text outputs. Since February 2024, we have released 5 versions of the model, aiming to achieve **strong performance and efficient deployment**. The most notable models in this series currently include:
-
-- **MiniCPM-V 2.6**: 🔥🔥🔥 The latest and most capable model in the MiniCPM-V series. With a total of 8B parameters, the model **surpasses GPT-4V in single image, multi-image and video understanding**. It outperforms **GPT-4o mini, Gemini 1.5 Pro and Claude 3.5 Sonnet** in single image understanding, and advances MiniCPM-Llama3-V 2.5's features such as strong OCR capability, trustworthy behavior, multilingual support, and end-side deployment. Due to its superior token density, MiniCPM-V 2.6 can for the first time support real-time video understanding on end-side devices such as iPad.
-
-- **MiniCPM-V 2.0**: The lightest model in the MiniCPM-V series. With 2B parameters, it surpasses larger models such as Yi-VL 34B, CogVLM-Chat 17B, and Qwen-VL-Chat 10B in overall performance. It can accept image inputs of any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344), achieving comparable performance with Gemini Pro in understanding scene-text and matches GPT-4V in low hallucination rates.
+**MiniCPM-V**是面向图文理解的端侧多模态大模型系列。该系列模型接受图像和文本输入，并提供高质量的文本输出。自2024年2月以来，我们共发布了5个版本模型，旨在实现**领先的性能和高效的部署**，目前该系列最值得关注的模型包括：
 
 
-## News <!-- omit in toc -->
+- **MiniCPM-V 2.6**: 🔥🔥🔥 MiniCPM-V系列的最新、性能最佳模型。总参数量 8B，单图、多图和视频理解性能**超越了 GPT-4V**。在单图理解上，它取得了优于 **GPT-4o mini、Gemini 1.5 Pro 和 Claude 3.5 Sonnet**等商用闭源模型的表现，并进一步优化了 MiniCPM-Llama3-V 2.5 的 OCR、可信行为、多语言支持以及端侧部署等诸多特性。基于其领先的视觉 token 密度，MiniCPM-V 2.6 成为了首个支持在 iPad 等端侧设备上进行实时视频理解的多模态大模型。
 
-#### 📌 Pinned
-* [2024.08.15] MiniCPM-V 2.6 现在支持多图像 SFT。有关更多详细信息，请参阅[finetune/README.md](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune)
-* [2024.08.14] MiniCPM-V 2.6 now also supports [fine-tuning](https://github.com/modelscope/ms-swift/issues/1613) with the SWIFT framework!
-* [2024.08.10] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf).
-* [2024.08.06] 🔥🔥🔥 We open-source MiniCPM-V 2.6, which outperforms GPT-4V on single image, multi-image and video understanding. It advances popular features of MiniCPM-Llama3-V 2.5, and can support real-time video understanding on iPad. Try it now!
-* [2024.08.03] MiniCPM-Llama3-V 2.5 technical report is released! See [here](https://arxiv.org/abs/2408.01800).
-* [2024.07.19] MiniCPM-Llama3-V 2.5 supports vLLM now! See [here](#inference-with-vllm).
-* [2024.05.28] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 now fully supports its feature in llama.cpp and ollama! Please pull the latest code **of our provided forks** ([llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md), [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5)). GGUF models in various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main). MiniCPM-Llama3-V 2.5 series is **not supported by the official repositories yet**, and we are working hard to merge PRs. Please stay tuned!
-* [2024.05.28] 💫 We now support LoRA fine-tuning for MiniCPM-Llama3-V 2.5, using only 2 V100 GPUs! See more statistics [here](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics).
-* [2024.05.23] 🔍 We've released a comprehensive comparison between Phi-3-vision-128k-instruct and MiniCPM-Llama3-V 2.5, including benchmarks evaluations, multilingual capabilities, and inference efficiency 🌟📊🌍🚀. Click [here](./docs/compare_with_phi-3_vision.md) to view more details.
-* [2024.05.23] 🔥🔥🔥 MiniCPM-V tops GitHub Trending and Hugging Face Trending! Our demo, recommended by Hugging Face Gradio’s official account, is available [here](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5). Come and try it out!
+- **MiniCPM-V 2.0**：MiniCPM-V系列的最轻量级模型。总参数量2B，多模态综合性能超越 Yi-VL 34B、CogVLM-Chat 17B、Qwen-VL-Chat 10B 等更大参数规模的模型，可接受 180 万像素的任意长宽比图像输入，实现了和 Gemini Pro 相近的场景文字识别能力以及和 GPT-4V 相匹的低幻觉率。
+
+
+
+## 更新日志 <!-- omit in toc -->
+
+#### 📌 置顶
+
+* [2024.08.14] MiniCPM-V 2.6 现在可以通过 SWIFT 框架 [微调](https://github.com/modelscope/ms-swift/issues/1613) 了！
+* [2024.08.10] 🚀🚀🚀 llama.cpp [官方仓库](https://github.com/ggerganov/llama.cpp)正式支持 MiniCPM-Llama3-V 2.5 啦！点击[这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)查看各种大小的 GGUF 版本。
+* [2024.08.06] 🔥🔥🔥 我们开源了 MiniCPM-V 2.6，该模型在单图、多图和视频理解方面取得了优于 GPT-4V 的表现。我们还进一步提升了 MiniCPM-Llama3-V 2.5 的多项亮点能力，并首次支持了 iPad 上的实时视频理解。欢迎试用！
+* [2024.08.03] MiniCPM-Llama3-V 2.5 技术报告已发布！欢迎点击[这里](https://arxiv.org/abs/2408.01800)查看。
+* [2024.07.19] MiniCPM-Llama3-V 2.5 现已支持[vLLM](#vllm-部署-) ！
+* [2024.05.28] 💥 MiniCPM-Llama3-V 2.5 现在在 llama.cpp 和 ollama 中完全支持其功能！**请拉取我们最新的 fork 来使用**：[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) & [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5)。我们还发布了各种大小的 GGUF 版本，请点击[这里](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf/tree/main)查看。请注意，**目前官方仓库尚未支持 MiniCPM-Llama3-V 2.5**，我们也正积极推进将这些功能合并到 llama.cpp & ollama 官方仓库，敬请关注！
+* [2024.05.28] 💫 我们现在支持 MiniCPM-Llama3-V 2.5 的 LoRA 微调，更多内存使用统计信息可以在[这里](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#model-fine-tuning-memory-usage-statistics)找到。
+* [2024.05.23] 🔍 我们添加了Phi-3-vision-128k-instruct 与 MiniCPM-Llama3-V 2.5的全面对比，包括基准测试评估、多语言能力和推理效率 🌟📊🌍🚀。点击[这里](./docs/compare_with_phi-3_vision.md)查看详细信息。
+* [2024.05.23] 🔥🔥🔥 MiniCPM-V 在 GitHub Trending 和 Hugging Face Trending 上登顶！MiniCPM-Llama3-V 2.5 Demo 被 Hugging Face 的 Gradio 官方账户推荐，欢迎点击[这里](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5)体验！
+
 
 <br>
 
 <details> 
-<summary>Click to view more news.</summary>
+<summary>点击查看完整更新日志。</summary>
 
-* [2024.06.03] Now, you can run MiniCPM-Llama3-V 2.5 on multiple low VRAM GPUs(12 GB or 16 GB) by distributing the model's layers across multiple GPUs. For more details, Check this [link](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md).
-* [2024.05.25] MiniCPM-Llama3-V 2.5 now supports streaming outputs and customized system prompts. Try it [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)!
-* [2024.05.24] We release the MiniCPM-Llama3-V 2.5 [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf), which supports [llama.cpp](#inference-with-llamacpp) inference and provides a 6~8 token/s smooth decoding on mobile phones. Try it now!
-* [2024.05.20] We open-soure MiniCPM-Llama3-V 2.5, it has improved OCR capability and supports 30+ languages, representing the first end-side MLLM achieving GPT-4V level performance! We provide [efficient inference](#deployment-on-mobile-phone) and [simple fine-tuning](./finetune/readme.md). Try it now!
-* [2024.04.23] MiniCPM-V-2.0 supports vLLM now! Click [here](#inference-with-vllm) to view more details.
-* [2024.04.18] We create a HuggingFace Space to host the demo of MiniCPM-V 2.0 at [here](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)!
-* [2024.04.17] MiniCPM-V-2.0 supports deploying [WebUI Demo](#webui-demo) now!
-* [2024.04.15] MiniCPM-V-2.0 now also supports [fine-tuning](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) with the SWIFT framework!
-* [2024.04.12] We open-source MiniCPM-V 2.0, which achieves comparable performance with Gemini Pro in understanding scene text and outperforms strong Qwen-VL-Chat 9.6B and Yi-VL 34B on <a href="https://rank.opencompass.org.cn/leaderboard-multimodal">OpenCompass</a>, a comprehensive evaluation over 11 popular benchmarks. Click <a href="https://openbmb.vercel.app/minicpm-v-2">here</a> to view the MiniCPM-V 2.0 technical blog.
-* [2024.03.14] MiniCPM-V now supports [fine-tuning](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md) with the SWIFT framework. Thanks to [Jintao](https://github.com/Jintao-Huang) for the contribution！
-* [2024.03.01] MiniCPM-V now can be deployed on Mac!
-* [2024.02.01] We open-source MiniCPM-V and OmniLMM-12B, which support efficient end-side deployment and powerful multimodal capabilities correspondingly.
-</details> 
+* [2024.06.03] 现在，你可以利用多张低显存显卡（12G/16G）进行GPU串行推理。详情请参见该[文档](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md)配置。
+* [2024.05.25] MiniCPM-Llama3-V 2.5 [支持流式输出和自定义系统提示词](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)了，欢迎试用!
+* [2024.05.24] 我们开源了 MiniCPM-Llama3-V 2.5 [gguf](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf)，支持 [llama.cpp](#llamacpp-部署) 推理！实现端侧 6-8 tokens/s 的流畅解码，欢迎试用！
+* [2024.05.20] 我们开源了 MiniCPM-Llama3-V 2.5，增强了 OCR 能力，支持 30 多种语言，并首次在端侧实现了 GPT-4V 级的多模态能力！我们提供了[高效推理](#手机端部署)和[简易微调](./finetune/readme.md)的支持，欢迎试用！
+* [2024.04.23] 我们增加了MiniCPM-V 2.0对 [vLLM](#vllm-部署-) 的支持，欢迎体验！
+* [2024.04.18] 我们在 HuggingFace Space 新增了 MiniCPM-V 2.0 的 [demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2)，欢迎体验！
+* [2024.04.17] MiniCPM-V 2.0 现在支持用户部署本地 [WebUI Demo](#本地webui-demo部署) 了，欢迎试用!
+* [2024.04.15] MiniCPM-V 2.0 现在可以通过 SWIFT 框架 [微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) 了，支持流式输出!
+* [2024.04.12] 我们开源了 MiniCPM-V 2.0，该模型刷新了 OCRBench 开源模型最佳成绩，在场景文字识别能力上比肩 Gemini Pro，同时还在综合了 11 个主流多模态大模型评测基准的 <a href="https://rank.opencompass.org.cn/leaderboard-multimodal">OpenCompass</a> 榜单上超过了 Qwen-VL-Chat 10B、CogVLM-Chat 17B 和 Yi-VL 34B 等更大参数规模的模型！点击<a href="https://openbmb.vercel.app/minicpm-v-2">这里</a>查看 MiniCPM-V 2.0 技术博客。
+* [2024.03.14] MiniCPM-V 现在支持 SWIFT 框架下的[微调](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)了，感谢 [Jintao](https://github.com/Jintao-Huang) 的贡献！
+* [2024.03.01] MiniCPM-V 现在支持在 Mac 电脑上进行部署！
+* [2024.02.01] 我们开源了 MiniCPM-V 和 OmniLMM-12B，分别可以支持高效的端侧部署和同规模领先的多模态能力！
+</details>
 
 
-## Contents <!-- omit in toc -->
-
+## 目录 <!-- omit in toc -->
 
 - [MiniCPM-V 2.6](#minicpm-v-26)
 - [MiniCPM-Llama3-V 2.5](#minicpm-llama3-v-25)
 - [MiniCPM-V 2.0](#minicpm-v-20)
-- [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
-- [Install](#install)
-- [Inference](#inference)
-  - [Model Zoo](#model-zoo)
-  - [Multi-turn Conversation](#multi-turn-conversation)
-    - [Chat with multiple images](#chat-with-multiple-images)
-    - [In-context few-shot learning](#in-context-few-shot-learning)
-    - [Chat with video](#chat-with-video)
-  - [Inference on Multiple GPUs](#inference-on-multiple-gpus)
-  - [Inference on Mac](#inference-on-mac)
-  - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
-  - [Inference with llama.cpp](#inference-with-llamacpp)
-  - [Inference with ollama](#inference-with-ollama)
-  - [Inference with vLLM](#inference-with-vllm)
-- [Fine-tuning](#fine-tuning)
+- [Gradio Demo 🤗](#gradio-demo-)
+- [安装](#安装)
+- [推理](#推理)
+  - [模型库](#模型库)
+  - [多轮对话](#多轮对话)
+    - [多图理解](#多图理解)
+    - [少样本上下文学习](#少样本上下文学习)
+    - [视频理解](#视频理解)
+  - [多卡推理](#多卡推理)
+  - [Mac 推理](#mac-推理)
+  - [手机端部署](#手机端部署)
+  - [本地WebUI Demo部署](#本地webui-demo部署)
+  - [llama.cpp 部署](#llamacpp-部署)
+  - [ollama 部署](#ollama-部署)
+  - [vLLM 部署 ](#vllm-部署-)
+- [微调](#微调)
 - [FAQs](#faqs)
-
 
 ## MiniCPM-V 2.6
 
-**MiniCPM-V 2.6** is the latest and most capable model in the MiniCPM-V series. The model is built on SigLip-400M and Qwen2-7B with a total of 8B parameters. It exhibits a significant performance improvement over MiniCPM-Llama3-V 2.5, and introduces new features for multi-image and video understanding. Notable features of MiniCPM-V 2.6 include:
-
-- 🔥 **Leading Performance.**
-  MiniCPM-V 2.6 achieves an average score of 65.2 on the latest version of OpenCompass, a comprehensive evaluation over 8 popular benchmarks. **With only 8B parameters, it surpasses widely used proprietary models like GPT-4o mini, GPT-4V, Gemini 1.5 Pro, and Claude 3.5 Sonnet** for single image understanding.
-
-- 🖼️ **Multi Image Understanding and In-context Learning.** MiniCPM-V 2.6 can also perform **conversation and reasoning over multiple images**. It achieves **state-of-the-art performance** on popular multi-image benchmarks such as Mantis-Eval, BLINK, Mathverse mv and Sciverse mv, and also shows promising in-context learning capability.
-
-- 🎬 **Video Understanding.** MiniCPM-V 2.6 can also **accept video inputs**, performing conversation and providing dense captions for spatial-temporal information. It outperforms **GPT-4V, Claude 3.5 Sonnet and LLaVA-NeXT-Video-34B** on Video-MME with/without subtitles.
-
-- 💪 **Strong OCR Capability and Others.**
-  MiniCPM-V 2.6 can process images with any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344). It achieves **state-of-the-art performance on OCRBench, surpassing proprietary models such as GPT-4o, GPT-4V, and Gemini 1.5 Pro**.
-  Based on the the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) and [VisCPM](https://github.com/OpenBMB/VisCPM) techniques, it features **trustworthy behaviors**, with significantly lower hallucination rates than GPT-4o and GPT-4V on Object HalBench, and supports **multilingual capabilities** on English, Chinese, German, French, Italian, Korean, etc.
+**MiniCPM-V 2.6** 是 MiniCPM-V 系列中最新、性能最佳的模型。该模型基于 SigLip-400M 和 Qwen2-7B 构建，共 8B 参数。与 MiniCPM-Llama3-V 2.5 相比，MiniCPM-V 2.6 性能提升显著，并引入了多图和视频理解的新功能。MiniCPM-V 2.6 的主要特点包括：
 
 
-- 🚀 **Superior Efficiency.**
-  In addition to its friendly size, MiniCPM-V 2.6 also shows **state-of-the-art token density** (i.e., number of pixels encoded into each visual token). **It produces only 640 tokens when processing a 1.8M pixel image, which is 75% fewer than most models**. This directly improves the inference speed, first-token latency, memory usage, and power consumption. As a result, MiniCPM-V 2.6 can efficiently support **real-time video understanding** on end-side devices such as iPad.
+- 🔥 **领先的性能。**
+  MiniCPM-V 2.6 在最新版本 OpenCompass 榜单上（综合 8 个主流多模态评测基准）平均得分 65.2，**以8B量级的大小在单图理解方面超越了 GPT-4o mini、GPT-4V、Gemini 1.5 Pro 和 Claude 3.5 Sonnet 等主流商用闭源多模态大模型**。
 
--  💫  **Easy Usage.**
-MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpmv-main/examples/llava/README-minicpmv2.6.md) and [ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md) support for efficient CPU inference on local devices, (2) [int4](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) and [GGUF](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) format quantized models in 16 sizes, (3) [vLLM](#inference-with-vllm) support for high-throughput and memory-efficient inference, (4) fine-tuning on new domains and tasks, (5) quick local WebUI demo setup with [Gradio](#chat-with-our-demo-on-gradio), and (6) online web [demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6).
+- 🖼️ **多图理解和上下文学习。**
+  MiniCPM-V 2.6 还支持**多图对话和推理**。它在 Mantis-Eval、BLINK、Mathverse mv 和 Sciverse mv 等主流多图评测基准中取得了**最佳水平**，并展现出了优秀的上下文学习能力。
 
-### Evaluation  <!-- omit in toc -->
+- 🎬 **视频理解。**
+  MiniCPM-V 2.6 还可以**接受视频输入**，进行对话和提供涵盖时序和空间信息的详细视频描述。模型在 有/无字幕 评测场景下的 Video-MME 表现均超过了 **GPT-4V、Claude 3.5 Sonnet 和 LLaVA-NeXT-Video-34B**等商用闭源模型。
+
+- 💪 **强大的 OCR 能力及其他功能。**
+  MiniCPM-V 2.6 可以处理任意长宽比的图像，像素数可达 180 万（如 1344x1344）。在 OCRBench 上取得**最佳水平，超过 GPT-4o、GPT-4V 和 Gemini 1.5 Pro 等商用闭源模型**。基于最新的 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) 和 [VisCPM](https://github.com/OpenBMB/VisCPM) 技术，其具备了**可信的多模态行为**，在 Object HalBench 上的幻觉率显著低于 GPT-4o 和 GPT-4V，并支持英语、中文、德语、法语、意大利语、韩语等**多种语言**。
+
+- 🚀 **卓越的效率。**
+  除了对个人用户友好的模型大小，MiniCPM-V 2.6 还表现出**最先进的视觉 token 密度**（即每个视觉 token 编码的像素数量）。它**仅需 640 个 token 即可处理 180 万像素图像，比大多数模型少 75%**。这一特性优化了模型的推理速度、首 token 延迟、内存占用和功耗。因此，MiniCPM-V 2.6 可以支持 iPad 等终端设备上的高效**实时视频理解**。
+
+- 💫 **易于使用。**
+  MiniCPM-V 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpmv-main/examples/llava/README-minicpmv2.6.md) 和 [ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md) 支持在本地设备上进行高效的 CPU 推理，(2) [int4](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) 和 [GGUF](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) 格式的量化模型，有 16 种尺寸，(3) [vLLM](#vllm-部署-) 支持高吞吐量和内存高效的推理，(4) 针对新领域和任务进行微调，(5) 使用 [Gradio](#本地-webui-demo-) 快速设置本地 WebUI 演示，(6) 在线[demo](https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6)即可体验。
+
+### 性能评估  <!-- omit in toc -->
 <div align="center">
     <img src=assets/radar_final.png width=66% />
 </div>
 
 <details>
-<summary>Click to view single image results on OpenCompass, MME, MMVet, OCRBench, MMMU, MathVista, MMB, AI2D, TextVQA, DocVQA, HallusionBench, Object HalBench. </summary>
+<summary>点击查看 OpenCompass, MME, MMVet, OCRBench, MMMU, MathVista, MMB, AI2D, TextVQA, DocVQA, HallusionBench, Object HalBench 上的单图评测结果详情。 </summary>
 <div align="center">
 
 <table style="margin: 0px auto;">
@@ -282,7 +287,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
             <td>34B</td>
             <td>157</td>
             <td>-</td>
-            <td>2141.0</td>
+            <td>2141</td>
             <td>59.3</td>
             <td>518</td>
             <td>48.0</td>
@@ -383,17 +388,16 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
 </table>
 
 </div>
-* We evaluate this benchmark using chain-of-thought prompting. Specifically, for MME, we used this technique only for the Cognition set.
+* 我们使用思维链提示词来评估这些基准。
 
-<sup>+</sup> Token Density: number of pixels encoded into each visual token at maximum resolution, i.e., # pixels at maximum resolution / # visual tokens.
+<sup>+</sup> Token Density：每个视觉 token 在最大分辨率下编码的像素数，即最大分辨率下的像素数 / 视觉 token 数。
 
-Note: For proprietary models, we calculate token density based on the image encoding charging strategy defined in the official API documentation, which provides an upper-bound estimation.
-
+注意：闭源模型的 Token Density 由 API 收费方式估算得到。
 </details>
 
 
 <details>
-<summary>Click to view multi-image results on Mantis Eval, BLINK, Mathverse mv, Sciverse mv, MIRB.</summary>
+<summary>点击查看 Mantis Eval, BLINK, Mathverse mv, Sciverse mv, MIRB 上的多图评测结果详情。</summary>
 <div align="center">
  
 <table style="margin: 0px auto;">
@@ -499,13 +503,15 @@ Note: For proprietary models, we calculate token density based on the image enco
     </tbody>
 </table>
 
+
 </div>
-* We evaluate the officially released checkpoint by ourselves.
+* 正式开源模型权重的评测结果。
 </details>
 
 <details>
-<summary>Click to view video results on Video-MME and Video-ChatGPT.</summary>
+<summary>点击查看 Video-MME 和 Video-ChatGPT 上的视频评测结果详情。</summary>
 <div align="center">
+
 <table style="margin: 0px auto;">
     <thead>
         <tr>
@@ -650,8 +656,9 @@ Note: For proprietary models, we calculate token density based on the image enco
 
 
 <details>
-<summary>Click to view few-shot results on TextVQA, VizWiz, VQAv2, OK-VQA.</summary>
+<summary>点击查看 TextVQA, VizWiz, VQAv2, OK-VQA上的少样本评测结果详情。</summary>
 <div align="center">
+
 <table style="margin: 0px auto;">
     <thead>
         <tr>
@@ -801,12 +808,12 @@ Note: For proprietary models, we calculate token density based on the image enco
 
 
 </div>
-* denotes zero image shot and two additional text shots following Flamingo.
+* 使用 Flamingo 方式 zero image shot 和 two additional text shots 评估零样本性能。
 
-<sup>+</sup> We evaluate the pretraining ckpt without SFT.
+<sup>+</sup> 我们在没有进行监督微调 (SFT) 的情况下评估预训练的模型权重 (ckpt)。
 </details>
 
-### Examples <!-- omit in toc -->
+### 典型示例 <!-- omit in toc -->
 
 <div style="display: flex; flex-direction: column; align-items: center;">
   <img src="assets/minicpmv2_6/multi_img-bike.png" alt="Bike" style="margin-bottom: 5px;">
@@ -816,14 +823,14 @@ Note: For proprietary models, we calculate token density based on the image enco
   <img src="assets/minicpmv2_6/multiling-medal.png" alt="medal" style="margin-bottom: 10px;">
 </div>
 <details>
-  <summary>Click to view more cases.</summary>
+  <summary>点击查看更多示例。</summary>
   <div style="display: flex; flex-direction: column; align-items: center;">
     <img src="assets/minicpmv2_6/ICL-elec.png" alt="elec" style="margin-bottom: 5px;">
     <img src="assets/minicpmv2_6/multiling-olympic.png" alt="Menu" style="margin-bottom: 10px;">
   </div>
 </details>
 
-We deploy MiniCPM-V 2.6 on end devices. The demo video is the raw screen recording on a iPad Pro without edition.
+我们将 MiniCPM-V 2.6 部署在iPad Pro上，并录制了以下演示视频。
 
 <table align="center"> 
     <p align="center">
@@ -831,15 +838,7 @@ We deploy MiniCPM-V 2.6 on end devices. The demo video is the raw screen recordi
       &nbsp;&nbsp;&nbsp;&nbsp;
       <img src="assets/gif_cases/beer.gif" width=32%/>
     </p>
-</table> 
-
-<table align="center"> 
-    <p align="center">
-      <img src="assets/gif_cases/ticket.gif" width=32%/>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="assets/gif_cases/wfh.gif" width=32%/>
-    </p>
-</table> 
+</table>
 
 <table align="center">
     <p align="center">
@@ -851,35 +850,35 @@ We deploy MiniCPM-V 2.6 on end devices. The demo video is the raw screen recordi
 ## MiniCPM-Llama3-V 2.5
 
 <details>
-<summary>Click to view more details of MiniCPM-Llama3-V 2.5</summary>
+<summary>查看 MiniCPM-Llama3-V 2.5 的详细信息</summary>
 
-**MiniCPM-Llama3-V 2.5** is the latest model in the MiniCPM-V series. The model is built on SigLip-400M and Llama3-8B-Instruct with a total of 8B parameters. It exhibits a significant performance improvement over MiniCPM-V 2.0. Notable features of MiniCPM-Llama3-V 2.5 include:
+**MiniCPM-Llama3-V 2.5** 是 MiniCPM-V 系列的最新版本模型，基于 SigLip-400M 和 Llama3-8B-Instruct 构建，共 8B 参数量，相较于 MiniCPM-V 2.0 性能取得较大幅度提升。MiniCPM-Llama3-V 2.5 值得关注的特点包括：
 
-- 🔥 **Leading Performance.**
-  MiniCPM-Llama3-V 2.5 has achieved an average score of 65.1 on OpenCompass, a comprehensive evaluation over 11 popular benchmarks. **With only 8B parameters, it surpasses widely used proprietary models like GPT-4V-1106, Gemini Pro, Claude 3 and Qwen-VL-Max** and greatly outperforms other Llama 3-based MLLMs.
+- 🔥 **领先的性能。**
+  MiniCPM-Llama3-V 2.5 在综合了 11 个主流多模态大模型评测基准的 OpenCompass 榜单上平均得分 65.1，**以 8B 量级的大小超过了 GPT-4V-1106、Gemini Pro、Claude 3、Qwen-VL-Max 等主流商用闭源多模态大模型**，大幅超越基于Llama 3构建的其他多模态大模型。
 
-- 💪 **Strong OCR Capabilities.**
-  MiniCPM-Llama3-V 2.5 can process images with any aspect ratio and up to 1.8 million pixels (e.g., 1344x1344), achieving a **700+ score on OCRBench, surpassing proprietary models such as GPT-4o, GPT-4V-0409, Qwen-VL-Max and Gemini Pro**. Based on recent user feedback, MiniCPM-Llama3-V 2.5 has now enhanced full-text OCR extraction, table-to-markdown conversion, and other high-utility capabilities, and has further strengthened its instruction-following and complex reasoning abilities, enhancing multimodal interaction experiences.
+- 💪 **优秀的 OCR 能力。**
+  MiniCPM-Llama3-V 2.5 可接受 180 万像素的任意宽高比图像输入，**OCRBench 得分达到 725，超越 GPT-4o、GPT-4V、Gemini Pro、Qwen-VL-Max 等商用闭源模型**，达到最佳水平。基于近期用户反馈建议，MiniCPM-Llama3-V 2.5 增强了全文 OCR 信息提取、表格图像转 markdown 等高频实用能力，并且进一步加强了指令跟随、复杂推理能力，带来更好的多模态交互体感。
 
-- 🏆 **Trustworthy Behavior.**
-  Leveraging the latest [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) method (the newest technique in the [RLHF-V](https://github.com/RLHF-V) [CVPR'24] series), MiniCPM-Llama3-V 2.5 exhibits more trustworthy behavior. It achieves a **10.3%** hallucination rate on Object HalBench, lower than GPT-4V-1106 (13.6%), achieving the best-level performance within the open-source community. [Data released](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset).
+- 🏆 **可信行为。** 
+  借助最新的 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) 对齐技术（[RLHF-V](https://github.com/RLHF-V/) [CVPR'24]系列的最新技术），MiniCPM-Llama3-V 2.5 具有更加可信的多模态行为，在 Object HalBench 的幻觉率降低到了 **10.3%**，显著低于 GPT-4V-1106 (13.6%)，达到开源社区最佳水平。[数据集已发布](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset)。
 
-- 🌏 **Multilingual Support.**
-  Thanks to the strong multilingual capabilities of Llama 3 and the cross-lingual generalization technique from [VisCPM](https://github.com/OpenBMB/VisCPM), MiniCPM-Llama3-V 2.5 extends its bilingual (Chinese-English) multimodal capabilities to **over 30 languages including German, French, Spanish, Italian, Korean etc.** [All Supported Languages](./assets/minicpm-llama-v-2-5_languages.md).
+- 🌏 **多语言支持。**
+  得益于 Llama 3 强大的多语言能力和 VisCPM 的跨语言泛化技术，MiniCPM-Llama3-V 2.5 在中英双语多模态能力的基础上，仅通过少量翻译的多模态数据的指令微调，高效泛化支持了**德语、法语、西班牙语、意大利语、韩语等 30+ 种语言**的多模态能力，并表现出了良好的多语言多模态对话性能。[查看所有支持语言](./assets/minicpm-llama-v-2-5_languages.md)
 
-- 🚀 **Efficient Deployment.**
-  MiniCPM-Llama3-V 2.5 systematically employs **model quantization, CPU optimizations, NPU optimizations and compilation optimizations**, achieving high-efficiency deployment on end-side devices. For mobile phones with Qualcomm chips, we have integrated the NPU acceleration framework QNN into llama.cpp for the first time. After systematic optimization, MiniCPM-Llama3-V 2.5 has realized a **150x acceleration in end-side MLLM image encoding** and a **3x speedup in language decoding**.
+- 🚀 **高效部署。**
+  MiniCPM-Llama3-V 2.5 较为系统地通过**模型量化、CPU、NPU、编译优化**等高效加速技术，实现高效的终端设备部署。对于高通芯片的移动手机，我们首次将 NPU 加速框架 QNN 整合进了 llama.cpp。经过系统优化后，MiniCPM-Llama3-V 2.5 实现了多模态大模型端侧**语言解码速度 3 倍加速**、**图像编码 150 倍加速**的巨大提升。
 
--  💫  **Easy Usage.**
-MiniCPM-Llama3-V 2.5 can be easily used in various ways: (1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) and [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) support for efficient CPU inference on local devices, (2) [GGUF](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) format quantized models in 16 sizes, (3) efficient [LoRA](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#lora-finetuning) fine-tuning with only 2 V100 GPUs, (4) [streaming output](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage), (5) quick local WebUI demo setup with [Gradio](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_2.5.py) and [Streamlit](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_streamlit-2_5.py), and (6) interactive demos on [HuggingFace Spaces](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5).
+- 💫 **易于使用。**
+  MiniCPM-Llama3-V 2.5 可以通过多种方式轻松使用：（1）[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-v2.5/examples/minicpmv/README.md) 和 [ollama](https://github.com/OpenBMB/ollama/tree/minicpm-v2.5/examples/minicpm-v2.5) 支持在本地设备上进行高效的 CPU 推理；（2）提供 16 种尺寸的 [GGUF](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) 格式量化模型；（3）仅需 2 张 V100 GPU 即可进行高效的 [LoRA](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune#lora-finetuning) 微调；（	4）支持[流式输出](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5#usage)；（5）快速搭建 [Gradio](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_2.5.py) 和 [Streamlit](https://github.com/OpenBMB/MiniCPM-V/blob/main/web_demo_streamlit-2_5.py) 本地 WebUI demo；（	6.）[HuggingFace Spaces](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) 交互式 demo。
 
-### Evaluation  <!-- omit in toc -->
+### 性能评估 <!-- omit in toc -->
 
 <div align="center">
-    <img src=assets/MiniCPM-Llama3-V-2.5-peformance.png width=66% />
+    <img src="assets/MiniCPM-Llama3-V-2.5-peformance.png" width="66%" />
 </div>
 <details>
-<summary>Click to view results on TextVQA, DocVQA, OCRBench, OpenCompass, MME, MMBench, MMMU, MathVista, LLaVA Bench, RealWorld QA, Object HalBench. </summary>
+<summary>TextVQA, DocVQA, OCRBench, OpenCompass MultiModal Avg Score, MME, MMBench, MMMU, MathVista, LLaVA Bench, RealWorld QA, Object HalBench上的详细评测结果。 </summary>
 <div align="center">
 
 <table style="margin: 0px auto;">
@@ -901,7 +900,7 @@ MiniCPM-Llama3-V 2.5 can be easily used in various ways: (1) [llama.cpp](https:/
             <th>Object HalBench</th>
         </tr>
     </thead>
-    <tbody align="center">
+            <tbody align="center">
         <tr>
             <td colspan="14" align="left"><strong>Proprietary</strong></td>
         </tr>
@@ -1073,13 +1072,13 @@ MiniCPM-Llama3-V 2.5 can be easily used in various ways: (1) [llama.cpp](https:/
             <td>8.4B</td>
             <td>-</td>
             <td>-</td>
-            <td>78.2</td>
+            <td>-</td>
             <td>-</td>
             <td>1971.5</td>
             <td>-</td>
             <td>-</td>
             <td>41.7</td>
-            <td>37.5</td>
+            <td>-</td>
             <td>80.1</td>
             <td>60.0</td>
             <td>-</td>
@@ -1151,58 +1150,60 @@ MiniCPM-Llama3-V 2.5 can be easily used in various ways: (1) [llama.cpp](https:/
     </tbody>
 </table>
 
-
 </div>
-* We evaluate the officially released checkpoint by ourselves.
-
+* 正式开源模型权重的评测结果。
 </details>
 
 <div align="center">
-    <img src="assets/llavabench_compare_3.png" width="100%" />
+    <img src="assets/llavabench_compare_3.png" width="80%" />
     <br>
-    Evaluation results of multilingual LLaVA Bench
+    多语言LLaVA Bench评测结果
 </div>
 
-### Examples <!-- omit in toc -->
 
-<table align="center" >
-  <p align="center" > 
-  <img src="assets/minicpmv-llama3-v2.5/cases_all.png" />
-  </p>
+### 典型示例 <!-- omit in toc -->
+<table align="center">
+    <p align="center">
+      <img src="assets/minicpmv-llama3-v2.5/cases_all.png" width=95%/>
+    </p>
 </table>
 
-</details>
 
+</details>
 
 ## MiniCPM-V 2.0
 
 <details>
-<summary>Click to view more details of MiniCPM-V 2.0</summary>
+<summary>查看 MiniCPM-V 2.0 的详细信息</summary>
+
+**MiniCPM-V 2.0**可以高效部署到终端设备。该模型基于 SigLip-400M 和 [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/)构建，通过perceiver resampler连接。其特点包括：
+
+- 🔥 **优秀的性能。**
+
+  MiniCPM-V 2.0 在多个测试基准（如 OCRBench, TextVQA, MME, MMB, MathVista 等）中实现了 7B 以下模型的**最佳性能**。**在综合了 11 个主流多模态大模型评测基准的 OpenCompass 榜单上超过了 Qwen-VL-Chat 9.6B、CogVLM-Chat 17.4B 和 Yi-VL 34B 等更大参数规模的模型**。MiniCPM-V 2.0 还展现出**领先的 OCR 能力**，在场景文字识别能力上**接近 Gemini Pro**，OCRBench 得分达到**开源模型第一**。
+  
+
+- 🏆 **可信行为。** 
+
+  多模态大模型深受幻觉问题困扰，模型经常生成和图像中的事实不符的文本。MiniCPM-V 2.0 是 **第一个通过多模态 RLHF 对齐的端侧多模态大模型**（借助 [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] 系列技术）。该模型在 [Object HalBench](https://arxiv.org/abs/2312.00849) 达到**和 GPT-4V 相仿**的性能。
 
 
-**MiniCPM-V 2.0** is an efficient version with promising performance for deployment. The model is built based on SigLip-400M and [MiniCPM-2.4B](https://github.com/OpenBMB/MiniCPM/), connected by a perceiver resampler. Our latest version, MiniCPM-V 2.0 has several notable features. 
+- 🌟 **高清图像高效编码。**
 
-- 🔥 **State-of-the-art Performance.** 
+  MiniCPM-V 2.0 可以接受 **180 万像素的任意长宽比图像输入**（基于最新的[LLaVA-UHD](https://arxiv.org/pdf/2403.11703.pdf) 技术），这使得模型可以感知到小物体、密集文字等更加细粒度的视觉信息。 
 
-  MiniCPM-V 2.0 achieves **state-of-the-art performance** on multiple benchmarks (including OCRBench, TextVQA, MME, MMB, MathVista, etc) among models under 7B parameters. It even **outperforms strong Qwen-VL-Chat 9.6B, CogVLM-Chat 17.4B, and Yi-VL 34B on OpenCompass, a comprehensive evaluation over 11 popular benchmarks**. Notably, MiniCPM-V 2.0 shows **strong OCR capability**, achieving **comparable performance to Gemini Pro in scene-text understanding**, and **state-of-the-art performance on OCRBench** among open-source models.
 
-- 🏆 **Trustworthy Behavior.** 
+- ⚡️ **高效部署。**
 
-  LMMs are known for suffering from hallucination, often generating text not factually grounded in images. MiniCPM-V 2.0 is **the first end-side LMM aligned via multimodal RLHF for trustworthy behavior** (using the recent [RLHF-V](https://rlhf-v.github.io/) [CVPR'24] series technique). This allows the model to **match GPT-4V in preventing hallucinations** on Object HalBench.
+  MiniCPM-V 2.0 可以**高效部署在大多数消费级显卡和个人电脑上**，包括**移动手机等终端设备**。在视觉编码方面，我们通过perceiver resampler将图像表示压缩为更少的 token。这使得 MiniCPM-V 2.0 即便是**面对高分辨率图像，也能占用较低的存储并展现优秀的推理速度**。
 
-- 🌟 **High-Resolution Images at Any Aspect Raito.**
+- 🙌 **双语支持。**
 
-  MiniCPM-V 2.0 can accept **1.8 million pixels (e.g., 1344x1344) images at any aspect ratio**. This enables better perception of fine-grained visual information such as small objects and optical characters, which is achieved via a recent technique from [LLaVA-UHD](https://arxiv.org/pdf/2403.11703.pdf).
+  MiniCPM-V 2.0 **提供领先的中英双语多模态能力支持**。
+  该能力通过 [VisCPM](https://arxiv.org/abs/2308.12038) [ICLR'24] 论文中提出的多模态能力的跨语言泛化技术实现。
 
-- ⚡️ **High Efficiency.** 
+### 典型示例 <!-- omit in toc -->
 
-  MiniCPM-V 2.0 can be **efficiently deployed on most GPU cards and personal computers**, and **even on end devices such as mobile phones**. For visual encoding, we compress the image representations into much fewer tokens via a perceiver resampler. This allows MiniCPM-V 2.0 to operate with **favorable memory cost and speed during inference even when dealing with high-resolution images**.
-
-- 🙌 **Bilingual Support.** 
-
-  MiniCPM-V 2.0 **supports strong bilingual multimodal capabilities in both English and Chinese**. This is enabled by generalizing multimodal capabilities across languages, a technique from [VisCPM](https://arxiv.org/abs/2308.12038) [ICLR'24].
-
-### Examples <!-- omit in toc -->
 
 <table align="center">
     <p align="center">
@@ -1210,7 +1211,7 @@ MiniCPM-Llama3-V 2.5 can be easily used in various ways: (1) [llama.cpp](https:/
     </p>
 </table>
 
-We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recording on a Xiaomi 14 Pro without edition.
+我们将 MiniCPM-V 2.0 部署在小米 14 Pro 上，并录制了以下演示视频，未经任何视频剪辑。
 
 <table align="center">
     <p align="center">
@@ -1221,79 +1222,84 @@ We deploy MiniCPM-V 2.0 on end devices. The demo video is the raw screen recordi
 
 </details>
 
-## Legacy Models <!-- omit in toc --> 
 
-| Model                | Introduction and Guidance       |
+<a id='legacy-models'></a>
+
+## 历史版本模型  <!-- omit in toc -->
+
+
+| 模型                | 介绍信息和使用教程       |
 |:----------------------|:-------------------:|
-| MiniCPM-V 1.0  | [Document](./minicpm_v1.md)   | 
-| OmniLMM-12B  | [Document](./omnilmm_en.md)   |  
+| MiniCPM-V 1.0  | [文档](./minicpm_v1.md)   | 
+| OmniLMM-12B  | [文档](./omnilmm.md)   |  
 
 
-## Chat with Our Demo on Gradio 🤗
+## Gradio Demo 🤗
 
-We provide online and local demos powered by Hugging Face Gradio <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a>, the most popular model deployment framework nowadays. It supports streaming outputs, progress bars, queuing, alerts,  and other useful features.
-
+我们提供由 Hugging Face Gradio <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a> 支持的在线和本地 Demo。Gradio 是目前最流行的模型部署框架，支持流式输出、进度条、process bars 和其他常用功能。
 
 ### Online Demo <!-- omit in toc --> 
 
-Click here to try out the online demo of [MiniCPM-V 2.6](https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6) | [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) | [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2).
+欢迎试用 Online Demo: [MiniCPM-V 2.6](https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6) | [MiniCPM-Llama3-V 2.5](https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5) | [MiniCPM-V 2.0](https://huggingface.co/spaces/openbmb/MiniCPM-V-2) 。
 
-### Local WebUI Demo <!-- omit in toc --> 
-  
-You can easily build your own local WebUI demo with Gradio using the following commands.
-  
+### 本地 WebUI Demo <!-- omit in toc --> 
+
+您可以使用以下命令轻松构建自己的本地 WebUI Demo。
+
 ```shell
 pip install -r requirements.txt
 ```
-  
+
 ```shell
-# For NVIDIA GPUs, run:
+# 对于 NVIDIA GPU，请运行：
 python web_demo_2.6.py --device cuda
 
 ```
 
 
-## Install
 
-1. Clone this repository and navigate to the source folder
+## 安装
+
+1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
 git clone https://github.com/OpenBMB/MiniCPM-V.git
 cd MiniCPM-V
 ```
 
-2. Create conda environment
+1. 创建 conda 环境
 
 ```Shell
-conda create -n MiniCPM-V python=3.10 -y
-conda activate MiniCPM-V
+conda create -n MiniCPMV python=3.10 -y
+conda activate MiniCPMV
 ```
 
-3. Install dependencies
+3. 安装依赖
 
 ```shell
 pip install -r requirements.txt
 ```
 
-## Inference
+## 推理
 
+### 模型库
 
-### Model Zoo
+| 模型           | 设备 | 资源     | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 简介       | 下载链接 |
+|:--------------|:-:|:----------:|:-------------------|:---------------:|
+| MiniCPM-V 2.6| GPU | 17 GB  | 最新版本，提供最佳的端侧单图、多图、视频理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6) |
+| MiniCPM-V 2.6 gguf | CPU | 6 GB  | gguf 版本，更低的内存占用和更高的推理效率。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6-gguf) |
+| MiniCPM-V 2.6 int4 | GPU | 7 GB  | int4量化版，更低显存占用。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6-int4) |
+| MiniCPM-Llama3-V 2.5| GPU | 19 GB  | 提供出色的端侧多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5) |
+| MiniCPM-Llama3-V 2.5 gguf | CPU  | 6 GB | gguf 版本，更低的内存占用和更高的推理效率。  |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-gguf) |
+| MiniCPM-Llama3-V 2.5 int4 | GPU | 8 GB | int4量化版，更低显存占用。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-int4/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-int4) |
+| MiniCPM-V 2.0 | GPU | 8 GB  | 轻量级版本，平衡计算开销和多模态理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2) |
+| MiniCPM-V 1.0 | GPU | 7 GB | 最轻量版本， 提供最快的推理速度。    |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V) |
 
-| Model           | Device | Memory    | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Description       | Download |
-|:-----------|:--:|:-----------:|:-------------------|:---------------:|
-| MiniCPM-V 2.6| GPU | 17 GB  | The latest version, achieving state-of-the-art end-side performance for single image, multi-image and video understanding.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6) |
-| MiniCPM-V 2.6 gguf | CPU | 6 GB  | The gguf version, lower memory usage and faster inference.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6-gguf) |
-| MiniCPM-V 2.6 int4 | GPU | 7 GB  | The int4 quantized version, lower GPU memory usage.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6-int4) |
-| MiniCPM-Llama3-V 2.5 | GPU | 19 GB | Strong end-side multimodal performance.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5) |
-| MiniCPM-Llama3-V 2.5 gguf | CPU  | 6 GB | The gguf version, lower memory usage and faster inference.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf) &nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-gguf) |
-| MiniCPM-Llama3-V 2.5 int4 | GPU | 8 GB | The int4 quantized version, lower GPU memory usage. |  [🤗](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-int4/) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-Llama3-V-2_5-int4) |
-| MiniCPM-V 2.0 | GPU | 8 GB | Light version, balance the performance the computation cost.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2) |
-| MiniCPM-V 1.0 | GPU | 7 GB | Lightest version, achieving the fastest inference. |   [🤗](https://huggingface.co/openbmb/MiniCPM-V) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V) |
+更多[历史版本模型](#legacy-models)
 
-### Multi-turn Conversation
+### 多轮对话
 
-Please refer to the following codes to run.
+请参考以下代码进行推理。
 
 <div align="center">
 <img src="assets/airplane.jpeg" width="500px">
@@ -1338,7 +1344,7 @@ answer = model.chat(
 print(answer)
 ```
 
-You will get the following output:
+可以得到以下输出:
 
 ```
 "The aircraft in the image is an Airbus A380, which can be identified by its large size, double-deck structure, and the distinctive shape of its wings and engines. The A380 is a wide-body aircraft known for being the world's largest passenger airliner, designed for long-haul flights. It has four engines, which are characteristic of large commercial aircraft. The registration number on the aircraft can also provide specific information about the model if looked up in an aviation database."
@@ -1346,9 +1352,9 @@ You will get the following output:
 "The Airbus A380 is a double-deck, wide-body, four-engine jet airliner made by Airbus. It is the world's largest passenger airliner and is known for its long-haul capabilities. The aircraft was developed to improve efficiency and comfort for passengers traveling over long distances. It has two full-length passenger decks, which can accommodate more passengers than a typical single-aisle airplane. The A380 has been operated by airlines such as Lufthansa, Singapore Airlines, and Emirates, among others. It is widely recognized for its unique design and significant impact on the aviation industry."
 ```
 
-#### Chat with multiple images
+#### 多图理解
 <details>
-<summary> Click to view Python code running MiniCPM-V 2.6 with multiple images input. </summary>
+<summary> 点击查看使用 MiniCPM-V 2.6 进行多图理解的Python示例 </summary>
   
 ```python
 import torch
@@ -1375,9 +1381,10 @@ print(answer)
 ```
 </details>
 
-#### In-context few-shot learning
+#### 少样本上下文学习
+
 <details>
-<summary> Click to view Python code running MiniCPM-V 2.6 with few-shot input. </summary>
+<summary> 点击查看使用 MiniCPM-V 2.6 进行few-shot推理的Python示例 </summary>
 
 ```python
 import torch
@@ -1411,9 +1418,9 @@ print(answer)
 ```
 </details>
 
-#### Chat with video
+#### 视频理解
 <details>
-<summary> Click to view Python code running MiniCPM-V 2.6 with video input. </summary>
+<summary> 点击查看使用 MiniCPM-V 2.6 进行视频理解的Python示例 </summary>
 
 ```python
 import torch
@@ -1454,7 +1461,7 @@ msgs = [
 # Set decode params for video
 params = {}
 params["use_image_id"] = False
-params["max_slice_nums"] = 2 # use 1 if cuda OOM and video resolution > 448*448
+params["max_slice_nums"] = 2 # 如果cuda OOM且视频分辨率大于448*448可设为1
 
 answer = model.chat(
     image=None,
@@ -1467,16 +1474,16 @@ print(answer)
 </details>
 
 
-### Inference on Multiple GPUs
-You can run MiniCPM-Llama3-V 2.5 on multiple low VRAM GPUs (12 GB or 16 GB) by distributing the model's layers across multiple GPUs. Please refer to this [tutorial](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md) for detailed instructions on how to load the model and inference using multiple low VRAM GPUs.
+### 多卡推理
+您可以通过将模型的层分布在多个低显存显卡（12 GB 或 16 GB）上，运行 MiniCPM-Llama3-V 2.5。请查看该[教程](https://github.com/OpenBMB/MiniCPM-V/blob/main/docs/inference_on_multiple_gpus.md)，详细了解如何使用多张低显存显卡载入模型并进行推理。
 
 
-### Inference on Mac
+### Mac 推理
 <details>
-<summary>Click to view an example, to run MiniCPM-Llama3-V 2.5 on 💻 Mac with MPS (Apple silicon or AMD GPUs). </summary>
+<summary>点击查看 MiniCPM-Llama3-V 2.5 / MiniCPM-V 2.0 基于Mac MPS运行 (Apple silicon 或 AMD GPUs)的示例。 </summary>
 
 ```python
-# test.py  Need more than 16GB memory.
+# test.py    Need more than 16GB memory to run.
 import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
@@ -1500,35 +1507,49 @@ answer, context, _ = model.chat(
 )
 print(answer)
 ```
-Run with command:
+运行:
 ```shell
 PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
 
-### Deployment on Mobile Phone
-MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM) to install apk.
 
-### Inference with llama.cpp
-MiniCPM-V 2.6 can run with llama.cpp now! See [our fork of llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpmv-main/examples/llava/README-minicpmv2.6.md) for more detail. This implementation supports smooth inference of 16~18 token/s on iPad (test environment：iPad Pro + M4).
+### 手机端部署
+MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
 
-### Inference with ollama
-MiniCPM-V 2.6 can run with ollama now! See [our fork of ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md) for more detail. This implementation supports smooth inference of 16~18 token/s on iPad (test environment：iPad Pro + M4).
-
-### Inference with vLLM
-
+### 本地WebUI Demo部署
 <details>
-<summary> vLLM now officially supports MiniCPM-V 2.6, MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.0, Click to see. </summary>
+<summary>点击查看本地WebUI demo 在 NVIDIA GPU、Mac等不同设备部署方法 </summary>
+  
+```shell
+pip install -r requirements.txt
+```
+  
+```shell
+# For NVIDIA GPUs, run:
+python web_demo_2.6.py --device cuda
+```
+</details>
 
-1. Install vLLM(>=0.5.4):
+### llama.cpp 部署<a id="llamacpp-部署"></a>
+MiniCPM-V 2.6 现在支持llama.cpp啦! 用法请参考[我们的fork llama.cpp](https://github.com/OpenBMB/llama.cpp/tree/minicpmv-main/examples/llava/README-minicpmv2.6.md)， 在iPad上可以支持 16~18 token/s 的流畅推理（测试环境：iPad Pro + M4）。
+
+### ollama 部署<a id="ollama-部署"></a>
+MiniCPM-V 2.6 现在支持ollama啦! 用法请参考[我们的fork ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md)， 在iPad上可以支持 16~18 token/s 的流畅推理（测试环境：iPad Pro + M4）。
+
+### vLLM 部署 <a id='vllm'></a>
+<details>
+<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.6、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0  </summary>
+
+1. 安装 vLLM(>=0.5.4):
 ```shell
 pip install vllm
 ```
-2. Install timm: (optional, MiniCPM-V 2.0 need timm)
+3. 安装 timm 库: （可选，MiniCPM-V 2.0需安装）
 ```shell
-pip install timm==0.9.10
+pip install timm=0.9.10
 ```
-3. Run the example(for image):
+4. 运行示例代码:（注意：如果使用本地路径的模型，请确保模型代码已更新到Hugging Face上的最新版)
 ```python
 from transformers import AutoTokenizer
 from PIL import Image
@@ -1600,49 +1621,49 @@ outputs = llm.generate(inputs, sampling_params=sampling_params)
 
 print(outputs[0].outputs[0].text)
 ```
-4. click [here](https://modelbest.feishu.cn/wiki/C2BWw4ZP0iCDy7kkCPCcX2BHnOf?from=from_copylink) if you want to use it with *video*, or get more details about `vLLM`.
+4. [点击此处](https://modelbest.feishu.cn/wiki/C2BWw4ZP0iCDy7kkCPCcX2BHnOf?from=from_copylink)查看带视频推理和其他有关 `vLLM` 的信息。
+
 </details>
 
-## Fine-tuning
 
-### Simple Fine-tuning <!-- omit in toc -->
+## 微调
 
-We support simple fine-tuning with Hugging Face for MiniCPM-V 2.0 and MiniCPM-Llama3-V 2.5.
+### 简易微调 <!-- omit in toc -->
 
-[Reference Document](./finetune/readme.md)
+我们支持使用 Huggingface Transformers 库简易地微调 MiniCPM-V 2.0 和 MiniCPM-Llama3-V 2.5 模型。
 
-### With the SWIFT Framework <!-- omit in toc -->
+[参考文档](./finetune/readme.md)
 
-We now support MiniCPM-V series fine-tuning with the SWIFT framework. SWIFT supports training, inference, evaluation and deployment of nearly 200 LLMs and MLLMs . It supports the lightweight training solutions provided by PEFT and a complete Adapters Library including techniques such as NEFTune, LoRA+ and LLaMA-PRO.
+### 使用 SWIFT 框架 <!-- omit in toc -->
 
-Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md), [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
+我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种大语言模型和多模态大模型的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
+
+参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)，[MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
 
 ## FAQs
-Click here to view the [FAQs](./docs/faqs.md)
-
-## Model License <!-- omit in toc -->
-
-* This repository is released under the [Apache-2.0](https://github.com/OpenBMB/MiniCPM/blob/main/LICENSE) License. 
-
-* The usage of MiniCPM-V model weights must strictly follow [MiniCPM Model License.md](https://github.com/OpenBMB/MiniCPM/blob/main/MiniCPM%20Model%20License.md).
-
-* The models and weights of MiniCPM are completely free for academic research. after filling out a ["questionnaire"](https://modelbest.feishu.cn/share/base/form/shrcnpV5ZT9EJ6xYjh3Kx0J6v8g) for registration, are also available for free commercial use.
-  
-
-## Statement <!-- omit in toc -->
-
-As LMMs, MiniCPM-V models (including OmniLMM) generate contents by learning a large amount of multimodal corpora, but they cannot comprehend, express personal opinions or make value judgement. Anything generated by MiniCPM-V models does not represent the views and positions of the model developers
-
-We will not be liable for any problems arising from the use of MiniCPM-V models, including but not limited to data security issues, risk of public opinion, or any risks and problems arising from the misdirection, misuse, dissemination or misuse of the model.
+点击查看 [FAQs](./docs/faqs.md)
 
 
-## Institutions  <!-- omit in toc -->
+## 模型协议 <!-- omit in toc -->
 
-This project is developed by the following institutions:
+* 本仓库中代码依照 [Apache-2.0](https://github.com/OpenBMB/MiniCPM/blob/main/LICENSE) 协议开源
+* MiniCPM-V 模型权重的使用则需要遵循 [“MiniCPM模型商用许可协议.md”](https://github.com/OpenBMB/MiniCPM/blob/main/MiniCPM%E6%A8%A1%E5%9E%8B%E5%95%86%E7%94%A8%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE.md)。
+* MiniCPM 模型权重对学术研究完全开放，在填写[“问卷”](https://modelbest.feishu.cn/share/base/form/shrcnpV5ZT9EJ6xYjh3Kx0J6v8g)进行登记后亦允许免费商业使用。
 
-- <img src="assets/thunlp.png" width="28px"> [THUNLP](https://nlp.csai.tsinghua.edu.cn/)
-- <img src="assets/modelbest.png" width="28px"> [ModelBest](https://modelbest.cn/)
-- <img src="assets/zhihu.webp" width="28px"> [Zhihu](https://www.zhihu.com/ )
+## 声明 <!-- omit in toc -->
+
+作为多模态大模型，MiniCPM-V 系列模型（包括 OmniLMM）通过学习大量的多模态数据来生成内容，但它无法理解、表达个人观点或价值判断，它所输出的任何内容都不代表模型开发者的观点和立场。
+
+因此用户在使用本项目的系列模型生成的内容时，应自行负责对其进行评估和验证。如果由于使用本项目的系列开源模型而导致的任何问题，包括但不限于数据安全问题、公共舆论风险，或模型被误导、滥用、传播或不当利用所带来的任何风险和问题，我们将不承担任何责任。
+
+
+## 机构 <!-- omit in toc -->
+
+本项目由以下机构共同开发：
+
+- <img src="assets/thunlp.png" width="28px"> [清华大学自然语言处理实验室](https://nlp.csai.tsinghua.edu.cn/)
+- <img src="assets/modelbest.png" width="28px"> [面壁智能](https://modelbest.cn/)
+- <img src="assets/zhihu.webp" width="28px"> [知乎](https://www.zhihu.com/ )
 
 ## 🌟 Star History <!-- omit in toc -->
 
@@ -1672,16 +1693,17 @@ This project is developed by the following institutions:
   />
 </picture> -->
 
-## Key Techniques and Other Multimodal Projects <!-- omit in toc -->
+## 支持技术和其他多模态项目 <!-- omit in toc -->
 
-👏 Welcome to explore key techniques of MiniCPM-V and other multimodal projects of our team:
+👏 欢迎了解 MiniCPM-V 背后的支持技术和更多我们的多模态项目！
 
 [VisCPM](https://github.com/OpenBMB/VisCPM/tree/main) | [RLHF-V](https://github.com/RLHF-V/RLHF-V) | [LLaVA-UHD](https://github.com/thunlp/LLaVA-UHD) | [RLAIF-V](https://github.com/RLHF-V/RLAIF-V)
 
 
-## Citation <!-- omit in toc -->
 
-If you find our model/code/paper helpful, please consider cite our papers 📝 and star us ⭐️！
+## 引用 <!-- omit in toc -->
+
+如果您觉得我们模型/代码/论文有帮助，请给我们 ⭐ 和 引用 📝，感谢！
 
 ```bib
 @article{yao2024minicpm,
