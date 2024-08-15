@@ -14,6 +14,9 @@ EVAL_DATA="path/to/test_data"
 LLM_TYPE="qwen2" 
 # if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm
 #if use openbmb/MiniCPM-Llama3-V-2_5, please set LLM_TYPE=llama3
+
+MODEL_MAX_Length=2048 # if conduct multi-images sft, please set MODEL_MAX_Length=4096
+
 DISTRIBUTED_ARGS="
     --nproc_per_node $GPUS_PER_NODE \
     --nnodes $NNODES \
@@ -39,7 +42,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --tune_llm false \
     --use_lora true \
     --lora_target_modules "llm\..*layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)" \
-    --model_max_length 2048 \
+    --model_max_length $MODEL_MAX_Length \
     --max_slice_nums 9 \
     --max_steps 10000 \
     --eval_steps 1000 \

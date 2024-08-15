@@ -5,13 +5,15 @@ We offer the official scripts for easy finetuning of the pretrained **MiniCPM-V-
 
 ### Data preparation
 
-To prepare your finetuning data, you should formulate each sample as a dictionary consisting of an id, an image path list with an image, and a list of conversations. Then save data samples in JSON files.
+To prepare your fine-tuning data, you should formulate each sample as a dictionary consisting of an id, an image path (or list of images), and a list of conversations. Then, save the data samples in JSON files.
 
-For the vision-language example with image, you are required to provide **\<image\>** to define the position to insert the image embeddings. If you don't provide \<image\>, the image will be placed at the front of the conversation.
+For vision-language tasks, you must provide placeholders like **\<image\>** or **\<image_XX\>** to define where to insert the image embeddings within the conversation. If no placeholder is provided, the image will be placed at the front of the conversation by default.
 
+#### Single Image Example
+If your input consists of a single image, you can use a single placeholder **\<image\>** to indicate where the image should be inserted in the conversation.
 <details>
   <summary>
-    <b>vision-language example (vl_finetune_data.json) with 1 samples.</b>
+    <b>Single image example (vl_finetune_data.json) with 1 samples.</b>
   </summary>
 
 ```
@@ -50,6 +52,44 @@ For the vision-language example with image, you are required to provide **\<imag
 
 </details>
 
+#### Multiple Images Example
+For inputs containing multiple images, utilize a dictionary where each key represents a unique placeholder (e.g., **\<image_00\>**, **\<image_01\**) with the corresponding image path as its value. These placeholders can then be used within the conversation to seamlessly insert images at specific positions.
+
+Additionally, to optimize resource management, especially when dealing with large batches of images during training or inference, consider reducing `max_slice_nums`. For example, in version 2.6, a single image is represented by 64 tokens. When `slice=9`, an image with a maximum resolution of 1344x1344 will consume nearly 64*(9+1) tokens. To minimize the number of tokens used per image, you can set `slice=1`, resulting in a single image being represented by 64 tokens.
+
+If the total token count exceeds `max_length`, truncation will be applied. For multi-image supervised fine-tuning (SFT), it's recommended to set `MODEL_MAX_LENGTH=4096` in your script for better performance.
+
+
+
+<details>
+  <summary>
+    <b>Multiple images example (vl_finetune_data.json) with 1 samples.</b>
+  </summary>
+
+```
+  [
+    {
+      "id": "0",
+      "image": {
+        "<image_00>": "path/to/image_0.jpg",
+        "<image_01>": "path/to/image_1.jpg",
+        "<image_02>": "path/to/image_2.jpg",
+        "<image_03>": "path/to/image_3.jpg"
+      },
+      "conversations": [
+        {
+          "role": "user", 
+          "content": "How to create such text-only videos using CapCut?\n<image_00>\n<image_01>\n<image_02>\n<image_03>\n"
+        }, 
+        {
+          "role": "assistant", 
+          "content": "To create a text-only video as shown in the images, follow these steps in CapCut..."
+        }
+      ]
+    }
+  ]
+```
+</details>
 
 ### Full-parameter finetuning
 
