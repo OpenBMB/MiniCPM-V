@@ -33,7 +33,7 @@ class SupervisedDataset(Dataset):
         patch_size=14,
         query_nums=64,
         batch_vision=False,
-        max_length=None,
+        max_length=2048,
     ):
         super(SupervisedDataset, self).__init__()
         self.raw_data = raw_data
@@ -122,7 +122,7 @@ def data_collator(examples, padding_value=0, max_length=2048):
     }
 
 
-def conversation_to_ids(conversation, tokenizer, llm_type=None, new_schema=False, max_length=None):
+def conversation_to_ids(conversation, tokenizer, llm_type=None, new_schema=False, max_length=2048):
     """
     for single image multi-turn conversation
     conversation: [{'role': 'user', 'content': 'Describe this image'},
