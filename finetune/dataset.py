@@ -317,7 +317,7 @@ def preprocess(
     llm_type=None,
     patch_size=14,
     batch_vision=False,
-    max_length=None,
+    max_length=2048,
 ):
     """
     single(multi) image(s) preprocess, the image(s) will be placed at the top of the conversation
