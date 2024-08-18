@@ -88,6 +88,7 @@ if user_text:
     # Generate reply using the model
     model = st.session_state.model
     tokenizer = st.session_state.tokenizer
+    imagefile = None
 
     with st.chat_message(A_NAME, avatar="assistant"):
         # If the previous message contains an image, pass the image to the model
