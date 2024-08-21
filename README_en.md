@@ -536,7 +536,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td nowrap="nowrap" align="left">Claude 3.5 Sonnet</td>
             <td>-</td>
             <td>60.0</td>
-            <td>-</td>
+            <td>62.9</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -547,7 +547,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td nowrap="nowrap" align="left">GPT-4V</td>
             <td>-</td>
             <td>59.9</td>
-            <td>-</td>
+            <td>63.3</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>
