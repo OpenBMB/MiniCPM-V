@@ -7,7 +7,7 @@
   <strong>[中文](./README_zh.md) |
   English</strong>
 
-Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> | View  MiniCPM-V <a href="docs/best_practice_summary.md" target="_blank"> best practices</a>
+Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> | View  MiniCPM-V <a href="docs/best_practice_summary.md" target="_blank"> 📖 best practices</a>
 
 
 <p align="center">
