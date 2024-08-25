@@ -9,7 +9,9 @@
   <strong>中文 |
   [English](./README_en.md)</strong>
 
- 加入我们的 <a href="docs/wechat.md" target="_blank"> 💬 微信社区</a> 
+ 加入我们的 <a href="docs/wechat.md" target="_blank"> 💬 微信社区</a>
+｜ 了解 MiniCPM-V <a href="docs/best_practice_summary_zh.md" target="_blank"> 最佳实践</a>
+  
 
 <p align="center">
   MiniCPM-V 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-2_6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-2_6">🤖</a> | MiniCPM-Llama3-V 2.5  <a href="https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5/">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-Llama3-V-2_5">🤖</a> |
