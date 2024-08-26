@@ -225,7 +225,8 @@ if user_text is not None:
                 if len(st.session_state.chat_history) > 1 and st.session_state.uploaded_video_num == 1:
                     uploaded_video_path = st.session_state.uploaded_video_list[-1]
                     if uploaded_video_path:
-                        frames = encode_video(uploaded_video_path)
+                        with st.spinner('Encoding your video, please wait...'):
+                            frames = encode_video(uploaded_video_path)
                 else:
                     print("Video Mode: No video found")
 
