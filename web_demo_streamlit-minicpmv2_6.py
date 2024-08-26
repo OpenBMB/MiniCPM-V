@@ -151,7 +151,7 @@ def encode_video(video_path):
     def uniform_sample(frame_indices, num_samples):
         # Calculate sampling interval and uniformly sample frame indices
         gap = len(frame_indices) / num_samples
-        sampled_idxs = [int(i * gap + gap / 2) for i in range(num_samples)]
+        sampled_idxs = np.linspace(gap / 2, len(frame_indices) - gap / 2, num_samples, dtype=int)
         return [frame_indices[i] for i in sampled_idxs]
 
     # Read the video and set the decoder's context to CPU
