@@ -7,7 +7,7 @@
   <strong>[中文](./README_zh.md) |
   English</strong>
 
-Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> 
+Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> | View  MiniCPM-V <a href="docs/best_practice_summary.md" target="_blank"> 📖 best practices</a>
 
 
 <p align="center">
@@ -29,9 +29,10 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a>
 
 #### 📌 Pinned
 
+* [2024.08.17] 🚀🚀🚀 MiniCPM-V 2.6 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf).
 * [2024.08.15] We now also support multi-image SFT. For more details, please refer to the [document](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune).
 * [2024.08.14] MiniCPM-V 2.6 now also supports [fine-tuning](https://github.com/modelscope/ms-swift/issues/1613) with the SWIFT framework!
-* [2024.08.10] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf). Please note that MiniCPM-V 2.6 still needs [our fork](https://github.com/OpenBMB/llama.cpp/blob/minicpmv-main/examples/llava/README-minicpmv2.6.md).
+* [2024.08.10] 🚀🚀🚀 MiniCPM-Llama3-V 2.5 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-Llama3-V-2_5-gguf).
 * [2024.08.06] 🔥🔥🔥 We open-source MiniCPM-V 2.6, which outperforms GPT-4V on single image, multi-image and video understanding. It advances popular features of MiniCPM-Llama3-V 2.5, and can support real-time video understanding on iPad. Try it now!
 * [2024.08.03] MiniCPM-Llama3-V 2.5 technical report is released! See [here](https://arxiv.org/abs/2408.01800).
 * [2024.07.19] MiniCPM-Llama3-V 2.5 supports vLLM now! See [here](#inference-with-vllm).
@@ -535,7 +536,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td nowrap="nowrap" align="left">Claude 3.5 Sonnet</td>
             <td>-</td>
             <td>60.0</td>
-            <td>-</td>
+            <td>62.9</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>
@@ -546,7 +547,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td nowrap="nowrap" align="left">GPT-4V</td>
             <td>-</td>
             <td>59.9</td>
-            <td>-</td>
+            <td>63.3</td>
             <td>-</td>
             <td>-</td>
             <td>-</td>
