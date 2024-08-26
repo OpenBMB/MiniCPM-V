@@ -173,91 +173,97 @@ def encode_video(video_path):
     return frames
 
 
+
 # User input box
 user_text = st.chat_input("Enter your question")
-if user_text:
-    # Display user input and save it to session history
-    with st.chat_message(U_NAME, avatar="user"):
-        st.session_state.chat_history.append({
-            "role": "user",
-            "content": user_text,
-            "image": None,
-            "video": None
-        })
-        st.markdown(f"{U_NAME}: {user_text}")
+if user_text is not None:
+    if user_text.strip() is "":
+        st.warning('Input message could not be empty!', icon="⚠️")
+    else:
+        # Display user input and save it to session history
+        with st.chat_message(U_NAME, avatar="user"):
+            st.session_state.chat_history.append({
+                "role": "user",
+                "content": user_text,
+                "image": None,
+                "video": None
+            })
+            st.markdown(f"{U_NAME}: {user_text}")
 
-    # Generate responses using the model
-    model = st.session_state.model
-    tokenizer = st.session_state.tokenizer
-    content_list = []  # Store the content (text or image) that will be passed into the model
-    imageFile = None
+        # Generate responses using the model
+        model = st.session_state.model
+        tokenizer = st.session_state.tokenizer
+        content_list = []  # Store the content (text or image) that will be passed into the model
+        imageFile = None
 
-    with st.chat_message(A_NAME, avatar="assistant"):
-        # Handle different inputs depending on the mode selected by the user
-        if selected_mode == "Single Image":
-            # Single image mode: pass in the last uploaded image
-            print("Single Images mode in use")
-            if len(st.session_state.chat_history) > 1 and len(st.session_state.uploaded_image_list) >= 1:
-                uploaded_image = st.session_state.uploaded_image_list[-1]
-                if uploaded_image:
-                    imageFile = Image.open(uploaded_image).convert('RGB')
-                    content_list.append(imageFile)
+        with st.chat_message(A_NAME, avatar="assistant"):
+            # Handle different inputs depending on the mode selected by the user
+            if selected_mode == "Single Image":
+                # Single image mode: pass in the last uploaded image
+                print("Single Images mode in use")
+                if len(st.session_state.chat_history) > 1 and len(st.session_state.uploaded_image_list) >= 1:
+                    uploaded_image = st.session_state.uploaded_image_list[-1]
+                    if uploaded_image:
+                        imageFile = Image.open(uploaded_image).convert('RGB')
+                        content_list.append(imageFile)
+                else:
+                    print("Single Images mode: No image found")
+
+            elif selected_mode == "Multiple Images":
+                # Multi-image mode: pass in all the images uploaded last time
+                print("Multiple Images mode in use")
+                if len(st.session_state.chat_history) > 1 and st.session_state.uploaded_image_num >= 1:
+                    for uploaded_image in st.session_state.uploaded_image_list:
+                        imageFile = Image.open(uploaded_image).convert('RGB')
+                        content_list.append(imageFile)
+                else:
+                    print("Multiple Images mode: No image found")
+
+            elif selected_mode == "Video":
+                # Video mode: pass in slice frames of uploaded video
+                print("Video mode in use")
+                if len(st.session_state.chat_history) > 1 and st.session_state.uploaded_video_num == 1:
+                    uploaded_video_path = st.session_state.uploaded_video_list[-1]
+                    if uploaded_video_path:
+                        frames = encode_video(uploaded_video_path)
+                else:
+                    print("Video Mode: No video found")
+
+            # Defining model parameters
+            params = {
+                'sampling': True,
+                'top_p': top_p,
+                'top_k': top_k,
+                'temperature': temperature,
+                'repetition_penalty': repetition_penalty,
+                "max_new_tokens": max_length,
+                "stream": True
+            }
+
+            # Set different input parameters depending on whether to upload a video
+            if st.session_state.uploaded_video_num == 1 and selected_mode == "Video":
+                msgs = [{"role": "user", "content": frames + [user_text]}]
+                # Set decode params for video
+                params["max_inp_length"] = 4352  # Set the maximum input length of the video mode
+                params["use_image_id"] = False  # Do not use image_id
+                params["max_slice_nums"] = 1  # # use 1 if cuda OOM and video resolution >  448*448
             else:
-                print("Single Images mode: No image found")
+                content_list.append(user_text)
+                msgs = [{"role": "user", "content": content_list}]
 
-        elif selected_mode == "Multiple Images":
-            # Multi-image mode: pass in all the images uploaded last time
-            print("Multiple Images mode in use")
-            if len(st.session_state.chat_history) > 1 and st.session_state.uploaded_image_num >= 1:
-                for uploaded_image in st.session_state.uploaded_image_list:
-                    imageFile = Image.open(uploaded_image).convert('RGB')
-                    content_list.append(imageFile)
-            else:
-                print("Multiple Images mode: No image found")
+            print("content_list:", content_list)  # debug
+            print("params:", params)  # debug
 
-        elif selected_mode == "Video":
-            # Video mode: pass in slice frames of uploaded video
-            print("Video mode in use")
-            if len(st.session_state.chat_history) > 1 and st.session_state.uploaded_video_num == 1:
-                uploaded_video_path = st.session_state.uploaded_video_list[-1]
-                if uploaded_video_path:
-                    frames = encode_video(uploaded_video_path)
-            else:
-                print("Video Mode: No video found")
+            # Generate and display the model's responses
+            with st.spinner('AI is thinking...'):
+                response = model.chat(image=None, msgs=msgs, context=None, tokenizer=tokenizer, **params)
+            st.session_state.response = st.write_stream(response)
+            st.session_state.chat_history.append({
+                "role": "model",
+                "content": st.session_state.response,
+                "image": None,
+                "video": None
+            })
 
-        # Defining model parameters
-        params = {
-            'sampling': True,
-            'top_p': top_p,
-            'top_k': top_k,
-            'temperature': temperature,
-            'repetition_penalty': repetition_penalty,
-            "max_new_tokens": max_length,
-            "stream": True
-        }
+        st.divider()  # Add separators to the interface
 
-        # Set different input parameters depending on whether to upload a video
-        if st.session_state.uploaded_video_num == 1 and selected_mode == "Video":
-            msgs = [{"role": "user", "content": frames + [user_text]}]
-            # Set decode params for video
-            params["max_inp_length"] = 4352  # Set the maximum input length of the video mode
-            params["use_image_id"] = False  # Do not use image_id
-            params["max_slice_nums"] = 1  # # use 1 if cuda OOM and video resolution >  448*448
-        else:
-            content_list.append(user_text)
-            msgs = [{"role": "user", "content": content_list}]
-
-        print("content_list:", content_list)  # debug
-        print("params:", params)  # debug
-
-        # Generate and display the model's responses
-        response = model.chat(image=None, msgs=msgs, context=None, tokenizer=tokenizer, **params)
-        st.session_state.response = st.write_stream(response)
-        st.session_state.chat_history.append({
-            "role": "model",
-            "content": st.session_state.response,
-            "image": None,
-            "video": None
-        })
-
-    st.divider()  # Add separators to the interface
