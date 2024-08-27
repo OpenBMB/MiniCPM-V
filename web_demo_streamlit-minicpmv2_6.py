@@ -4,6 +4,7 @@ import streamlit as st
 import torch
 from PIL import Image
 from decord import VideoReader, cpu
+import numpy as np
 from transformers import AutoModel, AutoTokenizer
 
 # Model path
