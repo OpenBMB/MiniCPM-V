@@ -2,10 +2,8 @@
 # Partly adopted from https://github.com/GT-Vision-Lab/VQA
 # Copyright (c) 2014, Aishwarya Agrawal
 
-import re
-from vlmeval.smp import *
+from ...smp import *
 from typing import Optional
-from functools import partial
 
 
 def _process_digit_article(inText):
@@ -163,7 +161,6 @@ def hit_calculate(result, dataset_name, anls_threshold=0.5):
     if listinstr(['TextVQA'], dataset_name):
         return [np.mean(x['match']) for x in result]
     elif listinstr(['DocVQA', 'InfoVQA'], dataset_name):
-        # return [1 - np.min(x['match']) >= anls_threshold for x in result]
         return [0.0 if 1 - np.min(x['match']) < anls_threshold else 1 - np.min(x['match']) for x in result]
     elif listinstr(['ChartQA', 'OCRVQA'], dataset_name):
         return [np.max(x['match']) for x in result]
@@ -286,55 +283,3 @@ def process_line(line, method='vqa_score'):
         ret['match'] = [x == ret['pred'] for x in ret['gt']]
 
     return ret
-
-
-def VQAEval(eval_file, dataset_name, **kwargs):
-    logger = get_logger('Evaluation')
-    data = load(eval_file)
-    assert 'answer' in data and 'prediction' in data
-    data['prediction'] = [str(x) for x in data['prediction']]
-    data['answer'] = [str(x) for x in data['answer']]
-    lt = len(data)
-    pool = mp.Pool(16)
-    lines = [data.iloc[i] for i in range(lt)]
-    if listinstr(['TextVQA'], dataset_name):
-        res = pool.map(partial(process_line, method='vqa_score'), lines)
-    elif listinstr(['ChartQA'], dataset_name):
-        res = pool.map(partial(process_line, method='relaxed_accuracy'), lines)
-    elif listinstr(['OCRVQA'], dataset_name):
-        res = pool.map(partial(process_line, method='accuracy'), lines)
-    elif listinstr(['DocVQA', 'InfoVQA'], dataset_name):
-        res = pool.map(partial(process_line, method='anls'), lines)
-    else:  # default using vqa_score to calculate score
-        res = pool.map(process_line, lines)
-    # [np.mean(x['match']) >= full_score_weight for x in res]
-    hit = hit_calculate(res, dataset_name)
-    ret = dict()
-    if 'split' in data:
-        splits = set(data['split'])
-        for sp in splits:
-            sub = [r for l, r in zip(lines, res) if l['split'] == sp]
-            # [np.mean(x['match']) >= full_score_weight for x in sub]
-            hit = hit_calculate(sub, dataset_name)
-            ret[sp] = np.mean(hit) * 100
-        sub = [r for l, r in zip(lines, res)]
-        hit = hit_calculate(sub, dataset_name)
-        ret['Overall'] = np.mean(hit) * 100
-    else:
-        ret['Overall'] = np.mean(hit) * 100
-        if 'category' in data:
-            cates = list(set(data['category']))
-            cates.sort()
-            for c in cates:
-                sub = [r for l, r in zip(lines, res) if l['category'] == c]
-                # [np.mean(x['match']) >= full_score_weight for x in sub]
-                hit = hit_calculate(sub, dataset_name)
-                ret[c] = np.mean(hit) * 100
-    ret = d2df(ret)
-    ret.round(2)
-
-    suffix = eval_file.split('.')[-1]
-    result_file = eval_file.replace(f'.{suffix}', '_acc.csv')
-    logger.info(f'VQA Eval Finished. Saved to {result_file}. ')
-    logger.info(ret)
-    dump(ret, result_file)

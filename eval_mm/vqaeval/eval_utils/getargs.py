@@ -4,7 +4,7 @@ import argparse
 def parse_args():
     parser = argparse.ArgumentParser(description="Demo")
 
-    parser.add_argument('--local-rank', type=int, default=0, help='Local rank for distributed training')
+    parser.add_argument('--local-rank', type=int, default=0, help='Local rank for distributed training.')
 
     # textVQA
     parser.add_argument("--textVQA_image_dir", type=str, default="")

@@ -20,12 +20,18 @@ from eval_utils.vqa_evaluate import *
 
 
 def get_model(args):
-    if args.model_name=='':
+    if args.model_name == '':
         raise Exception('Model name cannot be empty str!')
-    from models.MiniCPM.minicpmv import MiniCPM_V
+    from models.MiniCPM.minicpmv import MiniCPM_V, MiniCPM_V_2_6
     model_path = args.model_path
     ckpt = args.ckpt
-    model = MiniCPM_V(model_path=model_path, ckpt=ckpt, device=args.device)
+    
+    if args.model_name == 'minicpmv':
+        model = MiniCPM_V(model_path=model_path, ckpt=ckpt, device=args.device)
+    elif args.model_name == 'minicpmv26':
+        model = MiniCPM_V_2_6(model_path=model_path, ckpt=ckpt, device=args.device)
+    else:
+        raise Exception(f"Unexpected Moedel Name {args.model_name}!")
     
     return model
 

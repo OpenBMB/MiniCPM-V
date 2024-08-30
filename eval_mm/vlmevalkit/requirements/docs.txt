@@ -1,0 +1,11 @@
+docutils==0.18.1
+modelindex
+myst-parser
+-e git+https://github.com/open-compass/pytorch_sphinx_theme.git#egg=pytorch_sphinx_theme
+sphinx==6.1.3
+sphinx-copybutton
+sphinx-design
+sphinx-notfound-page
+sphinx-tabs
+sphinxcontrib-jquery
+tabulate

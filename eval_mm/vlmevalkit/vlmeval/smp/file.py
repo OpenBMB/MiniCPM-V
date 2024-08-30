@@ -9,6 +9,60 @@ import time
 import numpy as np
 import validators
 import mimetypes
+import multiprocessing as mp
+from .misc import toliststr
+from .vlm import decode_base64_to_image_file
+
+
+def decode_img_omni(tup):
+    root, im, p = tup
+    images = toliststr(im)
+    paths = toliststr(p)
+    if len(images) > 1 and len(paths) == 1:
+        paths = [osp.splitext(p)[0] + f'_{i}' + osp.splitext(p)[1] for i in range(len(images))]
+
+    assert len(images) == len(paths)
+    paths = [osp.join(root, p) for p in paths]
+    for p, im in zip(paths, images):
+        if osp.exists(p):
+            continue
+        if isinstance(im, str) and len(im) > 64:
+            decode_base64_to_image_file(im, p)
+    return paths
+
+
+def localize_df(data, dname, nproc=32):
+    assert 'image' in data
+    indices = list(data['index'])
+    indices_str = [str(x) for x in indices]
+    images = list(data['image'])
+    image_map = {x: y for x, y in zip(indices_str, images)}
+
+    root = LMUDataRoot()
+    root = osp.join(root, 'images', dname)
+    os.makedirs(root, exist_ok=True)
+
+    if 'image_path' in data:
+        img_paths = list(data['image_path'])
+    else:
+        img_paths = []
+        for i in indices_str:
+            if len(image_map[i]) <= 64:
+                idx = image_map[i]
+                assert idx in image_map and len(image_map[idx]) > 64
+                img_paths.append(f'{idx}.jpg')
+            else:
+                img_paths.append(f'{i}.jpg')
+
+    tups = [(root, im, p) for p, im in zip(img_paths, images)]
+
+    pool = mp.Pool(32)
+    ret = pool.map(decode_img_omni, tups)
+    pool.close()
+    data.pop('image')
+    if 'image_path' not in data:
+        data['image_path'] = [x[0] if len(x) == 1 else x for x in ret]
+    return data
 
 
 def LMUDataRoot():
@@ -17,9 +71,8 @@ def LMUDataRoot():
     home = osp.expanduser('~')
     root = osp.join(home, 'LMUData')
     os.makedirs(root, exist_ok=True)
-    # root = './LMUData'
-    # os.makedirs(root, exist_ok=True)
     return root
+
 
 def MMBenchOfficialServer(dataset_name):
     root = LMUDataRoot()
@@ -92,7 +145,7 @@ def dump(data, f, **kwargs):
     return handlers[suffix](data, f, **kwargs)
 
 
-def load(f):
+def load(f, fmt=None):
     def load_pkl(pth):
         return pickle.load(open(pth, 'rb'))
 
@@ -117,6 +170,9 @@ def load(f):
         return pd.read_csv(f, sep='\t')
 
     handlers = dict(pkl=load_pkl, json=load_json, jsonl=load_jsonl, xlsx=load_xlsx, csv=load_csv, tsv=load_tsv)
+    if fmt is not None:
+        return handlers[fmt](f)
+
     suffix = f.split('.')[-1]
     return handlers[suffix](f)
 
@@ -134,9 +190,24 @@ def download_file(url, filename=None):
     if filename is None:
         filename = url.split('/')[-1]
 
-    with DownloadProgressBar(unit='B', unit_scale=True,
-                             miniters=1, desc=url.split('/')[-1]) as t:
-        urllib.request.urlretrieve(url, filename=filename, reporthook=t.update_to)
+    # If HF_ENDPOINT is set, replace huggingface.co with it
+    if 'huggingface.co' in url and os.environ.get('HF_ENDPOINT', '') != '':
+        url = url.replace('huggingface.co', os.environ['HF_ENDPOINT'].split('://')[1])
+
+    try:
+        with DownloadProgressBar(unit='B', unit_scale=True, miniters=1, desc=url.split('/')[-1]) as t:
+            urllib.request.urlretrieve(url, filename=filename, reporthook=t.update_to)
+    except:
+        # Handle Failed Downloads from huggingface.co
+        if 'huggingface.co' in url:
+            url_new = url.replace('huggingface.co', 'hf-mirror.com')
+            try:
+                os.system(f'wget {url_new} -O {filename}')
+            except:
+                raise Exception(f'Failed to download {url}')
+        else:
+            raise Exception(f'Failed to download {url}')
+
     return filename
 
 
@@ -210,7 +281,7 @@ def last_modified(pth):
 
 
 def parse_file(s):
-    if osp.exists(s):
+    if osp.exists(s) and s != '.':
         assert osp.isfile(s)
         suffix = osp.splitext(s)[1].lower()
         mime = mimetypes.types_map.get(suffix, 'unknown')
@@ -228,3 +299,20 @@ def parse_file(s):
             return ('url', s)
     else:
         return (None, s)
+
+
+def file_size(f, unit='GB'):
+    stats = os.stat(f)
+    div_map = {
+        'GB': 2 ** 30,
+        'MB': 2 ** 20,
+        'KB': 2 ** 10,
+    }
+    return stats.st_size / div_map[unit]
+
+
+def parquet_to_tsv(file_path):
+    data = pd.read_parquet(file_path)
+    pth = '/'.join(file_path.split('/')[:-1])
+    data_name = file_path.split('/')[-1].split('.')[0]
+    data.to_csv(osp.join(pth, f'{data_name}.tsv'), sep='\t', index=False)

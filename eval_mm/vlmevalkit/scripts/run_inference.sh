@@ -11,10 +11,10 @@ export PYTHONPATH=$(dirname $SELF_DIR):$PYTHONPATH
 # int4 7-8G
 
 # model to be used
-# Example: MODELNAME=MiniCPM-Llama3-V-2_5
+# Example: MODELNAME=MiniCPM_V_2_6
 MODELNAME=$1
 # datasets to be tested
-# Example: DATALIST="POPE ScienceQA_TEST ChartQA_TEST"
+# Example: DATALIST="MMMU_DEV_VAL MathVista_MINI MMVet MMBench_DEV_EN_V11 MMBench_DEV_CN_V11 MMStar HallusionBench AI2D_TEST"
 DATALIST=$2
 # test mode, all or infer
 MODE=$3

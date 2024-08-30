@@ -17,6 +17,25 @@ def parse_args():
     return args
 
 
+def chat_mt(model, messages, dataset_name):
+    assert len(messages) % 2 == 0
+    nturn = len(messages) // 2
+    utter_stack = []
+    predictions = []
+
+    for i in range(nturn):
+        utter = messages[2 * i]
+        utter_stack.append(utter)
+        try:
+            resp = model.chat(utter_stack, dataset=dataset_name)
+            utter_stack.append(dict(role='assistant', content=resp))
+        except:
+            resp = FAIL_MSG
+            utter_stack.append(dict(role='assistant', content=resp))
+        predictions.append(resp)
+    return predictions
+
+
 # Only API model is accepted
 def infer_data_api(work_dir, model_name, dataset, index_set=None, api_nproc=4, ignore_failed=False):
     rank, world_size = get_rank_and_world_size()
@@ -28,6 +47,7 @@ def infer_data_api(work_dir, model_name, dataset, index_set=None, api_nproc=4, i
 
     model = supported_VLM[model_name]() if isinstance(model_name, str) else model_name
     assert getattr(model, 'is_api', False)
+    assert hasattr(model, 'chat_inner')
 
     lt, indices = len(data), list(data['index'])
     structs = [dataset.build_prompt(data.iloc[i]) for i in range(lt)]
@@ -42,11 +62,10 @@ def infer_data_api(work_dir, model_name, dataset, index_set=None, api_nproc=4, i
     structs = [s for i, s in zip(indices, structs) if i not in res]
     indices = [i for i in indices if i not in res]
 
-    gen_func = model.generate
-    structs = [dict(message=struct, dataset=dataset_name) for struct in structs]
+    structs = [dict(model=model, messages=struct, dataset_name=dataset_name) for struct in structs]
 
     if len(structs):
-        track_progress_rich(gen_func, structs, nproc=api_nproc, chunksize=api_nproc, save=out_file, keys=indices)
+        track_progress_rich(chat_mt, structs, nproc=api_nproc, chunksize=api_nproc, save=out_file, keys=indices)
 
     res = load(out_file)
     if index_set is not None:
@@ -57,8 +76,7 @@ def infer_data_api(work_dir, model_name, dataset, index_set=None, api_nproc=4, i
 
 def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc=4):
     dataset_name = dataset.dataset_name
-    prev_file = f'{work_dir}/{model_name}_{dataset_name}_PREV.pkl'
-    res = load(prev_file) if osp.exists(prev_file) else {}
+    res = {}
     if osp.exists(out_file):
         res.update(load(out_file))
 
@@ -84,6 +102,7 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
     lt = len(data)
 
     model = supported_VLM[model_name]() if isinstance(model_name, str) else model_name
+    assert hasattr(model, 'chat_inner')
 
     is_api = getattr(model, 'is_api', False)
     if is_api:
@@ -113,7 +132,7 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
         else:
             struct = dataset.build_prompt(data.iloc[i])
 
-        response = model.generate(message=struct, dataset=dataset_name)
+        response = chat_mt(model, struct, dataset_name)
         torch.cuda.empty_cache()
 
         if verbose:
@@ -129,21 +148,10 @@ def infer_data(model_name, work_dir, dataset, out_file, verbose=False, api_nproc
 
 
 # A wrapper for infer_data, do the pre & post processing
-def infer_data_job(model, work_dir, model_name, dataset, verbose=False, api_nproc=4, ignore_failed=False):
+def infer_data_job_mt(model, work_dir, model_name, dataset, verbose=False, api_nproc=4, ignore_failed=False):
     rank, world_size = get_rank_and_world_size()
     dataset_name = dataset.dataset_name
-    result_file = osp.join(work_dir, f'{model_name}_{dataset_name}.xlsx')
-
-    prev_file = f'{work_dir}/{model_name}_{dataset_name}_PREV.pkl'
-    if osp.exists(result_file):
-        if rank == 0:
-            data = load(result_file)
-            results = {k: v for k, v in zip(data['index'], data['prediction'])}
-            if not ignore_failed:
-                results = {k: v for k, v in results.items() if FAIL_MSG not in str(v)}
-            dump(results, prev_file)
-        if world_size > 1:
-            dist.barrier()
+    result_file = osp.join(work_dir, f'{model_name}_{dataset_name}.tsv')
 
     tmpl = osp.join(work_dir, '{}' + f'{world_size}_{dataset_name}.pkl')
     out_file = tmpl.format(rank)
@@ -161,7 +169,8 @@ def infer_data_job(model, work_dir, model_name, dataset, verbose=False, api_npro
         data = dataset.data
         for x in data['index']:
             assert x in data_all
-        data['prediction'] = [str(data_all[x]) for x in data['index']]
+
+        data['prediction'] = [data_all[x] for x in data['index']]
         if 'image' in data:
             data.pop('image')
 

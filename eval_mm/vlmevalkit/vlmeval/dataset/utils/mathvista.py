@@ -1,7 +1,8 @@
-from vlmeval.evaluate.misc import build_judge
-from vlmeval.smp import *
-from vlmeval.utils import track_progress_rich
-from vlmeval.utils.matching_util import can_infer
+from ...smp import *
+from ...utils import can_infer
+
+
+FAIL_MSG = 'Failed to obtain answer via API.'
 
 
 def get_gpt4_ICE():
@@ -110,7 +111,8 @@ def MathVista_auxeval(model, line):
     for i in range(retry):
         prediction = line['prediction']
         res = model.generate(prompt, temperature=i * 0.5)
-        if res is None:
+
+        if FAIL_MSG in res:
             log += f'Try {i}: output is {prediction}, failed to parse.\n'
         else:
             log += 'Succeed'
@@ -160,81 +162,3 @@ def MathVista_acc(result_file):
         res['acc'].append(hit[k] / tot[k] * 100)
     res = pd.DataFrame(res)
     return res
-
-
-def MathVista_eval(eval_file, **judge_kwargs):
-    logger = get_logger('Evaluation')
-    model = judge_kwargs['model']
-
-    suffix = eval_file.split('.')[-1]
-    storage = eval_file.replace(f'.{suffix}', f'_{model}.xlsx')
-    tmp_file = eval_file.replace(f'.{suffix}', f'_{model}.pkl')
-    nproc = judge_kwargs.pop('nproc', 4)
-
-    if osp.exists(storage):
-        logger.warning(f'GPT scoring file {storage} already exists, will reuse it in MathVista_eval. ')
-    else:
-        data = load(eval_file)
-        model = build_judge(max_tokens=128, **judge_kwargs)
-        lt = len(data)
-        lines = [data.iloc[i] for i in range(lt)]
-        tups = [(model, line) for line in lines]
-        indices = [line['index'] for line in lines]
-
-        ans = {}
-        if osp.exists(tmp_file):
-            ans = load(tmp_file)
-        tups = [x for x, i in zip(tups, indices) if i not in ans]
-        indices = [i for i in indices if i not in ans]
-
-        if len(indices):
-            new_results = track_progress_rich(
-                MathVista_auxeval, tups, nproc=nproc, chunksize=nproc,
-                keys=indices, save=tmp_file)
-            ans = load(tmp_file)
-            for k, v in zip(indices, new_results):
-                assert k in ans
-                assert ans[k]['log'] == v['log'] and ans[k]['res'] == v['res']
-
-        log_map, res_map = {}, {}
-        all_inds = [line['index'] for line in lines]
-        for k in all_inds:
-            log_map[k] = ans[k]['log']
-            res_map[k] = ans[k]['res']
-        data['res'] = [res_map[idx] for idx in data['index']]
-        data['log'] = [log_map[idx] for idx in data['index']]
-        dump(data, storage)
-
-    score = MathVista_acc(storage)
-    score_pth = storage.replace('.xlsx', '_score.csv')
-
-    dump(score, score_pth)
-    logger.info(f'MathVista_eval successfully finished evaluating {eval_file}, results saved in {score_pth}')
-    logger.info('Score: ')
-    logger.info(score)
-
-
-def parse_args():
-    parser = argparse.ArgumentParser(description='Inference LLM Answers. ')
-    parser.add_argument('data', type=str, help='The question set for inference, in excel / tsv / json format. ')
-    parser.add_argument(
-        '--model',
-        type=str,
-        help='The LLM (GPT) used for inference. ',
-        default='gpt-4-turbo',
-        choices=['gpt-4-0613', 'gpt-4-turbo', 'chatgpt-1106', 'chatgpt-0613'])
-    parser.add_argument('--nproc', type=int, default=4)
-    parser.add_argument('--verbose', action='store_true')
-    args = parser.parse_args()
-    return args
-
-
-if __name__ == '__main__':
-    load_env()
-    args = parse_args()
-    judge_kwargs = dict(model=args.model, nproc=args.nproc, verbose=args.verbose)
-    if 'OPENAI_API_KEY_JUDGE' in os.environ and os.environ['OPENAI_API_KEY_JUDGE']:
-        judge_kwargs['key'] = os.environ['OPENAI_API_KEY_JUDGE']
-    if 'OPENAI_API_BASE_JUDGE' in os.environ and os.environ['OPENAI_API_BASE_JUDGE']:
-        judge_kwargs['api_base'] = os.environ['OPENAI_API_BASE_JUDGE']
-    MathVista_eval(eval_file=args.data, **judge_kwargs)
