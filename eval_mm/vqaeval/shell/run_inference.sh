@@ -6,7 +6,7 @@ python -m torch.distributed.launch \
     --master_addr=${MASTER_ADDR:-127.0.0.1} \
     --master_port=${MASTER_PORT:-12345} \
     ./eval.py \
-    --model_name minicpm \
+    --model_name minicpmv26 \
     --model_path \
     --generate_method interleave \
     --eval_textVQA \

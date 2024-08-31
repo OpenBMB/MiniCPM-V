@@ -1,4 +1,4 @@
-from vlmeval.smp import *
+from ...smp import *
 
 
 def OCRBench_eval(eval_file):

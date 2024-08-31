@@ -145,7 +145,7 @@ def track_progress_rich(func: Callable,
             results = []
             for task in tasks:
                 result, idx = worker(task)
-                results.append(worker(task)[0])
+                results.append(result)
                 if save is not None:
                     with portalocker.Lock(save, timeout=5) as fh:
                         ans = load(save)
