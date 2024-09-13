@@ -53,7 +53,9 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --save_strategy "steps" \
     --save_steps 1000 \
     --save_total_limit 10 \
-    --learning_rate 1e-6 \
+    --learning_rate 1e-5 \
+    --vision_lr 2e-6 \
+    --resampler_lr 2e-6 \
     --weight_decay 0.1 \
     --adam_beta2 0.95 \
     --warmup_ratio 0.01 \

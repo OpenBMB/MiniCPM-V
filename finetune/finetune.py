@@ -53,6 +53,8 @@ class TrainingArguments(transformers.TrainingArguments):
     llm_type: str = field(default="minicpm")
     use_lora: Optional[bool] = field(default=False)
     max_slice_nums: Optional[int] = field(default=9)
+    vision_lr: Optional[float] = None
+    resampler_lr: Optional[float] = None
 
 
 @dataclass
@@ -74,12 +76,25 @@ def rank0_print(*args):
     if local_rank == 0:
         print(*args)
 
-
-def safe_save_model_for_hf_trainer(trainer, output_dir: str, bias="none"):
+def safe_save_model_for_hf_trainer(trainer: transformers.Trainer,
+                                   output_dir: str):
     """Collects the state dict and dump to disk."""
-    if trainer.args.should_save and trainer.args.local_rank == 0:
-        trainer.save_model(output_dir,)
 
+    if trainer.deepspeed:
+        trainer.accelerator.wait_for_everyone()
+        torch.cuda.synchronize()
+        trainer.save_model(output_dir)
+        return
+
+    state_dict = trainer.model.state_dict()
+    if trainer.args.should_save:
+        cpu_state_dict = {
+            key: value.cpu()
+            for key, value in state_dict.items()
+        }
+        del state_dict
+        trainer._save(output_dir, state_dict=cpu_state_dict)  # noqa
+        trainer.model.config.save_pretrained(output_dir)
 
 def make_supervised_data_module(
     tokenizer: transformers.PreTrainedTokenizer,
@@ -202,6 +217,7 @@ def train():
         trust_remote_code=True,
         torch_dtype=compute_dtype,
         device_map=device_map,
+        attn_implementation="flash_attention_2"
     )
 
     tokenizer = AutoTokenizer.from_pretrained(
@@ -250,7 +266,6 @@ def train():
     
     rank0_print(f'llm_type={llm_type}')
 
-    
     # Load data
     if hasattr(model.config, "slice_config"):
         model.config.slice_config.max_slice_nums = training_args.max_slice_nums
@@ -291,8 +306,7 @@ def train():
 
     safe_save_model_for_hf_trainer(
         trainer=trainer,
-        output_dir=training_args.output_dir,
-        bias=lora_args.lora_bias)
+        output_dir=training_args.output_dir)
 
 
 if __name__ == "__main__":

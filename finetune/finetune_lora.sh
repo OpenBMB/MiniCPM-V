@@ -41,7 +41,9 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --tune_vision true \
     --tune_llm false \
     --use_lora true \
-    --lora_target_modules "llm\..*layers\.\d+\.self_attn\.(q_proj|k_proj|v_proj|o_proj)" \
+    --lora_r 64 \
+    --lora_alpha 128 \
+    --lora_target_modules "llm\..*layers\.\d+\.(self_attn|mlp)\.(q_proj|k_proj|v_proj|o_proj|gate_proj|up_proj|down_proj)" \
     --model_max_length $MODEL_MAX_Length \
     --max_slice_nums 9 \
     --max_steps 10000 \
@@ -56,7 +58,9 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --save_strategy "steps" \
     --save_steps 1000 \
     --save_total_limit 10 \
-    --learning_rate 1e-6 \
+    --learning_rate 1e-4 \
+    --vision_lr 2e-6 \
+    --resampler_lr 2e-6 \
     --weight_decay 0.1 \
     --adam_beta2 0.95 \
     --warmup_ratio 0.01 \
