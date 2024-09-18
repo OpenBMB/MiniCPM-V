@@ -5,7 +5,8 @@
 **A GPT-4V Level MLLM for Single Image, Multi Image and Video on Your Phone**
 
   <strong>[中文](./README_zh.md) |
-  English</strong>
+  English |
+  [日本語](./README_ja.md)</strong>
 
 Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> | View  MiniCPM-V <a href="docs/best_practice_summary.md" target="_blank"> 📖 best practices</a>
 
