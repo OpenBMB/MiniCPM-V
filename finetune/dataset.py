@@ -380,7 +380,7 @@ def preprocess(
             )
         else:
             conversations[0]["content"] = (
-                image_placeholder + "\n" + conversation[0]["content"]
+                image_placeholder + "\n" + conversations[0]["content"]
             )
         input_dict = conversation_to_ids(conversations, tokenizer, llm_type, new_schema, max_length)
     else:
