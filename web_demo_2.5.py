@@ -150,6 +150,8 @@ def chat(img, msgs, ctx, params=None, vision_hidden_states=None):
         res = res.replace('</ref>', '')
         res = res.replace('<box>', '')
         answer = res.replace('</box>', '')
+        if device == "cuda":
+            torch.cuda.empty_cache()
         return 0, answer, None, None
     except Exception as err:
         print(err)
