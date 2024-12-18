@@ -28,7 +28,7 @@ Join our <a href="docs/wechat.md" target="_blank"> 💬 WeChat</a> | View  MiniC
 ## News <!-- omit in toc -->
 
 #### 📌 Pinned
-
+* [2024.11.21] 🚀🚀🚀 [MiniCPM-V 2.6](https://github.com/PaddlePaddle/PaddleMIX/tree/develop/paddlemix/examples/minicpm-v-2_6)  is supported in  [PaddleMIX](https://github.com/PaddlePaddle/PaddleMIX) by Paddle Team.
 * [2024.08.17] 🚀🚀🚀 MiniCPM-V 2.6 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf).
 * [2024.08.15] We now also support multi-image SFT. For more details, please refer to the [document](https://github.com/OpenBMB/MiniCPM-V/tree/main/finetune).
 * [2024.08.14] MiniCPM-V 2.6 now also supports [fine-tuning](https://github.com/modelscope/ms-swift/issues/1613) with the SWIFT framework!
