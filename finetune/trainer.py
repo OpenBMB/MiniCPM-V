@@ -170,7 +170,7 @@ class CPMTrainer(Trainer):
 
         return (loss, logits, labels)
         
-    def training_step(self, model: nn.Module, inputs: Dict[str, Union[torch.Tensor, Any]]) -> torch.Tensor:
+    def training_step(self, model: nn.Module, inputs: Dict[str, Union[torch.Tensor, Any]], num_items_in_batch: int=None) -> torch.Tensor:
         """
         Perform a training step on a batch of inputs.
 
@@ -245,6 +245,9 @@ class CPMTrainer(Trainer):
 
         if self.tokenizer is not None:
             self.tokenizer.save_pretrained(output_dir)
+            
+        if getattr(self.model, "processor") is not None:
+            self.model.processor.save_pretrained(output_dir)
 
         # Good practice: save your training arguments together with the trained model
         torch.save(self.args, os.path.join(output_dir, TRAINING_ARGS_NAME))

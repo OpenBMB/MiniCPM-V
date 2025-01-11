@@ -20,30 +20,30 @@ If your input consists of a single image, you can use a single placeholder **\<i
   [
     {
       "id": "0",
-      "image": 'path/to/image_0.jpg',
+      "image": "path/to/image_0.jpg",
       "conversations": [
             {
-              'role': 'user', 
-              'content': '<image>\nHow many desserts are on the white plate?'
+              "role": "user", 
+              "content": "<image>\nHow many desserts are on the white plate?"
             }, 
             {
-                'role': 'assistant', 
-                'content': 'There are three desserts on the white plate.'
+                "role": "assistant", 
+                "content": "There are three desserts on the white plate."
             },   
             {
-                'role': 'user', 
-                'content': 'What type of desserts are they?'
+                "role": "user", 
+                "content": "What type of desserts are they?"
             },
             {
-                'role': 'assistant', 
-                'content': 'The desserts are cakes with bananas and pecans on top. They share similarities with donuts, but the presence of bananas and pecans differentiates them.'
+                "role": "assistant", 
+                "content": "The desserts are cakes with bananas and pecans on top. They share similarities with donuts, but the presence of bananas and pecans differentiates them."
             }, 
             {
-                'role': 'user', 
-                'content': 'What is the setting of the image?'}, 
+                "role": "user", 
+                "content": "What is the setting of the image?"}, 
             {
-                'role': 'assistant', 
-                'content': 'The image is set on a table top with a plate containing the three desserts.'
+                "role": "assistant", 
+                "content": "The image is set on a table top with a plate containing the three desserts."
             },
         ]
     },
@@ -90,6 +90,72 @@ If the total token count exceeds `max_length`, truncation will be applied. For m
   ]
 ```
 </details>
+
+#### Single Video Example
+If your input consists of a single video, you can use a single placeholder **\<video\>** to indicate where the video should be inserted in the conversation.
+<details>
+  <summary>
+    <b>Single video example (vl_finetune_video.json) with 1 samples.</b>
+  </summary>
+
+```
+  [
+    {
+      "id": "0",
+      "video": "path/to/video_0.mp4",
+      "conversations": [
+            {
+              "role": "user", 
+              "content": "<video>\nHow many desserts are on the white plate?"
+            }, 
+            {
+                "role": "assistant", 
+                "content": "There are three desserts on the white plate."
+            }
+        ]
+    }
+  ]
+```
+
+</details>
+
+#### Multiple Videos Example
+For inputs containing multiple videos, utilize a dictionary where each key represents a unique placeholder (e.g., **\<video_00\>**, **\<video_01\**) with the corresponding video path as its value. These placeholders can then be used within the conversation to seamlessly insert videos at specific positions.
+
+Additionally, to optimize resource management, especially when dealing with large batches of videos during training or inference, consider reducing `video_max_slice_nums` and `max_num_frames`. To minimize the number of tokens used per video, you can set `video_max_slice_nums=1` and `max_num_frames=1`, resulting in a single video being represented by 64 tokens.
+
+If the total token count exceeds `max_length`, truncation will be applied. For multi-video supervised fine-tuning (SFT), it's recommended to set `MODEL_MAX_LENGTH=4096` in your script for better performance.
+
+<details>
+  <summary>
+    <b>Multiple videos example (vl_finetune_data.json) with 1 samples.</b>
+  </summary>
+
+```
+  [
+    {
+      "id": "0",
+      "video": {
+        "<video_00>": "path/to/video_0.mp4",
+        "<video_01>": "path/to/video_1.avi",
+        "<video_02>": "path/to/video_2.mp4",
+        "<video_03>": "path/to/video_3.avi"
+      },
+      "conversations": [
+        {
+          "role": "user", 
+          "content": "How to create such text-only videos using CapCut?\n<video_00>\n<image_01>\n<video_01>\n<video_02>\n"
+        }, 
+        {
+          "role": "assistant", 
+          "content": "To create a text-only video as shown in the videos, follow these steps in CapCut..."
+        }
+      ]
+    }
+  ]
+```
+</details>
+
 
 ### Full-parameter finetuning
 
