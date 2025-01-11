@@ -246,7 +246,7 @@ class CPMTrainer(Trainer):
         if self.tokenizer is not None:
             self.tokenizer.save_pretrained(output_dir)
             
-        if getattr(self.model, "processor") is not None:
+        if self.model.processor is not None:
             self.model.processor.save_pretrained(output_dir)
 
         # Good practice: save your training arguments together with the trained model
