@@ -1613,6 +1613,12 @@ We support simple fine-tuning with Hugging Face for MiniCPM-V 2.0 and MiniCPM-Ll
 
 [Reference Document](./finetune/readme.md)
 
+### With LLaMA-Factory <!-- omit in toc -->
+
+We support fine-tuning with the LLaMA-Factory framework. LLaMA-Factory provides a solution for flexibly customizing the fine-tuning (Lora/Full/Qlora) of 200+ LLMs without the need for coding through the built-in web UI LLaMABoard. It supports various training methods like sft/ppo/dpo/kto and advanced algorithms like Galore/BAdam/LLaMA-Pro/Pissa/LongLoRA.
+
+Best Practices: [MiniCPM-V-2.6/MiniCPM-o-2.6](https://github.com/openbmb/MiniCPM-V/blob/main/docs/llamafactory_train.md). 
+
 ### With the SWIFT Framework <!-- omit in toc -->
 
 We now support MiniCPM-V series fine-tuning with the SWIFT framework. SWIFT supports training, inference, evaluation and deployment of nearly 200 LLMs and MLLMs . It supports the lightweight training solutions provided by PEFT and a complete Adapters Library including techniques such as NEFTune, LoRA+ and LLaMA-PRO.

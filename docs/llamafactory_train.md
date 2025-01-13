@@ -1,5 +1,9 @@
 # Best Practice with LLaMA-Factory
 
+**Support Models**:
+* [openbmb/MiniCPM-V-2_6](https://huggingface.co/openbmb/MiniCPM-V-2_6)
+* [openbmb/MiniCPM-o-2_6](https://huggingface.co/openbmb/MiniCPM-o-2_6)
+
 ## 0.LLaMA-Factory Installation
 
 You can install LLaMA-Factory using commands below.
@@ -7,7 +11,7 @@ You can install LLaMA-Factory using commands below.
 ```
 git clone --depth 1 https://github.com/hiyouga/LLaMA-Factory.git
 cd LLaMA-Factory
-pip install -e ".[torch,metrics,deepspeed,cpm_o]"
+pip install -e ".[torch,metrics,deepspeed,minicpm_v]"
 mkdir configs # let's put all yaml files here 
 ```
 
@@ -178,7 +182,7 @@ llamafactory-cli train configs/minicpmo_2_6_lora_sft.yaml
 
 ```yaml
 ### model
-model_name_or_path: openbmb/MiniCPM-O-2_6
+model_name_or_path: openbmb/MiniCPM-o-2_6 # MiniCPM-o-2_6 MiniCPM-V-2_6
 trust_remote_code: true
 
 ### method
@@ -189,7 +193,7 @@ lora_target: q_proj,v_proj
 
 ### dataset
 dataset: mllm_demo # mllm_demo mllm_video_demo
-template: cpm_v
+template: minicpm_v
 cutoff_len: 3072
 max_samples: 1000
 overwrite_cache: true
@@ -235,9 +239,9 @@ llamafactory-cli export configs/minicpmo_2_6_lora_export.yaml
 
 ```yaml
 ### model
-model_name_or_path: openbmb/MiniCPM-O-2_6
+model_name_or_path: openbmb/MiniCPM-o-2_6 # MiniCPM-o-2_6 MiniCPM-V-2_6
 adapter_name_or_path: saves/minicpmo_2_6/lora/sft
-template: qwen2_vl
+template: minicpm_v
 finetuning_type: lora
 trust_remote_code: true
 
@@ -265,7 +269,7 @@ llamafactory-cli train configs/minicpmo_2_6_full_sft.yaml
 
 ```yaml
 ### model
-model_name_or_path: openbmb/MiniCPM-O-2_6
+model_name_or_path: openbmb/MiniCPM-o-2_6 # MiniCPM-o-2_6 MiniCPM-V-2_6
 trust_remote_code: true
 freeze_vision_tower: true
 print_param_status: true
@@ -279,7 +283,7 @@ deepspeed: configs/deepspeed/ds_z2_config.json
 
 ### dataset
 dataset: mllm_demo # mllm_demo mllm_video_demo
-template: cpm_v
+template: minicpm_v
 cutoff_len: 3072
 max_samples: 1000
 overwrite_cache: true
