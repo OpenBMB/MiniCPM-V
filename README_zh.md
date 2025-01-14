@@ -533,7 +533,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>63.3/69.0</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">InternVL-2.5-8B</td>
+            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
             <td>8B</td>
             <td>54.8</td>
             <td>67.7</td>
