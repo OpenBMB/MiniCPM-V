@@ -1,10 +1,19 @@
 # Best Practice with LLaMA-Factory
 
-**Support Models**:
+## Contents <!-- omit in toc -->
+
+- [Support Models](#Support-Models)
+- [LLaMA-Factory Installation](#LLaMA-Factory-Installation)
+- [Dataset Prepare](#Dataset-Prepare)
+- [Lora Fine-Tuning](#Lora-Fine-Tuning)
+- [Full Parameters Fine-Tuning](#Full-Parameters-Fine-Tuning)
+- [Inference](#Inference)
+
+## Support Models
 * [openbmb/MiniCPM-V-2_6](https://huggingface.co/openbmb/MiniCPM-V-2_6)
 * [openbmb/MiniCPM-o-2_6](https://huggingface.co/openbmb/MiniCPM-o-2_6)
 
-## 0.LLaMA-Factory Installation
+## LLaMA-Factory Installation
 
 You can install LLaMA-Factory using commands below.
 
@@ -15,7 +24,7 @@ pip install -e ".[torch,metrics,deepspeed,minicpm_v]"
 mkdir configs # let's put all yaml files here 
 ```
 
-## 1.Dataset Prepare
+## Dataset Prepare
 
 Refer to [data/dataset_info.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/dataset_info.json) to add your customised dataset. Let's use the two existing demo datasets `mllm_demo` and `mllm_video_demo` as examples.
 
@@ -167,12 +176,12 @@ Refer to video sft demo data: [data/mllm_video_demo.json](https://github.com/hiy
 </details>
 
 
-## 2.Lora Fine-Tuning
+## Lora Fine-Tuning
 
 We can use one command to do lora sft:
 
 ```shell
-llamafactory-cli train configs/minicpmo_2_6_lora_sft.yaml
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli train configs/minicpmo_2_6_lora_sft.yaml
 ```
 
 <details>
@@ -254,7 +263,7 @@ export_legacy_format: false
 
 </details>
 
-## 3.Full Parameters Fine-Tuning
+## Full Parameters Fine-Tuning
 
 We can use one command to do full sft:
 
@@ -313,10 +322,39 @@ do_eval: false
 ```
 </details>
 
-## 4.Inference
+## Inference
 
-For now, we recommend using official code to inference:
+### Web UI ChatBox
 
+Refer [LLaMA-Factory doc](https://github.com/hiyouga/LLaMA-Factory/tree/main/examples#inferring-lora-fine-tuned-models) for more inference usages.
+
+For example, we can use one command to run web chat:
+
+```shell
+CUDA_VISIBLE_DEVICES=0 llamafactory-cli webchat configs/minicpmo_2_6_infer.yaml
+```
+
+<details>
+  <summary>
+    <b>configs/minicpmo_2_6_infer.yaml</b>
+  </summary>
+
+```yaml
+model_name_or_path: saves/minicpmo_2_6/full/sft
+template: minicpm_v
+infer_backend: huggingface
+trust_remote_code: true
+```
+</details>
+
+### Official Code
+You can also use official code to inference
+
+<details>
+  <summary>
+    <b>official inference code</b>
+  </summary>
+  
 ```python
 # test.py
 import torch
@@ -340,3 +378,5 @@ res = model.chat(
 )
 print(res)
 ```
+
+</details>

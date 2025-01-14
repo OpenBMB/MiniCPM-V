@@ -1643,7 +1643,7 @@ print(outputs[0].outputs[0].text)
 
 我们支持使用 LLaMA-Factory 微调 MiniCPM-V-2.6。LLaMA-Factory 提供了一种灵活定制 200 多个大型语言模型（LLM）微调（Lora/Full/Qlora）解决方案，无需编写代码，通过内置的 Web 用户界面 LLaMABoard 即可实现训练/推理/评估。它支持多种训练方法，如 sft/ppo/dpo/kto，并且还支持如 Galore/BAdam/LLaMA-Pro/Pissa/LongLoRA 等高级算法。
 
-最佳实践: [MiniCPM-V-2.6/MiniCPM-o-2.6](https://github.com/openbmb/MiniCPM-V/blob/main/docs/llamafactory_train.md). 
+最佳实践: [MiniCPM-V-2.6/MiniCPM-o-2.6](https://github.com/openbmb/MiniCPM-V/blob/main/docs/llamafactory_train_and_infer.md). 
 
 ### 使用 SWIFT 框架 <!-- omit in toc -->
 
