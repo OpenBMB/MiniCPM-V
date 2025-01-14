@@ -1,0 +1,7 @@
+:root {
+    --layout-sidebar-width: 56px;
+    --layout-sidebar-left-space: 8px;
+    --layout-main-padding: 8px;
+    --layout-main-minWidth: calc(var(--layout-content-width) + var(--layout-main-padding) * 2);
+    --layout-content-width: 780px;
+}

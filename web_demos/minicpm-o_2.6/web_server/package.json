@@ -1,0 +1,45 @@
+{
+    "name": "web",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+        "format": "prettier --write src/",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "^2.3.1",
+        "@microsoft/fetch-event-source": "^2.0.1",
+        "@ricky0123/vad-web": "^0.0.22",
+        "@vueuse/core": "^11.0.3",
+        "axios": "^1.7.7",
+        "clipboard": "^2.0.11",
+        "el-table-infinite-scroll": "^3.0.6",
+        "element-plus": "^2.8.1",
+        "pinia": "^2.1.7",
+        "unplugin-icons": "^0.19.3",
+        "vue": "^3.4.29",
+        "vue-i18n": "^11.0.1",
+        "vue-router": "^4.3.3"
+    },
+    "devDependencies": {
+        "@iconify-json/fluent": "^1.2.1",
+        "@iconify-json/material-symbols": "^1.2.1",
+        "@rushstack/eslint-patch": "^1.8.0",
+        "@vitejs/plugin-vue": "^5.0.5",
+        "@vue/eslint-config-prettier": "^9.0.0",
+        "eslint": "^8.57.0",
+        "eslint-plugin-vue": "^9.23.0",
+        "husky": "^9.1.5",
+        "less": "^4.2.0",
+        "prettier": "^3.2.5",
+        "unplugin-auto-import": "^0.18.2",
+        "unplugin-vue-components": "^0.27.4",
+        "vite": "^5.3.1",
+        "vite-plugin-vue-devtools": "^7.3.1"
+    }
+}

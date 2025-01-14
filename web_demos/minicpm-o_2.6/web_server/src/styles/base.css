@@ -1,0 +1,56 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: #e0e4ee;
+    border-radius: 4px;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        Segoe UI,
+        SF Pro SC,
+        SF Pro Display,
+        SF Pro Icons,
+        PingFang SC,
+        Hiragino Sans GB,
+        Microsoft YaHei,
+        Helvetica Neue,
+        Helvetica,
+        Arial,
+        sans-serif !important;
+    background: #f3f3f3;
+    transition:
+        color 0.5s,
+        background-color 0.5s;
+    line-height: 1.3;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--el-text-color-regular);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    padding: 16px 4vw;
+}
