@@ -1799,14 +1799,20 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 
 您可以使用以下命令轻松构建自己的本地 WebUI Demo。
 
+1. 启动model server:
 ```shell
-pip install -r requirements.txt
+pip install -r requirements_o2.6.txt
+
+python web_demos/minicpm-o_2.6/model_server.py
 ```
 
+2. 启动web server:
 ```shell
-# 对于 NVIDIA GPU，请运行：
-python web_demo_2.6.py --device cuda
+# Make sure Node and PNPM is installed.
+cd web_demos/minicpm-o_2.6/web_server
+pnpm install  # install requirements
 
+pnpm run dev  # start server
 ```
 
 
@@ -1816,21 +1822,21 @@ python web_demo_2.6.py --device cuda
 1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
-git clone https://github.com/OpenBMB/MiniCPM-V.git
-cd MiniCPM-V
+git clone https://github.com/OpenBMB/MiniCPM-o.git
+cd MiniCPM-o
 ```
 
 1. 创建 conda 环境
 
 ```Shell
-conda create -n MiniCPMV python=3.10 -y
-conda activate MiniCPMV
+conda create -n MiniCPMo python=3.10 -y
+conda activate MiniCPMo
 ```
 
 3. 安装依赖
 
 ```shell
-pip install -r requirements.txt
+pip install -r requirements_o2.6.txt
 ```
 
 ## 推理
