@@ -1,0 +1,30 @@
+@import './base.css';
+@import './variable.css';
+
+.layout-root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-main {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--layout-main-padding);
+}
+
+.layout-footer {
+    width: 100%;
+    max-width: var(--layout-content-width);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    padding: 0 var(--layout-main-padding);
+    margin: auto;
+}
+
+:focus-visible {
+    outline: none;
+}

@@ -1,0 +1,18 @@
+Pillow==10.1.0
+torch==2.2.0
+torchaudio==2.2.0
+torchvision==0.17.0
+transformers==4.44.2
+sentencepiece==0.2.0
+vector-quantize-pytorch==1.18.5
+vocos==0.1.0
+accelerate==1.2.1
+timm==0.9.10
+soundfile==0.12.1
+librosa==0.9.0
+decord
+moviepy
+
+# for web
+fastapi
+uvicorn

@@ -1,0 +1,79 @@
+@import url('./variable.less');
+
+.el-message {
+    box-shadow: 0px 4px 13px 2px rgba(75, 79, 88, 0.11);
+    border: none;
+    border-radius: 8px;
+    top: 60px !important;
+    &--success,
+    &--error {
+        .el-message__content {
+            color: rgb(10, 10, 10);
+            font-size: 14px;
+        }
+    }
+    .el-message-icon--error {
+        color: var(--el-color-danger);
+        font-size: 16px;
+    }
+    .el-message-icon--success {
+        color: var(--el-color-success);
+        font-size: 16px;
+    }
+}
+.el-message.time-warning,
+.el-message.system-error {
+    width: calc(100vw - 200px);
+    padding: 16px 12px;
+    border-radius: 12px;
+}
+.el-message.el-message--warning.time-warning {
+    border: 1px solid #f9ac2a;
+    background: #fef7ea;
+    .el-icon {
+        display: none;
+    }
+    .el-message__content {
+        color: #2f333e;
+        font-family: PingFang SC;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding-left: 28px;
+        position: relative;
+    }
+    .el-message__content::before {
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: url('@/assets/svg/warning.svg') no-repeat;
+        left: 0;
+    }
+}
+.el-message.el-message--error.system-error {
+    border: 1px solid #e72b00;
+    background: #ffebe7;
+    .el-icon {
+        display: none;
+    }
+    .el-message__content {
+        color: #2f333e;
+        font-family: PingFang SC;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        padding-left: 28px;
+        position: relative;
+    }
+    .el-message__content::before {
+        position: absolute;
+        content: '';
+        width: 20px;
+        height: 20px;
+        background: url('@/assets/svg/error.svg') no-repeat;
+        left: 0;
+    }
+}

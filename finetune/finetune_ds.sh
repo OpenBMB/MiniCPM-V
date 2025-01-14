@@ -5,14 +5,17 @@ NNODES=1
 NODE_RANK=0
 MASTER_ADDR=localhost
 MASTER_PORT=6001
-
-MODEL="openbmb/MiniCPM-V-2_6"
-# or openbmb/MiniCPM-V-2, openbmb/MiniCPM-Llama3-V-2_5
+ 
+MODEL="openbmb/MiniCPM-o-2_6"
+# or openbmb/MiniCPM-V-2, openbmb/MiniCPM-Llama3-V-2_5, openbmb/MiniCPM-V-2_6
 # ATTENTION: specify the path to your training data, which should be a json file consisting of a list of conversations.
 # See the section for finetuning in README for more information.
 DATA="path/to/trainging_data"
 EVAL_DATA="path/to/test_data"
-LLM_TYPE="qwen2" # if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm, if use openbmb/MiniCPM-Llama3-V-2_5, please set LLM_TYPE="llama3"
+
+# if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm, if use openbmb/MiniCPM-Llama3-V-2_5, please set LLM_TYPE="llama3",
+# if use openbmb/MiniCPM-o-2_6 or openbmb/MiniCPM-V-2_6, please set LLM_TYPE=qwen
+LLM_TYPE="qwen" 
 MODEL_MAX_Length=2048 # if conduct multi-images sft, please set MODEL_MAX_Length=4096
 
 
@@ -38,7 +41,7 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --do_train \
     --do_eval \
     --tune_vision true \
-    --tune_llm true \
+    --tune_llm false \
     --model_max_length $MODEL_MAX_Length \
     --max_slice_nums 9 \
     --max_steps 10000 \
@@ -60,5 +63,5 @@ torchrun $DISTRIBUTED_ARGS finetune.py  \
     --lr_scheduler_type "cosine" \
     --logging_steps 1 \
     --gradient_checkpointing true \
-    --deepspeed ds_config_zero2.json \
+    --deepspeed ds_config_zero3.json \
     --report_to "tensorboard" 

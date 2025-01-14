@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "---format start---"
+pnpm run format
+echo "---format end---"
+
+echo "---eslint start---"
+pnpm run lint
+echo "---eslint end---"

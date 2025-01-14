@@ -1,0 +1,51 @@
+:root {
+    --el-component-size-large: 48px;
+    --el-component-size: 40px;
+    --el-color-primary: #7661ff;
+    --el-color-danger: #de0000;
+    --el-color-warning: #ff7d00;
+    --el-color-success: #00b42a;
+    --el-text-color-regular: #0a0a0a;
+}
+.el-button {
+    --el-button-height: var(--el-component-size);
+    height: var(--el-button-height);
+    &--large {
+        --el-button-height: var(--el-component-size-large);
+        height: var(--el-button-height);
+    }
+    &--primary {
+        --el-button-bg-color: #7661ff;
+        --el-button-text-color: var(--el-color-white);
+        --el-button-border-color: #7661ff;
+        --el-button-hover-bg-color: rgb(159, 144, 255);
+        --el-button-hover-text-color: var(--el-color-white);
+        --el-button-hover-border-color: rgb(159, 144, 255);
+        --el-button-active-bg-color: rgb(98, 82, 208);
+        --el-button-active-border-color: rgb(98, 82, 208);
+        --el-button-disabled-bg-color: #d4cdff;
+        --el-button-disabled-border-color: #d4cdff;
+    }
+}
+.el-checkbox {
+    --el-checkbox-border-radius: 4px;
+    --el-checkbox-input-border: 1px solid rgb(188, 188, 188);
+    --el-checkbox-input-border-color-hover: rgb(61, 92, 255);
+    --el-checkbox-checked-bg-color: rgb(61, 92, 255);
+    --el-checkbox-checked-input-border-color: rgb(61, 92, 255);
+}
+.el-dialog {
+    &__header {
+        padding-bottom: 20px;
+    }
+    &__title {
+        --el-text-color-primary: rgb(10, 10, 10);
+        --el-dialog-title-font-size: 18px;
+        --el-dialog-font-line-height: 20px;
+    }
+}
+.el-message {
+    --el-message-padding: 11px 20px;
+    --el-message-bg-color: rgb(255, 255, 255);
+    --el-message-text-color: #de0000;
+}
