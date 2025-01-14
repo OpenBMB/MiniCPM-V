@@ -54,7 +54,7 @@ app = FastAPI()
 logger = setup_logger()
 
 ap = argparse.ArgumentParser()
-ap.add_argument('--port', type=int , default=8088)
+ap.add_argument('--port', type=int , default=32550)
 args = ap.parse_args()
 
 
@@ -523,13 +523,13 @@ class StreamManager:
                         for r in self.minicpmo_model.streaming_generate(
                             session_id=str(self.session_id),
                             tokenizer=self.minicpmo_tokenizer,
-                            use_tts=True,
+                            generate_audio=True,
                             # enable_regenerate=True,
                         ):
                             if self.stop_response:
                                 self.generate_end()
                                 return
-                            audio_np, sr, text = r
+                            audio_np, sr, text = r["audio_wav"], r["sampling_rate"], r["text"]
 
                             output_audio_path = self.savedir + f'/output_audio_log/output_audio_{self.output_audio_id}.wav'
                             self.output_audio_id += 1
