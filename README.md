@@ -1012,6 +1012,8 @@ We deploy MiniCPM-o 2.6 on end devices. The demo video is the raw-speed recordin
   <a href="https://youtu.be/JFJg9KZ_iZk"><img src="./assets/o-2dot6-demo-video-preview.png", width=70%></a>
 </div>
 
+<br>
+
 <div style="display: flex; flex-direction: column; align-items: center;">
   <img src="assets/minicpmo2_6/minicpmo2_6_math_intersect.png" alt="math" style="margin-bottom: 5px;">
   <img src="assets/minicpmo2_6/minicpmo2_6_diagram_train_NN.png" alt="diagram" style="margin-bottom: 5px;">
