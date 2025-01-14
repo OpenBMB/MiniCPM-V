@@ -149,7 +149,7 @@ MiniCPM-o 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
 ### Evaluation  <!-- omit in toc -->
 
 <div align="center">
-  <img src="./assets/radar.jpg", width=70%>
+  <img src="./assets/radar.jpg", width=90%>
 </div>
 
 <details>

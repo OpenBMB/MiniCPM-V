@@ -142,7 +142,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 ### 性能评估  <!-- omit in toc -->
 
 <div align="center">
-  <img src="./assets/radar.jpg", width=70%>
+  <img src="./assets/radar.jpg", width=90%>
 </div>
 
 <details>
