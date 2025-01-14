@@ -1048,7 +1048,7 @@ MiniCPM-V 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
 
 ### Evaluation  <!-- omit in toc -->
 <div align="center">
-    <img src=assets/radar_final.png width=80% />
+    <img src=assets/radar_final.png width=90% />
 </div>
 
 <details>
