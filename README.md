@@ -543,7 +543,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td>63.3/69.0</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">InternVL-2.5-8B</td>
+            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
             <td>8B</td>
             <td>54.8</td>
             <td>67.7</td>
