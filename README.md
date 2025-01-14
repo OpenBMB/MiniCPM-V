@@ -228,7 +228,7 @@ MiniCPM-o 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
             <td>3.4</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
+            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
             <td>-</td>
             <td>-</td>
             <td>64.4</td>
@@ -399,7 +399,7 @@ MiniCPM-o 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
             <td>3.5</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">InternVL-2.5-8B</td>
+            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
             <td>8B</td>
             <td>706</td>
             <td>68.3</td>
@@ -481,8 +481,8 @@ Note: For proprietary models, we calculate token density based on the image enco
         <tr>
             <th align="left">Model</th>
             <th>Size</th>
-            <th>BLINK-val</th>
-            <th>Mantis-Eval</th>
+            <th>BLINK val</th>
+            <th>Mantis Eval</th>
             <th>MIRB</th>
             <th>Video-MME (wo / w subs)</th>
         </tr>
@@ -631,7 +631,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td>33.2*</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
+            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
             <td>-</td>
             <td>4.5*</td>
             <td>5.9*</td>
