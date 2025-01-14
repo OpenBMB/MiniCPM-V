@@ -221,7 +221,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>3.4</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
+            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
             <td>-</td>
             <td>-</td>
             <td>64.4</td>
@@ -392,7 +392,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>3.5</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">InternVL-2.5-8B</td>
+            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
             <td>8B</td>
             <td>706</td>
             <td>68.3</td>
@@ -471,8 +471,8 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
         <tr>
             <th align="left">Model</th>
             <th>Size</th>
-            <th>BLINK-val</th>
-            <th>Mantis-Eval</th>
+            <th>BLINK val</th>
+            <th>Mantis Eval</th>
             <th>MIRB</th>
             <th>Video-MME (wo / w subs)</th>
         </tr>
@@ -621,7 +621,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>33.2*</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
+            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
             <td>-</td>
             <td>4.5*</td>
             <td>5.9*</td>
