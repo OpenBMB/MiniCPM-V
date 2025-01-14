@@ -1836,15 +1836,15 @@ pnpm run dev  # start server
 1. Clone this repository and navigate to the source folder
 
 ```bash
-git clone https://github.com/OpenBMB/MiniCPM-V.git
+git clone https://github.com/OpenBMB/MiniCPM-o.git
 cd MiniCPM-V
 ```
 
 2. Create conda environment
 
 ```Shell
-conda create -n MiniCPM-V python=3.10 -y
-conda activate MiniCPM-V
+conda create -n MiniCPM-o python=3.10 -y
+conda activate MiniCPM-o
 ```
 
 3. Install dependencies
