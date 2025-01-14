@@ -520,7 +520,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td>-</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">LLaVA-One-Vision-72B</td>
+            <td nowrap="nowrap" align="left">LLaVA-OneVision-72B</td>
             <td>72B</td>
             <td>55.4</td>
             <td><strong>77.6</strong></td>
