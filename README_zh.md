@@ -1797,7 +1797,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 
 ### 本地 WebUI Demo <!-- omit in toc --> 
 
-您可以使用以下命令轻松构建自己的本地 WebUI Demo。
+您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。
 
 1. 启动model server:
 ```shell
@@ -2358,16 +2358,24 @@ MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://githu
 
 ### 本地WebUI Demo部署
 <details>
-<summary>点击查看本地WebUI demo 在 NVIDIA GPU、Mac等不同设备部署方法 </summary>
-  
+<summary>点击查看本地WebUI demo部署方法, 体验实时流式视频/语音通话 </summary>
+
+1. 启动model server:
 ```shell
-pip install -r requirements.txt
+pip install -r requirements_o2.6.txt
+
+python web_demos/minicpm-o_2.6/model_server.py
+```
+
+2. 启动web server:
+```shell
+# Make sure Node and PNPM is installed.
+cd web_demos/minicpm-o_2.6/web_server
+pnpm install  # install requirements
+
+pnpm run dev  # start server
 ```
   
-```shell
-# For NVIDIA GPUs, run:
-python web_demo_2.6.py --device cuda
-```
 </details>
 
 ### 基于 llama.cpp、ollama、vLLM 的高效推理
