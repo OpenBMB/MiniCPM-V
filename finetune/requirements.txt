@@ -34,7 +34,7 @@ gradio_client
 http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_studio-0.4.0.9-py3-none-any.whl
 decord
 aiosignal
-tensorborad
+tensorboard
 deepspeed==0.12.3
 transformers==4.44.2
 librosa==0.9.0
