@@ -18,7 +18,7 @@
 
   
   <p align="center">
-  MiniCPM-o 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-o-2_6">🤗</a> <a href="https://minicpm-omni-webdemo.modelbest.cn/"> 国内🤖</a> <a href="https://minicpm-omni-webdemo-us.modelbest.cn/"> 国外🤖</a> | MiniCPM-V 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-2_6">🤗</a> <a href="http://120.92.209.146:8887/">🤖</a> | 
+  MiniCPM-o 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-o-2_6">🤗</a> <a href="https://minicpm-omni-webdemo-us.modelbest.cn/"> 🤖</a> | MiniCPM-V 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-2_6">🤗</a> <a href="http://120.92.209.146:8887/">🤖</a> | 
   技术报告近期将发布
 </p>
 
@@ -121,18 +121,17 @@ MiniCPM-o 2.6 进一步优化了 MiniCPM-V 2.6 的众多视觉理解能力，其
 
 
 - 💫 **易于使用。**
-MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-omni/examples/llava/README-minicpmo2.6.md) 支持在本地设备上进行高效的 CPU 推理，(2) [int4](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) 和 [GGUF](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) 格式的量化模型，有 16 种尺寸，(3) [vLLM](#基于-llamacppollamavllm-的高效推理) 支持高吞吐量和内存高效的推理，(4) 通过[LLaMA-Factory](./docs/llamafactory_train_and_infer.md)框架针对新领域和任务进行微调，(5) 使用 [Gradio](#本地-webui-demo-) 快速设置本地 WebUI 演示，(6) 部署于[国内](https://minicpm-omni-webdemo.modelbest.cn/ 
-) 或 [国外](https://minicpm-omni-webdemo-us.modelbest.cn/)服务器的在线 demo。
 
+MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-omni/examples/llava/README-minicpmo2.6.md) 支持在本地设备上进行高效的 CPU 推理，(2) [int4](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) 和 [GGUF](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) 格式的量化模型，有 16 种尺寸，(3) [vLLM](#基于-llamacppollamavllm-的高效推理) 支持高吞吐量和内存高效的推理，(4) 通过[LLaMA-Factory](./docs/llamafactory_train_and_infer.md)框架针对新领域和任务进行微调，(5) 使用 [Gradio](#本地-webui-demo-) 快速设置本地 WebUI 演示，(6) 部署于服务器的在线 [demo](https://minicpm-omni-webdemo-us.modelbest.cn/)。
 
 **模型架构。**
 
-- **端到端全模态架构。** 通过**端到端**的方式连接和训练不同模态的编/解码模块以充分利用丰富的多模态知识。
+- **端到端全模态架构。** 通过**端到端**的方式连接和训练不同模态的编/解码模块以充分利用丰富的多模态知识。模型完全使用 CE 损失端到端训练。
 - **全模态流式机制。** (1) 我们将不同模态的离线编/解码器改造为适用于**流式输入/输出**的在线模块。 (2) 我们针对大语言模型基座设计了**时分复用的全模态流式信息处理机制**，将平行的不同模态的信息流拆分重组为周期性时间片序列。
 - **可配置的声音方案。** 我们设计了新的多模态系统提示，包含传统文本系统提示词，和**用于指定模型声音的语音系统提示词**。模型可在推理时灵活地通过文字或语音样例控制声音风格，并支持端到端声音克隆和音色创建等高级能力。
 
 <div align="center">
-<img src="./assets/minicpm-o-26-framework.png" , width=80%>
+<img src="./assets/minicpm-o-26-framework-v2.png" , width=80%>
 </div>
 
 <br>
@@ -142,7 +141,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 ### 性能评估  <!-- omit in toc -->
 
 <div align="center">
-  <img src="./assets/radar.jpg", width=90%>
+  <img src="./assets/radar.jpg", width=80%>
 </div>
 
 <details>
@@ -222,7 +221,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>3.4</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
+            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
             <td>-</td>
             <td>-</td>
             <td>64.4</td>
@@ -393,7 +392,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>3.5</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">InternVL-2.5-8B</td>
+            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
             <td>8B</td>
             <td>706</td>
             <td>68.3</td>
@@ -472,8 +471,8 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
         <tr>
             <th align="left">Model</th>
             <th>Size</th>
-            <th>BLINK-val</th>
-            <th>Mantis-Eval</th>
+            <th>BLINK val</th>
+            <th>Mantis Eval</th>
             <th>MIRB</th>
             <th>Video-MME (wo / w subs)</th>
         </tr>
@@ -510,7 +509,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>-</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">LLaVA-One-Vision-72B</td>
+            <td nowrap="nowrap" align="left">LLaVA-OneVision-72B</td>
             <td>72B</td>
             <td>55.4</td>
             <td><strong>77.6</strong></td>
@@ -534,7 +533,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>63.3/69.0</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">InternVL-2.5-8B</td>
+            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
             <td>8B</td>
             <td>54.8</td>
             <td>67.7</td>
@@ -622,7 +621,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td>33.2*</td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
+            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
             <td>-</td>
             <td>4.5*</td>
             <td>5.9*</td>
@@ -638,7 +637,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td colspan="11" align="left"><strong>Open-Source</strong></td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Qwen2-Audio-Base</td>
+            <td nowrap="nowrap" align="left">Qwen2-Audio-7B</td>
             <td>8B</td>
             <td>-</td>
             <td>7.5</td>
@@ -651,7 +650,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
             <td><strong>55.3</strong></td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Qwen2-Audio-Instruction</td>
+            <td nowrap="nowrap" align="left">Qwen2-Audio-7B-Instruct</td>
             <td>8B</td>
             <td>2.6*</td>
             <td>6.9*</td>
@@ -1798,16 +1797,22 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 
 ### 本地 WebUI Demo <!-- omit in toc --> 
 
-您可以使用以下命令轻松构建自己的本地 WebUI Demo。
+您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。
 
+1. 启动model server:
 ```shell
-pip install -r requirements.txt
+pip install -r requirements_o2.6.txt
+
+python web_demos/minicpm-o_2.6/model_server.py
 ```
 
+2. 启动web server:
 ```shell
-# 对于 NVIDIA GPU，请运行：
-python web_demo_2.6.py --device cuda
+# Make sure Node and PNPM is installed.
+cd web_demos/minicpm-o_2.6/web_server
+pnpm install  # install requirements
 
+pnpm run dev  # start server
 ```
 
 
@@ -1817,21 +1822,21 @@ python web_demo_2.6.py --device cuda
 1. 克隆我们的仓库并跳转到相应目录
 
 ```bash
-git clone https://github.com/OpenBMB/MiniCPM-V.git
-cd MiniCPM-V
+git clone https://github.com/OpenBMB/MiniCPM-o.git
+cd MiniCPM-o
 ```
 
 1. 创建 conda 环境
 
 ```Shell
-conda create -n MiniCPMV python=3.10 -y
-conda activate MiniCPMV
+conda create -n MiniCPMo python=3.10 -y
+conda activate MiniCPMo
 ```
 
 3. 安装依赖
 
 ```shell
-pip install -r requirements.txt
+pip install -r requirements_o2.6.txt
 ```
 
 ## 推理
@@ -2353,16 +2358,24 @@ MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://githu
 
 ### 本地WebUI Demo部署
 <details>
-<summary>点击查看本地WebUI demo 在 NVIDIA GPU、Mac等不同设备部署方法 </summary>
-  
+<summary>点击查看本地WebUI demo部署方法, 体验实时流式视频/语音通话 </summary>
+
+1. 启动model server:
 ```shell
-pip install -r requirements.txt
+pip install -r requirements_o2.6.txt
+
+python web_demos/minicpm-o_2.6/model_server.py
+```
+
+2. 启动web server:
+```shell
+# Make sure Node and PNPM is installed.
+cd web_demos/minicpm-o_2.6/web_server
+pnpm install  # install requirements
+
+pnpm run dev  # start server
 ```
   
-```shell
-# For NVIDIA GPUs, run:
-python web_demo_2.6.py --device cuda
-```
 </details>
 
 ### 基于 llama.cpp、ollama、vLLM 的高效推理
@@ -2539,18 +2552,18 @@ ollama 用法请参考[我们的fork ollama](https://github.com/OpenBMB/ollama/b
   <source
     media="(prefers-color-scheme: dark)"
     srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date&theme=dark
     "
   />
   <source
     media="(prefers-color-scheme: light)"
     srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date
     "
   />
   <img
     alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
+    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date"
   />
 </picture> -->
 
