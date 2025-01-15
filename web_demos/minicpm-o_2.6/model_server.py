@@ -55,6 +55,7 @@ logger = setup_logger()
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--port', type=int , default=32550)
+ap.add_argument('--model', type=str , default="openbmb/MiniCPM-o-2_6", help="huggingface model name or local path")
 args = ap.parse_args()
 
 
@@ -89,7 +90,7 @@ class StreamManager:
         self.target_dtype = torch.bfloat16
         self.device='cuda:0'
         
-        self.minicpmo_model_path = "openbmb/MiniCPM-o-2_6"
+        self.minicpmo_model_path = args.model #"openbmb/MiniCPM-o-2_6"
         self.model_version = "2.6"
         with torch.no_grad():
             self.minicpmo_model = AutoModel.from_pretrained(self.minicpmo_model_path, trust_remote_code=True, torch_dtype=self.target_dtype, attn_implementation='sdpa')
