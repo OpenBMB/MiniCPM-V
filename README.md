@@ -647,7 +647,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td colspan="11" align="left"><strong>Open-Source</strong></td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Qwen2-Audio-Base</td>
+            <td nowrap="nowrap" align="left">Qwen2-Audio-7B</td>
             <td>8B</td>
             <td>-</td>
             <td>7.5</td>
@@ -660,7 +660,7 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td><strong>55.3</strong></td>
         </tr>
         <tr>
-            <td nowrap="nowrap" align="left">Qwen2-Audio-Instruction</td>
+            <td nowrap="nowrap" align="left">Qwen2-Audio-7B-Instruct</td>
             <td>8B</td>
             <td>2.6*</td>
             <td>6.9*</td>
