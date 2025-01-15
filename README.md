@@ -1837,7 +1837,7 @@ pnpm run dev  # start server
 
 ```bash
 git clone https://github.com/OpenBMB/MiniCPM-o.git
-cd MiniCPM-V
+cd MiniCPM-o
 ```
 
 2. Create conda environment
