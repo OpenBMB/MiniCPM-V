@@ -2544,18 +2544,18 @@ ollama 用法请参考[我们的fork ollama](https://github.com/OpenBMB/ollama/b
   <source
     media="(prefers-color-scheme: dark)"
     srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date&theme=dark
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date&theme=dark
     "
   />
   <source
     media="(prefers-color-scheme: light)"
     srcset="
-      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date
+      https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date
     "
   />
   <img
     alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-V&type=Date"
+    src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date"
   />
 </picture> -->
 
