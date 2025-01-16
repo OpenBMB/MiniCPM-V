@@ -1815,8 +1815,10 @@ npm install -g pnpm
 
 
 cd web_demos/minicpm-o_2.6/web_server
-pnpm install  # install requirements
+# 为https创建自签名证书, 要申请浏览器摄像头和麦克风权限须启动https.
+bash ./make_ssl_cert.sh  # output key.pem and cert.pem
 
+pnpm install  # install requirements
 pnpm run dev  # start server
 ```
 

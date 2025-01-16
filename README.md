@@ -1833,8 +1833,10 @@ npm install -g pnpm
 
 
 cd web_demos/minicpm-o_2.6/web_server
-pnpm install  # install requirements
+# create ssl cert for https, https is required to request camera and microphone permissions.
+bash ./make_ssl_cert.sh  # output key.pem and cert.pem
 
+pnpm install  # install requirements
 pnpm run dev  # start server
 ```
 
