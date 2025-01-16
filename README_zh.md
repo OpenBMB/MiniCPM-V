@@ -1805,6 +1805,7 @@ pip install -r requirements_o2.6.txt
 
 python web_demos/minicpm-o_2.6/model_server.py
 ```
+请确保 `transformers==4.44.2`，其他版本目前可能会有兼容性问题，我们正在解决。
 
 2. 启动web server:
 ```shell
