@@ -77,7 +77,6 @@
 - [MiniCPM-o 2.6](#minicpm-o-26)
 - [MiniCPM-V 2.6](#minicpm-v-26)
 - [Gradio Demo 🤗](#gradio-demo-)
-- [安装](#安装)
 - [推理](#推理)
   - [模型库](#模型库)
   - [多轮对话](#多轮对话)
@@ -1817,29 +1816,6 @@ pnpm run dev  # start server
 ```
 
 
-
-## 安装
-
-1. 克隆我们的仓库并跳转到相应目录
-
-```bash
-git clone https://github.com/OpenBMB/MiniCPM-o.git
-cd MiniCPM-o
-```
-
-1. 创建 conda 环境
-
-```Shell
-conda create -n MiniCPMo python=3.10 -y
-conda activate MiniCPMo
-```
-
-3. 安装依赖
-
-```shell
-pip install -r requirements_o2.6.txt
-```
-
 ## 推理
 
 ### 模型库
@@ -1857,7 +1833,11 @@ pip install -r requirements_o2.6.txt
 
 
 ### 多轮对话
+请确保 `transformers==4.44.2`，其他版本目前可能会有兼容性问题
 
+```shell
+pip install -r requirements_o2.6.txt
+```
 
 <div align="center">
 <img src="assets/minicpmo2_6/show_demo.jpg" width="500px">
