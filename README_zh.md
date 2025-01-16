@@ -76,7 +76,7 @@
 
 - [MiniCPM-o 2.6](#minicpm-o-26)
 - [MiniCPM-V 2.6](#minicpm-v-26)
-- [Gradio Demo 🤗](#gradio-demo-)
+- [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
 - [推理](#推理)
   - [模型库](#模型库)
   - [多轮对话](#多轮对话)
@@ -91,7 +91,6 @@
   - [多卡推理](#多卡推理)
   - [Mac 推理](#mac-推理)
   - [手机端部署](#手机端部署)
-  - [本地WebUI Demo部署](#本地webui-demo部署)
   - [基于 llama.cpp、ollama、vLLM 的高效推理](#基于-llamacppollamavllm-的高效推理)
 - [微调](#微调)
 - [FAQs](#faqs)
@@ -1786,7 +1785,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 | OmniLMM-12B  | [文档](./omnilmm.md)   |  
 
 
-## Gradio Demo 🤗
+## Chat with Our Demo on Gradio 🤗
 
 我们提供由 Hugging Face Gradio <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a> 支持的在线和本地 Demo。Gradio 是目前最流行的模型部署框架，支持流式输出、进度条、process bars 和其他常用功能。
 
@@ -1805,10 +1804,16 @@ pip install -r requirements_o2.6.txt
 python web_demos/minicpm-o_2.6/model_server.py
 ```
 请确保 `transformers==4.44.2`，其他版本目前可能会有兼容性问题，我们正在解决。
+如果你使用的低版本的 Pytorch，你可能会遇到这个错误`"weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16'`, 请在模型初始化的时候添加 `self.minicpmo_model.tts.float()`
 
 2. 启动web server:
 ```shell
 # Make sure Node and PNPM is installed.
+sudo apt-get update
+sudo apt-get install nodejs npm
+npm install -g pnpm
+
+
 cd web_demos/minicpm-o_2.6/web_server
 pnpm install  # install requirements
 
@@ -2337,27 +2342,6 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ### 手机端部署
 MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
 
-### 本地WebUI Demo部署
-<details>
-<summary>点击查看本地WebUI demo部署方法, 体验实时流式视频/语音通话 </summary>
-
-1. 启动model server:
-```shell
-pip install -r requirements_o2.6.txt
-
-python web_demos/minicpm-o_2.6/model_server.py
-```
-
-2. 启动web server:
-```shell
-# Make sure Node and PNPM is installed.
-cd web_demos/minicpm-o_2.6/web_server
-pnpm install  # install requirements
-
-pnpm run dev  # start server
-```
-  
-</details>
 
 ### 基于 llama.cpp、ollama、vLLM 的高效推理
 

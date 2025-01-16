@@ -1809,7 +1809,11 @@ Click here to try out the online demo of [MiniCPM-o 2.6](https://minicpm-omni-we
 
 ### Local WebUI Demo <!-- omit in toc --> 
   
-You can easily build your own local WebUI demo using the following commands, experience real-time streaming voice/video call.  
+You can easily build your own local WebUI demo using the following commands, experience real-time streaming voice/video call. 
+
+Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues. We are investigating this issue.
+
+If you are using an older version of PyTorch, you might encounter this issue `"weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16'`, Please add `self.minicpmo_model.tts.float()` during the model initialization.
 
 1. launch model server:
 ```shell
@@ -1817,12 +1821,16 @@ pip install -r requirements_o2.6.txt
 
 python web_demos/minicpm-o_2.6/model_server.py
 ```
-Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues. We are investigating this issue.
 
 2. launch web server:
 
 ```shell
 # Make sure Node and PNPM is installed.
+sudo apt-get update
+sudo apt-get install nodejs npm
+npm install -g pnpm
+
+
 cd web_demos/minicpm-o_2.6/web_server
 pnpm install  # install requirements
 
