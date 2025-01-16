@@ -90,7 +90,6 @@
 - [MiniCPM-o 2.6](#minicpm-o-26)
 - [MiniCPM-V 2.6](#minicpm-v-26)
 - [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
-- [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
   - [Multi-turn Conversation](#multi-turn-conversation)
@@ -1831,29 +1830,6 @@ pnpm install  # install requirements
 pnpm run dev  # start server
 ```
 
-
-## Install
-
-1. Clone this repository and navigate to the source folder
-
-```bash
-git clone https://github.com/OpenBMB/MiniCPM-o.git
-cd MiniCPM-o
-```
-
-2. Create conda environment
-
-```Shell
-conda create -n MiniCPM-o python=3.10 -y
-conda activate MiniCPM-o
-```
-
-3. Install dependencies
-
-```shell
-pip install -r requirements.txt
-```
-
 ## Inference
 
 
@@ -1869,6 +1845,12 @@ pip install -r requirements.txt
 | MiniCPM-V 2.6 int4 | GPU | 7 GB  | The int4 quantized version, lower GPU memory usage.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6-int4) |
 
 ### Multi-turn Conversation
+
+Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues.
+
+```shell
+pip install -r requirements_o2.6.txt
+```
 
 Please refer to the following codes to run.
 
