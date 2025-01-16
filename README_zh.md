@@ -2179,8 +2179,8 @@ from moviepy.editor import VideoFileClip
 import tempfile
 import librosa
 import soundfile as sf
-
-## make sure The model has been initialized and `model.init_tts()` has been executed
+import torch
+from transformers import AutoModel, AutoTokenizer
 
 def get_video_chunk_content(video_path, flatten=True):
     video = VideoFileClip(video_path)
@@ -2205,7 +2205,19 @@ def get_video_chunk_content(video_path, flatten=True):
     
     return contents
 
-video_path="/path/to/video"
+
+model = AutoModel.from_pretrained('openbmb/MiniCPM-o-2_6', trust_remote_code=True,
+    attn_implementation='sdpa', torch_dtype=torch.bfloat16)
+model = model.eval().cuda()
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-o-2_6', trust_remote_code=True)
+
+model.init_tts()
+
+# If you are using an older version of PyTorch, you might encounter this issue "weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16', Please convert the TTS to float32 type.
+# model.tts.float()
+
+# https://huggingface.co/openbmb/MiniCPM-o-2_6/blob/main/assets/Skiing.mp4
+video_path="assets/Skiing.mp4"
 sys_msg = model.get_sys_prompt(mode='omni', language='en')
 # if use voice clone prompt, please set ref_audio
 # ref_audio_path = '/path/to/ref_audio'
