@@ -40,6 +40,8 @@
 
 #### 📌 Pinned
 
+* [2025.01.17] We have updated the usage of the int4 quantized version, See [here](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4)
+
 * [2025.01.16] ⭐️⭐️⭐️ MiniCPM-o tops GitHub Trending and reaches top-3 on Hugging Face Trending!
 
 * [2025.01.13] 🔥🔥🔥 We open-source MiniCPM-o 2.6, which matches GPT-4o-202405 on vision, speech and multimodal live streaming. It advances popular capabitlies of MiniCPM-V 2.6, and supports various new fun features. Try it now!
