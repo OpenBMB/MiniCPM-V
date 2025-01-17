@@ -36,7 +36,7 @@
 ## 更新日志 <!-- omit in toc -->
 
 #### 📌 置顶
-
+* [2025.01.17] 我们更新了 int4 量化版本的使用方式, 欢迎点击[这里](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4)
 * [2025.01.16] ⭐️⭐️⭐️ MiniCPM-o 在 GitHub Trending 上登顶， Hugging Face Trending 上也达到了第三！
 * [2025.01.13] 🔥🔥🔥 我们开源了 MiniCPM-o 2.6，该模型视觉、语音和多模态流式能力达到了 GPT-4o-202405 级别，进一步优化了 MiniCPM-V 2.6 的众多亮点能力，还支持了很多有趣的新功能。欢迎试用！
 * [2024.08.17] 🚀🚀🚀 llama.cpp [官方仓库](https://github.com/ggerganov/llama.cpp)正式支持 MiniCPM-V 2.6 啦！点击[这里](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf)查看各种大小的 GGUF 版本。
