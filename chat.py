@@ -6,7 +6,6 @@ import base64
 import io
 from accelerate import load_checkpoint_and_dispatch, init_empty_weights
 from transformers import AutoTokenizer, AutoModel
-
 from omnilmm.utils import disable_torch_init
 from omnilmm.model.omnilmm import OmniLMMForCausalLM
 from omnilmm.model.utils import build_transform
@@ -16,8 +15,6 @@ DEFAULT_IMAGE_TOKEN = "<image>"
 DEFAULT_IMAGE_PATCH_TOKEN = "<im_patch>"
 DEFAULT_IM_START_TOKEN = "<im_start>"
 DEFAULT_IM_END_TOKEN = "<im_end>"
-
-    
 
 def init_omni_lmm(model_path):
     torch.backends.cuda.matmul.allow_tf32 = True
@@ -47,7 +44,6 @@ def init_omni_lmm(model_path):
 
     tokenizer.add_tokens([DEFAULT_IMAGE_PATCH_TOKEN, DEFAULT_IM_START_TOKEN,
                          DEFAULT_IM_END_TOKEN], special_tokens=True)
-
 
     vision_config = model.model.vision_config
     vision_config.im_patch_token = tokenizer.convert_tokens_to_ids(
@@ -80,8 +76,6 @@ def wrap_question_for_omni_lmm(question, image_token_len, tokenizer):
     data_dict = dict(input_ids=data_dict["input_ids"][0],
                      labels=data_dict["labels"][0])
     return data_dict
-
-
 
 class OmniLMM12B:
     def __init__(self, model_path) -> None:
