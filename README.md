@@ -40,7 +40,7 @@
 
 #### 📌 Pinned
 
-* [2025.01.17] We have updated the usage of the int4 quantized version, See [here](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4)
+* [2025.01.17] We have updated the usage of MiniCPM-o 2.6 int4 quantization version, and resolved the model initialization error. Click [here](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4) and try it now!
 
 * [2025.01.16] ⭐️⭐️⭐️ MiniCPM-o tops GitHub Trending and reaches top-3 on Hugging Face Trending!
 
