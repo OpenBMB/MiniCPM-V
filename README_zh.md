@@ -1795,7 +1795,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 
 ### 本地 WebUI Demo <!-- omit in toc --> 
 
-您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。
+您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。更详细的部署教程请参考[文档](https://modelbest.feishu.cn/wiki/RnjjwnUT7idMSdklQcacd2ktnyN)。
 
 1. 启动model server:
 ```shell
