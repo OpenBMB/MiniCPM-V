@@ -40,8 +40,14 @@
 
 #### 📌 Pinned
 
-* [2025.01.13] 🔥🔥🔥 We open-source MiniCPM-o 2.6, which matches GPT-4o-202405 on vision, speech and multimodal live streaming. It advances popular capabitlies of MiniCPM-V 2.6, and supports various new fun features. Try it now!
 
+* [2025.01.19] 📢 **ATTENTION!** We are currently working on merging MiniCPM-o 2.6 into the official repositories of llama.cpp, ollama, and vllm. Until the merge is complete, please USE OUR LOCAL FORKS of [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-omni/examples/llava/README-minicpmo2.6.md), [ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md), and [vllm](https://github.com/OpenBMB/MiniCPM-o?tab=readme-ov-file#efficient-inference-with-llamacpp-ollama-vllm). **Using the official repositories before the merge may lead to unexpected issues**.
+
+* [2025.01.17] We have updated the usage of MiniCPM-o 2.6 int4 quantization version, and resolved the model initialization error. Click [here](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4) and try it now!
+
+* [2025.01.16] ⭐️⭐️⭐️ MiniCPM-o tops GitHub Trending and reaches top-3 on Hugging Face Trending!
+
+* [2025.01.13] 🔥🔥🔥 We open-source MiniCPM-o 2.6, which matches GPT-4o-202405 on vision, speech and multimodal live streaming. It advances popular capabitlies of MiniCPM-V 2.6, and supports various new fun features. Try it now!
 
 * [2024.08.17] 🚀🚀🚀 MiniCPM-V 2.6 is now fully supported by [official](https://github.com/ggerganov/llama.cpp) llama.cpp! GGUF models of various sizes are available [here](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf).
 
@@ -90,7 +96,6 @@
 - [MiniCPM-o 2.6](#minicpm-o-26)
 - [MiniCPM-V 2.6](#minicpm-v-26)
 - [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
-- [Install](#install)
 - [Inference](#inference)
   - [Model Zoo](#model-zoo)
   - [Multi-turn Conversation](#multi-turn-conversation)
@@ -104,7 +109,6 @@
     - [Multimodal Live Streaming](#multimodal-live-streaming)
   - [Inference on Multiple GPUs](#inference-on-multiple-gpus)
   - [Inference on Mac](#inference-on-mac)
-  - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
   - [Efficient Inference with llama.cpp, ollama, vLLM](#efficient-inference-with-llamacpp-ollama-vllm)
 - [Fine-tuning](#fine-tuning)
 - [FAQs](#faqs)
@@ -131,13 +135,12 @@ Advancing popular visual capabilites from MiniCPM-V series, MiniCPM-o 2.6 can pr
   In addition to its friendly size, MiniCPM-o 2.6 also shows **state-of-the-art token density** (i.e., number of pixels encoded into each visual token). **It produces only 640 tokens when processing a 1.8M pixel image, which is 75% fewer than most models**. This directly improves the inference speed, first-token latency, memory usage, and power consumption. As a result, MiniCPM-o 2.6 can efficiently support **multimodal live streaming** on end-side devices such as iPad.
 
 -  💫  **Easy Usage.**
-
 MiniCPM-o 2.6 can be easily used in various ways: (1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-omni/examples/llava/README-minicpmo2.6.md) support for efficient CPU inference on local devices, (2) [int4](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4) and [GGUF](https://huggingface.co/openbmb/MiniCPM-o-2_6-gguf) format quantized models in 16 sizes, (3) [vLLM](#efficient-inference-with-llamacpp-ollama-vllm) support for high-throughput and memory-efficient inference, (4) fine-tuning on new domains and tasks with [LLaMA-Factory](./docs/llamafactory_train_and_infer.md), (5) quick [local WebUI demo](#chat-with-our-demo-on-gradio), and (6) online web demo on [server](https://minicpm-omni-webdemo-us.modelbest.cn/).
 
 **Model Architecture.**
 
 - **End-to-end Omni-modal Architecture.** Different modality encoder/decoders are connected and trained in an **end-to-end** fashion to fully exploit rich multimodal knowledge. The model is trained in a fully end-to-end manner with only CE loss.
-- **Omni-modal Live Streaming Mechanism.** (1) We change the offline modality encoder/decoders into online ones for **streaminig inputs/outputs.** (2) We devise a **time-division multiplexing (TDM) mechanism** for omni-modality streaminig processing in the LLM backbone. It divides parallel omni-modality streams into sequential info within small periodic time slices. 
+- **Omni-modal Live Streaming Mechanism.** (1) We change the offline modality encoder/decoders into online ones for **streaming inputs/outputs.** (2) We devise a **time-division multiplexing (TDM) mechanism** for omni-modality streaming processing in the LLM backbone. It divides parallel omni-modality streams into sequential info within small periodic time slices. 
 - **Configurable Speech Modeling Design.** We devise a multimodal system prompt, including traditional text system prompt, and **a new audio system prompt to determine the assistant voice**. This enables flexible voice configurations in inference time, and also facilitates end-to-end voice cloning and description-based voice creation.
 
 <div align="center">
@@ -1811,7 +1814,11 @@ Click here to try out the online demo of [MiniCPM-o 2.6](https://minicpm-omni-we
 
 ### Local WebUI Demo <!-- omit in toc --> 
   
-You can easily build your own local WebUI demo using the following commands, experience real-time streaming voice/video call.
+You can easily build your own local WebUI demo using the following commands, experience real-time streaming voice/video call. 
+
+Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues. We are investigating this issue.
+
+If you are using an older version of PyTorch, you might encounter this issue `"weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16'`, Please add `self.minicpmo_model.tts.float()` during the model initialization.
 
 1. launch model server:
 ```shell
@@ -1824,33 +1831,17 @@ python web_demos/minicpm-o_2.6/model_server.py
 
 ```shell
 # Make sure Node and PNPM is installed.
+sudo apt-get update
+sudo apt-get install nodejs npm
+npm install -g pnpm
+
+
 cd web_demos/minicpm-o_2.6/web_server
+# create ssl cert for https, https is required to request camera and microphone permissions.
+bash ./make_ssl_cert.sh  # output key.pem and cert.pem
+
 pnpm install  # install requirements
-
 pnpm run dev  # start server
-```
-
-
-## Install
-
-1. Clone this repository and navigate to the source folder
-
-```bash
-git clone https://github.com/OpenBMB/MiniCPM-o.git
-cd MiniCPM-o
-```
-
-2. Create conda environment
-
-```Shell
-conda create -n MiniCPM-o python=3.10 -y
-conda activate MiniCPM-o
-```
-
-3. Install dependencies
-
-```shell
-pip install -r requirements.txt
 ```
 
 ## Inference
@@ -1868,6 +1859,12 @@ pip install -r requirements.txt
 | MiniCPM-V 2.6 int4 | GPU | 7 GB  | The int4 quantized version, lower GPU memory usage.   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-2_6-int4) |
 
 ### Multi-turn Conversation
+
+Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues.
+
+```shell
+pip install -r requirements_o2.6.txt
+```
 
 Please refer to the following codes to run.
 
@@ -2207,8 +2204,8 @@ from moviepy.editor import VideoFileClip
 import tempfile
 import librosa
 import soundfile as sf
-
-## make sure The model has been initialized and `model.init_tts()` has been executed
+import torch
+from transformers import AutoModel, AutoTokenizer
 
 def get_video_chunk_content(video_path, flatten=True):
     video = VideoFileClip(video_path)
@@ -2233,7 +2230,19 @@ def get_video_chunk_content(video_path, flatten=True):
     
     return contents
 
-video_path="/path/to/video"
+
+model = AutoModel.from_pretrained('openbmb/MiniCPM-o-2_6', trust_remote_code=True,
+    attn_implementation='sdpa', torch_dtype=torch.bfloat16)
+model = model.eval().cuda()
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-o-2_6', trust_remote_code=True)
+
+model.init_tts()
+
+# If you are using an older version of PyTorch, you might encounter this issue "weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16', Please convert the TTS to float32 type.
+# model.tts.float()
+
+# https://huggingface.co/openbmb/MiniCPM-o-2_6/blob/main/assets/Skiing.mp4
+video_path="assets/Skiing.mp4"
 sys_msg = model.get_sys_prompt(mode='omni', language='en')
 # if use voice clone prompt, please set ref_audio
 # ref_audio_path = '/path/to/ref_audio'
@@ -2365,8 +2374,6 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
 
-### Deployment on Mobile Phone
-MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM) to install apk.
 
 ### Efficient Inference with llama.cpp, ollama, vLLM
 

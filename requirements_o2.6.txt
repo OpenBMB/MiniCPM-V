@@ -1,7 +1,7 @@
 Pillow==10.1.0
-torch==2.2.0
-torchaudio==2.2.0
-torchvision==0.17.0
+torch==2.3.1
+torchaudio==2.3.1
+torchvision==0.18.1
 transformers==4.44.2
 sentencepiece==0.2.0
 vector-quantize-pytorch==1.18.5

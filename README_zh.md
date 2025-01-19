@@ -36,8 +36,9 @@
 ## 更新日志 <!-- omit in toc -->
 
 #### 📌 置顶
-
-
+* [2025.01.19] 📢 **注意!** 我们正在努力将 MiniCPM-o 2.6 的支持合并到 llama.cpp、ollama、vLLM 的官方仓库，但还未完成。请大家暂时先使用我们提供的 fork 来进行部署：[llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-omni/examples/llava/README-minicpmo2.6.md)、[ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md)、[vllm](https://github.com/OpenBMB/MiniCPM-o?tab=readme-ov-file#efficient-inference-with-llamacpp-ollama-vllm)。 **合并完成前，使用官方仓库可能会导致不可预期的问题**。
+* [2025.01.17] 我们更新了 MiniCPM-o 2.6 int4 量化版本的使用方式，解决了模型初始化的问题，欢迎点击[这里](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4)试用！
+* [2025.01.16] ⭐️⭐️⭐️ MiniCPM-o 在 GitHub Trending 上登顶， Hugging Face Trending 上也达到了第三！
 * [2025.01.13] 🔥🔥🔥 我们开源了 MiniCPM-o 2.6，该模型视觉、语音和多模态流式能力达到了 GPT-4o-202405 级别，进一步优化了 MiniCPM-V 2.6 的众多亮点能力，还支持了很多有趣的新功能。欢迎试用！
 * [2024.08.17] 🚀🚀🚀 llama.cpp [官方仓库](https://github.com/ggerganov/llama.cpp)正式支持 MiniCPM-V 2.6 啦！点击[这里](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf)查看各种大小的 GGUF 版本。
 * [2024.08.06] 🔥🔥🔥 我们开源了 MiniCPM-V 2.6，该模型在单图、多图和视频理解方面取得了优于 GPT-4V 的表现。我们还进一步提升了 MiniCPM-Llama3-V 2.5 的多项亮点能力，并首次支持了 iPad 上的实时视频理解。欢迎试用！
@@ -76,8 +77,7 @@
 
 - [MiniCPM-o 2.6](#minicpm-o-26)
 - [MiniCPM-V 2.6](#minicpm-v-26)
-- [Gradio Demo 🤗](#gradio-demo-)
-- [安装](#安装)
+- [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
 - [推理](#推理)
   - [模型库](#模型库)
   - [多轮对话](#多轮对话)
@@ -91,8 +91,6 @@
     - [多模态流式交互](#多模态流式交互)
   - [多卡推理](#多卡推理)
   - [Mac 推理](#mac-推理)
-  - [手机端部署](#手机端部署)
-  - [本地WebUI Demo部署](#本地webui-demo部署)
   - [基于 llama.cpp、ollama、vLLM 的高效推理](#基于-llamacppollamavllm-的高效推理)
 - [微调](#微调)
 - [FAQs](#faqs)
@@ -1787,7 +1785,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 | OmniLMM-12B  | [文档](./omnilmm.md)   |  
 
 
-## Gradio Demo 🤗
+## Chat with Our Demo on Gradio 🤗
 
 我们提供由 Hugging Face Gradio <a href='https://github.com/gradio-app/gradio'><img src='https://img.shields.io/github/stars/gradio-app/gradio'></a> 支持的在线和本地 Demo。Gradio 是目前最流行的模型部署框架，支持流式输出、进度条、process bars 和其他常用功能。
 
@@ -1797,7 +1795,7 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 
 ### 本地 WebUI Demo <!-- omit in toc --> 
 
-您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。
+您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。更详细的部署教程请参考[文档](https://modelbest.feishu.cn/wiki/RnjjwnUT7idMSdklQcacd2ktnyN)。
 
 1. 启动model server:
 ```shell
@@ -1805,39 +1803,25 @@ pip install -r requirements_o2.6.txt
 
 python web_demos/minicpm-o_2.6/model_server.py
 ```
+请确保 `transformers==4.44.2`，其他版本目前可能会有兼容性问题，我们正在解决。
+如果你使用的低版本的 Pytorch，你可能会遇到这个错误`"weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16'`, 请在模型初始化的时候添加 `self.minicpmo_model.tts.float()`
 
 2. 启动web server:
 ```shell
 # Make sure Node and PNPM is installed.
-cd web_demos/minicpm-o_2.6/web_server
-pnpm install  # install requirements
+sudo apt-get update
+sudo apt-get install nodejs npm
+npm install -g pnpm
 
+
+cd web_demos/minicpm-o_2.6/web_server
+# 为https创建自签名证书, 要申请浏览器摄像头和麦克风权限须启动https.
+bash ./make_ssl_cert.sh  # output key.pem and cert.pem
+
+pnpm install  # install requirements
 pnpm run dev  # start server
 ```
 
-
-
-## 安装
-
-1. 克隆我们的仓库并跳转到相应目录
-
-```bash
-git clone https://github.com/OpenBMB/MiniCPM-o.git
-cd MiniCPM-o
-```
-
-1. 创建 conda 环境
-
-```Shell
-conda create -n MiniCPMo python=3.10 -y
-conda activate MiniCPMo
-```
-
-3. 安装依赖
-
-```shell
-pip install -r requirements_o2.6.txt
-```
 
 ## 推理
 
@@ -1856,7 +1840,11 @@ pip install -r requirements_o2.6.txt
 
 
 ### 多轮对话
+请确保 `transformers==4.44.2`，其他版本目前可能会有兼容性问题
 
+```shell
+pip install -r requirements_o2.6.txt
+```
 
 <div align="center">
 <img src="assets/minicpmo2_6/show_demo.jpg" width="500px">
@@ -2193,8 +2181,8 @@ from moviepy.editor import VideoFileClip
 import tempfile
 import librosa
 import soundfile as sf
-
-## make sure The model has been initialized and `model.init_tts()` has been executed
+import torch
+from transformers import AutoModel, AutoTokenizer
 
 def get_video_chunk_content(video_path, flatten=True):
     video = VideoFileClip(video_path)
@@ -2219,7 +2207,19 @@ def get_video_chunk_content(video_path, flatten=True):
     
     return contents
 
-video_path="/path/to/video"
+
+model = AutoModel.from_pretrained('openbmb/MiniCPM-o-2_6', trust_remote_code=True,
+    attn_implementation='sdpa', torch_dtype=torch.bfloat16)
+model = model.eval().cuda()
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-o-2_6', trust_remote_code=True)
+
+model.init_tts()
+
+# If you are using an older version of PyTorch, you might encounter this issue "weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16', Please convert the TTS to float32 type.
+# model.tts.float()
+
+# https://huggingface.co/openbmb/MiniCPM-o-2_6/blob/main/assets/Skiing.mp4
+video_path="assets/Skiing.mp4"
 sys_msg = model.get_sys_prompt(mode='omni', language='en')
 # if use voice clone prompt, please set ref_audio
 # ref_audio_path = '/path/to/ref_audio'
@@ -2352,31 +2352,6 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
 
-
-### 手机端部署
-MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
-
-### 本地WebUI Demo部署
-<details>
-<summary>点击查看本地WebUI demo部署方法, 体验实时流式视频/语音通话 </summary>
-
-1. 启动model server:
-```shell
-pip install -r requirements_o2.6.txt
-
-python web_demos/minicpm-o_2.6/model_server.py
-```
-
-2. 启动web server:
-```shell
-# Make sure Node and PNPM is installed.
-cd web_demos/minicpm-o_2.6/web_server
-pnpm install  # install requirements
-
-pnpm run dev  # start server
-```
-  
-</details>
 
 ### 基于 llama.cpp、ollama、vLLM 的高效推理
 

@@ -1,7 +1,7 @@
 packaging==23.2
 addict==2.4.0
 editdistance==0.6.2
-einops==0.7.0
+einops==0.8.0
 fairscale==0.4.0
 jsonlines==4.0.0
 markdown2==2.4.10
@@ -29,7 +29,7 @@ uvicorn==0.24.0.post1
 sentencepiece==0.1.99
 accelerate==0.30.1
 socksio==1.0.0
-gradio==4.41.0
+gradio
 gradio_client
 http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_studio-0.4.0.9-py3-none-any.whl
 decord
@@ -41,4 +41,7 @@ librosa==0.9.0
 soundfile==0.12.1
 vector-quantize-pytorch==1.18.5
 vocos==0.1.0
+peft==0.14.0
+ninja==1.11.1.1
+flash-attn
 moviepy
