@@ -90,7 +90,6 @@
     - [多模态流式交互](#多模态流式交互)
   - [多卡推理](#多卡推理)
   - [Mac 推理](#mac-推理)
-  - [手机端部署](#手机端部署)
   - [基于 llama.cpp、ollama、vLLM 的高效推理](#基于-llamacppollamavllm-的高效推理)
 - [微调](#微调)
 - [FAQs](#faqs)
@@ -2351,10 +2350,6 @@ print(answer)
 PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
-
-
-### 手机端部署
-MiniCPM-V 2.0 可运行在Android手机上，点击[MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM)安装apk使用; 
 
 
 ### 基于 llama.cpp、ollama、vLLM 的高效推理

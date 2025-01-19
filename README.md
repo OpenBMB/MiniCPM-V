@@ -106,7 +106,6 @@
     - [Multimodal Live Streaming](#multimodal-live-streaming)
   - [Inference on Multiple GPUs](#inference-on-multiple-gpus)
   - [Inference on Mac](#inference-on-mac)
-  - [Deployment on Mobile Phone](#deployment-on-mobile-phone)
   - [Efficient Inference with llama.cpp, ollama, vLLM](#efficient-inference-with-llamacpp-ollama-vllm)
 - [Fine-tuning](#fine-tuning)
 - [FAQs](#faqs)
@@ -2372,8 +2371,6 @@ PYTORCH_ENABLE_MPS_FALLBACK=1 python test.py
 ```
 </details>
 
-### Deployment on Mobile Phone
-MiniCPM-V 2.0 can be deployed on mobile phones with Android operating systems. 🚀 Click [MiniCPM-V 2.0](https://github.com/OpenBMB/mlc-MiniCPM) to install apk.
 
 ### Efficient Inference with llama.cpp, ollama, vLLM
 
