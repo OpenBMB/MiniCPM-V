@@ -2517,13 +2517,13 @@ ollama 用法请参考[我们的fork ollama](https://github.com/OpenBMB/ollama/b
 ## 🌟 Star History <!-- omit in toc -->
 
 
-<table align="center">
+<!-- <table align="center">
     <p align="center">
       <img src="assets/star_history.svg"/>
     </p>
-</table>
+</table> -->
 
-<!-- <picture>
+<picture>
   <source
     media="(prefers-color-scheme: dark)"
     srcset="
@@ -2540,7 +2540,7 @@ ollama 用法请参考[我们的fork ollama](https://github.com/OpenBMB/ollama/b
     alt="Star History Chart"
     src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date"
   />
-</picture> -->
+</picture>
 
 ## 支持技术和其他多模态项目 <!-- omit in toc -->
 
