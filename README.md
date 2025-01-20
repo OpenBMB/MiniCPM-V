@@ -2055,9 +2055,9 @@ model.tts.float()
 
 ##### Mimick
 
-<details> <summary>Click here to experience the capability of end-to-end audio understanding and generation. </summary>
-
 `Mimick` task reflects a model's end-to-end speech modeling capability. The model takes audio input, and outputs an ASR transcription and subsequently reconstructs the original audio with high similarity. The higher the similarity between the reconstructed audio and the original audio, the stronger the model's foundational capability in end-to-end speech modeling.
+
+<details> <summary>Click here to demonstrate the capability of end-to-end audio understanding and generation. </summary>
 
 ```python
 mimick_prompt = "Please repeat each user's speech, including voice style and speech content."
@@ -2078,20 +2078,17 @@ res = model.chat(
 </details>
 
 ##### General Speech Conversation with Configurable Voices
+
+A general usage scenario of MiniCPM-o 2.6 is role-playing a specific character based on the audio prompt. It will mimic the voice of the character to some extent and act like the character in text, including language style. In this mode, MiniCPM-o-2.6 will sounds **more natural and human-like**. Self-defined audio prompts can be used to customize the voice of the character in an end-to-end manner.
+
 <details> <summary>Click to view the Python code for enabling MiniCPM-o 2.6 to interact with you in a specified voice.</summary>
 
 ```python
 ref_audio, _ = librosa.load('./assets/voice_01.wav', sr=16000, mono=True) # load the reference audio
-
-# Audio RolePlay:  # With this mode, model will role-play the character based on the audio prompt.
 sys_prompt = model.get_sys_prompt(ref_audio=ref_audio, mode='audio_roleplay', language='en')
-user_question = {'role': 'user', 'content': [librosa.load('xxx.wav', sr=16000, mono=True)[0]]}
 
-# Audio Assistant: # With this mode, model will speak with the voice in ref_audio as a AI assistant.
-# sys_prompt = model.get_sys_prompt(ref_audio=ref_audio, mode='audio_assistant', language='en') 
-# user_question = {'role': 'user', 'content': [librosa.load('xxx.wav', sr=16000, mono=True)[0]]} # Try to ask something!
-```
-```python
+# round one
+user_question = {'role': 'user', 'content': [librosa.load('xxx.wav', sr=16000, mono=True)[0]]}
 msgs = [sys_prompt, user_question]
 res = model.chat(
     msgs=msgs,
@@ -2123,25 +2120,61 @@ print(res)
 
 </details>
 
-##### Addressing Various Audio Tasks
-<details>
-<summary> Click to show Python code running MiniCPM-o 2.6 with specific audioQA task. </summary>
+##### Speech Conversation as an AI Assistant
+
+An enhanced feature of MiniCPM-o-2.6 is to act as an AI assistant, but only with limited choice of voices. In this mode, MiniCPM-o-2.6 is **less human-like and more like a voice assistant**. But it is more instruction-following.
+
+<details> <summary>Click to view the Python code for enabling MiniCPM-o 2.6 to act as an AI assistant.</summary>
 
 ```python
-'''
-Audio Understanding Task Prompt:
-Speech:
-    ASR with ZH(same as AST en2zh): 请仔细听这段音频片段，并将其内容逐字记录。
-    ASR with EN(same as AST zh2en): Please listen to the audio snippet carefully and transcribe the content.
-    Speaker Analysis: Based on the speaker's content, speculate on their gender, condition, age range, and health status.
-General Audio:
-    Audio Caption: Summarize the main content of the audio.
-    Sound Scene Tagging: Utilize one keyword to convey the audio's content or the associated scene.
-'''
-task_prompt = "\n"
-audio_input, _ = librosa.load('xxx.wav', sr=16000, mono=True)
+sys_prompt = model.get_sys_prompt(ref_audio=ref_audio, mode='audio_assistant', language='en') 
+user_question = {'role': 'user', 'content': [librosa.load('xxx.wav', sr=16000, mono=True)[0]]}
 
-msgs = [{'role': 'user', 'content': [task_prompt,audio_input]}]
+# round one
+msgs = [sys_prompt, user_question]
+res = model.chat(
+    msgs=msgs,
+    tokenizer=tokenizer,
+    sampling=True,
+    max_new_tokens=128,
+    use_tts_template=True,
+    generate_audio=True,
+    temperature=0.3,
+    output_audio_path='result.wav',
+)
+
+# round two
+history = msgs.append({'role': 'assistant', 'content': res})
+user_question = {'role': 'user', 'content': [librosa.load('xxx.wav', sr=16000, mono=True)[0]]}
+msgs = history.append(user_question)
+res = model.chat(
+    msgs=msgs,
+    tokenizer=tokenizer,
+    sampling=True,
+    max_new_tokens=128,
+    use_tts_template=True,
+    generate_audio=True,
+    temperature=0.3,
+    output_audio_path='result_round_2.wav',
+)
+print(res)
+```
+</details>
+
+
+##### Instruction-to-Speech
+
+MiniCPM-o-2.6 can also do Instruction-to-Speech, aka **Voice Creation**. You can describe a voice in detail, and the model will generate a voice that matches the description. For more Instruction-to-Speech sample instructions, you can refer to https://voxinstruct.github.io/VoxInstruct/.
+
+<details>
+<summary> Click to view Python code running MiniCPM-o 2.6 with Instruction-to-Speech. </summary>
+
+```python
+instruction = 'Delighting in a surprised tone, an adult male with low pitch and low volume comments:"One even gave my little dog a biscuit" This dialogue takes place at a leisurely pace, delivering a sense of excitement and surprise in the context. '
+
+instruction = '在新闻中，一个年轻男性兴致勃勃地说：“祝福亲爱的祖国母亲美丽富强！”他用低音调和低音量，慢慢地说出了这句话。'
+
+msgs = [{'role': 'user', 'content': [instruction]}]
 
 res = model.chat(
     msgs=msgs,
@@ -2153,27 +2186,20 @@ res = model.chat(
     temperature=0.3,
     output_audio_path='result.wav',
 )
-print(res)
 ```
+</details>
+
+##### Voice Cloning
+
+MiniCPM-o-2.6 can also do zero-shot text-to-speech, aka **Voice Cloning**. With this mode, model will act like a TTS model.
+
+<details>
+<summary> Click to show Python code running MiniCPM-o 2.6 with voice cloning. </summary>
+
 ```python
-'''
-Speech Generation Task Prompt:
-    Human Instruction-to-Speech: see https://voxinstruct.github.io/VoxInstruct/
-    Example:
-        # 在新闻中，一个年轻男性兴致勃勃地说：“祝福亲爱的祖国母亲美丽富强！”他用低音调和低音量，慢慢地说出了这句话。
-        # Delighting in a surprised tone, an adult male with low pitch and low volume comments:"One even gave my little dog a biscuit" This dialogue takes place at a leisurely pace, delivering a sense of excitement and surprise in the context. 
-
-    Voice Cloning or Voice Creation: With this mode, model will act like a TTS model. 
-'''
-# Human Instruction-to-Speech:
-task_prompt = '' #Try to make some Human Instruction-to-Speech prompt
-msgs = [{'role': 'user', 'content': [task_prompt]}] # you can try to use the same audio question. (Voice Creation)
-
-# Voice Cloning mode: With this mode, model will act like a TTS model. 
-# sys_prompt = model.get_sys_prompt(ref_audio=ref_audio, mode='voice_cloning', language='en')
-# text_prompt = f"Please read the text below."
-# user_question = {'role': 'user', 'content': [text_prompt, "content that you want to read"]} # using same voice in sys_prompt to read the text. (Voice Cloning)
-# user_question = {'role': 'user', 'content': [text_prompt, librosa.load('xxx.wav', sr=16000, mono=True)[0]]} # using same voice in sys_prompt to read 'xxx.wav'. (Voice Conversion)
+sys_prompt = model.get_sys_prompt(ref_audio=ref_audio, mode='voice_cloning', language='en')
+text_prompt = f"Please read the text below."
+user_question = {'role': 'user', 'content': [text_prompt, "content that you want to read"]}
 
 msgs = [sys_prompt, user_question]
 res = model.chat(
@@ -2187,10 +2213,47 @@ res = model.chat(
     output_audio_path='result.wav',
 )
 
-
 ```
-
 </details>
+
+##### Addressing Various Audio Understanding Tasks
+
+MiniCPM-o-2.6 can also be used to address various audio understanding tasks, such as ASR, speaker analysis, general audio captioning, and sound scene tagging.
+
+<details>
+<summary> Click to show Python code running MiniCPM-o 2.6 with specific audioQA task. </summary>
+
+For audio-to-text tasks, you can use the following prompts:
+
+- ASR with ZH(same as AST en2zh): `请仔细听这段音频片段，并将其内容逐字记录。`
+- ASR with EN(same as AST zh2en): `Please listen to the audio snippet carefully and transcribe the content.`
+- Speaker Analysis: `Based on the speaker's content, speculate on their gender, condition, age range, and health status.`
+- General Audio Caption: `Summarize the main content of the audio.`
+- General Sound Scene Tagging: `Utilize one keyword to convey the audio's content or the associated scene.`
+
+```python
+task_prompt = "Please listen to the audio snippet carefully and transcribe the content." + "\n" # can change to other prompts.
+audio_input, _ = librosa.load('xxx.wav', sr=16000, mono=True)
+
+msgs = [{'role': 'user', 'content': [task_prompt, audio_input]}]
+
+res = model.chat(
+    msgs=msgs,
+    tokenizer=tokenizer,
+    sampling=True,
+    max_new_tokens=128,
+    use_tts_template=True,
+    generate_audio=True,
+    temperature=0.3,
+    output_audio_path='result.wav',
+)
+print(res)
+```
+</details>
+
+
+
+
 
 #### Multimodal Live Streaming
 <details>
