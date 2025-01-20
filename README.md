@@ -1814,12 +1814,13 @@ Click here to try out the online demo of [MiniCPM-o 2.6](https://minicpm-omni-we
 
 ### Local WebUI Demo <!-- omit in toc --> 
   
-You can easily build your own local WebUI demo using the following commands, experience real-time streaming voice/video call. 
+You can easily build your own local WebUI demo using the following commands.
 
-Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues. We are investigating this issue.
+Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues.
 
 If you are using an older version of PyTorch, you might encounter this issue `"weight_norm_fwd_first_dim_kernel" not implemented for 'BFloat16'`, Please add `self.minicpmo_model.tts.float()` during the model initialization.
 
+**For real-time voice/video call demo:**
 1. launch model server:
 ```shell
 pip install -r requirements_o2.6.txt
@@ -1843,6 +1844,14 @@ bash ./make_ssl_cert.sh  # output key.pem and cert.pem
 pnpm install  # install requirements
 pnpm run dev  # start server
 ```
+Open `https://localhost:8088/` in browser and enjoy the real-time voice/video call.
+
+**For chatbot demo:**
+```shell
+pip install -r requirements_o2.6.txt
+
+python web_demos/minicpm-o_2.6/chatbot_web_demo_o2.6.py
+```
 
 ## Inference
 
@@ -1860,8 +1869,7 @@ pnpm run dev  # start server
 
 ### Multi-turn Conversation
 
-Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues.
-
+Please ensure that `transformers==4.44.2` is installed, as other versions may have compatibility issues. We are investigating this issue.
 ```shell
 pip install -r requirements_o2.6.txt
 ```

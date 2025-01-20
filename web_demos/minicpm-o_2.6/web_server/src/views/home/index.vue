@@ -39,8 +39,9 @@
             <VoiceCall v-else-if="!isWebSocket && activeTab === 'voice'" v-model="isCalling" />
             <VideoCallWs v-else-if="isWebSocket && activeTab === 'video'" v-model="isCalling" />
             <VideoCall v-else-if="!isWebSocket && activeTab === 'video'" v-model="isCalling" />
+            <!-- TODO: https is required to support chatbot in iframe -->
             <iframe
-                src="https://minicpm-omni-webdemo-iframe.modelbest.cn"
+                src="http://127.0.0.1:8000/"
                 frameborder="0"
                 width="100%"
                 height="100%"

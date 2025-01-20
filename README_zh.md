@@ -1802,8 +1802,9 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 
 ### 本地 WebUI Demo <!-- omit in toc --> 
 
-您可以使用以下命令轻松构建自己的本地 WebUI Demo, 体验实时流式视频/语音通话。更详细的部署教程请参考[文档](https://modelbest.feishu.cn/wiki/RnjjwnUT7idMSdklQcacd2ktnyN)。
+您可以使用以下命令轻松构建自己的本地 WebUI Demo。更详细的部署教程请参考[文档](https://modelbest.feishu.cn/wiki/RnjjwnUT7idMSdklQcacd2ktnyN)。
 
+**实时流式视频/语音通话demo:**
 1. 启动model server:
 ```shell
 pip install -r requirements_o2.6.txt
@@ -1827,6 +1828,14 @@ bash ./make_ssl_cert.sh  # output key.pem and cert.pem
 
 pnpm install  # install requirements
 pnpm run dev  # start server
+```
+浏览器打开`https://localhost:8088/`，开始体验实时流式视频/语音通话.
+
+**Chatbot图文对话demo:**
+```shell
+pip install -r requirements_o2.6.txt
+
+python web_demos/minicpm-o_2.6/chatbot_web_demo_o2.6.py
 ```
 
 
