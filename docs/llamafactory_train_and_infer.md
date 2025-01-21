@@ -5,6 +5,9 @@
 - [Support Models](#Support-Models)
 - [LLaMA-Factory Installation](#LLaMA-Factory-Installation)
 - [Dataset Prepare](#Dataset-Prepare)
+  - [Image Dataset](#Image-Dataset)
+  - [Video Dataset](#Video-Dataset)
+  - [Audio Dataset](#Audio-Dataset)
 - [Lora Fine-Tuning](#Lora-Fine-Tuning)
 - [Full Parameters Fine-Tuning](#Full-Parameters-Fine-Tuning)
 - [Inference](#Inference)
@@ -175,6 +178,66 @@ Refer to video sft demo data: [data/mllm_video_demo.json](https://github.com/hiy
 
 </details>
 
+### Audio Dataset
+
+Refer to audio sft demo data: [data/mllm_audio_demo.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/mllm_audio_demo.json)
+
+<details>
+  <summary>
+    <b>data/mllm_audio_demo.json</b>
+  </summary>
+
+```json
+[
+  {
+    "messages": [
+      {
+        "content": "<audio>What's that sound?",
+        "role": "user"
+      },
+      {
+        "content": "It is the sound of glass shattering.",
+        "role": "assistant"
+      }
+    ],
+    "audios": [
+      "mllm_demo_data/1.mp3"
+    ]
+  },
+  {
+    "messages": [
+      {
+        "content": "<audio>What can you hear?",
+        "role": "user"
+      },
+      {
+        "content": "A woman is coughing.",
+        "role": "assistant"
+      }
+    ],
+    "audios": [
+      "mllm_demo_data/2.wav"
+    ]
+  },
+  {
+    "messages": [
+      {
+        "content": "<audio>What does the person say?",
+        "role": "user"
+      },
+      {
+        "content": "Mister Quiller is the apostle of the middle classes and we are glad to welcome his gospel.",
+        "role": "assistant"
+      }
+    ],
+    "audios": [
+      "mllm_demo_data/3.flac"
+    ]
+  }
+]
+```
+
+</details>
 
 ## Lora Fine-Tuning
 
@@ -201,7 +264,7 @@ finetuning_type: lora
 lora_target: q_proj,v_proj
 
 ### dataset
-dataset: mllm_demo # mllm_demo mllm_video_demo
+dataset: mllm_demo # mllm_demo mllm_video_demo mllm_audio_demo
 template: minicpm_v
 cutoff_len: 3072
 max_samples: 1000
