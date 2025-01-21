@@ -1,99 +1,118 @@
-import streamlit as st
+import gradio as gr
 from PIL import Image
+import traceback
+import re
 import torch
+import argparse
 from transformers import AutoModel, AutoTokenizer
 
-# Model path
-model_path = "openbmb/MiniCPM-V-2"
+# README, How to run demo on different devices
+# For Nvidia GPUs support BF16 (like A100, H100, RTX3090)
+# python web_demo.py --device cuda --dtype bf16
 
-# User and assistant names
-U_NAME = "User"
-A_NAME = "Assistant"
+# For Nvidia GPUs do NOT support BF16 (like V100, T4, RTX2080)
+# python web_demo.py --device cuda --dtype fp16
 
-# Set page configuration
-st.set_page_config(
-    page_title="Minicpm-V-2 Streamlit",
-    page_icon=":robot:",
-    layout="wide"
-)
+# For Mac with MPS (Apple silicon or AMD GPUs).
+# PYTORCH_ENABLE_MPS_FALLBACK=1 python web_demo.py --device mps --dtype fp16
 
-# Load model and tokenizer
-@st.cache_resource
-def load_model_and_tokenizer():
-    print(f"load_model_and_tokenizer from {model_path}")
-    model = AutoModel.from_pretrained(model_path, trust_remote_code=True, torch_dtype=torch.bfloat16).to(
-        device="cuda:0", dtype=torch.bfloat16)
-    tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
-    return model, tokenizer
-
-# Initialize session state
-if 'model' not in st.session_state:
-    st.session_state.model, st.session_state.tokenizer = load_model_and_tokenizer()
-    print("model and tokenizer had loaded completed!")
-
-# Initialize session state
-if 'chat_history' not in st.session_state:
-    st.session_state.chat_history = []
-
-# Sidebar settings
-sidebar_name = st.sidebar.title("Minicpm-V-2 Streamlit")
-max_length = st.sidebar.slider("max_length", 0, 4096, 2048, step=2)
-top_p = st.sidebar.slider("top_p", 0.0, 1.0, 0.8, step=0.01)
-temperature = st.sidebar.slider("temperature", 0.0, 1.0, 0.7, step=0.01)
-
-# Clear chat history button
-buttonClean = st.sidebar.button("Clear chat history", key="clean")
-if buttonClean:
-    st.session_state.chat_history = []
-    st.session_state.response = ""
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
-    st.rerun()
-
-# Display chat history
-for i, message in enumerate(st.session_state.chat_history):
-    if message["role"] == "user":
-        with st.chat_message(name="user", avatar="user"):
-            if message["image"] is not None:
-                st.image(message["image"], caption='User uploaded image', width=468, use_column_width=False)
-                continue
-            elif message["content"] is not None:
-                st.markdown(message["content"])
+# Argparser
+parser = argparse.ArgumentParser(description='demo')
+parser.add_argument('--device', type=str, default='cuda', help='cuda or mps')
+parser.add_argument('--dtype', type=str, default='bf16', help='bf16 or fp16')
+args = parser.parse_args()
+device = args.device
+assert device in ['cuda', 'mps']
+if args.dtype == 'bf16':
+    if device == 'mps':
+        print('Warning: MPS does not support bf16, will use fp16 instead')
+        dtype = torch.float16
     else:
-        with st.chat_message(name="model", avatar="assistant"):
-            st.markdown(message["content"])
+        dtype = torch.bfloat16
+else:
+    dtype = torch.float16
 
-# Select mode
-selected_mode = st.sidebar.selectbox("Select mode", ["Text", "Image"])
-if selected_mode == "Image":
-    # Image mode
-    uploaded_image = st.sidebar.file_uploader("Upload image", key=1, type=["jpg", "jpeg", "png"], accept_multiple_files=False)
-    if uploaded_image is not None:
-        st.image(uploaded_image, caption='User uploaded image', width=468, use_column_width=False)
-        # Add uploaded image to chat history
-        st.session_state.chat_history.append({"role": "user", "content": None, "image": uploaded_image})
+# Load model
+model_path = 'openbmb/MiniCPM-V-2'
+model = AutoModel.from_pretrained(model_path, trust_remote_code=True).to(dtype=torch.bfloat16)
+tokenizer = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True)
 
-# User input box
-user_text = st.chat_input("Enter your question")
-if user_text:
-    with st.chat_message(U_NAME, avatar="user"):
-        st.session_state.chat_history.append({"role": "user", "content": user_text, "image": None})
-        st.markdown(f"{U_NAME}: {user_text}")
+model = model.to(device=device, dtype=dtype)
+model.eval()
 
-    # Generate reply using the model
-    model = st.session_state.model
-    tokenizer = st.session_state.tokenizer
+ERROR_MSG = "Error, please retry"
+model_name = 'MiniCPM-V 2.0'
 
-    with st.chat_message(A_NAME, avatar="assistant"):
-        # If the previous message contains an image, pass the image to the model
-        if len(st.session_state.chat_history) > 1 and st.session_state.chat_history[-2]["image"] is not None:
-            uploaded_image = st.session_state.chat_history[-2]["image"]
-            imagefile = Image.open(uploaded_image).convert('RGB')
+form_radio = {'choices': ['Beam Search', 'Sampling'],'value': 'Sampling','interactive': True,'label': 'Decode Type'}
+# Beam Form
+num_beams_slider = {'minimum': 0,'maximum': 5,'value': 3,'step': 1,'interactive': True,'label': 'Num Beams'}
+repetition_penalty_slider = {'minimum': 0,'maximum': 3,'value': 1.2,'step': 0.01,'interactive': True,'label': 'Repetition Penalty'}
+repetition_penalty_slider2 = {'minimum': 0,'maximum': 3,'value': 1.05,'step': 0.01,'interactive': True,'label': 'Repetition Penalty'}
 
-        msgs = [{"role": "user", "content": user_text}]
-        res, context, _ = model.chat(image=imagefile, msgs=msgs, context=None, tokenizer=tokenizer,
-                                     sampling=True,top_p=top_p,temperature=temperature)
-        st.markdown(f"{A_NAME}: {res}")
-        st.session_state.chat_history.append({"role": "model", "content": res, "image": None})
+# Handling both max_new_tokens_slider and top_p_slider
+max_new_tokens_slider = {'minimum': 1,'maximum': 4096,'value': 1024,'step': 1,'interactive': True,'label': 'Max New Tokens'}
+top_p_slider = {'minimum': 0,'maximum': 1,'value': 0.8,'step': 0.05,'interactive': True,'label': 'Top P'}
+top_k_slider = {'minimum': 0,'maximum': 200,'value': 100,'step': 1,'interactive': True,'label': 'Top K'}
+temperature_slider = {'minimum': 0, 'maximum': 2,'value': 0.7,'step': 0.05,'interactive': True,'label': 'Temperature'}
 
-    st.divider()
+def create_component(params, comp='Slider'):
+    if comp == 'Slider':
+        return gr.Slider(minimum=params['minimum'],maximum=params['maximum'],value=params['value'],step=params['step'],interactive=params['interactive'],label=params['label'])
+    elif comp == 'Radio':
+        return gr.Radio(choices=params['choices'],value=params['value'],interactive=params['interactive'],label=params['label'])
+    elif comp == 'Button':
+        return gr.Button(value=params['value'],interactive=True)
+
+def chat(img, msgs, ctx, params=None, vision_hidden_states=None):
+    default_params = {"num_beams":3, "repetition_penalty": 1.2, "max_new_tokens": 1024}
+    if params is None:
+        params = default_params
+    if img is None:
+        return -1, "Error, invalid image, please upload a new image", None, None
+    try:
+        image = img.convert('RGB')
+        answer, context, _ = model.chat(image=image,msgs=msgs,context=None,tokenizer=tokenizer,**params)
+        res = re.sub(r'(<box>.*</box>)', '', answer)
+        res = res.replace('<ref>', '')
+        res = res.replace('</ref>', '')
+        res = res.replace('<box>', '')
+        answer = res.replace('</box>', '')
+        return 0, answer, None, None
+    except Exception as err:
+        print(err)
+        traceback.print_exc()
+        return -1, ERROR_MSG, None, None
+
+def upload_img(image, _chatbot, _app_session):
+    image = Image.fromarray(image)
+    _app_session['sts']=None
+    _app_session['ctx']=[]
+    _app_session['img']=image 
+    _chatbot.append(('', 'Image uploaded successfully, you can talk to me now'))
+    return _chatbot, _app_session
+
+def respond(_question, _chat_bot, _app_cfg, params_form, num_beams, repetition_penalty, repetition_penalty_2, top_p, top_k, temperature):
+    if _app_cfg.get('ctx', None) is None:
+        _chat_bot.append((_question, 'Please upload an image to start'))
+        return '', _chat_bot, _app_cfg
+    _context = _app_cfg['ctx'].copy()
+    if _context:
+        _context.append({"role": "user", "content": _question})
+    else:
+        _context = [{"role": "user", "content": _question}] 
+    print('<User>:', _question)
+    if params_form == 'Beam Search':
+        params = {'sampling': False,'num_beams': num_beams,'repetition_penalty': repetition_penalty,"max_new_tokens": 896 }
+    else:
+        params = {'sampling': True,'top_p': top_p,'top_k': top_k,'temperature': temperature,'repetition_penalty': repetition_penalty_2,"max_new_tokens": 896 }
+    code, _answer, _, sts = chat(_app_cfg['img'], _context, None, params)
+    print('<Assistant>:', _answer)
+    _context.append({"role": "assistant", "content": _answer}) 
+    _chat_bot.append((_question, _answer))
+    if code == 0:
+        _app_cfg['ctx']=_context
+        _app_cfg['sts']=sts
+    return '', _chat_bot, _app_cfg
+
+def regenerate_button_clicked(_question, _chat_bot, _app_cfg, params_form, num_beams, repetition_penalty, repetition_penalty_2, top_p, top_k, temperature):
+    return respond(_question, _chat_bot, _app_cfg, params_form, num_beams, repetition_penalty, repetition_penalty_2, top_p, top_k, temperature)
