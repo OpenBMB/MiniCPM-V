@@ -1,4 +1,5 @@
 from ...smp import *
+from .multiple_choice import extract_answer_from_item
 import numpy as np
 import re
 
@@ -97,22 +98,31 @@ def get_dimension_rating(data_path):
 
     for duration in DURATIONS + ['overall']:
 
-        overall_res_dur = f'{np.mean([x for x in sum(duration_rating[duration]["domain"].values(), []) if x >= 0]):.2f}'
+        overall_res_dur = f'{np.mean([x for x in sum(duration_rating[duration]["domain"].values(), []) if x >= 0]):.3f}'
         duration_rating[duration]['overall'] = overall_res_dur
 
         for domain in DOMAINS:
-            domain_res_dur = f'{np.mean([x for x in duration_rating[duration]["domain"][domain] if x >= 0]):.2f}'
+            domain_res_dur = f'{np.mean([x for x in duration_rating[duration]["domain"][domain] if x >= 0]):.3f}'
             duration_rating[duration]['domain'][domain] = domain_res_dur
 
         for sub_ctg in SUB_CATEGORIES:
-            sub_res_dur = f'{np.mean([x for x in duration_rating[duration]["sub_category"][sub_ctg] if x >= 0]):.2f}'
+            sub_res_dur = f'{np.mean([x for x in duration_rating[duration]["sub_category"][sub_ctg] if x >= 0]):.3f}'
             duration_rating[duration]['sub_category'][sub_ctg] = sub_res_dur
 
         for task_ctg in TASK_CATEGORIES:
-            task_res_dur = f'{np.mean([x for x in duration_rating[duration]["task_type"][task_ctg] if x >= 0]):.2f}'
+            task_res_dur = f'{np.mean([x for x in duration_rating[duration]["task_type"][task_ctg] if x >= 0]):.3f}'
             duration_rating[duration]['task_type'][task_ctg] = task_res_dur
 
     return duration_rating
+
+
+def extract_option(model, input_item, dataset_name):
+    options = input_item['question'].split('\n')[1:]
+    for id, option in enumerate(options):
+        option_id = chr(ord('A') + id) + '.'
+        if option.find(option_id) >= 0:
+            input_item[chr(ord('A') + id)] = option[option.find(option_id) + len(option_id):].strip('. \n')
+    return extract_answer_from_item(model, input_item, dataset_name)['opt']
 
 
 def extract_characters_regex(s):

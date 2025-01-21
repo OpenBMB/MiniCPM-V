@@ -1,6 +1,7 @@
 from huggingface_hub import snapshot_download
 from ..smp import *
 from .video_base import VideoBaseDataset
+from .utils import build_judge, DEBUG_MESSAGE
 
 FAIL_MSG = 'Failed to obtain answer via API.'
 
@@ -28,7 +29,7 @@ def unwrap_hf_pkl(pth, suffix='.mp4'):
 
 class VideoMME(VideoBaseDataset):
 
-    MD5 = '2f16cd40b1c125b67e661e59da2f6cd0'
+    MD5 = '85bdd91f9b29a99354c23b97ab7c113c'
     SYS = ''
 
     FRAMES_TMPL_NOSUB = """
@@ -45,11 +46,12 @@ Select the best answer to the following multiple-choice question based on the vi
 Respond with only the letter (A, B, C, or D) of the correct option.
 """
 
-    TYPE = 'MCQ'
+    TYPE = 'Video-MCQ'
 
-    def __init__(self, dataset='Video-MME', use_subtitle=False):
-        super().__init__(dataset=dataset)
+    def __init__(self, dataset='Video-MME', use_subtitle=False, nframe=0, fps=-1):
+        super().__init__(dataset=dataset, nframe=nframe, fps=fps)
         self.use_subtitle = use_subtitle
+        self.dataset_name = dataset
 
     @classmethod
     def supported_datasets(cls):
@@ -131,14 +133,18 @@ Respond with only the letter (A, B, C, or D) of the correct option.
                 data_file['video'] = data_file['videoID']
                 data_file['video_path'] = data_file['videoID'].apply(lambda x: f'./video/{x}.mp4')
                 data_file['subtitle_path'] = data_file['videoID'].apply(lambda x: f'./subtitle/{x}.srt')
-                data_file['question'] += '\n' + data_file['options'].apply(lambda x: '\n'.join(x))
+                data_file['candidates'] = data_file['options'].apply(lambda x: x.tolist())
 
-                data_file = data_file[['index', 'video', 'video_path', 'duration', 'domain',
+                data_file = data_file[['index', 'video', 'video_path', 'duration', 'domain', 'candidates',
                                        'sub_category', 'task_type', 'subtitle_path', 'question', 'answer']]
 
                 data_file.to_csv(osp.join(pth, f'{dataset_name}.tsv'), sep='\t', index=False)
 
-            dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset')
+            if modelscope_flag_set():
+                from modelscope import dataset_snapshot_download
+                dataset_path = dataset_snapshot_download(dataset_id=repo_id)
+            else:
+                dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset')
             unzip_hf_zip(dataset_path)
             generate_tsv(dataset_path)
 
@@ -146,36 +152,43 @@ Respond with only the letter (A, B, C, or D) of the correct option.
 
         return dict(data_file=data_file, root=dataset_path)
 
-    def save_video_frames(self, video, num_frames=8):
+    def save_video_frames(self, video, video_llm=False):
 
         vid_path = osp.join(self.data_root, 'video', video + '.mp4')
         vid = decord.VideoReader(vid_path)
-        step_size = len(vid) / (num_frames + 1)
-        indices = [int(i * step_size) for i in range(1, num_frames + 1)]
-
         video_info = {
             'fps': vid.get_avg_fps(),
             'n_frames': len(vid),
         }
+        if self.nframe > 0 and self.fps < 0:
+            step_size = len(vid) / (self.nframe + 1)
+            indices = [int(i * step_size) for i in range(1, self.nframe + 1)]
+            frame_paths = self.frame_paths(video)
+        elif self.fps > 0:
+            # not constrained by num_frames, get frames by fps
+            total_duration = video_info['n_frames'] / video_info['fps']
+            required_frames = int(total_duration * self.fps)
+            step_size = video_info['fps'] / self.fps
+            indices = [int(i * step_size) for i in range(required_frames)]
+            frame_paths = self.frame_paths_fps(video, len(indices))
 
-        frame_paths = self.frame_paths(video, num_frames)
         flag = np.all([osp.exists(p) for p in frame_paths])
 
         if not flag:
-            images = [vid[i].numpy() for i in indices]
+            images = [vid[i].asnumpy() for i in indices]
             images = [Image.fromarray(arr) for arr in images]
             for im, pth in zip(images, frame_paths):
-                if not osp.exists(pth):
+                if not osp.exists(pth) and not video_llm:
                     im.save(pth)
 
         return frame_paths, indices, video_info
 
-    def build_prompt(self, line, num_frames, video_llm):
+    def build_prompt(self, line, video_llm):
         if isinstance(line, int):
             assert line < len(self)
             line = self.data.iloc[line]
 
-        frames, indices, video_info = self.save_video_frames(line['video'], num_frames)
+        frames, indices, video_info = self.save_video_frames(line['video'], video_llm)
 
         if self.use_subtitle and os.path.exists(osp.join(self.data_root, line['subtitle_path'])):
             import pysubs2
@@ -204,6 +217,7 @@ Respond with only the letter (A, B, C, or D) of the correct option.
 
         text_prompt = self.FRAMES_TMPL_NOSUB if not self.use_subtitle else self.FRAMES_TMPL_SUB.format(subtitles)
         message.append(dict(type='text', value=text_prompt))
+        line['question'] += '\n' + '\n'.join(eval(line['candidates']))
         prompt = 'Question: {}\nAnswer: '.format(line['question'])
         message.append(dict(type='text', value=prompt))
         return message
@@ -211,7 +225,7 @@ Respond with only the letter (A, B, C, or D) of the correct option.
     # It returns a dictionary
     @classmethod
     def evaluate(self, eval_file, **judge_kwargs):
-        from .utils.videomme import get_dimension_rating, extract_characters_regex
+        from .utils.videomme import get_dimension_rating, extract_characters_regex, extract_option
 
         assert eval_file.endswith('.xlsx'), 'data file should be an xlsx file'
 
@@ -220,6 +234,20 @@ Respond with only the letter (A, B, C, or D) of the correct option.
         score_file = eval_file.replace('.xlsx', '_score.xlsx')
 
         if not osp.exists(score_file):
+            model = judge_kwargs.get('model', 'exact_matching')
+            assert model in ['chatgpt-0125', 'exact_matching', 'gpt-4-0125']
+
+            if model == 'exact_matching':
+                model = None
+            elif gpt_key_set():
+                model = build_judge(**judge_kwargs)
+                if not model.working():
+                    warnings.warn('OPENAI API is not working properly, will use exact matching for evaluation')
+                    warnings.warn(DEBUG_MESSAGE)
+                    model = None
+            else:
+                warnings.warn('OPENAI_API_KEY is not set properly, will use exact matching for evaluation')
+                model = None
             res = {} if not osp.exists(tmp_file) else load(tmp_file)
             res = {k: v for k, v in res.items() if FAIL_MSG not in v}
 
@@ -228,10 +256,15 @@ Respond with only the letter (A, B, C, or D) of the correct option.
 
             for idx in data['index']:
                 ans = data.loc[data['index'] == idx, 'answer'].values[0]
-                pred = data.loc[data['index'] == idx, 'prediction'].values[0]
+                pred = str(data.loc[data['index'] == idx, 'prediction'].values[0])
 
                 if extract_characters_regex(pred) == '':
-                    data.loc[idx, 'score'] = -1
+                    extract_pred = extract_option(
+                        model,
+                        data.loc[data['index'] == idx].to_dict(orient='records')[0],
+                        'Video-MME'
+                    )
+                    data.loc[idx, 'score'] = int(extract_pred == ans)
                 else:
                     data.loc[idx, 'score'] = int(extract_characters_regex(pred) == ans)
 

@@ -1,6 +1,47 @@
 from ...smp import *
 
 
+def AMBER_rating(data_file):
+    data = load(data_file)
+    stats = defaultdict(dict)
+    lt = len(data)
+    category_mapping = {
+        'discriminative-attribute-state': 'Attribute',
+        'discriminative-attribute-number': 'Attribute',
+        'discriminative-attribute-action': 'Attribute',
+        'discriminative-hallucination': 'Existence',
+        'discriminative-relation': 'Relation',
+        'relation': 'Relation'
+    }
+
+    for i in range(lt):
+        item = data.iloc[i]
+        category = item['category']
+        image_path = item['image_path']
+        score = item['score']
+
+        new_category = category_mapping.get(category, category)
+
+        if image_path not in stats[new_category]:
+            stats[new_category][image_path] = []
+        stats[new_category][image_path].append(score)
+
+    def acc(key):
+        res = stats[key]
+        values = []
+        for val in res.values():
+            values.extend(val)
+        return np.mean(values) * 100
+
+    scores = {}
+    for k in stats:
+        scores[k] = acc(k)
+
+    scores['Avg ACC'] = np.mean(list(scores.values()))
+    ret = d2df(scores)
+    return ret
+
+
 def MME_rating(data_file):
     data = load(data_file)
     stats = defaultdict(dict)

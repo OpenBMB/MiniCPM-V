@@ -7,7 +7,9 @@ from transformers import AutoModel, AutoTokenizer
 
 from .base import BaseModel
 from ..smp import *
-from ..dataset import DATASET_TYPE
+from ..dataset import DATASET_TYPE, DATASET_MODALITY
+
+import re
 
 
 class MiniCPM_V(BaseModel):
@@ -25,12 +27,13 @@ class MiniCPM_V(BaseModel):
         self.kwargs = kwargs
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
         torch.cuda.empty_cache()
-        self.num_beams = 1 if self.model_path == 'openbmb/MiniCPM-V' else 3
+        self.num_beams = 3
 
     def use_custom_prompt(self, dataset):
         assert dataset is not None
-        if listinstr(['MMMU'], dataset):
-            return True
+        if listinstr(['MMDU', 'MME-RealWorld', 'MME-RealWorld-CN'], dataset):
+            # For Multi-Turn we don't have custom prompt
+            return False
         return False
 
     def build_prompt(self, line, dataset=None):
@@ -103,7 +106,7 @@ class MiniCPM_Llama3_V(BaseModel):
         self.kwargs = kwargs
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
         torch.cuda.empty_cache()
-        self.num_beams = 1 if self.model_path == 'openbmb/MiniCPM-V' else 3
+        self.num_beams = 3
         self.options_system_prompt = ('Carefully read the following question and select the letter corresponding '
                                       'to the correct answer. Highlight the applicable choices without giving '
                                       'explanations.')
@@ -258,7 +261,7 @@ class MiniCPM_V_2_6(BaseModel):
     INSTALL_REQ = False
     INTERLEAVE = True
 
-    def __init__(self, model_path='openbmb/MiniCPM-V', **kwargs):
+    def __init__(self, model_path='openbmb/MiniCPM-V-2_6', **kwargs):
         random.seed(0)
         np.random.seed(0)
         torch.manual_seed(0)
@@ -274,7 +277,7 @@ class MiniCPM_V_2_6(BaseModel):
         self.kwargs = kwargs
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
         torch.cuda.empty_cache()
-        self.num_beams = 1 if self.model_path == 'openbmb/MiniCPM-V' else 3
+        self.num_beams = 3
 
         self.options_suffix_prompt = '''\nAnswer with the option's letter from the given choices directly.'''
         self.wo_options_system_prompt = 'Carefully read the following question Answer the question directly.'
@@ -291,7 +294,7 @@ class MiniCPM_V_2_6(BaseModel):
     def use_custom_prompt(self, dataset=None):
         if dataset is None:
             return False
-        if listinstr(['MCQ', 'VQA', 'Y/N'], DATASET_TYPE(dataset)):
+        if DATASET_TYPE(dataset) in ['MCQ', 'VQA', 'Y/N']:
             return True
         return False
 
@@ -414,6 +417,15 @@ class MiniCPM_V_2_6(BaseModel):
         return msgs
 
     def generate_inner(self, message, dataset=None):
+        if DATASET_MODALITY(dataset) == 'VIDEO':
+            max_slice_nums = 1
+            use_image_id = False
+            max_inp_length = 2048 * 10
+        else:
+            max_slice_nums = None
+            use_image_id = True
+            max_inp_length = 8192
+
         max_new_tokens = 2048
         default_kwargs = dict(
             max_new_tokens=max_new_tokens,
@@ -449,11 +461,267 @@ class MiniCPM_V_2_6(BaseModel):
             msgs=msgs,
             context=None,
             tokenizer=self.tokenizer,
-            max_inp_length=8192,
+            max_inp_length=max_inp_length,
+            use_image_id=use_image_id,
+            max_slice_nums=max_slice_nums,
             **default_kwargs
         )
 
         if isinstance(res, tuple) and len(res) > 0:
             res = res[0]
+
+        return res
+
+
+class MiniCPM_o_2_6(BaseModel):
+    INSTALL_REQ = False
+    INTERLEAVE = True
+
+    def __init__(self, model_path='openbmb/MiniCPM-o-2_6', **kwargs):
+        random.seed(0)
+        np.random.seed(0)
+        torch.manual_seed(0)
+        torch.cuda.manual_seed_all(0)
+
+        assert model_path is not None
+        self.model_path = model_path
+        print(f'load from path {self.model_path}')
+        self.model = AutoModel.from_pretrained(
+            self.model_path,
+            trust_remote_code=True,
+            attn_implementation='sdpa',
+            torch_dtype=torch.bfloat16,
+            init_vision=True,
+            init_audio=False,
+            init_tts=False
+        )
+
+        self.model.eval().cuda()
+
+        self.kwargs = kwargs
+        self.tokenizer = AutoTokenizer.from_pretrained(self.model_path, trust_remote_code=True)
+        torch.cuda.empty_cache()
+
+        num_beams = int(os.getenv("NUM_BEAMS", "3"))
+        self.num_beams = 3 if self.model_path == 'openbmb/MiniCPM-o-2_6' else num_beams
+
+        repetition_penalty = float(os.getenv("PENALTY", "1.2"))
+        self.repetition_penalty = repetition_penalty
+
+        self.options_suffix_prompt = '''\nAnswer with the option's letter from the given choices directly.'''
+        self.wo_options_system_prompt = 'Carefully read the following question Answer the question directly.'
+        self.detail_system_prompt = 'Answer this question in detail.'
+        self.vqa_prompt = 'Answer the question using a single word or phrase.'
+
+        self.multi_choice_cot_prompt = ('''Carefully read the following multichoice question, solve it step '''
+                                        '''by step and finally pick the option associated with the correct '''
+                                        '''answer in the format of "Answer: selected option\n\n''')
+        self.short_ans_cot_prompt = ('''Read the following question carefully, solve it step by step, and '''
+                                     '''then output the final answer in the format of "Answer: single number '''
+                                     '''or single word or phrase".\n\n''')
+
+    def use_custom_prompt(self, dataset=None):
+        if dataset is None:
+            return False
+        if listinstr(['MCQ', 'VQA', 'Y/N'], DATASET_TYPE(dataset)):
+            return True
+        return False
+
+    def use_cot(self, dataset=None):
+        if dataset is None:
+            return False
+        if listinstr(['MMMU', 'MathVista', 'OCRBench', 'ChartQA', 'MathVision', 'MathVerse_MINI_Vision_Only'], dataset):
+            return True
+        elif listinstr(['MMVet', 'MMBench', 'MMStar', 'HallusionBench', 'AI2D', 'RealWorldQA',
+                        'POPE', 'ScienceQA', 'TextVQA', 'DocVQA'], dataset):
+            return False
+        else:
+            return False
+
+    def use_upsize(self, dataset=None):
+        if dataset is None:
+            return False
+        if listinstr(['MathVista', 'MMBench_TEST_CN', 'MMStar', 'AI2D', 'OCRBench', 'DynaMath'], dataset):
+            return True
+        else:
+            return False
+
+    def build_prompt(self, line, dataset=None):
+        if isinstance(line, int):
+            line = self.data.iloc[line]
+
+        tgt_path = self.dump_image(line, dataset)
+        system_prompt, prompt = '', ''
+
+        question = line['question']
+
+        if not self.use_cot(dataset):
+            if DATASET_TYPE(dataset) == 'MCQ':
+                options = {
+                    cand: line[cand]
+                    for cand in string.ascii_uppercase
+                    if cand in line and not pd.isna(line[cand])
+                }
+                options_prompt = 'Options:\n'
+                for key, item in options.items():
+                    options_prompt += f'{key}. {item}\n'
+                hint = line['hint'] if ('hint' in line and not pd.isna(line['hint'])) else None
+                if hint is not None:
+                    prompt += f'Hint: {hint}\n'
+                prompt += f'Question: {question}\n'
+                if len(options):
+                    prompt += options_prompt
+                    prompt += self.options_suffix_prompt
+                else:
+                    system_prompt = self.wo_options_system_prompt
+
+                if 'MMMU' in dataset:
+                    if len(system_prompt) > 0:
+                        prompt = system_prompt + '\n' + prompt
+                        system_prompt = ''
+            elif dataset is not None and listinstr(['HallusionBench'], dataset):
+                question += ' Yes or No?'
+                prompt = question
+            elif dataset is not None and listinstr(['OCRBench'], dataset):
+                system_prompt = self.vqa_prompt
+                prompt = question
+            elif DATASET_TYPE(dataset) == 'VQA':
+                if listinstr(['LLaVABench'], dataset):
+                    system_prompt = ''
+                elif listinstr(['MMVet'], dataset):
+                    system_prompt = self.detail_system_prompt
+                else:
+                    system_prompt = self.vqa_prompt
+                prompt = question
+            else:
+                prompt = question
+        else:
+            has_options = True
+            if DATASET_TYPE(dataset) == 'MCQ':
+                options = {
+                    cand: line[cand]
+                    for cand in string.ascii_uppercase
+                    if cand in line and not pd.isna(line[cand])
+                }
+                options_prompt = ''
+                for key, item in options.items():
+                    options_prompt += f'{key}. {item}\n'
+                hint = line['hint'] if ('hint' in line and not pd.isna(line['hint'])) else None
+                if hint is not None:
+                    prompt += f'Hint: {hint}\n'
+                prompt += f'{question}\n'
+
+                if len(options):
+                    prompt += options_prompt
+                else:
+                    has_options = False
+
+                if 'MMMU' in dataset:
+                    if len(system_prompt) > 0:
+                        prompt = system_prompt + '\n' + prompt
+                        system_prompt = ''
+            else:
+                prompt = question
+
+            if DATASET_TYPE(dataset) in ['MCQ', 'Y/N', 'VQA']:
+                if DATASET_TYPE(dataset) == 'MCQ':
+                    if has_options:
+                        prompt = self.multi_choice_cot_prompt + prompt
+                    else:
+                        prompt = self.short_ans_cot_prompt + prompt
+                elif DATASET_TYPE(dataset) == 'Y/N':
+                    prompt = self.short_ans_cot_prompt + prompt
+                else:
+                    prompt = self.short_ans_cot_prompt + prompt
+
+        msgs = []
+        if system_prompt:
+            msgs.append(dict(type='text', value=system_prompt))
+        if isinstance(tgt_path, list):
+            msgs.extend([dict(type='image', value=p) for p in tgt_path])
+        else:
+            msgs = [dict(type='image', value=tgt_path)]
+        msgs.append(dict(type='text', value=prompt))
+
+        return msgs
+
+    def extract_answer(self, res, dataset=None):
+        if dataset is None:
+            return res
+        if self.use_cot(dataset):
+            if DATASET_TYPE(dataset) == 'MCQ':
+                pattern = r'Answer:\s*([A-Ia-i])(?![A-Za-z])'
+                matches = re.findall(pattern, res, re.DOTALL)
+                if matches:
+                    extracted_res = matches[-1].strip()
+                else:
+                    extracted_res = res
+                return extracted_res
+            elif DATASET_TYPE(dataset) == 'VQA' and not listinstr(['OCRBench'], dataset):
+                pattern = r'Answer:\s*(.*)\s*$'
+                match = re.search(pattern, res, re.DOTALL)
+                if match:
+                    extracted_res = match.group(1)
+                else:
+                    extracted_res = res
+                return extracted_res
+        return res
+
+    def generate_inner(self, message, dataset=None):
+        if DATASET_MODALITY(dataset) == 'VIDEO':
+            max_slice_nums = 1
+            use_image_id = False
+            max_inp_length = 2048 * 10
+        else:
+            max_slice_nums = None
+            use_image_id = True
+            max_inp_length = 8192
+
+        max_new_tokens = 2048
+        default_kwargs = dict(
+            max_new_tokens=max_new_tokens,
+            sampling=False,
+            repetition_penalty=self.repetition_penalty,
+            num_beams=self.num_beams,
+        )
+        default_kwargs.update(self.kwargs)
+
+        content = []
+
+        for x in message:
+            if x['type'] == 'text':
+                content.append(x['value'])
+            elif x['type'] == 'image':
+                image = Image.open(x['value']).convert('RGB')
+                if not self.use_upsize(dataset):
+                    content.append(image)
+                else:
+                    img_width, img_height = image.width, image.height
+                    if (img_width * img_height) >= (1344 * 1344):
+                        content.append(image)
+                    else:
+                        ratio = math.sqrt((1344 * 1344) / (img_width * img_height))
+                        max_img_width = int(img_width * ratio)
+                        new_img_width = random.randint(img_width, max_img_width)
+                        new_img_height = int(new_img_width / img_width * img_height)
+                        resized_image = image.resize((new_img_width, new_img_height))
+                        content.append(resized_image)
+        msgs = [{'role': 'user', 'content': content}]
+
+        res = self.model.chat(
+            image=None,
+            msgs=msgs,
+            context=None,
+            tokenizer=self.tokenizer,
+            max_inp_length=max_inp_length,
+            use_image_id=use_image_id,
+            max_slice_nums=max_slice_nums,
+            **default_kwargs
+        )
+
+        if isinstance(res, tuple) and len(res) > 0:
+            res = res[0]
+
+        res = self.extract_answer(res, dataset)
 
         return res

@@ -1,18 +1,18 @@
-decord
+decord; platform_machine != 'arm64'
+eva-decord; platform_machine == 'arm64'
 gradio
 huggingface_hub
 imageio
 matplotlib
-moviepy
-numpy>=1.23.4
+numpy
 omegaconf
-openai==1.3.5
+openai
 opencv-python>=4.4.0.46
 openpyxl
 pandas
-peft
 pillow
 portalocker
+protobuf
 python-dotenv
 requests
 rich
@@ -22,9 +22,9 @@ sty
 tabulate
 tiktoken
 timeout-decorator
-torch>=2.0.1
+torch
 tqdm
 transformers
-typing_extensions==4.7.1
+typing_extensions
 validators
 xlsxwriter

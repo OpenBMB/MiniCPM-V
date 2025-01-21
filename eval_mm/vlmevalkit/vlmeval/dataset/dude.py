@@ -89,8 +89,9 @@ class DUDE(ImageBaseDataset):
         os.makedirs(self.img_root, exist_ok=True)
         try:
             import fitz
-        except:
-            warnings.warn('Please use `pip install pymupdf` to parse PDF files.')
+        except Exception as e:
+            logging.critical(f'{type(e)}: {e}')
+            logging.critical('Please use `pip install pymupdf` to parse PDF files.')
 
         line = origin_line.copy()
         if not isinstance(line['image_path'], List):
