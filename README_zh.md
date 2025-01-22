@@ -1850,6 +1850,7 @@ pip install -r requirements_o2.6.txt
 
 python web_demos/minicpm-o_2.6/chatbot_web_demo_o2.6.py
 ```
+浏览器打开`http://localhost:8000/`，开始体验图文对话Chatbot.
 
 
 ## 推理

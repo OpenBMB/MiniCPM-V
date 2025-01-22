@@ -1907,6 +1907,7 @@ pip install -r requirements_o2.6.txt
 
 python web_demos/minicpm-o_2.6/chatbot_web_demo_o2.6.py
 ```
+Open `http://localhost:8000/` in browser and enjoy the vision mode chatbot.
 
 ## Inference
 
