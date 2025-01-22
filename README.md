@@ -339,6 +339,27 @@ MiniCPM-o 2.6 can be easily used in various ways: (1) [llama.cpp](https://github
             <td>-</td>
         </tr>
         <tr>
+            <td nowrap="nowrap" align="left">VITA-1.5</td>
+            <td>8B</td>
+            <td>784</td>
+            <td>63.3</td>
+            <td>741</td>
+            <td>66.2</td>
+            <td>-</td>
+            <td>52.7</td>
+            <td>60.2</td>
+            <td>2328.1</td>
+            <td>76.8</td>
+            <td>79.2</td>
+            <td>52.6</td>
+            <td>44.6</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+        <tr>
             <td nowrap="nowrap" align="left">DeepSeek-VL2-27B (4B)</td>
             <td>27B</td>
             <td>672</td>
@@ -512,6 +533,14 @@ Note: For proprietary models, we calculate token density based on the image enco
         </tr>
         <tr>
             <td colspan="6" align="left"><strong>Open-source</strong></td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">VITA-1.5</td>
+            <td>8B</td>
+            <td>45.0</td>
+            <td>-</td>
+            <td>-</td>
+            <td>56.1/58.7</td>
         </tr>
         <tr>
             <td nowrap="nowrap" align="left">LLaVA-NeXT-Interleave 14B</td>
