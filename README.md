@@ -675,6 +675,19 @@ Note: For proprietary models, we calculate token density based on the image enco
             <td>22.9*</td>
             <td>17.4*</td>
         </tr>
+          <tr>
+            <td nowrap="nowrap" align="left">VITA-1.5</td>
+            <td>8B</td>
+            <td>2.16</td>
+            <td>-</td>
+            <td>8.4</td>
+            <td>3.4</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
         <tr>
             <td nowrap="nowrap" align="left">GLM-4-Voice-Base</td>
             <td>9B</td>
