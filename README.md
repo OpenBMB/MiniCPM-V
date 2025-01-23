@@ -39,7 +39,7 @@
 ## News <!-- omit in toc -->
 
 #### 📌 Pinned
-
+* [2025.01.23] 💡💡💡 MiniCPM-o 2.6 is now supported by [Align-Anything](https://github.com/PKU-Alignment/align-anything), a framework by PKU-Alignment Team for aligning any-to-any modality large models with human intentions. It supports DPO and SFT fine-tuning on both vision and audio. Try it now!
 
 * [2025.01.19] 📢 **ATTENTION!** We are currently working on merging MiniCPM-o 2.6 into the official repositories of llama.cpp, ollama, and vllm. Until the merge is complete, please USE OUR LOCAL FORKS of [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpm-omni/examples/llava/README-minicpmo2.6.md), [ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md), and [vllm](https://github.com/OpenBMB/MiniCPM-o?tab=readme-ov-file#efficient-inference-with-llamacpp-ollama-vllm). **Using the official repositories before the merge may lead to unexpected issues**.
 
@@ -2143,7 +2143,7 @@ res = model.chat(
 
 ##### General Speech Conversation with Configurable Voices
 
-A general usage scenario of MiniCPM-o 2.6 is role-playing a specific character based on the audio prompt. It will mimic the voice of the character to some extent and act like the character in text, including language style. In this mode, MiniCPM-o-2.6 will sounds **more natural and human-like**. Self-defined audio prompts can be used to customize the voice of the character in an end-to-end manner.
+A general usage scenario of MiniCPM-o 2.6 is role-playing a specific character based on the audio prompt. It will mimic the voice of the character to some extent and act like the character in text, including language style. In this mode, MiniCPM-o 2.6 will sounds **more natural and human-like**. Self-defined audio prompts can be used to customize the voice of the character in an end-to-end manner.
 
 <details> <summary>Click to view the Python code for enabling MiniCPM-o 2.6 to interact with you in a specified voice.</summary>
 
@@ -2186,7 +2186,7 @@ print(res)
 
 ##### Speech Conversation as an AI Assistant
 
-An enhanced feature of MiniCPM-o-2.6 is to act as an AI assistant, but only with limited choice of voices. In this mode, MiniCPM-o-2.6 is **less human-like and more like a voice assistant**. But it is more instruction-following.
+An enhanced feature of MiniCPM-o 2.6 is to act as an AI assistant, but only with limited choice of voices. In this mode, MiniCPM-o 2.6 is **less human-like and more like a voice assistant**. But it is more instruction-following.
 
 <details> <summary>Click to view the Python code for enabling MiniCPM-o 2.6 to act as an AI assistant.</summary>
 
@@ -2228,7 +2228,7 @@ print(res)
 
 ##### Instruction-to-Speech
 
-MiniCPM-o-2.6 can also do Instruction-to-Speech, aka **Voice Creation**. You can describe a voice in detail, and the model will generate a voice that matches the description. For more Instruction-to-Speech sample instructions, you can refer to https://voxinstruct.github.io/VoxInstruct/.
+MiniCPM-o 2.6 can also do Instruction-to-Speech, aka **Voice Creation**. You can describe a voice in detail, and the model will generate a voice that matches the description. For more Instruction-to-Speech sample instructions, you can refer to https://voxinstruct.github.io/VoxInstruct/.
 
 <details>
 <summary> Click to view Python code running MiniCPM-o 2.6 with Instruction-to-Speech. </summary>
@@ -2255,7 +2255,7 @@ res = model.chat(
 
 ##### Voice Cloning
 
-MiniCPM-o-2.6 can also do zero-shot text-to-speech, aka **Voice Cloning**. With this mode, model will act like a TTS model.
+MiniCPM-o 2.6 can also do zero-shot text-to-speech, aka **Voice Cloning**. With this mode, model will act like a TTS model.
 
 <details>
 <summary> Click to show Python code running MiniCPM-o 2.6 with voice cloning. </summary>
@@ -2282,7 +2282,7 @@ res = model.chat(
 
 ##### Addressing Various Audio Understanding Tasks
 
-MiniCPM-o-2.6 can also be used to address various audio understanding tasks, such as ASR, speaker analysis, general audio captioning, and sound scene tagging.
+MiniCPM-o 2.6 can also be used to address various audio understanding tasks, such as ASR, speaker analysis, general audio captioning, and sound scene tagging.
 
 <details>
 <summary> Click to show Python code running MiniCPM-o 2.6 with specific audioQA task. </summary>
@@ -2541,7 +2541,7 @@ See [our fork of ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/exa
     from vllm import LLM, SamplingParams
 
     MODEL_NAME = "openbmb/MiniCPM-V-2_6"
-    # MODEL_NAME = "openbmb/MiniCPM-O-2_6"
+    # MODEL_NAME = "openbmb/MiniCPM-o-2_6"
     # Also available for previous models
     # MODEL_NAME = "openbmb/MiniCPM-Llama3-V-2_5"
     # MODEL_NAME = "HwwwH/MiniCPM-V-2"
@@ -2618,11 +2618,19 @@ We support simple fine-tuning with Hugging Face for MiniCPM-o 2.6, MiniCPM-V 2.6
 
 [Reference Document](./finetune/readme.md)
 
+
+### With Align-Anything <!-- omit in toc -->
+
+We support fine-tuning MiniCPM-o 2.6 by PKU-Alignment Team (both vision and audio, SFT and DPO) with the [Align-Anything framework](https://github.com/PKU-Alignment/align-anything). Align-Anything is a scalable framework aims to align any-modality large models with human intentions, open-sourcing the [datasets, models and benchmarks](https://huggingface.co/datasets/PKU-Alignment/align-anything). Benefiting from its concise and modular design, it supports 30+ open-source benchmarks, 40+ models and algorithms including SFT, SimPO, RLHF, *etc*. It also provides 30+ directly runnable scripts, making it suitable for beginners to quickly get started.
+
+Best Practices: [MiniCPM-o 2.6](https://github.com/PKU-Alignment/align-anything/tree/main/scripts).
+
+
 ### With LLaMA-Factory <!-- omit in toc -->
 
-We support fine-tuning MiniCPM-o-2.6 and MiniCPM-V 2.6 with the LLaMA-Factory framework. LLaMA-Factory provides a solution for flexibly customizing the fine-tuning (Lora/Full/Qlora) of 200+ LLMs without the need for coding through the built-in web UI LLaMABoard. It supports various training methods like sft/ppo/dpo/kto and advanced algorithms like Galore/BAdam/LLaMA-Pro/Pissa/LongLoRA.
+We support fine-tuning MiniCPM-o 2.6 and MiniCPM-V 2.6 with the LLaMA-Factory framework. LLaMA-Factory provides a solution for flexibly customizing the fine-tuning (Lora/Full/Qlora) of 200+ LLMs without the need for coding through the built-in web UI LLaMABoard. It supports various training methods like sft/ppo/dpo/kto and advanced algorithms like Galore/BAdam/LLaMA-Pro/Pissa/LongLoRA.
 
-Best Practices: [MiniCPM-o-2.6 | MiniCPM-V-2.6](./docs/llamafactory_train_and_infer.md). 
+Best Practices: [MiniCPM-o 2.6 | MiniCPM-V 2.6](./docs/llamafactory_train_and_infer.md). 
 
 
 ### With the SWIFT Framework <!-- omit in toc -->
