@@ -210,8 +210,8 @@ class StreamManager:
 
         logger.info(f'msg_type is {msg_type}')
         if msg_type <= 1: #audio
-            audio_voice_clone_prompt = "克隆音频提示中的音色以生成语音。"
-            audio_assistant_prompt = "Your task is to be a helpful assistant using this voice pattern."
+            audio_voice_clone_prompt = "Use the voice in the audio prompt to synthesize new content."
+            audio_assistant_prompt = "You are a helpful assistant with the above voice style."
             ref_path = self.ref_path_default
 
             
