@@ -2237,9 +2237,7 @@ MiniCPM-o 2.6 can also do Instruction-to-Speech, aka **Voice Creation**. You can
 <summary> Click to view Python code running MiniCPM-o 2.6 with Instruction-to-Speech. </summary>
 
 ```python
-instruction = 'Delighting in a surprised tone, an adult male with low pitch and low volume comments:"One even gave my little dog a biscuit" This dialogue takes place at a leisurely pace, delivering a sense of excitement and surprise in the context. '
-
-instruction = '在新闻中，一个年轻男性兴致勃勃地说：“祝福亲爱的祖国母亲美丽富强！”他用低音调和低音量，慢慢地说出了这句话。'
+instruction = 'Speak like a male charming superstar, radiating confidence and style in every word.'
 
 msgs = [{'role': 'user', 'content': [instruction]}]
 
