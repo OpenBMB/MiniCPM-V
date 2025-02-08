@@ -34,7 +34,7 @@ class COCO_Caption_Scorer():
         for key, value in total_scores.items():
             print('{}:{}'.format(key, value))
         return total_scores
-
+    
 
 class ImageCaptionDataset(ImageBaseDataset):
 
