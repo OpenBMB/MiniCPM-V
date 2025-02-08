@@ -2516,103 +2516,15 @@ See [our fork of ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/exa
 <details>
 <summary> vLLM now officially supports MiniCPM-V 2.6, MiniCPM-Llama3-V 2.5 and MiniCPM-V 2.0. And you can use our fork to run MiniCPM-o 2.6 for now. Click to see. </summary>
 
-1. For MiniCPM-o 2.6
-   1. Clone our fork of vLLM:
-   ```shell
-   git clone https://github.com/OpenBMB/vllm.git
-   cd vllm
-   git checkout minicpmo
-   ```
-   2. Install vLLM from source:
-   ```shell
-   VLLM_USE_PRECOMPILED=1 pip install --editable . 
-   ```
-   3. Run MiniCPM-o 2.6 in the same way as the previous models (shown in the following example).
+1. Install vLLM(>=0.7.1):
+```shell
+pip install vllm
+```
 
-2. For previous MiniCPM-V models
-    1. Install vLLM(>=0.5.4):
-    ```shell
-    pip install vllm
-    ```
-    2. Install timm: (optional, MiniCPM-V 2.0 need timm)
-    ```shell
-    pip install timm==0.9.10
-    ```
-    3. Run the example(for image):
-    ```python
-    from transformers import AutoTokenizer
-    from PIL import Image
-    from vllm import LLM, SamplingParams
-
-    MODEL_NAME = "openbmb/MiniCPM-V-2_6"
-    # MODEL_NAME = "openbmb/MiniCPM-o-2_6"
-    # Also available for previous models
-    # MODEL_NAME = "openbmb/MiniCPM-Llama3-V-2_5"
-    # MODEL_NAME = "HwwwH/MiniCPM-V-2"
-
-    image = Image.open("xxx.png").convert("RGB")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
-    llm = LLM(
-        model=MODEL_NAME,
-        trust_remote_code=True,
-        gpu_memory_utilization=1,
-        max_model_len=2048
-    )
-
-    messages = [{
-        "role":
-        "user",
-        "content":
-        # Number of images
-        "(<image>./</image>)" + \
-        "\nWhat is the content of this image?" 
-    }]
-    prompt = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=True
-    )
-
-    # Single Inference
-    inputs = {
-        "prompt": prompt,
-        "multi_modal_data": {
-            "image": image
-            # Multi images, the number of images should be equal to that of `(<image>./</image>)`
-            # "image": [image, image] 
-        },
-    }
-    # Batch Inference
-    # inputs = [{
-    #     "prompt": prompt,
-    #     "multi_modal_data": {
-    #         "image": image
-    #     },
-    # } for _ in 2]
-
-
-    # 2.6
-    stop_tokens = ['<|im_end|>', '<|endoftext|>']
-    stop_token_ids = [tokenizer.convert_tokens_to_ids(i) for i in stop_tokens]
-    # 2.0
-    # stop_token_ids = [tokenizer.eos_id]
-    # 2.5
-    # stop_token_ids = [tokenizer.eos_id, tokenizer.eot_id]
-
-    sampling_params = SamplingParams(
-        stop_token_ids=stop_token_ids, 
-        use_beam_search=True,
-        temperature=0, 
-        best_of=3,
-        max_tokens=1024
-    )
-
-    outputs = llm.generate(inputs, sampling_params=sampling_params)
-
-    print(outputs[0].outputs[0].text)
-    ```
-    4. click [here](https://modelbest.feishu.cn/wiki/C2BWw4ZP0iCDy7kkCPCcX2BHnOf?from=from_copylink) if you want to use it with *video*, or get more details about `vLLM`.
-    </details>
+2. Run Example:
+* [Vision Language](https://docs.vllm.ai/en/latest/getting_started/examples/vision_language.html) 
+* [Audio Language](https://docs.vllm.ai/en/latest/getting_started/examples/audio_language.html) 
+  </details>
 
 ## Fine-tuning
 

@@ -2396,103 +2396,17 @@ llama.cpp 用法请参考[我们的fork llama.cpp](https://github.com/OpenBMB/ll
 ollama 用法请参考[我们的fork ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md)， 在iPad上可以支持 16~18 token/s 的流畅推理（测试环境：iPad Pro + M4）。
 
 <details>
-<summary>点击查看, vLLM 现已官方支持MiniCPM-V 2.6、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0，MiniCPM-o 2.6 模型也可以临时用我们的 fork 仓库运行。  </summary>
-1. MiniCPM-o 2.6
-   1. 克隆我们的 vLLM fork 仓库:
-   ```shell
-   git clone https://github.com/OpenBMB/vllm.git
-   cd vllm
-   git checkout minicpmo
-   ```
-   2. 从源码进行安装:
-   ```shell
-   VLLM_USE_PRECOMPILED=1 pip install --editable . 
-   ```
-   3. 用和之前同样的方式运行（下有样例）.
-
-2. 之前版本的 MiniCPM-V
-    1. 安装 vLLM(>=0.5.4):
-    ```shell
-    pip install vllm
-    ```
-    3. 安装 timm 库: （可选，MiniCPM-V 2.0需安装）
-    ```shell
-    pip install timm=0.9.10
-    ```
-    4. 运行示例代码:（注意：如果使用本地路径的模型，请确保模型代码已更新到Hugging Face上的最新版)
-    ```python
-    from transformers import AutoTokenizer
-    from PIL import Image
-    from vllm import LLM, SamplingParams
-
-    MODEL_NAME = "openbmb/MiniCPM-V-2_6"
-    # MODEL_NAME = "openbmb/MiniCPM-o-2_6"
-    # Also available for previous models
-    # MODEL_NAME = "openbmb/MiniCPM-Llama3-V-2_5"
-    # MODEL_NAME = "HwwwH/MiniCPM-V-2"
-
-    image = Image.open("xxx.png").convert("RGB")
-    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
-    llm = LLM(
-        model=MODEL_NAME,
-        trust_remote_code=True,
-        gpu_memory_utilization=1,
-        max_model_len=2048
-    )
-
-    messages = [{
-        "role":
-        "user",
-        "content":
-        # Number of images
-        "(<image>./</image>)" + \
-        "\nWhat is the content of this image?" 
-    }]
-    prompt = tokenizer.apply_chat_template(
-        messages,
-        tokenize=False,
-        add_generation_prompt=True
-    )
-
-    # Single Inference
-    inputs = {
-        "prompt": prompt,
-        "multi_modal_data": {
-            "image": image
-            # Multi images, the number of images should be equal to that of `(<image>./</image>)`
-            # "image": [image, image] 
-        },
-    }
-    # Batch Inference
-    # inputs = [{
-    #     "prompt": prompt,
-    #     "multi_modal_data": {
-    #         "image": image
-    #     },
-    # } for _ in 2]
-
-
-    # 2.6
-    stop_tokens = ['<|im_end|>', '<|endoftext|>']
-    stop_token_ids = [tokenizer.convert_tokens_to_ids(i) for i in stop_tokens]
-    # 2.0
-    # stop_token_ids = [tokenizer.eos_id]
-    # 2.5
-    # stop_token_ids = [tokenizer.eos_id, tokenizer.eot_id]
-
-    sampling_params = SamplingParams(
-        stop_token_ids=stop_token_ids, 
-        use_beam_search=True,
-        temperature=0, 
-        best_of=3,
-        max_tokens=1024
-    )
-
-    outputs = llm.generate(inputs, sampling_params=sampling_params)
-
-    print(outputs[0].outputs[0].text)
-    ```
-    4. [点击此处](https://modelbest.feishu.cn/wiki/C2BWw4ZP0iCDy7kkCPCcX2BHnOf?from=from_copylink)查看带视频推理和其他有关 `vLLM` 的信息。
+<summary>点击查看, vLLM 现已官方支持MiniCPM-o 2.6、MiniCPM-V 2.6、MiniCPM-Llama3-V 2.5 和 MiniCPM-V 2.0。  </summary>
+1. 安装 vLLM(>=0.7.1):
+  
+```shell
+pip install vllm
+```
+  
+2. 运行示例代码:（注意：如果使用本地路径的模型，请确保模型代码已更新到Hugging Face上的最新版)
+  
+  * [图文示例](https://docs.vllm.ai/en/latest/getting_started/examples/vision_language.html) 
+  * [音频示例](https://docs.vllm.ai/en/latest/getting_started/examples/audio_language.html) 
 
 </details>
 
