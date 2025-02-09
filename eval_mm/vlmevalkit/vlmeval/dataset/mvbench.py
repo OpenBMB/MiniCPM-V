@@ -13,25 +13,22 @@ import cv2
 import zipfile
 import os
 import glob
-from moviepy.editor import VideoFileClip, ImageSequenceClip
-import moviepy.config_defaults
 from .utils.mvbench import *
 
 FAIL_MSG = 'Failed to obtain answer via API.'
-moviepy.config_defaults.LOGGER_LEVEL = logging.CRITICAL + 1
 
 
 class MVBench(VideoBaseDataset):
 
-    MD5 = 'ae2a2607e2f8618155709220c6e927a6'
+    MD5 = 'fd21d36522cdedd46d84dc46715ad832'
     SYS = """Carefully watch the video and pay attention to the cause and sequence of events, \
 the detail and movement of objects, and the action and pose of persons. \
 Based on your observations, select the best option that accurately addresses the question.
 """
 
-    TYPE = 'MCQ'
+    TYPE = 'Video-MCQ'
 
-    def __init__(self, dataset='MVBench', pack=False):
+    def __init__(self, dataset='MVBench', nframe=0, fps=-1):
         self.type_data_list = {
             'Action Sequence': ('action_sequence.json',
                                 'your_data_path/star/Charades_v1_480/', 'video', True),  # has start & end
@@ -74,7 +71,7 @@ Based on your observations, select the best option that accurately addresses the
             'Counterfactual Inference': ('counterfactual_inference.json',
                                          'your_data_path/clevrer/video_validation/', 'video', False),
         }
-        super().__init__(dataset=dataset, pack=pack)
+        super().__init__(dataset=dataset, nframe=nframe, fps=fps)
 
     @classmethod
     def supported_datasets(cls):
@@ -96,6 +93,9 @@ Based on your observations, select the best option that accurately addresses the
                     return False
             return True
 
+        if modelscope_flag_set():
+            repo_id = 'modelscope/MVBench'
+
         cache_path = get_cache_path(repo_id, branch='main')
         if cache_path is not None and check_integrity(cache_path):
             dataset_path = cache_path
@@ -115,32 +115,42 @@ Based on your observations, select the best option that accurately addresses the
                 data_file = osp.join(pth, f'{dataset_name}.tsv')
                 if os.path.exists(data_file) and md5(data_file) == self.MD5:
                     return
-                json_data_dir = os.path.join(dataset_path, 'json')
+                json_data_dir = os.path.join(pth, 'json')
                 self.data_list = []
                 for k, v in self.type_data_list.items():
                     with open(os.path.join(json_data_dir, v[0]), 'r') as f:
                         json_data = json.load(f)
                     for data in json_data:
-                        self.data_list.append({
-                            'task_type': k,
-                            'prefix': v[1].replace('your_data_path', os.path.join(dataset_path, 'video')),
-                            'data_type': v[2],
-                            'bound': v[3],
-                            'start': data['start'] if 'start' in data.keys() else None,
-                            'end': data['end'] if 'end' in data.keys() else None,
-                            'video': data['video'],
-                            'question': data['question'],
-                            'answer': data['answer'],
-                            'candidates': data['candidates']
-                        })
+                        if os.path.exists(os.path.join(pth, v[1].replace('your_data_path', 'video'), data['video'])):
+                            self.data_list.append({
+                                'task_type': k,
+                                'prefix': v[1].replace('your_data_path', 'video'),
+                                'data_type': v[2],
+                                'bound': v[3],
+                                'start': data['start'] if 'start' in data.keys() else None,
+                                'end': data['end'] if 'end' in data.keys() else None,
+                                'video': data['video'],
+                                'question': data['question'],
+                                'answer': data['answer'],
+                                'candidates': data['candidates']
+                            })
+                        else:
+                            print(
+                                'NTURGB-D zip file is removed according to MVBench, you can view it at '
+                                'https://huggingface.co/datasets/OpenGVLab/MVBench for detailed reason.'
+                            )
+                            raise Exception(
+                                f"{os.path.join(v[1].replace('your_data_path', 'video'), data['video'])} does not exist"
+                            )
 
                 data_df = pd.DataFrame(self.data_list)
                 data_df = data_df.assign(index=range(len(data_df)))
                 data_df.to_csv(data_file, sep='\t', index=False)
 
             def move_files(pth):
-                # special for mvbench
                 src_folder = os.path.join(pth, 'video/data0613')
+                if not os.path.exists(src_folder):
+                    return
                 for subdir in os.listdir(src_folder):
                     subdir_path = os.path.join(src_folder, subdir)
                     if os.path.isdir(subdir_path):
@@ -149,15 +159,24 @@ Based on your observations, select the best option that accurately addresses the
                             if os.path.isdir(subsubdir_path):
                                 for item in os.listdir(subsubdir_path):
                                     item_path = os.path.join(subsubdir_path, item)
-                                    target_folder = os.path.join(pth, 'video', subdir, subsubdir, item)
+                                    target_folder = os.path.join(pth, 'video', subdir, subsubdir)
                                     if not os.path.exists(target_folder):
-                                        shutil.move(item_path, os.path.join(target_folder, item))
+                                        os.makedirs(target_folder)
+                                    target_path = os.path.join(target_folder, item)
+                                    try:
+                                        shutil.move(item_path, target_path)
+                                    except Exception as e:
+                                        print(f"Error moving {item_path} to {target_path}: {e}")
 
-            hf_token = os.environ.get('HUGGINGFACE_TOKEN')
-            huggingface_hub.login(hf_token)
-            dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset')
-            move_files(dataset_path)
+            if modelscope_flag_set():
+                from modelscope import dataset_snapshot_download
+                dataset_path = dataset_snapshot_download(dataset_id=repo_id, revision='master')
+            else:
+                hf_token = os.environ.get('HUGGINGFACE_TOKEN')
+                huggingface_hub.login(hf_token)
+                dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset')
             unzip_hf_zip(dataset_path)
+            move_files(dataset_path)
             generate_tsv(dataset_path)
 
         data_file = osp.join(dataset_path, f'{dataset_name}.tsv')
@@ -169,20 +188,12 @@ Based on your observations, select the best option that accurately addresses the
         }
 
         self.nframe = 8
-        self.resolution = 224
         self.frame_fps = 3
 
         # transform
-        crop_size = self.resolution
-        scale_size = self.resolution
-        input_mean = [0.48145466, 0.4578275, 0.40821073]
-        input_std = [0.26862954, 0.26130258, 0.27577711]
         self.transform = T.Compose([
-            GroupScale(int(scale_size), interpolation=InterpolationMode.BICUBIC),
-            GroupCenterCrop(crop_size),
             Stack(),
-            ToTorchFormatTensor(),
-            GroupNormalize(input_mean, input_std)
+            ToTorchFormatTensor()
         ])
 
         return dict(root=dataset_path, data_file=data_file)
@@ -240,7 +251,7 @@ Based on your observations, select the best option that accurately addresses the
 
     def save_video_frames(self, imgs, video_name, frames):
 
-        frame_paths = self.frame_paths(video_name, frames)
+        frame_paths = self.frame_paths(video_name)
         flag = np.all([osp.exists(p) for p in frame_paths])
 
         if not flag:
@@ -268,7 +279,13 @@ Based on your observations, select the best option that accurately addresses the
         return question, answer
 
     def load_into_video_and_process(self, line):
-        video_path = os.path.join(line['prefix'], line['video'])
+        try:
+            from moviepy.editor import VideoFileClip, ImageSequenceClip
+        except:
+            raise ImportError(
+                'MoviePy is not installed, please install it by running "pip install moviepy==1.0.3"'
+            )
+        video_path = os.path.join(self.data_root, line['prefix'], line['video'])
 
         if line['data_type'] in ['gif'] or os.path.splitext(video_path)[1] in ['.webm']:
             processed_video_path = video_path.replace(os.path.splitext(video_path)[1], '.mp4')
@@ -302,33 +319,39 @@ Based on your observations, select the best option that accurately addresses the
 
         return output_video_path
 
-    def build_prompt(self, line, num_frames, video_llm):
+    def save_video_into_images(self, line):
+        bound = None
+        if line['bound']:
+            bound = (
+                line['start'],
+                line['end'],
+            )
+        video_path = os.path.join(self.data_root, line['prefix'], line['video'])
+        decord_method = self.decord_method[line['data_type']]
+        self.num_segments = self.nframe
+        torch_imgs = decord_method(video_path, bound)
+        img_frame_paths = self.save_video_frames(torch_imgs, line['video'], self.num_segments)
+        return img_frame_paths
+
+    def build_prompt(self, line, video_llm):
+        if self.fps > 0:
+            raise ValueError('MVBench does not support fps setting, please transfer to MVBench_MP4!')
         if isinstance(line, int):
             assert line < len(self)
             line = self.data.iloc[line]
 
         question, answer = self.qa_template(line)
-        message = [dict(type='text', value=self.SYS)]
+        message = [dict(type='text', value=self.SYS, role='system')]
         message.append(dict(type='text', value=question))
         if video_llm:
             new_video_path = self.load_into_video_and_process(line)
             message.append(dict(type='video', value=new_video_path))
         else:
-            bound = None
-            if line['bound']:
-                bound = (
-                    line['start'],
-                    line['end'],
-                )
-            video_path = os.path.join(line['prefix'], line['video'])
-            decord_method = self.decord_method[line['data_type']]
-            self.num_segments = num_frames if num_frames > 0 else self.nframe
-            torch_imgs = decord_method(video_path, bound)
-            img_frame_paths = self.save_video_frames(torch_imgs, line['video'], self.num_segments)
+            img_frame_paths = self.save_video_into_images(line)
             for im in img_frame_paths:
                 message.append(dict(type='image', value=im))
         message.append(dict(type='text', value='\nOnly give the best option.'))
-        message.append(dict(type='text', value='Best option:('))
+        message.append(dict(type='text', value='Best option:(', role='assistant'))
         return message
 
     @classmethod
@@ -341,13 +364,27 @@ Based on your observations, select the best option that accurately addresses the
         score_file = eval_file.replace('.xlsx', '_score.xlsx')
 
         if not osp.exists(score_file):
+            model = judge_kwargs.setdefault('model', 'chatgpt-0125')
+            assert model in ['chatgpt-0125', 'exact_matching', 'gpt-4-0125']
+
+            if model == 'exact_matching':
+                model = None
+            elif gpt_key_set():
+                model = build_judge(**judge_kwargs)
+                if not model.working():
+                    warnings.warn('OPENAI API is not working properly, will use exact matching for evaluation')
+                    warnings.warn(DEBUG_MESSAGE)
+                    model = None
+            else:
+                warnings.warn('OPENAI_API_KEY is not set properly, will use exact matching for evaluation')
+                model = None
             res = {} if not osp.exists(tmp_file) else load(tmp_file)
             res = {k: v for k, v in res.items() if FAIL_MSG not in v}
 
             data = load(eval_file)
             data_un = data[~pd.isna(data['prediction'])]
 
-            for idx in data['index']:
+            for idx in data_un['index']:
                 ans = data.loc[data['index'] == idx, 'answer'].values[0]
                 pred = data.loc[data['index'] == idx, 'prediction'].values[0]
                 options = eval(data.loc[data['index'] == idx, 'candidates'].values[0])
@@ -356,11 +393,20 @@ Based on your observations, select the best option that accurately addresses the
                     if c == ans:
                         answer_idx = id
                 ans = f"({chr(ord('A') + answer_idx)}) {ans}"
+                input_item = data.loc[data['index'] == idx].to_dict(orient='records')[0]
+                for id, option_content in enumerate(eval(input_item['candidates'])):
+                    input_item[chr(ord('A') + id)] = option_content
+                    if option_content == input_item['answer']:
+                        input_item['answer'] = chr(ord('A') + id)
 
                 if FAIL_MSG in pred:
                     data.loc[idx, 'score'] = -1
                 else:
-                    data.loc[idx, 'score'] = int(check_ans(pred, ans))
+                    data.loc[idx, 'score'] = int(check_ans_with_model(
+                        pred, ans, model,
+                        input_item,
+                        'MVBench'
+                    ))
 
             rejected = [x for x in data['score'] if x == -1]
 
@@ -379,15 +425,15 @@ Based on your observations, select the best option that accurately addresses the
 
 class MVBench_MP4(VideoBaseDataset):
 
-    MP4_MD5 = '7b4608045347904c28c153015a7a2b6b'
+    MP4_MD5 = '5c8c6f8b7972c2de65a629590f7c42f5'
     SYS = """Carefully watch the video and pay attention to the cause and sequence of events, \
 the detail and movement of objects, and the action and pose of persons. \
 Based on your observations, select the best option that accurately addresses the question.
 """
-    TYPE = 'MCQ'
+    TYPE = 'Video-MCQ'
 
-    def __init__(self, dataset='MVBench_MP4', pack=False):
-        super().__init__(dataset=dataset, pack=pack)
+    def __init__(self, dataset='MVBench_MP4', nframe=0, fps=-1):
+        super().__init__(dataset=dataset, nframe=nframe, fps=fps)
 
     @classmethod
     def supported_datasets(cls):
@@ -409,13 +455,16 @@ Based on your observations, select the best option that accurately addresses the
                     return False
             return True
 
+        if modelscope_flag_set():
+            repo_id = 'modelscope/MVBench'
+
         cache_path = get_cache_path(repo_id, branch='video')
         if cache_path is not None and check_integrity(cache_path):
             dataset_path = cache_path
         else:
             def generate_tsv(pth):
                 data_file = osp.join(pth, f'{dataset_name}.tsv')
-                if os.path.exists(data_file) and md5(data_file) == self.MD5:
+                if os.path.exists(data_file) and md5(data_file) == self.MP4_MD5:
                     return
                 json_data_path = os.path.join(dataset_path, 'test.json')
                 json_data = load(json_data_path)
@@ -435,27 +484,21 @@ Based on your observations, select the best option that accurately addresses the
                 data_df = data_df.assign(index=range(len(data_df)))
                 data_df.to_csv(data_file, sep='\t', index=False)
 
-            hf_token = os.environ.get('HUGGINGFACE_TOKEN')
-            huggingface_hub.login(hf_token)
-            dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset', revision='video')
+            if modelscope_flag_set():
+                from modelscope import dataset_snapshot_download
+                dataset_path = dataset_snapshot_download(dataset_id=repo_id, revision='video')
+            else:
+                hf_token = os.environ.get('HUGGINGFACE_TOKEN')
+                huggingface_hub.login(hf_token)
+                dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset', revision='video')
             generate_tsv(dataset_path)
 
         data_file = osp.join(dataset_path, f'{dataset_name}.tsv')
 
-        self.nframe = 8
-        self.resolution = 224
-
         # transform
-        crop_size = self.resolution
-        scale_size = self.resolution
-        input_mean = [0.48145466, 0.4578275, 0.40821073]
-        input_std = [0.26862954, 0.26130258, 0.27577711]
         self.transform = T.Compose([
-            GroupScale(int(scale_size), interpolation=InterpolationMode.BICUBIC),
-            GroupCenterCrop(crop_size),
             Stack(),
-            ToTorchFormatTensor(),
-            GroupNormalize(input_mean, input_std)
+            ToTorchFormatTensor()
         ])
 
         return dict(root=dataset_path, data_file=data_file)
@@ -473,7 +516,7 @@ Based on your observations, select the best option that accurately addresses the
         answer = f"({chr(ord('A') + answer_idx)}) {answer}"
         return question, answer
 
-    def get_index(self, max_frame):
+    def get_index_by_frame(self, max_frame):
         seg_size = float(max_frame) / self.num_segments
         frame_indices = np.array([
             int((seg_size / 2) + np.round(seg_size * idx))
@@ -481,12 +524,26 @@ Based on your observations, select the best option that accurately addresses the
         ])
         return frame_indices
 
-    def read_video(self, video_path, bound=None):
+    def get_index_by_fps(self, vid, fps):
+        total_frames = len(vid)
+        video_fps = vid.get_avg_fps()
+        total_duration = total_frames / video_fps
+        required_frames = int(total_duration * fps)
+        step_size = video_fps / fps
+        frame_indices = np.array([int(i * step_size) for i in range(required_frames)])
+        self.num_segments = len(frame_indices)
+        return frame_indices
+
+    def read_video(self, video_path):
         vr = VideoReader(video_path, ctx=cpu(0), num_threads=1)
         max_frame = len(vr) - 1
 
         images_group = list()
-        frame_indices = self.get_index(max_frame)
+        if self.fps < 0:
+            frame_indices = self.get_index_by_frame(max_frame)
+        else:
+            frame_indices = self.get_index_by_fps(vr, self.fps)
+
         for frame_index in frame_indices:
             img = Image.fromarray(vr[frame_index].asnumpy())
             images_group.append(img)
@@ -494,8 +551,10 @@ Based on your observations, select the best option that accurately addresses the
         return torch_imgs
 
     def save_video_frames(self, imgs, video_name, frames):
-
-        frame_paths = self.frame_paths(video_name, frames)
+        if self.fps > 0:
+            frame_paths = self.frame_paths_fps(video_name, frames)
+        else:
+            frame_paths = self.frame_paths(video_name)
         flag = np.all([osp.exists(p) for p in frame_paths])
 
         if not flag:
@@ -509,26 +568,33 @@ Based on your observations, select the best option that accurately addresses the
 
         return frame_paths
 
-    def build_prompt(self, line, num_frames, video_llm):
+    def save_video_into_images(self, line):
+        video_path = os.path.join(self.data_root, line['prefix'], line['video'])
+        if self.fps <= 0:
+            self.num_segments = self.nframe
+        else:
+            self.num_segments = 0
+        torch_imgs = self.read_video(video_path)
+        img_frame_paths = self.save_video_frames(torch_imgs, line['video'], self.num_segments)
+        return img_frame_paths
+
+    def build_prompt(self, line, video_llm):
         if isinstance(line, int):
             assert line < len(self)
             line = self.data.iloc[line]
 
         question, answer = self.qa_template(line)
-        message = [dict(type='text', value=self.SYS)]
+        message = [dict(type='text', value=self.SYS, role='system')]
         message.append(dict(type='text', value=question))
         video_path = os.path.join(self.data_root, line['prefix'], line['video'])
         if video_llm:
             message.append(dict(type='video', value=video_path))
         else:
-            video_path = os.path.join(self.data_root, line['prefix'], line['video'])
-            self.num_segments = num_frames if num_frames > 0 else self.nframe
-            torch_imgs = self.read_video(video_path)
-            img_frame_paths = self.save_video_frames(torch_imgs, line['video'], self.num_segments)
+            img_frame_paths = self.save_video_into_images(line)
             for im in img_frame_paths:
                 message.append(dict(type='image', value=im))
         message.append(dict(type='text', value='\nOnly give the best option.'))
-        message.append(dict(type='text', value='Best option:('))
+        message.append(dict(type='text', value='Best option:(', role='assistant'))
         return message
 
     @classmethod
@@ -541,13 +607,27 @@ Based on your observations, select the best option that accurately addresses the
         score_file = eval_file.replace('.xlsx', '_score.xlsx')
 
         if not osp.exists(score_file):
+            model = judge_kwargs.setdefault('model', 'chatgpt-0125')
+            assert model in ['chatgpt-0125', 'exact_matching', 'gpt-4-0125']
+
+            if model == 'exact_matching':
+                model = None
+            elif gpt_key_set():
+                model = build_judge(**judge_kwargs)
+                if not model.working():
+                    warnings.warn('OPENAI API is not working properly, will use exact matching for evaluation')
+                    warnings.warn(DEBUG_MESSAGE)
+                    model = None
+            else:
+                warnings.warn('OPENAI_API_KEY is not set properly, will use exact matching for evaluation')
+                model = None
             res = {} if not osp.exists(tmp_file) else load(tmp_file)
             res = {k: v for k, v in res.items() if FAIL_MSG not in v}
 
             data = load(eval_file)
             data_un = data[~pd.isna(data['prediction'])]
 
-            for idx in data['index']:
+            for idx in data_un['index']:
                 ans = data.loc[data['index'] == idx, 'answer'].values[0]
                 pred = data.loc[data['index'] == idx, 'prediction'].values[0]
                 options = eval(data.loc[data['index'] == idx, 'candidates'].values[0])
@@ -556,11 +636,20 @@ Based on your observations, select the best option that accurately addresses the
                     if c == ans:
                         answer_idx = id
                 ans = f"({chr(ord('A') + answer_idx)}) {ans}"
+                input_item = data.loc[data['index'] == idx].to_dict(orient='records')[0]
+                for id, option_content in enumerate(eval(input_item['candidates'])):
+                    input_item[chr(ord('A') + id)] = option_content
+                    if option_content == input_item['answer']:
+                        input_item['answer'] = chr(ord('A') + id)
 
                 if FAIL_MSG in pred:
                     data.loc[idx, 'score'] = -1
                 else:
-                    data.loc[idx, 'score'] = int(check_ans(pred, ans))
+                    data.loc[idx, 'score'] = int(check_ans_with_model(
+                        pred, ans, model,
+                        input_item,
+                        'MVBench_MP4'
+                    ))
 
             rejected = [x for x in data['score'] if x == -1]
 

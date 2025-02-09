@@ -118,7 +118,7 @@ def mmdu_score(model, line):
                     f'{",".join([x for x in DIMS if x not in result_dict])}'
                 )
         except Exception as e:
-            print({e})
+            logging.warning(str(e))
             all_result_dict.append({d: None for d in DIMS})
             logs.append(str(e))
 

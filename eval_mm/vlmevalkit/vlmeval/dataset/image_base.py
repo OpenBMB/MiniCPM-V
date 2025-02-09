@@ -4,12 +4,19 @@ from ..smp import *
 
 
 def img_root_map(dataset):
+    if 'MM_NIAH' in dataset:
+        return 'MMNIAH'
+    if 'CRPE' in dataset:
+        return 'CRPE'
     if 'OCRVQA' in dataset:
         return 'OCRVQA'
     if 'COCO_VAL' == dataset:
         return 'COCO'
     if 'MMMU' in dataset:
         return 'MMMU'
+    if "QSpatial" in dataset:
+        return "QSpatial"
+
     mmbench_root_map = {
         'MMBench_DEV_EN': 'MMBench', 'MMBench_TEST_EN': 'MMBench',
         'MMBench_DEV_CN': 'MMBench', 'MMBench_TEST_CN': 'MMBench',

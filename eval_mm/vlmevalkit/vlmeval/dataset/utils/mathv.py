@@ -2,8 +2,9 @@ from ...smp import *
 from ...utils import can_infer
 try:
     from latex2sympy2 import latex2sympy
-except ImportError:
-    print('Please install latex2sympy2 by running "pip install latex2sympy2"')
+except Exception as e:
+    logging.critical(f'{type(e)}: {e}')
+    logging.critical('Please install latex2sympy2 by running "pip install latex2sympy2"')
 
 FAIL_MSG = 'Failed to obtain answer via API.'
 

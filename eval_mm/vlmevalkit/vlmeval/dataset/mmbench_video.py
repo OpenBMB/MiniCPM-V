@@ -57,16 +57,16 @@ Please analyze these images and provide the answer to the question about the vid
 Please directly reply with your response to the only question.
 """
 
-    TYPE = 'VQA'
+    TYPE = 'Video-VQA'
 
-    def __init__(self, dataset='MMBench-Video', pack=False):
-        super().__init__(dataset=dataset, pack=pack)
+    def __init__(self, dataset='MMBench-Video', pack=False, nframe=0, fps=-1):
+        super().__init__(dataset=dataset, pack=pack, nframe=nframe, fps=fps)
 
     @classmethod
     def supported_datasets(cls):
         return ['MMBench-Video']
 
-    def prepare_dataset(self, dataset_name='MMBench-Video', repo_id='nebulae09/MMBench-Video'):
+    def prepare_dataset(self, dataset_name='MMBench-Video', repo_id='opencompass/MMBench-Video'):
         def check_integrity(pth):
             data_file = osp.join(pth, f'{dataset_name}.tsv')
             if md5(data_file) != self.MD5:
@@ -81,14 +81,18 @@ Please directly reply with your response to the only question.
         if cache_path is not None and check_integrity(cache_path):
             dataset_path = cache_path
         else:
-            dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset')
+            if modelscope_flag_set():
+                from modelscope import dataset_snapshot_download
+                dataset_path = dataset_snapshot_download(dataset_id=repo_id)
+            else:
+                dataset_path = snapshot_download(repo_id=repo_id, repo_type='dataset')
             unwrap_hf_pkl(dataset_path)
         self.video_path = osp.join(dataset_path, 'video/')
         data_file = osp.join(dataset_path, f'{dataset_name}.tsv')
 
         return dict(data_file=data_file, root=osp.join(dataset_path, 'video'))
 
-    def build_prompt_pack(self, line, num_frames):
+    def build_prompt_pack(self, line):
         if isinstance(line, int):
             assert line < len(self)
             video = self.videos[line]
@@ -97,9 +101,9 @@ Please directly reply with your response to the only question.
         elif isinstance(line, str):
             video = line
 
-        frames = self.save_video_frames(video, num_frames)
+        frames = self.save_video_frames(video)
         sub = self.data[self.data['video'] == video]
-        sys_prompt = self.SYS + self.FRAMES_TMPL_PACK.format(num_frames)
+        sys_prompt = self.SYS + self.FRAMES_TMPL_PACK.format(len(frames))
         message = [dict(type='text', value=sys_prompt)]
         for im in frames:
             message.append(dict(type='image', value=im))
@@ -110,7 +114,7 @@ Please directly reply with your response to the only question.
         message.append(dict(type='text', value=prompt))
         return message
 
-    def build_prompt_nopack(self, line, num_frames, video_llm):
+    def build_prompt_nopack(self, line, video_llm):
         if isinstance(line, int):
             assert line < len(self)
             line = self.data.iloc[line]
@@ -121,8 +125,8 @@ Please directly reply with your response to the only question.
             message.append(dict(type='video', value=os.path.join(self.video_path, video_idx_path)))
             return message
         else:
-            frames = self.save_video_frames(line['video'], num_frames)
-            sys_prompt = self.FRAMES_TMPL_NOPACK.format(num_frames)
+            frames = self.save_video_frames(line['video'])
+            sys_prompt = self.FRAMES_TMPL_NOPACK.format(len(frames))
             message = [dict(type='text', value=sys_prompt)]
             for im in frames:
                 message.append(dict(type='image', value=im))
@@ -130,11 +134,11 @@ Please directly reply with your response to the only question.
             message.append(dict(type='text', value=prompt))
         return message
 
-    def build_prompt(self, line, num_frames, video_llm):
+    def build_prompt(self, line, video_llm):
         if self.pack and not video_llm:
-            return self.build_prompt_pack(line, num_frames)
+            return self.build_prompt_pack(line)
         else:
-            return self.build_prompt_nopack(line, num_frames, video_llm)
+            return self.build_prompt_nopack(line, video_llm)
 
     @staticmethod
     def remove_side_quote(s, syms=[',', '"', "'"]):

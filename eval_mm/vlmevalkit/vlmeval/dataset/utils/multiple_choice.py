@@ -2,6 +2,7 @@ import pandas as pd
 from ...utils import can_infer, track_progress_rich
 from ...smp import *
 import numpy as np
+import re
 
 MMB_abbrs = {
     'coarse_perception': 'CP',
@@ -170,6 +171,31 @@ def build_prompt(question, options, prediction):
     return tmpl.format(question, options, prediction)
 
 
+def build_prompt_wemath(question, prediction):
+    tmpl = (
+        'You are an AI assistant who will help me to match '
+        'an answer with several options of a single-choice question. '
+        'You are provided with a question, several options, and an answer, '
+        'and you need to find which option is most similar to the answer. '
+        'If the meaning of all options are significantly different from the answer, output Z. '
+        'Your should output a single uppercase character in A, B, C, D, E, F, G (if they are valid options), and Z. \n'
+        'Example 1: \n'
+        'Question: <start>\nWhat is the main object in image?\nOptions: A. teddy bear B. rabbit C. cat D. dog\n<end>\n'
+        'Answer: <start>\na cute teddy bear\n<end>\nYour output: A\n'
+        'Example 2: \n'
+        'Question: <start>\nWhat is the main object in image?\nOptions: A. teddy bear B. rabbit C. cat D. dog\n<end>\n'
+        'Answer: <start>\nSpider\n<end>\nYour output: Z\n'
+        'Example 3: \n'
+        'Question: <start>\n{}\n<end>\nAnswer: <start>\n{}\n<end>\nYour output: '
+    )
+    question = question.replace(
+        ("Regarding the format, please answer following the template below, and be sure to include two <> symbols:\n"
+        "<Thought process>: <<your thought process>> <Answer>: <<your option>>"),
+        '',
+    )
+    return tmpl.format(question, prediction)
+
+
 def build_prompt_blink(question, options, prediction):
     tmpl = (
         'You are an AI assistant who will help me to match an answer with several options of a single-choice question. '
@@ -241,6 +267,8 @@ def extract_answer_from_item(model, item, dataset_name=None):
 
     if dataset_name == 'BLINK':
         prompt = build_prompt_blink(item['question'], option_str, item['prediction'])
+    elif dataset_name == 'WeMath':
+        prompt = build_prompt_wemath(item['question'], item['prediction'])
     elif cn_string(item['question']):
         prompt = build_prompt_cn(item['question'], option_str, item['prediction'])
     else:
@@ -359,9 +387,7 @@ def mcq_vanilla_eval(model, data, meta, nproc, result_file, dataset_name=None):
         res = track_progress_rich(eval_vanilla, tups, nproc=nproc, chunksize=nproc, save=result_file, keys=keys)
         result = load(result_file)
         for k, v in zip(keys, res):
-            if k in result:
-                assert result[k]['hit'] == v['hit'] and result[k]['log'] == v['log']
-            else:
+            if k not in result:
                 result[k] = v
     data['hit'] = [result[i]['hit'] for i in data['index']]
     data['log'] = [result[i]['log'] for i in data['index']]
@@ -425,9 +451,7 @@ def mcq_circular_eval(model, data, meta, nproc, result_file, dataset_name=None):
                 keys=keys)
             result = load(result_file)
             for k, v in zip(keys, res):
-                if k in result:
-                    assert result[k]['hit'] == v['hit'] and result[k]['log'] == v['log']
-                else:
+                if k not in result:
                     result[k] = v
 
     tmp_pth = f'/tmp/{timestr()}.xlsx'
@@ -440,3 +464,95 @@ def mcq_circular_eval(model, data, meta, nproc, result_file, dataset_name=None):
         data_main.pop('GT')
 
     return data_main
+
+
+def extract_characters_regex(s, choices=['(A)', '(B)', '(C)', '(D)', '(E)']):
+    if type(s) is dict:
+        s = ''
+    s = s.strip()
+    answer_prefixes = [
+        'The best answer is',
+        'The correct answer is',
+        'The answer is',
+        'The answer',
+        'The best option is'
+        'The correct option is',
+        'Best answer:'
+        'Best option:',
+    ]
+    for answer_prefix in answer_prefixes:
+        s = s.replace(answer_prefix, '')
+
+    if len(s.split()) > 10 and not re.search('[ABCDE]', s):
+        return ''
+    matches = re.search(r'[ABCDE]', s)
+    if matches is None:
+        for choice in choices:
+            if s.lower() in choice.lower():
+                return choice[1]
+        return ''
+    return matches[0]
+
+
+def get_dimension_rating(data_path):
+    TASKS = [
+        'Reasoning',
+        'Perception',
+    ]
+
+    SUBTASKS = [
+        'Monitoring',
+        'Autonomous_Driving',
+        'OCR with Complex Context',
+        'Diagram and Table',
+        'Remote Sensing',
+    ]
+    data = load(data_path)
+    results = {}
+    results['Overall'] = {}
+    for task in TASKS:
+        results[f'{task}'] = {}
+        for subtask in SUBTASKS:
+            results[f'{task}'][f'{subtask}'] = {}
+
+    for i in range(len(data)):
+        question = data.iloc[i]
+        Task = question['category'].split('/')[0]
+        Subtask = question['category'].split('/')[1]
+        Category = question['l2-category'].lower()
+        if 'attribute' in Category.lower():
+            Category = Category.split('/')[0] + '/attribute'
+        if question['score'] >= 0:
+            cnt = question['score']
+            if Category not in results[Task][Subtask].keys():
+                results[Task][Subtask][f'{Category}'] = {'true': cnt, 'false': 1 - cnt}
+            else:
+                results[Task][Subtask][f'{Category}']['true'] += cnt
+                results[Task][Subtask][f'{Category}']['false'] += 1 - cnt
+
+    sum_all, succ_all = 0, 0
+    for task, tasks_values in results.items():
+        cnt_task, sum_task = 0, 0
+        for substask, subtask_value in tasks_values.items():
+            cnt_subtask, sum_subtask = 0, 0
+            for category, category_dict in subtask_value.items():
+                cnt_subtask += category_dict['true']
+                sum_subtask += category_dict['false'] + category_dict['true']
+                acc = category_dict['true'] / (category_dict['false'] + category_dict['true'])
+                results[task][substask][category] = acc
+            if sum_subtask == 0:
+                acc_subtasks = 0
+            else:
+                acc_subtasks = cnt_subtask / sum_subtask
+            cnt_task += cnt_subtask
+            sum_task += sum_subtask
+            results[task][substask]['Avg'] = acc_subtasks
+        if sum_task == 0:
+            acc_task = 0
+        else:
+            acc_task = cnt_task / sum_task
+        succ_all += cnt_task
+        sum_all += sum_task
+        results[task]['Avg'] = acc_task
+    results['Overall'] = succ_all / sum_all
+    return results
