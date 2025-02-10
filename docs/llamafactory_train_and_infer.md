@@ -29,7 +29,7 @@ mkdir configs # let's put all yaml files here
 
 ## Dataset Prepare
 
-Refer to [data/dataset_info.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/dataset_info.json) to add your customised dataset. Let's use the two existing demo datasets `mllm_demo` and `mllm_video_demo` as examples.
+Refer to [data/dataset_info.json](https://github.com/hiyouga/LLaMA-Factory/blob/main/data/dataset_info.json) to add your customised dataset. Let's use the two existing demo datasets `mllm_demo`, `mllm_video_demo` and `mllm_audio_demo` as examples (audio is only for MiniCPM-o-2.6).
 
 ### Image Dataset
 
@@ -265,7 +265,7 @@ lora_target: q_proj,v_proj
 
 ### dataset
 dataset: mllm_demo # mllm_demo mllm_video_demo mllm_audio_demo
-template: minicpm_v
+template: minicpm_o # minicpm_o minicpm_v
 cutoff_len: 3072
 max_samples: 1000
 overwrite_cache: true
@@ -313,7 +313,7 @@ llamafactory-cli export configs/minicpmo_2_6_lora_export.yaml
 ### model
 model_name_or_path: openbmb/MiniCPM-o-2_6 # MiniCPM-o-2_6 MiniCPM-V-2_6
 adapter_name_or_path: saves/minicpmo_2_6/lora/sft
-template: minicpm_v
+template: minicpm_o # minicpm_o minicpm_v
 finetuning_type: lora
 trust_remote_code: true
 
@@ -355,7 +355,7 @@ deepspeed: configs/deepspeed/ds_z2_config.json
 
 ### dataset
 dataset: mllm_demo # mllm_demo mllm_video_demo
-template: minicpm_v
+template: minicpm_o # minicpm_o minicpm_v
 cutoff_len: 3072
 max_samples: 1000
 overwrite_cache: true
@@ -404,7 +404,7 @@ CUDA_VISIBLE_DEVICES=0 llamafactory-cli webchat configs/minicpmo_2_6_infer.yaml
 
 ```yaml
 model_name_or_path: saves/minicpmo_2_6/full/sft
-template: minicpm_v
+template: minicpm_o # minicpm_o minicpm_v
 infer_backend: huggingface
 trust_remote_code: true
 ```
