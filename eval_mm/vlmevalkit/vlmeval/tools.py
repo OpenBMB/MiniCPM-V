@@ -1,9 +1,10 @@
 import sys
+from vlmeval.dataset import SUPPORTED_DATASETS
 from vlmeval.config import *
 from vlmeval.smp import *
 
 # Define valid modes
-MODES = ('dlist', 'mlist', 'missing', 'circular', 'localize', 'check', 'run', 'eval')
+MODES = ('dlist', 'mlist', 'missing', 'circular', 'localize', 'check', 'run', 'eval', 'merge_pkl')
 
 CLI_HELP_MSG = \
     f"""
@@ -32,6 +33,8 @@ CLI_HELP_MSG = \
             vlmutil run l2 hf
         8. Evaluate data file:
             vlmutil eval [dataset_name] [prediction_file]
+        9. Merge pkl files:
+            vlmutil merge_pkl [pkl_dir] [world_size]
 
     GitHub: https://github.com/open-compass/VLMEvalKit
     """  # noqa: E501
@@ -50,7 +53,8 @@ dataset_levels = {
         ('SEEDBench_IMG', 'acc.csv'), ('COCO_VAL', 'score.json'), ('POPE', 'score.csv'),
         ('ScienceQA_VAL', 'acc.csv'), ('ScienceQA_TEST', 'acc.csv'), ('MMT-Bench_VAL', 'acc.csv'),
         ('SEEDBench2_Plus', 'acc.csv'), ('BLINK', 'acc.csv'), ('MTVQA_TEST', 'acc.json'),
-        ('Q-Bench1_VAL', 'acc.csv'), ('A-Bench_VAL', 'acc.csv')
+        ('Q-Bench1_VAL', 'acc.csv'), ('A-Bench_VAL', 'acc.csv'), ('R-Bench-Dis', 'acc.csv'),
+        ('MathVision', 'score.csv'), ('MathVerse_MINI_Vision_Only', 'score.csv'), ('DynaMath', 'score.csv'),
     ],
     'l3': [
         ('OCRVQA_TESTCORE', 'acc.csv'), ('TextVQA_VAL', 'acc.csv'),
@@ -64,38 +68,13 @@ dataset_levels['l23'] = dataset_levels['l2'] + dataset_levels['l3']
 dataset_levels['l123'] = dataset_levels['l12'] + dataset_levels['l3']
 
 models = {
-    '4.33.0': list(qwen_series) + list(xcomposer_series) + [
-        'mPLUG-Owl2', 'flamingov2', 'VisualGLM_6b', 'MMAlaya', 'PandaGPT_13B', 'VXVERSE'
-    ] + list(idefics_series) + list(minigpt4_series) + list(instructblip_series),
-    '4.37.0': [x for x in llava_series if 'next' not in x] + list(internvl_series) + [
-        'TransCore_M', 'emu2_chat', 'MiniCPM-V', 'MiniCPM-V-2', 'OmniLMM_12B',
-        'cogvlm-grounding-generalist', 'cogvlm-chat', 'cogvlm2-llama3-chat-19B',
-    ] + list(xtuner_series) + list(yivl_series) + list(deepseekvl_series) + list(cambrian_series),
-    '4.40.0': [
-        'idefics2_8b', 'Bunny-llama3-8B', 'MiniCPM-Llama3-V-2_5', '360VL-70B', 'Phi-3-Vision',
-    ] + list(wemm_series),
-    'latest': ['paligemma-3b-mix-448', 'MiniCPM-V-2_6', 'glm-4v-9b'] + [x for x in llava_series if 'next' in x]
-    + list(chameleon_series) + list(ovis_series) + list(mantis_series),
-    'api': list(api_models)
+    '4.37.0': ['MiniCPM-V', 'MiniCPM-V-2'],
+    '4.40.0': ['MiniCPM-Llama3-V-2_5'],
+    'latest': ['MiniCPM-V-2_6']
 }
 
 # SKIP_MODELS will be skipped in report_missing and run APIs
-SKIP_MODELS = [
-    'MGM_7B', 'GPT4V_HIGH', 'GPT4V', 'flamingov2', 'PandaGPT_13B',
-    'GeminiProVision', 'Step1V-0701', 'SenseChat-5-Vision',
-    'llava_v1_7b', 'sharegpt4v_7b', 'sharegpt4v_13b',
-    'llava-v1.5-7b-xtuner', 'llava-v1.5-13b-xtuner',
-    'cogvlm-grounding-generalist', 'InternVL-Chat-V1-1',
-    'InternVL-Chat-V1-2', 'InternVL-Chat-V1-2-Plus', 'RekaCore',
-    'llava_next_72b', 'llava_next_110b', 'MiniCPM-V', 'sharecaptioner', 'XComposer',
-    'VisualGLM_6b', 'idefics_9b_instruct', 'idefics_80b_instruct',
-    'mPLUG-Owl2', 'MMAlaya', 'OmniLMM_12B', 'emu2_chat', 'VXVERSE'
-] + list(minigpt4_series) + list(instructblip_series) + list(xtuner_series) + list(chameleon_series) + list(vila_series)
-
-LARGE_MODELS = [
-    'idefics_80b_instruct', '360VL-70B', 'emu2_chat', 'InternVL2-76B',
-]
-
+SKIP_MODELS = ['MiniCPM-V']
 
 def completed(m, d, suf):
     score_file = f'outputs/{m}/{m}_{d}_{suf}'
@@ -111,11 +90,18 @@ def completed(m, d, suf):
 
 
 def DLIST(lvl):
-    lst = [x[0] for x in dataset_levels[lvl]]
-    return lst
+    if lvl in dataset_levels.keys():
+        return [x[0] for x in dataset_levels[lvl]]
+    else:
+        from vlmeval.dataset import SUPPORTED_DATASETS
+        return SUPPORTED_DATASETS
 
 
 def MLIST(lvl, size='all'):
+    if lvl == 'all':
+        from vlmeval.config import supported_VLM
+        return [x for x in supported_VLM]
+
     model_list = models[lvl]
     if size == 'small':
         model_list = [m for m in model_list if m not in LARGE_MODELS]
@@ -338,18 +324,24 @@ def RUN(lvl, model):
             os.system(cmd)
 
 
-def EVAL(dataset_name, data_file):
+def EVAL(dataset_name, data_file, **kwargs):
     from vlmeval.dataset import build_dataset
     logger = get_logger('VLMEvalKit Tool-Eval')
     dataset = build_dataset(dataset_name)
     # Set the judge kwargs first before evaluation or dumping
     judge_kwargs = {'nproc': 4, 'verbose': True}
-    if dataset.TYPE in ['MCQ', 'Y/N']:
-        judge_kwargs['model'] = 'chatgpt-0125'
-    elif listinstr(['MMVet', 'MathVista', 'LLaVABench', 'MMBench-Video', 'MathVision'], dataset_name):
-        judge_kwargs['model'] = 'gpt-4-turbo'
-    elif listinstr(['MMLongBench', 'MMDU'], dataset_name):
-        judge_kwargs['model'] = 'gpt-4o'
+    if 'model' not in kwargs:
+        if dataset.TYPE in ['MCQ', 'Y/N']:
+            judge_kwargs['model'] = 'chatgpt-0125'
+        elif listinstr(['MMVet', 'LLaVABench', 'MMBench-Video'], dataset_name):
+            judge_kwargs['model'] = 'gpt-4-turbo'
+        elif listinstr(['MMLongBench', 'MMDU'], dataset_name):
+            judge_kwargs['model'] = 'gpt-4o'
+        elif listinstr(['DynaMath', 'MathVerse', 'MathVista', 'MathVision'], dataset_name):
+            judge_kwargs['model'] = 'gpt-4o-mini'
+    else:
+        judge_kwargs['model'] = kwargs['model']
+    judge_kwargs['nproc'] = kwargs.get('nproc', 4)
     eval_results = dataset.evaluate(data_file, **judge_kwargs)
     if eval_results is not None:
         assert isinstance(eval_results, dict) or isinstance(eval_results, pd.DataFrame)
@@ -357,9 +349,43 @@ def EVAL(dataset_name, data_file):
     if isinstance(eval_results, dict):
         logger.info('\n' + json.dumps(eval_results, indent=4))
     elif isinstance(eval_results, pd.DataFrame):
-        if len(eval_results) < len(eval_results.columns):
-            eval_results = eval_results.T
-        logger.info('\n' + tabulate(eval_results))
+        logger.info('\n')
+        logger.info(tabulate(eval_results.T) if len(eval_results) < len(eval_results.columns) else eval_results)
+    return eval_results
+
+
+def parse_args_eval():
+    parser = argparse.ArgumentParser()
+    # Essential Args, Setting the Names of Datasets and Models
+    parser.add_argument('cmd', type=str)
+    parser.add_argument('data_file', type=str)
+    parser.add_argument('--judge', type=str, default=None)
+    parser.add_argument('--nproc', type=int, default=4)
+    parser.add_argument('--retry', type=int, default=None)
+    args = parser.parse_args()
+    return args
+
+
+def MERGE_PKL(pkl_dir, world_size=1):
+    prefs = []
+    for ws in list(range(1, 9)):
+        prefs.extend([f'{i}{ws}_' for i in range(ws)])
+    prefs = set(prefs)
+    files = os.listdir(pkl_dir)
+    files = [x for x in files if x[:3] in prefs]
+    # Merge the files
+    res_all = defaultdict(dict)
+    for f in files:
+        full_path = osp.join(pkl_dir, f)
+        key = f[3:]
+        res_all[key].update(load(full_path))
+        os.remove(full_path)
+
+    dump_prefs = [f'{i}{world_size}_' for i in range(world_size)]
+    for k in res_all:
+        for pf in dump_prefs:
+            dump(res_all[k], f'{pkl_dir}/{pf}{k}')
+        print(f'Merged {len(res_all[k])} records into {pkl_dir}/{dump_prefs[0]}{k}')
 
 
 def cli():
@@ -368,53 +394,74 @@ def cli():
     if not args:  # no arguments passed
         logger.info(CLI_HELP_MSG)
         return
-    if args[0].lower() in MODES:
-        if args[0].lower() == 'dlist':
-            assert len(args) >= 2
-            lst = DLIST(args[1])
-            print(' '.join(lst))
-        elif args[0].lower() == 'mlist':
-            assert len(args) >= 2
-            size = 'all'
-            if len(args) > 2:
-                size = args[2].lower()
-            lst = MLIST(args[1], size)
-            print(' '.join(lst))
-        elif args[0].lower() == 'missing':
-            assert len(args) >= 2
-            missing_list = MISSING(args[1])
-            logger = get_logger('Find Missing')
-            logger.info(colored(f'Level {args[1]} Missing Results: ', 'red'))
-            lines = []
-            for m, D in missing_list:
-                line = f'Model {m}, Dataset {D}'
-                logger.info(colored(line, 'red'))
-                lines.append(line)
-            mwlines(lines, f'{args[1]}_missing.txt')
-        elif args[0].lower() == 'circular':
-            assert len(args) >= 2
-            CIRCULAR(args[1])
-        elif args[0].lower() == 'localize':
-            assert len(args) >= 2
-            LOCALIZE(args[1])
-        elif args[0].lower() == 'check':
-            assert len(args) >= 2
-            model_list = args[1:]
-            for m in model_list:
-                CHECK(m)
-        elif args[0].lower() == 'run':
-            assert len(args) >= 2
-            lvl = args[1]
-            if len(args) == 2:
-                model = 'all'
+
+    if args[0].lower() == 'dlist':
+        assert len(args) >= 2
+        lst = DLIST(args[1])
+        print(' '.join(lst))
+    elif args[0].lower() == 'mlist':
+        assert len(args) >= 2
+        size = 'all'
+        if len(args) > 2:
+            size = args[2].lower()
+        lst = MLIST(args[1], size)
+        print('\n'.join(lst))
+    elif args[0].lower() == 'missing':
+        assert len(args) >= 2
+        missing_list = MISSING(args[1])
+        logger = get_logger('Find Missing')
+        logger.info(colored(f'Level {args[1]} Missing Results: ', 'red'))
+        lines = []
+        for m, D in missing_list:
+            line = f'Model {m}, Dataset {D}'
+            logger.info(colored(line, 'red'))
+            lines.append(line)
+        mwlines(lines, f'{args[1]}_missing.txt')
+    elif args[0].lower() == 'circular':
+        assert len(args) >= 2
+        CIRCULAR(args[1])
+    elif args[0].lower() == 'localize':
+        assert len(args) >= 2
+        LOCALIZE(args[1])
+    elif args[0].lower() == 'check':
+        assert len(args) >= 2
+        model_list = args[1:]
+        for m in model_list:
+            CHECK(m)
+    elif args[0].lower() == 'run':
+        assert len(args) >= 2
+        lvl = args[1]
+        if len(args) == 2:
+            model = 'all'
+            RUN(lvl, model)
+        else:
+            for model in args[2:]:
                 RUN(lvl, model)
-            else:
-                for model in args[2:]:
-                    RUN(lvl, model)
-        elif args[0].lower() == 'eval':
-            assert len(args) == 3
-            dataset, data_file = args[1], args[2]
-            EVAL(dataset, data_file)
+    elif args[0].lower() == 'eval':
+        args = parse_args_eval()
+        data_file = args.data_file
+
+        def extract_dataset(file_name):
+            fname = osp.splitext(file_name)[0].split('/')[-1]
+            parts = fname.split('_')
+            for i in range(len(parts)):
+                if '_'.join(parts[i:]) in SUPPORTED_DATASETS:
+                    return '_'.join(parts[i:])
+            return None
+
+        dataset = extract_dataset(data_file)
+        assert dataset is not None, f'Cannot infer dataset name from {data_file}'
+        kwargs = {'nproc': args.api_nproc}
+        if args.judge is not None:
+            kwargs['model'] = args.judge
+        if args.retry is not None:
+            kwargs['retry'] = args.retry
+        EVAL(dataset_name=dataset, data_file=data_file, **kwargs)
+    elif args[0].lower() == 'merge_pkl':
+        assert len(args) == 3
+        args[2] = int(args[2])
+        assert args[2] in [1, 2, 4, 8]
+        MERGE_PKL(args[1], args[2])
     else:
         logger.error('WARNING: command error!')
         logger.info(CLI_HELP_MSG)

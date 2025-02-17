@@ -79,7 +79,7 @@ def mmqa_display(question, target_size=512):
                 print(f'{k.upper()}. {question[k]}')
 
 
-def encode_image_to_base64(img, target_size=-1):
+def encode_image_to_base64(img, target_size=-1, fmt='JPEG'):
     # if target_size == -1, will not do resizing
     # else, will set the max_size ot (target_size, target_size)
     if img.mode in ('RGBA', 'P'):
@@ -87,7 +87,7 @@ def encode_image_to_base64(img, target_size=-1):
     if target_size > 0:
         img.thumbnail((target_size, target_size))
     img_buffer = io.BytesIO()
-    img.save(img_buffer, format='JPEG')
+    img.save(img_buffer, format=fmt)
     image_data = img_buffer.getvalue()
     ret = base64.b64encode(image_data).decode('utf-8')
     return ret

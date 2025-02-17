@@ -194,11 +194,12 @@ def isfloat(num):
 
 def get_font():
     try:
-        truetype_url = 'http://opencompass.openxlab.space/utils/Fonts/SimHei.ttf'
+        truetype_url = "http://opencompass.openxlab.space/utils/Fonts/SimHei.ttf"
         ff = urlopen(truetype_url)
         font = ImageFont.truetype(ff, size=40)
-    except:
-        print('Fail to download the font. Use the default one.')
+    except Exception as e:
+        logging.warning(f'{type(e)}: {e}')
+        logging.warning("Fail to download the font. Use the default one.")
         font = ImageFont.load_default(size=40)
     return font
 
@@ -227,13 +228,13 @@ def frame2img(img_path_list, font, save_path=None, idx_start=0):
             w, h = im.size
             new_w = max(new_w, w)
             new_h += h + 10 + pad
-        new_img = Image.new('RGB', (new_w, new_h), 'white')
+        new_img = Image.new("RGB", (new_w, new_h), "white")
         draw = ImageDraw.Draw(new_img)
         curr_h = 0
         for idx, im in enumerate(imgs):
             w, h = im.size
             new_img.paste(im, (0, pad + curr_h))
-            draw.text((0, curr_h), f'<IMAGE {idx+idx_start}>', font=font, fill='black')
+            draw.text((0, curr_h), f"<IMAGE {idx+idx_start}>", font=font, fill="black")
             if idx + 1 < len(imgs):
                 draw.line([(0, pad + curr_h + h + 5), (new_w, pad + curr_h + h + 5)], fill='black', width=2)
             curr_h += h + 10 + pad
@@ -249,7 +250,7 @@ def frame2img(img_path_list, font, save_path=None, idx_start=0):
         for idx, im in enumerate(imgs):
             w, h = im.size
             new_img.paste(im, (curr_w, pad))
-            draw.text((curr_w, 0), f'<IMAGE {idx+idx_start}>', font=font, fill='black')
+            draw.text((curr_w, 0), f"<IMAGE {idx+idx_start}>", font=font, fill='black')
             if idx + 1 < len(imgs):
                 draw.line([(curr_w + w + 5, 0), (curr_w + w + 5, new_h)], fill='black', width=2)
             curr_w += w + 10
@@ -460,8 +461,9 @@ class MMLongBench(ImageBaseDataset):
         os.makedirs(self.img_root, exist_ok=True)
         try:
             import fitz
-        except:
-            warnings.warn('Please use `pip install pymupdf` to parse PDF files.')
+        except Exception as e:
+            logging.critical(f'{type(e)}: {e}')
+            logging.critical('Please use `pip install pymupdf` to parse PDF files.')
 
         line = origin_line.copy()
         line['image_path'] = line['image_path'][:self.max_pages]
