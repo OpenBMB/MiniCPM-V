@@ -105,7 +105,7 @@
     - [Chat with Multiple Images](#chat-with-multiple-images)
     - [In-context Few-shot Learning](#in-context-few-shot-learning)
     - [Chat with Video](#chat-with-video)
-    - [Speech Conversation](#speech-conversation)
+    - [Speech and Audio Mode](#speech-and-audio-mode)
       - [Mimick](#mimick)
       - [General Speech Conversation with Configurable Voices](#general-speech-conversation-with-configurable-voices)
       - [Speech Conversation as an AI Assistant](#speech-conversation-as-an-ai-assistant)
