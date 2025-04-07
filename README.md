@@ -28,7 +28,7 @@
 
 </div>
 
-**MiniCPM-o** is the latest series of end-side multimodal LLMs (MLLMs) ungraded from MiniCPM-V. The models can now take images, video, text, and audio as inputs and provide high-quality text and speech outputs in an end-to-end fashion. Since February 2024, we have released 6 versions of the model, aiming to achieve **strong performance and efficient deployment**. The most notable models in the series currently include:
+**MiniCPM-o** is the latest series of end-side multimodal LLMs (MLLMs) upgraded from MiniCPM-V. The models can now take images, video, text, and audio as inputs and provide high-quality text and speech outputs in an end-to-end fashion. Since February 2024, we have released 6 versions of the model, aiming to achieve **strong performance and efficient deployment**. The most notable models in the series currently include:
 
 - **MiniCPM-o 2.6**: 🔥🔥🔥 The latest and most capable model in the MiniCPM-o series. With a total of 8B parameters, this end-to-end model **achieves comparable performance to GPT-4o-202405 in vision, speech, and multimodal live streaming**, making it one of the most versatile and performant models in the open-source community. For the new voice mode, MiniCPM-o 2.6 **supports bilingual real-time speech conversation with configurable voices**, and also allows for fun capabilities such as emotion/speed/style control, end-to-end voice cloning, role play, etc. It also advances MiniCPM-V 2.6's visual capabilities such **strong OCR capability, trustworthy behavior, multilingual support, and video understanding**. Due to its superior token density, MiniCPM-o 2.6 can for the first time **support multimodal live streaming on end-side devices** such as iPad.
 
