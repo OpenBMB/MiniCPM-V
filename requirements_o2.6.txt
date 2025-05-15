@@ -20,3 +20,4 @@ fastapi
 uvicorn
 gradio==4.44.1
 http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_studio-0.4.0.9-py3-none-any.whl
+pydantic==2.10.6
