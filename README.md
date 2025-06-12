@@ -16,7 +16,7 @@
 &nbsp;
 <span style="display: inline-flex; align-items: center; margin-left: -8px;">
 <img src="./assets/discord.png" alt="Discord" style="margin-right: 4px;">
-  <a href="https://discord.gg/uQpn8kKx" target="_blank"> Discord</a>  
+  <a href="https://discord.gg/rftuRMbqzf" target="_blank"> Discord</a>  
 </span>
 
 
