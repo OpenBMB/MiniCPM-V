@@ -16,7 +16,11 @@
 &nbsp;
 <span style="display: inline-flex; align-items: center; margin-left: -8px;">
 <img src="./assets/discord.png" alt="Discord" style="margin-right: 4px;">
-  <a href="https://discord.gg/rftuRMbqzf" target="_blank"> Discord</a>  
+  <a href="https://discord.gg/rftuRMbqzf" target="_blank"> Discord</a> &nbsp;|
+</span>
+<span style="display: inline-flex; align-items: center; margin-left: 2px; vertical-align:top">
+<img src="./assets/join.png" alt="Join us" style="margin-right: 4px;">
+  <a href="https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?poc_token=HAV8UWijqB3ImPSXecZHlOns7NRgpQw9y9EI2_fE&target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FKIhH2nCURBXuFXAtYRpuXg%3F" target="_blank"> Join Us</a>  
 </span>
 
 
