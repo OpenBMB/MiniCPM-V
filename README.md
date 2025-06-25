@@ -2565,7 +2565,14 @@ We now support MiniCPM-V series fine-tuning with the SWIFT framework. SWIFT supp
 Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md), [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
 
 ## Awesome work using MiniCPM-V & MiniCPM-o
-
+- [text-extract-api](https://github.com/CatchTheTornado/text-extract-api) (Document (PDF, Word, PPTX ...) extraction and parse API using OCRs and local Ollama supported models.)
+- [comfyui_LLM_party](https://github.com/heshengtao/comfyui_LLM_party) (Quickly build your own LLM workflows and easily integrate them into existing image workflows.)
+- [Ollama-OCR](https://github.com/imanoop7/Ollama-OCR) (A powerful OCR toolkit that uses vision language models through Ollama to extract text from images and PDF.)
+- [comfyui-mixlab-nodes](https://github.com/MixLabPro/comfyui-mixlab-nodes) (A powerful node suite for ComfyUI that supports Workflow-to-APP、ScreenShare&FloatingVideo、GPT & 3D、SpeechRecognition&TTS.)
+- [OpenAvatarChat](https://github.com/HumanAIGC-Engineering/OpenAvatarChat) (A modular interactive digital human conversation implementation that runs full-featured on a single PC.)
+- [pensieve](https://github.com/arkohut/pensieve) (A passive recording project allows to have complete control over data. Automatically take screenshots of all your screens, index them, and save them locally.)
+- [paperless-gpt](https://github.com/icereed/paperless-gpt) (Use LLMs and LLM Vision (OCR) to handle paperless-ngx - Document Digitalization powered by AI)
+- [Neuro](https://github.com/kimjammer/Neuro) (A recreation of Neuro-Sama, but only running on local models on consumer hardware.)
 
 ## FAQs
 Click here to view the [FAQs](./docs/faqs.md)
