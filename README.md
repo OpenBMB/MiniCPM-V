@@ -2565,14 +2565,14 @@ We now support MiniCPM-V series fine-tuning with the SWIFT framework. SWIFT supp
 Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md), [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
 
 ## Awesome work using MiniCPM-V & MiniCPM-o
-- [text-extract-api](https://github.com/CatchTheTornado/text-extract-api): Document (PDF, Word, PPTX ...) extraction and parse API using OCRs and local Ollama supported models ![GitHub Repo stars](https://img.shields.io/github/stars/CatchTheTornado/text-extract-api)
-- [comfyui_LLM_party](https://github.com/heshengtao/comfyui_LLM_party): Quickly build your own LLM workflows and easily integrate them into existing image workflows ![GitHub Repo stars](https://img.shields.io/github/stars/heshengtao/comfyui_LLM_party)
-- [Ollama-OCR](https://github.com/imanoop7/Ollama-OCR): A powerful OCR toolkit that uses vision language models through Ollama to extract text from images and PDF ![GitHub Repo stars](https://img.shields.io/github/stars/imanoop7/Ollama-OCR)
-- [comfyui-mixlab-nodes](https://github.com/MixLabPro/comfyui-mixlab-nodes): A powerful node suite for ComfyUI that supports Workflow-to-APP、ScreenShare&FloatingVideo、GPT & 3D、SpeechRecognition&TTS ![GitHub Repo stars](https://img.shields.io/github/stars/MixLabPro/comfyui-mixlab-nodes)
-- [OpenAvatarChat](https://github.com/HumanAIGC-Engineering/OpenAvatarChat): A modular interactive digital human conversation implementation that runs full-featured on a single PC ![GitHub Repo stars](https://img.shields.io/github/stars/HumanAIGC-Engineering/OpenAvatarChat)
-- [pensieve](https://github.com/arkohut/pensieve): A passive recording project allows to have complete control over data. Automatically take screenshots of all your screens, index them, and save them locally ![GitHub Repo stars](https://img.shields.io/github/stars/arkohut/pensieve)
-- [paperless-gpt](https://github.com/icereed/paperless-gpt): Use LLMs and LLM Vision (OCR) to handle paperless-ngx - Document Digitalization powered by AI ![GitHub Repo stars](https://img.shields.io/github/stars/icereed/paperless-gpt)
-- [Neuro](https://github.com/kimjammer/Neuro): A recreation of Neuro-Sama, but only running on local models on consumer hardware ![GitHub Repo stars](https://img.shields.io/github/stars/kimjammer/Neuro)
+- [text-extract-api](https://github.com/CatchTheTornado/text-extract-api): Document extraction API using OCRs and Ollama supported models ![GitHub Repo stars](https://img.shields.io/github/stars/CatchTheTornado/text-extract-api)
+- [comfyui_LLM_party](https://github.com/heshengtao/comfyui_LLM_party): Build LLM workflows and integrate into existing image workflows ![GitHub Repo stars](https://img.shields.io/github/stars/heshengtao/comfyui_LLM_party)
+- [Ollama-OCR](https://github.com/imanoop7/Ollama-OCR): OCR package uses vlms through Ollama to extract text from images and PDF ![GitHub Repo stars](https://img.shields.io/github/stars/imanoop7/Ollama-OCR)
+- [comfyui-mixlab-nodes](https://github.com/MixLabPro/comfyui-mixlab-nodes): ComfyUI node suite supports Workflow-to-APP、GPT&3D and more ![GitHub Repo stars](https://img.shields.io/github/stars/MixLabPro/comfyui-mixlab-nodes)
+- [OpenAvatarChat](https://github.com/HumanAIGC-Engineering/OpenAvatarChat): Interactive digital human conversation implementation on single PC ![GitHub Repo stars](https://img.shields.io/github/stars/HumanAIGC-Engineering/OpenAvatarChat)
+- [pensieve](https://github.com/arkohut/pensieve): A privacy-focused passive recording project by recording screen content ![GitHub Repo stars](https://img.shields.io/github/stars/arkohut/pensieve)
+- [paperless-gpt](https://github.com/icereed/paperless-gpt): Use LLMs to handle paperless-ngx, AI-powered titles, tags and OCR ![GitHub Repo stars](https://img.shields.io/github/stars/icereed/paperless-gpt)
+- [Neuro](https://github.com/kimjammer/Neuro): A recreation of Neuro-Sama, but running on local models on consumer hardware ![GitHub Repo stars](https://img.shields.io/github/stars/kimjammer/Neuro)
 
 ## FAQs
 Click here to view the [FAQs](./docs/faqs.md)
