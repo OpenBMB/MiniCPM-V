@@ -114,6 +114,7 @@
   - [Mac 推理](#mac-推理)
   - [基于 llama.cpp、ollama、vLLM 的高效推理](#基于-llamacppollamavllm-的高效推理)
 - [微调](#微调)
+- [基于 MiniCPM-V \& MiniCPM-o 的更多项目](#基于-minicpm-v--minicpm-o-的更多项目)
 - [FAQs](#faqs)
 - [模型局限性](#模型局限性)
 
@@ -2448,6 +2449,11 @@ pip install vllm
 我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种大语言模型和多模态大模型的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
 
 参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)，[MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
+
+
+## 基于 MiniCPM-V & MiniCPM-o 的更多项目
+
+
 
 ## FAQs
 点击查看 [FAQs](./docs/faqs.md)
