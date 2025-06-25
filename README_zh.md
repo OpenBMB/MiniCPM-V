@@ -2452,14 +2452,14 @@ pip install vllm
 
 
 ## 基于 MiniCPM-V & MiniCPM-o 的更多项目
-- [text-extract-api](https://github.com/CatchTheTornado/text-extract-api) (利用OCR和Ollama模型的本地化文档提取与解析API，支持PDF、Word、PPTX等。)
-- [comfyui_LLM_party](https://github.com/heshengtao/comfyui_LLM_party) (ComfyUI的LLM Agent框架，用于构建并集成LLM工作流。)
-- [Ollama-OCR](https://github.com/imanoop7/Ollama-OCR) (通过Ollama调用视觉语言模型，从图像和PDF中提取文本的OCR工具。)
-- [comfyui-mixlab-nodes](https://github.com/MixLabPro/comfyui-mixlab-nodes) (ComfyUI多功能节点合集，支持工作流一键转APP、语音识别合成、3D等功能。)
-- [OpenAvatarChat](https://github.com/HumanAIGC-Engineering/OpenAvatarChat) (可在单台PC上完整运行的模块化、开源交互式数字人对话系统。)
-- [pensieve](https://github.com/arkohut/pensieve) (完全本地化、保护隐私的被动式屏幕记录工具，自动截屏并建立索引，可通过Web界面进行检索。)
-- [paperless-gpt](https://github.com/icereed/paperless-gpt) (利用LLM和视觉模型，为paperless-ngx实现AI驱动的文档自动化处理与OCR功能。)
-- [Neuro](https://github.com/kimjammer/Neuro) (Neuro-Sama的复刻版，完全依赖消费级硬件上的本地模型运行。)
+- [text-extract-api](https://github.com/CatchTheTornado/text-extract-api): 利用 OCR 和 Ollama 模型的本地化文档提取与解析API，支持PDF、Word、PPTX ![GitHub Repo stars](https://img.shields.io/github/stars/CatchTheTornado/text-extract-api)
+- [comfyui_LLM_party](https://github.com/heshengtao/comfyui_LLM_party): 基于 ComfyUI 的 LLM Agent 框架，用于构建并集成 LLM 工作流 ![GitHub Repo stars](https://img.shields.io/github/stars/heshengtao/comfyui_LLM_party)
+- [Ollama-OCR](https://github.com/imanoop7/Ollama-OCR): 通过 Ollama 调用视觉语言模型，从图像和 PDF 中提取文本的 OCR 工具 ![GitHub Repo stars](https://img.shields.io/github/stars/imanoop7/Ollama-OCR)
+- [comfyui-mixlab-nodes](https://github.com/MixLabPro/comfyui-mixlab-nodes): ComfyUI 多功能节点合集，支持工作流一键转APP、语音识别合成、3D等功能 ![GitHub Repo stars](https://img.shields.io/github/stars/MixLabPro/comfyui-mixlab-nodes)
+- [OpenAvatarChat](https://github.com/HumanAIGC-Engineering/OpenAvatarChat): 可在单台PC上完整运行的模块化、开源交互式数字人对话系统 ![GitHub Repo stars](https://img.shields.io/github/stars/HumanAIGC-Engineering/OpenAvatarChat)
+- [pensieve](https://github.com/arkohut/pensieve): 完全本地化、保护隐私的被动式屏幕记录工具，自动截屏并建立索引，可通过Web界面进行检索 ![GitHub Repo stars](https://img.shields.io/github/stars/arkohut/pensieve)
+- [paperless-gpt](https://github.com/icereed/paperless-gpt): 利用LLM和视觉模型，为 paperless-ngx 实现AI驱动的文档自动化处理与OCR功能 ![GitHub Repo stars](https://img.shields.io/github/stars/icereed/paperless-gpt)
+- [Neuro](https://github.com/kimjammer/Neuro): Neuro-Sama的复刻版，完全依赖消费级硬件上的本地模型运行 ![GitHub Repo stars](https://img.shields.io/github/stars/kimjammer/Neuro)
 
 ## FAQs
 点击查看 [FAQs](./docs/faqs.md)
