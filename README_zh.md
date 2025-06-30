@@ -13,11 +13,7 @@
    <a href="docs/wechat.md" target="_blank"> 微信社区</a> &nbsp;|
  </span>
   <span style="display: inline-flex; align-items: center; margin-left: 2px;">
-   MiniCPM-V <a href="docs/best_practice_summary_zh.md" target="_blank">&nbsp; 📖 最佳实践</a >&nbsp;|
- </span>
- <span style="display: inline-flex; align-items: center; margin-center: 2px; vertical-align:top">
- <img src="./assets/join.png" alt="Join us" style="margin-left: 2px;">
-   <a href="https://mp.weixin.qq.com/mp/wappoc_appmsgcaptcha?poc_token=HAV8UWijqB3ImPSXecZHlOns7NRgpQw9y9EI2_fE&target_url=https%3A%2F%2Fmp.weixin.qq.com%2Fs%2FKIhH2nCURBXuFXAtYRpuXg%3F" target="_blank"> 加入我们 </a>  
+   MiniCPM-V <a href="docs/best_practice_summary_zh.md" target="_blank">&nbsp; 📖 最佳实践</a >&nbsp;
  </span>
 
   
