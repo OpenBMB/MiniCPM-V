@@ -41,6 +41,9 @@
 #### 📌 Pinned
 
 
+* [2025.08.01] 🔥🔥🔥 We've open-sourced the [MiniCPM-V & o Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook)! It provides comprehensive guides for diverse user scenarios, paired with our new [Docs Site](https://minicpm-o.readthedocs.io/en/latest/index.html) for smoother onboarding.
+
+
 * [2025.06.20] ⭐️⭐️⭐️ Our official [ollama repository](https://ollama.com/openbmb) is released. Try our latest models with [one click](https://ollama.com/openbmb/minicpm-o2.6)！
 
 * [2025.03.01] 🚀🚀🚀 RLAIF-V, which is the alignment technique of MiniCPM-o, is accepted by CVPR 2025！The [code](https://github.com/RLHF-V/RLAIF-V), [dataset](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset), [paper](https://arxiv.org/abs/2405.17220) are open-sourced!
@@ -122,6 +125,10 @@
   - [Inference on Mac](#inference-on-mac)
   - [Efficient Inference with llama.cpp, ollama, vLLM](#efficient-inference-with-llamacpp-ollama-vllm)
 - [Fine-tuning](#fine-tuning)
+- [MiniCPM-V \& o Cookbook](#minicpm-v--o-cookbook)
+  - [Easy Usage Documentation](#easy-usage-documentation)
+  - [Broad User Spectrum](#broad-user-spectrum)
+  - [Versatile Deployment Scenarios](#versatile-deployment-scenarios)
 - [Awesome work using MiniCPM-V \& MiniCPM-o](#awesome-work-using-minicpm-v--minicpm-o)
 - [FAQs](#faqs)
 - [Limitations](#limitations)
@@ -2551,6 +2558,7 @@ Best Practices: [MiniCPM-o 2.6](https://github.com/PKU-Alignment/align-anything/
 
 We support fine-tuning MiniCPM-o 2.6 and MiniCPM-V 2.6 with the LLaMA-Factory framework. LLaMA-Factory provides a solution for flexibly customizing the fine-tuning (Lora/Full/Qlora) of 200+ LLMs without the need for coding through the built-in web UI LLaMABoard. It supports various training methods like sft/ppo/dpo/kto and advanced algorithms like Galore/BAdam/LLaMA-Pro/Pissa/LongLoRA.
 
+
 Best Practices: [MiniCPM-o 2.6 | MiniCPM-V 2.6](./docs/llamafactory_train_and_infer.md). 
 
 
@@ -2559,6 +2567,32 @@ Best Practices: [MiniCPM-o 2.6 | MiniCPM-V 2.6](./docs/llamafactory_train_and_in
 We now support MiniCPM-V series fine-tuning with the SWIFT framework. SWIFT supports training, inference, evaluation and deployment of nearly 200 LLMs and MLLMs . It supports the lightweight training solutions provided by PEFT and a complete Adapters Library including techniques such as NEFTune, LoRA+ and LLaMA-PRO.
 
 Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md), [MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md), [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
+
+## MiniCPM-V & o Cookbook
+
+Discover comprehensive, ready-to-deploy solutions for the MiniCPM-V and MiniCPM-o model series in our structured [Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook), which empowers developers to rapidly implement multimodal AI applications with integrated vision, speech, and live-streaming capabilities. Key features include:
+
+### Easy Usage Documentation
+
+Our comprehensive [documentation website](https://minicpm-o.readthedocs.io/en/latest/index.html) presents every recipe in a clear, well-organized manner.
+All features are displayed at a glance, making it easy for you to quickly find exactly what you need.
+
+### Broad User Spectrum
+
+We support a wide range of users, from individuals to enterprises and researchers.
+
+* **Individuals**: Enjoy effortless inference using [Ollama](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/ollama/minicpm-v4_ollama.md) and [Llama.cpp](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/llama.cpp/minicpm-v4_llamacpp.md) with minimal setup.
+* **Enterprises**: Achieve high-throughput, scalable performance with [vLLM](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_vllm.md) and [SGLang](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/MiniCPM-v4_sglang.md).
+* **Researchers**: Leverage advanced frameworks including [Transformers](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_full.md), [LLaMA-Factory](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_llamafactory.md), [SWIFT](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift.md), and [Align-anything](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/align_anything.md) to enable flexible model development and cutting-edge experimentation.
+
+### Versatile Deployment Scenarios
+
+Our ecosystem delivers optimal solution for a variety of hardware environments and deployment demands.
+
+* **Web demo**: Launch interactive multimodal AI web demo with [FastAPI](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/demo/README.md).
+* **Quantized deployment**: Maximize efficiency and minimize resource consumption using [GGUF](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/quantization/gguf/minicpm-v4_gguf_quantize.md) and [BNB](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/quantization/bnb/minicpm-v4_bnb_quantize.md).
+* **Edge devices**: Bring powerful AI experiences to [iPhone and iPad](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/demo/ios_demo/ios.md), supporting offline and privacy-sensitive applications.
+
 
 ## Awesome work using MiniCPM-V & MiniCPM-o
 - [text-extract-api](https://github.com/CatchTheTornado/text-extract-api): Document extraction API using OCRs and Ollama supported models ![GitHub Repo stars](https://img.shields.io/github/stars/CatchTheTornado/text-extract-api)

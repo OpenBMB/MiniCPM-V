@@ -38,6 +38,8 @@
 #### 📌 置顶
 
 
+* [2025.08.01] 🔥🔥🔥 我们开源了 [MiniCPM-V & o Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook)，提供针对不同人群的全场景使用指南，配合最新的[文档网站](https://minicpm-o.readthedocs.io/en/latest/index.html)上手更轻松！
+
 * [2025.06.20] ⭐️⭐️⭐️ MiniCPM-o 的 ollama [官方仓库](https://ollama.com/openbmb)正式支持 MiniCPM-o 2.6 等模型啦，欢迎[一键使用](https://ollama.com/openbmb/minicpm-o2.6)！
 
 * [2025.03.01] 🚀🚀🚀 MiniCPM-o 系列的对齐技术 RLAIF-V 被 CVPR 2025 接收了！其[代码](https://github.com/RLHF-V/RLAIF-V)、[数据](https://huggingface.co/datasets/openbmb/RLAIF-V-Dataset)、[论文](https://arxiv.org/abs/2405.17220)均已开源。
@@ -110,6 +112,10 @@
   - [Mac 推理](#mac-推理)
   - [基于 llama.cpp、ollama、vLLM 的高效推理](#基于-llamacppollamavllm-的高效推理)
 - [微调](#微调)
+- [MiniCPM-V \& o 使用手册](#minicpm-v--o-使用手册)
+  - [易用的文档](#易用的文档)
+  - [广泛的用户支持](#广泛的用户支持)
+  - [多样化的部署场景](#多样化的部署场景)
 - [基于 MiniCPM-V \& MiniCPM-o 的更多项目](#基于-minicpm-v--minicpm-o-的更多项目)
 - [FAQs](#faqs)
 - [模型局限性](#模型局限性)
@@ -2445,6 +2451,30 @@ pip install vllm
 我们支持使用 SWIFT 框架微调 MiniCPM-V 系列模型。SWIFT 支持近 200 种大语言模型和多模态大模型的训练、推理、评测和部署。支持 PEFT 提供的轻量训练方案和完整的 Adapters 库支持的最新训练技术如 NEFTune、LoRA+、LLaMA-PRO 等。 
 
 参考文档：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v最佳实践.md)，[MiniCPM-V 2.0](https://github.com/modelscope/swift/blob/main/docs/source/Multi-Modal/minicpm-v-2最佳实践.md) [MiniCPM-V 2.6](https://github.com/modelscope/ms-swift/issues/1613).
+
+## MiniCPM-V & o 使用手册
+
+欢迎探索我们整理的[使用手册 (Cookbook)](https://github.com/OpenSQZ/MiniCPM-V-CookBook)，其中提供了针对 MiniCPM-V 和 MiniCPM-o 模型系列的全面、开箱即用的解决方案。本手册赋能开发者快速构建集成了视觉、语音和直播能力的多模态 AI 应用。主要特性包括：
+
+### 易用的文档
+
+我们的详尽[文档网站](https://minicpm-o.readthedocs.io/en/latest/index.html)以清晰、条理分明的方式呈现每一份解决方案。
+
+### 广泛的用户支持
+
+我们支持从个人用户到企业和研究者的广泛用户群体。
+
+*   **个人用户**：借助[Ollama](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/ollama/minicpm-v4_ollama.md)和[Llama.cpp](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/llama.cpp/minicpm-v4_llamacpp.md)，仅需极简设置即可轻松进行模型推理。
+*   **企业用户**：通过[vLLM](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_vllm.md)和[SGLang](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/MiniCPM-v4_sglang.md)实现高吞吐量、可扩展的高性能部署。
+*   **研究者**：利用包括[Transformers](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_full.md)、[LLaMA-Factory](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_llamafactory.md)、[SWIFT](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift.md)和[Align-anything](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/align_anything.md)在内的先进框架，进行灵活的模型开发和前沿实验。
+
+### 多样化的部署场景
+
+我们的生态系统为各种硬件环境和部署需求提供最优解决方案。
+
+*   **Web Demo**：使用[FastAPI](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/demo/README.md)快速启动交互式多模态 AI Web 演示。
+*   **量化部署**：通过[GGUF](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/quantization/gguf/minicpm-v4_gguf_quantize.md)和[BNB](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/quantization/bnb/minicpm-v4_bnb_quantize.md)量化技术，最大化效率并最小化资源消耗。
+*   **边缘设备**：将强大的 AI 体验带到[iPhone 和 iPad](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/demo/ios_demo/ios.md)，支持离线及隐私敏感的应用场景。
 
 
 ## 基于 MiniCPM-V & MiniCPM-o 的更多项目
