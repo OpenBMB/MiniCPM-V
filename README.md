@@ -126,9 +126,6 @@
   - [Efficient Inference with llama.cpp, ollama, vLLM](#efficient-inference-with-llamacpp-ollama-vllm)
 - [Fine-tuning](#fine-tuning)
 - [MiniCPM-V \& o Cookbook](#minicpm-v--o-cookbook)
-  - [Easy Usage Documentation](#easy-usage-documentation)
-  - [Broad User Spectrum](#broad-user-spectrum)
-  - [Versatile Deployment Scenarios](#versatile-deployment-scenarios)
 - [Awesome work using MiniCPM-V \& MiniCPM-o](#awesome-work-using-minicpm-v--minicpm-o)
 - [FAQs](#faqs)
 - [Limitations](#limitations)
@@ -2572,12 +2569,12 @@ Best Practices：[MiniCPM-V 1.0](https://github.com/modelscope/swift/blob/main/d
 
 Discover comprehensive, ready-to-deploy solutions for the MiniCPM-V and MiniCPM-o model series in our structured [Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook), which empowers developers to rapidly implement multimodal AI applications with integrated vision, speech, and live-streaming capabilities. Key features include:
 
-### Easy Usage Documentation
+**Easy Usage Documentation**
 
 Our comprehensive [documentation website](https://minicpm-o.readthedocs.io/en/latest/index.html) presents every recipe in a clear, well-organized manner.
 All features are displayed at a glance, making it easy for you to quickly find exactly what you need.
 
-### Broad User Spectrum
+**Broad User Spectrum**
 
 We support a wide range of users, from individuals to enterprises and researchers.
 
@@ -2585,7 +2582,7 @@ We support a wide range of users, from individuals to enterprises and researcher
 * **Enterprises**: Achieve high-throughput, scalable performance with [vLLM](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_vllm.md) and [SGLang](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/MiniCPM-v4_sglang.md).
 * **Researchers**: Leverage advanced frameworks including [Transformers](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_full.md), [LLaMA-Factory](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_llamafactory.md), [SWIFT](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift.md), and [Align-anything](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/align_anything.md) to enable flexible model development and cutting-edge experimentation.
 
-### Versatile Deployment Scenarios
+**Versatile Deployment Scenarios**
 
 Our ecosystem delivers optimal solution for a variety of hardware environments and deployment demands.
 

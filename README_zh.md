@@ -113,9 +113,6 @@
   - [基于 llama.cpp、ollama、vLLM 的高效推理](#基于-llamacppollamavllm-的高效推理)
 - [微调](#微调)
 - [MiniCPM-V \& o 使用手册](#minicpm-v--o-使用手册)
-  - [易用的文档](#易用的文档)
-  - [广泛的用户支持](#广泛的用户支持)
-  - [多样化的部署场景](#多样化的部署场景)
 - [基于 MiniCPM-V \& MiniCPM-o 的更多项目](#基于-minicpm-v--minicpm-o-的更多项目)
 - [FAQs](#faqs)
 - [模型局限性](#模型局限性)
@@ -2456,11 +2453,11 @@ pip install vllm
 
 欢迎探索我们整理的[使用手册 (Cookbook)](https://github.com/OpenSQZ/MiniCPM-V-CookBook)，其中提供了针对 MiniCPM-V 和 MiniCPM-o 模型系列的全面、开箱即用的解决方案。本手册赋能开发者快速构建集成了视觉、语音和直播能力的多模态 AI 应用。主要特性包括：
 
-### 易用的文档
+**易用的文档**
 
 我们的详尽[文档网站](https://minicpm-o.readthedocs.io/en/latest/index.html)以清晰、条理分明的方式呈现每一份解决方案。
 
-### 广泛的用户支持
+**广泛的用户支持**
 
 我们支持从个人用户到企业和研究者的广泛用户群体。
 
@@ -2468,7 +2465,7 @@ pip install vllm
 *   **企业用户**：通过[vLLM](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_vllm.md)和[SGLang](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/MiniCPM-v4_sglang.md)实现高吞吐量、可扩展的高性能部署。
 *   **研究者**：利用包括[Transformers](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_full.md)、[LLaMA-Factory](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/finetune_llamafactory.md)、[SWIFT](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift.md)和[Align-anything](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/align_anything.md)在内的先进框架，进行灵活的模型开发和前沿实验。
 
-### 多样化的部署场景
+**多样化的部署场景**
 
 我们的生态系统为各种硬件环境和部署需求提供最优解决方案。
 
