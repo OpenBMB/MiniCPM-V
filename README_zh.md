@@ -654,10 +654,10 @@ MiniCPM-V 4.0 支持多种推理方式，包括 **llama.cpp、Ollama、vLLM、SG
 
 </details>
 
-### 典型示例  <!-- omit in toc -->
+### 典型示例
 
 <div style="display: flex; flex-direction: column; align-items: center;">
-  <img src="assets/minicpmv4/minicpm-v-4-case.jpeg" alt="math" style="margin-bottom: 5px;">
+  <img src="assets/minicpmv4/minicpm-v-4-case.png" alt="math" style="margin-bottom: 5px;">
 </div>
 
 
