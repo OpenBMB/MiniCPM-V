@@ -13,6 +13,7 @@
 - [Inference](#Inference)
 
 ## Support Models
+* [openbmb/MiniCPM-V-4](https://huggingface.co/openbmb/MiniCPM-V-4)
 * [openbmb/MiniCPM-o-2_6](https://huggingface.co/openbmb/MiniCPM-o-2_6)
 * [openbmb/MiniCPM-V-2_6](https://huggingface.co/openbmb/MiniCPM-V-2_6)
 
