@@ -18,6 +18,8 @@ from transformers import AutoModel, AutoTokenizer, AutoProcessor
 import uvicorn
 from fastapi import FastAPI, Header, Query, Request, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.responses import JSONResponse, StreamingResponse
+from accelerate import Accelerator
+
 
 cur_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.append(os.path.abspath(cur_path))
@@ -92,12 +94,16 @@ class StreamManager:
         
         self.minicpmo_model_path = args.model #"openbmb/MiniCPM-o-2_6"
         self.model_version = "2.6"
+        
+        accelerator = Accelerator()
         with torch.no_grad():
-            self.minicpmo_model = AutoModel.from_pretrained(self.minicpmo_model_path, trust_remote_code=True, torch_dtype=self.target_dtype, attn_implementation='sdpa')
-        self.minicpmo_tokenizer = AutoTokenizer.from_pretrained(self.minicpmo_model_path, trust_remote_code=True)
-        self.minicpmo_model.init_tts()
-        # self.minicpmo_model.tts.float()
-        self.minicpmo_model.to(self.device).eval()
+            with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+                self.minicpmo_model = AutoModel.from_pretrained(self.minicpmo_model_path, trust_remote_code=True, torch_dtype=self.target_dtype, attn_implementation='sdpa', device_map="auto")
+                self.minicpmo_model = accelerator.prepare(self.minicpmo_model)
+            self.minicpmo_tokenizer = AutoTokenizer.from_pretrained(self.minicpmo_model_path, trust_remote_code=True)
+            self.minicpmo_model.init_tts()
+            # self.minicpmo_model.tts.float()
+            self.minicpmo_model.eval()
 
         self.ref_path_video_default = "assets/ref_audios/video_default.wav"
         self.ref_path_default = "assets/ref_audios/default.wav"
@@ -204,6 +210,8 @@ class StreamManager:
         return False
 
     def sys_prompt_init(self, msg_type):
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        
         if self.past_session_id == self.session_id:
             return
         logger.info("### sys_prompt_init ###")
@@ -226,7 +234,8 @@ class StreamManager:
                     ref_path = self.ref_path_male
 
             audio_prompt, sr = librosa.load(ref_path, sr=16000, mono=True)
-            sys_msg = {'role': 'user', 'content': [audio_voice_clone_prompt + "\n", audio_prompt, "\n" + audio_assistant_prompt]}
+            audio_tensor = torch.tensor(audio_prompt).float().to(device)
+            sys_msg = {'role': 'user', 'content': [audio_voice_clone_prompt + "\n", audio_tensor, "\n" + audio_assistant_prompt]}
         elif msg_type == 2: #video
             voice_clone_prompt="你是一个AI助手。你能接受视频，音频和文本输入并输出语音和文本。模仿输入音频中的声音特征。"
             assistant_prompt="作为助手，你将使用这种声音风格说话。"
@@ -243,7 +252,8 @@ class StreamManager:
                     ref_path = self.ref_path_male
                 
             audio_prompt, sr = librosa.load(ref_path, sr=16000, mono=True)
-            sys_msg = {'role': 'user', 'content': [voice_clone_prompt, audio_prompt, assistant_prompt]}
+            audio_tensor = torch.tensor(audio_prompt).float().to(device)
+            sys_msg = {'role': 'user', 'content': [voice_clone_prompt, audio_tensor, assistant_prompt]}
         # elif msg_type == 3: #user start
         #     assistant_prompt="作为助手，你将使用这种声音风格说话。"
         #     if self.customized_options is not None:
@@ -268,20 +278,13 @@ class StreamManager:
             )
             
         self.savedir = os.path.join(f"./log_data/{args.port}/", str(time.time()))
-        if not os.path.exists(self.savedir):
-            os.makedirs(self.savedir)
-        if not os.path.exists(self.savedir + "/input_audio_log"):
-            os.makedirs(self.savedir + "/input_audio_log")
-        if not os.path.exists(self.savedir + "/input_audio_vad_log"):
-            os.makedirs(self.savedir + "/input_audio_vad_log")
-        if not os.path.exists(self.savedir + "/input_image_log"):
-            os.makedirs(self.savedir + "/input_image_log")
-        if not os.path.exists(self.savedir + "/output_audio_log"):
-            os.makedirs(self.savedir + "/output_audio_log")
-        if not os.path.exists(self.savedir + "/feedback_log"):
-            os.makedirs(self.savedir + "/feedback_log")
-        if not os.path.exists(self.savedir + "/input_audio"):
-            os.makedirs(self.savedir + "/input_audio")
+        os.makedirs(self.savedir, exist_ok=True)
+        os.makedirs(self.savedir + "/input_audio_log", exist_ok=True)
+        os.makedirs(self.savedir + "/input_audio_vad_log", exist_ok=True)
+        os.makedirs(self.savedir + "/input_image_log", exist_ok=True)
+        os.makedirs(self.savedir + "/output_audio_log", exist_ok=True)
+        os.makedirs(self.savedir + "/feedback_log", exist_ok=True)
+        os.makedirs(self.savedir + "/input_audio", exist_ok=True)
         
         self.past_session_id = self.session_id
         self.audio_prefill = []
