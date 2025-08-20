@@ -28,7 +28,7 @@
 
 </div>
 
-**MiniCPM-o** is the latest series of end-side multimodal LLMs (MLLMs) ungraded from MiniCPM-V. The models can now take images, video, text, and audio as inputs and provide high-quality text and speech outputs in an end-to-end fashion. Since February 2024, we have released 6 versions of the model, aiming to achieve **strong performance and efficient deployment**. The most notable models in the series currently include:
+**MiniCPM-o** is the latest series of end-side multimodal LLMs (MLLMs) upgraded from MiniCPM-V. The models can now take images, video, text, and audio as inputs and provide high-quality text and speech outputs in an end-to-end fashion. Since February 2024, we have released 6 versions of the model, aiming to achieve **strong performance and efficient deployment**. The most notable models in the series currently include:
 
 - **MiniCPM-V 4.0**: 🚀🚀🚀 The latest efficient model in the MiniCPM-V series. With a total of 4B parameters, the model **surpasses GPT-4.1-mini-20250414, Qwen2.5-VL-3B-Instruct, and InternVL2.5-8B** in image understanding on the OpenCompass evaluation. With its small parameter-size and efficient architecure, MiniCPM-V 4.0 is an ideal choice for on-device deployment on the phone (e.g., **less than 2s first token delay and more than 17 token/s decoding** on iPhone 16 Pro Max using the open-sourced iOS App).
 
