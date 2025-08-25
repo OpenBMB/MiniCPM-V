@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="./assets/MiniCPM-o.png" width="300em" ></img> 
+<img src="./assets/minicpm_v_and_minicpm_o_title.png" width="500em" ></img> 
+
 
 **端侧可用的 GPT-4o 级视觉、语音、多模态实时流式大模型**
 
@@ -18,26 +19,26 @@
 
   <br>
   <p align="center">
-  MiniCPM-V 4.0 <a href="https://huggingface.co/openbmb/MiniCPM-V-4">🤗</a>  <a href="https://minicpm-v.openbmb.cn/"> 🤖</a> | MiniCPM-o 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-o-2_6">🤗</a> <a href="https://minicpm-omni-webdemo-us.modelbest.cn/"> 🤖</a> | MiniCPM-V 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-2_6">🤗</a> <a href="http://120.92.209.146:8887/">🤖</a> | 
-  📄 技术报告 [<a href="https://openbmb.notion.site/MiniCPM-o-2-6-GPT-4o-188ede1b7a558084b3aedd669cb80730">中文</a>/<a href="https://openbmb.notion.site/MiniCPM-o-2-6-A-GPT-4o-Level-MLLM-for-Vision-Speech-and-Multimodal-Live-Streaming-on-Your-Phone-185ede1b7a558042b5d5e45e6b237da9">English</a>]
+  MiniCPM-V 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-V-4_5">🤗</a>  <a href="http://101.126.42.235:30910/"> 🤖</a> | MiniCPM-o 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-o-2_6">🤗</a> <a href="https://minicpm-omni-webdemo-us.modelbest.cn/"> 🤖</a> | 
+  📄 技术报告 [即将推出]
 </p>
 
 </div>
 
 
-**MiniCPM-o** 是从 MiniCPM-V 升级的最新端侧多模态大模型系列。该系列模型可以以端到端方式，接受图像、视频、文本、音频作为输入，并生成高质量文本和语音输出。自2024年2月以来，我们以实现高性能和高效部署为目标，发布了6个版本的模型。目前系列中最值得关注的模型包括：
+**MiniCPM-V** 端侧多模态大模型系列可以以端到端方式，接受图像、视频、文本、音频作为输入，并生成高质量文本和语音输出。自2024年2月以来，我们以实现高性能和高效部署为目标，发布了7个版本的模型。目前系列中最值得关注的模型包括：
 
-- **MiniCPM-V 4.0**：🚀🚀🚀 MiniCPM-V 系列中最新的高效模型，参数总量为 4B。该模型在 OpenCompass 评测中图像理解能力超越了 GPT-4.1-mini-20250414、Qwen2.5-VL-3B-Instruct 和 InternVL2.5-8B。凭借小巧的参数规模和高效的架构，MiniCPM-V 4.0 是移动端部署的理想选择（例如，在 iPhone 16 Pro Max 上使用开源 iOS 应用时，首 token 延迟低于 2 秒，解码速度超过 17 token/s）。
+- **MiniCPM-V 4.5**：🔥🔥🔥 MiniCPM-V 系列中最新、最强大的模型。总参数量 8B，在**视觉能力上超越了 GPT-4o-latest、Gemini-2.0 Pro 以及 Qwen2.5-VL 72B**，成为开源社区中性能最强的端侧多模态模型。本版本带来了全新特性，**包括高效的高帧率与长视频理解（视频 token 压缩率最高可达 96 倍）、可控的快思考/深思考模式、出色的手写体 OCR 与复杂表格/文档解析能力**。同时，它进一步强化了 MiniCPM-V 系列广受欢迎的特性，如可靠性、多语言支持与端侧可部署性。
 
-
-- **MiniCPM-o 2.6**: 🔥🔥🔥 MiniCPM-o 系列的最新、性能最佳模型。总参数量 8B，**视觉、语音和多模态流式能力达到了 GPT-4o-202405 级别**，是开源社区中模态支持最丰富、性能最佳的模型之一。在新的语音模式中，MiniCPM-o 2.6 **支持可配置声音的中英双语语音对话，还具备情感/语速/风格控制、端到端声音克隆、角色扮演等进阶能力**。模型也进一步提升了 MiniCPM-V 2.6 的 **OCR、可信行为、多语言支持和视频理解等视觉能力**。基于其领先的视觉 token 密度，MiniCPM-V 2.6 成为了**首个支持在 iPad 等端侧设备上进行多模态实时流式交互**的多模态大模型。
-
-- **MiniCPM-V 2.6**: MiniCPM-V 系列中性能最佳的模型。总参数量 8B，单图、多图和视频理解性能**超越了 GPT-4V**。它取得了优于 **GPT-4o mini、Gemini 1.5 Pro 和 Claude 3.5 Sonnet**等的单图理解表现，并成为了首个支持在 iPad 等端侧设备上进行实时视频理解的多模态大模型。
+- **MiniCPM-o 2.6**: ⭐️⭐️⭐️  MiniCPM-o 系列中性能最佳模型。总参数量 8B，**视觉、语音和多模态流式能力达到了 GPT-4o-202405 级别**，是开源社区中模态支持最丰富、性能最佳的模型之一。在新的语音模式中，MiniCPM-o 2.6 **支持可配置声音的中英双语语音对话，还具备情感/语速/风格控制、端到端声音克隆、角色扮演等进阶能力**。模型也进一步提升了 MiniCPM-V 2.6 的 **OCR、可信行为、多语言支持和视频理解等视觉能力**。基于其领先的视觉 token 密度，MiniCPM-V 2.6 成为了**首个支持在 iPad 等端侧设备上进行多模态实时流式交互**的多模态大模型。
 
 
 ## 更新日志 <!-- omit in toc -->
 
 #### 📌 置顶
+
+* [2025.08.26] 🔥🔥🔥 我们开源了 MiniCPM-V 4.5，其视觉性能超越了 GPT-4o-latest、Gemini-2.0 Pro 和 Qwen2.5-VL 72B。它不仅延续并强化了 MiniCPM-V 的热门能力，还带来了诸多实用的新功能。欢迎试用！
+
 
 * [2025.08.05] 🚀🚀🚀 我们开源了 MiniCPM-V 4.0，该模型在图像理解能力上超越了 GPT-4.1-mini-20250414。该模型不仅继承了 MiniCPM-V 2.6 的众多实用特性，还大幅提升了推理效率。我们还同步开源了适用于 iPhone 和 iPad 的 iOS 应用，欢迎试用！
 
@@ -98,9 +99,8 @@
 
 ## 目录 <!-- omit in toc -->
 
-- [MiniCPM-V 4.0](#minicpm-v-40)
+- [MiniCPM-V 4.5](#minicpm-v-45)
 - [MiniCPM-o 2.6](#minicpm-o-26)
-- [MiniCPM-V 2.6](#minicpm-v-26)
 - [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
 - [推理](#推理)
   - [模型库](#模型库)
@@ -120,561 +120,83 @@
 - [模型局限性](#模型局限性)
 
 
-## MiniCPM-V 4.0
+## MiniCPM-V 4.5
 
-MiniCPM-V 4.0 是 MiniCPM-V 系列中的最新模型。该模型基于 SigLIP2-400M 和 MiniCPM4-3B 构建，参数总量为 4.1B。它延续了 MiniCPM-V 2.6 在单图、多图和视频理解方面的强大能力，同时大幅提升了推理效率。MiniCPM-V 4.0 的主要特点包括：
 
-- 🔥 **领先的视觉能力。**
-MiniCPM-V 4.0 在 OpenCompass 上获得了平均 69.0 的高分，超越了 MiniCPM-V 2.6（8.1B，得分 65.2）、 Qwen2.5-VL-3B-Instruct（3.8B，得分 64.5）和**广泛使用的闭源模型 GPT-4.1-mini-20250414**。在多图理解与视频理解任务上，MiniCPM-V 4.0 也表现出色。
+**MiniCPM-V 4.5** 是 MiniCPM-V 系列中最新、最强大的模型。该模型基于 Qwen3-8B 与 SigLIP2-400M 构建，总参数量为 8B。其在性能上较前代 MiniCPM-V 与 MiniCPM-o 有显著提升，并引入了一系列全新的实用特性。其主要亮点包括：
 
-- 🚀 **卓越的效率。**
-MiniCPM-V 4.0 专为端侧设备优化，**可在 iPhone 16 Pro Max 上流畅运行，首 token 延迟低至 2 秒，解码速度达 17.9 tokens/s**，且无发热问题。MiniCPM-V 4.0 在并发请求场景下表现出领先的吞吐率指标。
 
-- 💫 **易于使用。**
-MiniCPM-V 4.0 支持多种推理方式，包括 **llama.cpp、Ollama、vLLM、SGLang、LLaMA-Factory 及本地 Web Demo 等**。我们还开源了可以在 iPhone 和 iPad 运行的 iOS App。欢迎参考我们开源的 **结构清晰的[使用手册](https://github.com/OpenSQZ/MiniCPM-V-CookBook)** 玩转 MiniCPM-V 4.0，其中涵盖了详细的部署指南和真实示例。
+- 🔥 **领先的视觉理解能力**
+  MiniCPM-V 4.5 在 OpenCompass 综合评测（涵盖 8 个主流评测基准）中取得了 77.2 的高分。**在仅 8B 参数的情况下超越了广泛使用的闭源模型（如 GPT-4o-latest、Gemini-2.0 Pro）以及强大的开源模型（如 Qwen2.5-VL 72B）**，成为 30B 参数规模以下最强的多模态大模型。
 
+- 🎬 **高效的高帧率与长视频理解** 
+  借助全新的图像-视频统一 3D-Resampler，MiniCPM-V 4.5 能够实现 96 倍视频 token 压缩率，即将 6 帧 448x448 视频帧联合压缩为 64 个 token（大多数多模态大模型需约 1536 个 token）。这意味着模型在语言模型推理成本不增加的情况下，可以感知显著更多的视频帧，从而实现业界领先的 高帧率（最高 10FPS）视频理解与长视频理解，并在 Video-MME、LVBench、MLVU、MotionBench、FavorBench 等基准上高效率地展现出色性能。
+
+- ⚙️ **可控的快思考 / 深思考模式**  
+  MiniCPM-V 4.5 同时支持 快思考（用于高频高效推理，性能具竞争力）与 深思考（用于复杂问题求解）。用户可根据不同场景对效率与性能的权衡，自由切换两种模式，实现高度可控的推理过程。
+
+- 💪 **优秀的 OCR、文档解析与多语言能力**
+  基于 [LLaVA-UHD](https://arxiv.org/pdf/2403.11703) 架构，MiniCPM-V 4.5 能处理任意长宽比、最高达 180 万像素（如 1344x1344） 的高分辨率图像，同时使用的视觉 token 数仅为多数 MLLM 的 1/4。其在 OCRBench 上取得超越 GPT-4o-latest 与 Gemini 2.5 等闭源模型的性能，并在 OmniDocBench 上展现了业界顶尖的 PDF 文档解析能力。借助最新的 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) 和 [VisCPM](https://github.com/OpenBMB/VisCPM) 技术，模型在可靠性上表现优异，在 MMHal-Bench 上超越 GPT-4o-latest，并支持 30+ 种语言的多语言能力。
+
+-  💫 **便捷易用的部署方式**
+  MiniCPM-V 4.5 提供丰富灵活的使用方式：(1) [llama.cpp](https://github.com/tc-mb/llama.cpp/blob/master/docs/multimodal/minicpmo4.5.md) 与 [ollama](https://github.com/tc-mb/ollama/tree/MIniCPM-V) 支持本地 CPU 高效推理；(2) 提供 [int4](https://huggingface.co/openbmb/MiniCPM-V-4_5-int4)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4_5-gguf)、[AWQ](https://github.com/tc-mb/AutoAWQ) 等 16 种规格的量化模型；(3)兼容 SGLang 与 [vLLM](#efficient-inference-with-llamacpp-ollama-vllm) (4) 借助 [Transformers](https://github.com/tc-mb/transformers/tree/main) 与 [LLaMA-Factory](./docs/llamafactory_train_and_infer.md) 在新领域与任务上进行微调；(5) 快速启动本地 [WebUI demo](#chat-with-our-demo-on-gradio)；(6) 优化适配的 [iOS 本地应用](https://github.com/tc-mb/MiniCPM-o-demo-iOS)，可在 iPhone 与 iPad 上高效运行；(7) 在线 [Web demo](http://101.126.42.235:30910/) 体验。更多使用方式请见 [Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook)。
+
+### 技术亮点 <!-- omit in toc -->
+
+- **架构：图像-视频统一的高密度视觉压缩 3D-Resampler**。 MiniCPM-V 4.5 在架构上引入了 3D-Resampler，成功突破了视频理解任务中性能与效率难以兼得的瓶颈。该方法能够将多达 6 帧连续视频帧压缩为仅 64 个 token（与 MiniCPM-V 系列中单张图像所用的 token 数相同），从而实现 96× 的视频 token 压缩率。这使得模型在语言模型计算成本不增加的情况下，可以处理更多的视频帧，从而实现高帧率视频理解和长视频理解。该架构统一支持单图、多图和视频的编码处理，确保了能力与知识的无缝迁移。
+
+- **学习机制：OCR与文档知识的统一学习**。现有多模态大模型一般在不同训练阶段分别单独训练 OCR 能力与文档知识。我们发现这两个训练过程的本质差异在于图像中文本的可见性。通过动态对文档文本区域施加不同强度的噪声干扰，并要求模型重建文本，使其学会自适应地在准确文本识别（当文本清晰时）与基于多模态上下文的知识推理（当文本严重遮挡时）之间切换。这种方法使得 MiniCPM-V 在文档知识学习中摆脱了对高错误率的文档解析器的依赖，同时避免了过度增强的 OCR 数据产生的幻觉问题，以最小工程开销实现了顶尖的 OCR 与多模态知识处理性能。
+
+- **后训练优化：基于多模态强化学习的混合快思考/深度思考模式**。 MiniCPM-V 4.5 通过两种可切换推理模式提供均衡的体验：面向高效日常应用的快速思考模式，以及处理复杂任务的深度思考模式。采用新颖的混合强化学习方法，模型可联合优化两种模式，在保持深度模式能力的同时显著提升快速模式性能。结合 [RLPR](https://github.com/OpenBMB/RLPR) 和 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V) 技术，该模型可以从海量多模态数据中泛化出强大的推理能力，并有效减少幻觉现象。
+
+<div align="center">
+<img src="./assets/minicpm-v-4dot5-framework.png" , width=80%>
+</div>
 
 ### 性能评估 <!-- omit in toc -->
 
-
-<details>
-<summary>点击查看在OpenCompass上的单图理解能力的评测结果。</summary>
 <div align="center">
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th nowrap="nowrap" align="left">model</th>
-            <th>Size</th>
-            <th>Opencompass</th>
-            <th>OCRBench</th>
-            <th>MathVista</th>
-            <th>HallusionBench</th>
-            <th>MMMU</th>
-            <th>MMVet</th>
-            <th>MMBench V1.1</th>
-            <th>MMStar</th>
-            <th>AI2D</th>
-        </tr>
-    </thead>
-    <tbody align="center">
-        <tr>
-            <td colspan="11" align="left"><strong>Proprietary</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4v-20240409</td>
-            <td>-</td>
-            <td>63.5</td>
-            <td>656</td>
-            <td>55.2</td>
-            <td>43.9</td>
-            <td>61.7</td>
-            <td>67.5</td>
-            <td>79.8</td>
-            <td>56.0</td>
-            <td>78.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
-            <td>-</td>
-            <td>64.5</td>
-            <td>754</td>
-            <td>58.3</td>
-            <td>45.6</td>
-            <td>60.6</td>
-            <td>64.0</td>
-            <td>73.9</td>
-            <td>59.1</td>
-            <td>79.1</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4.1-mini-20250414</td>
-            <td>-</td>
-            <td>68.9</td>
-            <td>840</td>
-            <td>70.9</td>
-            <td>49.3</td>
-            <td>55.0</td>
-            <td>74.3</td>
-            <td>80.9</td>
-            <td>60.9</td>
-            <td>76.0</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Claude 3.5 Sonnet-20241022</td>
-            <td>-</td>
-            <td>70.6</td>
-            <td>798</td>
-            <td>65.3</td>
-            <td>55.5</td>
-            <td>66.4</td>
-            <td>70.1</td>
-            <td>81.7</td>
-            <td>65.1</td>
-            <td>81.2</td>
-        </tr>
-        <tr>
-            <td colspan="11" align="left"><strong>Open-source</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen2.5-VL-3B-Instruct</td>
-            <td>3.8B</td>
-            <td>64.5</td>
-            <td>828</td>
-            <td>61.2</td>
-            <td>46.6</td>
-            <td>51.2</td>
-            <td>60.0</td>
-            <td>76.8</td>
-            <td>56.3</td>
-            <td>81.4</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2.5-4B</td>
-            <td>3.7B</td>
-            <td>65.1</td>
-            <td>820</td>
-            <td>60.8</td>
-            <td>46.6</td>
-            <td>51.8</td>
-            <td>61.5</td>
-            <td>78.2</td>
-            <td>58.7</td>
-            <td>81.4</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen2.5-VL-7B-Instruct</td>
-            <td>8.3B</td>
-            <td>70.9</td>
-            <td>888</td>
-            <td>68.1</td>
-            <td>51.9</td>
-            <td>58.0</td>
-            <td>69.7</td>
-            <td>82.2</td>
-            <td>64.1</td>
-            <td>84.3</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
-            <td>8.1B</td>
-            <td>68.1</td>
-            <td>821</td>
-            <td>64.5</td>
-            <td>49.0</td>
-            <td>56.2</td>
-            <td>62.8</td>
-            <td>82.5</td>
-            <td>63.2</td>
-            <td>84.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V-2.6</td>
-            <td>8.1B</td>
-            <td>65.2</td>
-            <td>852</td>
-            <td>60.8</td>
-            <td>48.1</td>
-            <td>49.8</td>
-            <td>60.0</td>
-            <td>78.0</td>
-            <td>57.5</td>
-            <td>82.1</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-o-2.6</td>
-            <td>8.7B</td>
-            <td>70.2</td>
-            <td>889</td>
-            <td>73.3</td>
-            <td>51.1</td>
-            <td>50.9</td>
-            <td>67.2</td>
-            <td>80.6</td>
-            <td>63.3</td>
-            <td>86.1</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V-4.0</td>
-            <td>4.1B</td>
-            <td>69.0</td>
-            <td>894</td>
-            <td>66.9</td>
-            <td>50.8</td>
-            <td>51.2</td>
-            <td>68.0</td>
-            <td>79.7</td>
-            <td>62.8</td>
-            <td>82.9</td>
-        </tr>
-    </tbody>
-</table>
+  <img src="./assets/radar_minicpm_v45.png", width=80%>
+</div>
+<div align="center">
+<img src="./assets/minicpmv_4_5_evaluation_results.jpg" , width=80%>
 </div>
 
-</details>
 
-<details>
-<summary>点击查看在图表理解、文档理解、数学推理、幻觉等领域的评测结果。 </summary>
-
+### 典型示例 <!-- omit in toc -->
 <div align="center">
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th nowrap="nowrap" align="left">model</th>
-            <th>Size</th>
-            <th>ChartQA</th>
-            <th>MME</th>
-            <th>RealWorldQA</th>
-            <th>TextVQA</th>
-            <th>DocVQA</th>
-            <th>MathVision</th>
-            <th>DynaMath</th>
-            <th>WeMath</th>
-            <th colspan="2">Obj Hal</th>
-            <th colspan="2">MM Hal</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>CHAIRs↓</td>
-            <td>CHAIRi↓</td>
-            <td nowrap="nowrap">score avg@3↑</td>
-            <td nowrap="nowrap">hall rate avg@3↓</td>
-        </tr>
-        <tbody align="center">
-        <tr>
-            <td colspan="14" align="left"><strong>Proprietary</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4v-20240409</td>
-            <td>-</td>
-            <td>78.5</td>
-            <td>1927</td>
-            <td>61.4</td>
-            <td>78.0</td>
-            <td>88.4</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
-            <td>-</td>
-            <td>87.2</td>
-            <td>-</td>
-            <td>67.5</td>
-            <td>78.8</td>
-            <td>93.1</td>
-            <td>41.0</td>
-            <td>31.5</td>
-            <td>50.5</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4.1-mini-20250414</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>45.3</td>
-            <td>47.7</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Claude 3.5 Sonnet-20241022</td>
-            <td>-</td>
-            <td>90.8</td>
-            <td>-</td>
-            <td>60.1</td>
-            <td>74.1</td>
-            <td>95.2</td>
-            <td>35.6</td>
-            <td>35.7</td>
-            <td>44.0</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td colspan="14" align="left"><strong>Open-source</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen2.5-VL-3B-Instruct</td>
-            <td>3.8B</td>
-            <td>84.0</td>
-            <td>2157</td>
-            <td>65.4</td>
-            <td>79.3</td>
-            <td>93.9</td>
-            <td>21.9</td>
-            <td>13.2</td>
-            <td>22.9</td>
-            <td>18.3</td>
-            <td>10.8</td>
-            <td>3.9 </td>
-            <td>33.3 </td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2.5-4B</td>
-            <td>3.7B</td>
-            <td>84.0</td>
-            <td>2338</td>
-            <td>64.3</td>
-            <td>76.8</td>
-            <td>91.6</td>
-            <td>18.4</td>
-            <td>15.2</td>
-            <td>21.2</td>
-            <td>13.7</td>
-            <td>8.7</td>
-            <td>3.2 </td>
-            <td>46.5 </td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen2.5-VL-7B-Instruct</td>
-            <td>8.3B</td>
-            <td>87.3</td>
-            <td>2347</td>
-            <td>68.5</td>
-            <td>84.9</td>
-            <td>95.7</td>
-            <td>25.4</td>
-            <td>21.8</td>
-            <td>36.2</td>
-            <td>13.3</td>
-            <td>7.9</td>
-            <td>4.1 </td>
-            <td>31.6 </td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
-            <td>8.1B</td>
-            <td>84.8</td>
-            <td>2344</td>
-            <td>70.1</td>
-            <td>79.1</td>
-            <td>93.0</td>
-            <td>17.0</td>
-            <td>9.4</td>
-            <td>23.5</td>
-            <td>18.3</td>
-            <td>11.6</td>
-            <td>3.6 </td>
-            <td>37.2</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V-2.6</td>
-            <td>8.1B</td>
-            <td>79.4</td>
-            <td>2348</td>
-            <td>65.0</td>
-            <td>80.1</td>
-            <td>90.8</td>
-            <td>17.5</td>
-            <td>9.0</td>
-            <td>20.4</td>
-            <td>7.3</td>
-            <td>4.7</td>
-            <td>4.0 </td>
-            <td>29.9 </td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-o-2.6</td>
-            <td>8.7B</td>
-            <td>86.9</td>
-            <td>2372</td>
-            <td>68.1</td>
-            <td>82.0</td>
-            <td>93.5</td>
-            <td>21.7</td>
-            <td>10.4</td>
-            <td>25.2</td>
-            <td>6.3</td>
-            <td>3.4</td>
-            <td>4.1 </td>
-            <td>31.3 </td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V-4.0</td>
-            <td>4.1B</td>
-            <td>84.4</td>
-            <td>2298</td>
-            <td>68.5</td>
-            <td>80.8</td>
-            <td>92.9</td>
-            <td>20.7</td>
-            <td>14.2</td>
-            <td>32.7</td>
-            <td>6.3</td>
-            <td>3.5</td>
-            <td>4.1 </td>
-            <td>29.2 </td>
-        </tr>
-    </tbody>
-</table>
+  <a href="https://youtu.be/SCtimvC3Qfk"><img src="./assets/minicpmv4_5/MiniCPM-V 4.5-8.26_img.jpeg", width=70%></a>
 </div>
-
-</details>
-
-<details>
-<summary>点击查看多图和视频理解能力的评测结果。 </summary>
-<div align="center">
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th nowrap="nowrap" align="left">model</th>
-            <th>Size</th>
-            <th>Mantis</th>
-            <th>Blink</th>
-            <th nowrap="nowrap" colspan="2" >Video-MME</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>wo subs</td>
-            <td>w subs</td>
-        </tr>
-        <tbody align="center">
-        <tr>
-            <td colspan="6" align="left"><strong>Proprietary</strong></td>
-        </tr>
-                <tr>
-            <td nowrap="nowrap" align="left">GPT-4v-20240409</td>
-            <td>-</td>
-            <td>62.7</td>
-            <td>54.6</td>
-            <td>59.9</td>
-            <td>63.3</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Gemini-1.5-Pro</td>
-            <td>-</td>
-            <td>-</td>
-            <td>59.1</td>
-            <td>75.0</td>
-            <td>81.3</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4o-20240513</td>
-            <td>-</td>
-            <td>-</td>
-            <td>68.0</td>
-            <td>71.9</td>
-            <td>77.2</td>
-        </tr>
-        <tr>
-            <td colspan="6" align="left"><strong>Open-source</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen2.5-VL-3B-Instruct</td>
-            <td>3.8B</td>
-            <td>-</td>
-            <td>47.6</td>
-            <td>61.5</td>
-            <td>67.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2.5-4B</td>
-            <td>3.7B</td>
-            <td>62.7</td>
-            <td>50.8</td>
-            <td>62.3</td>
-            <td>63.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen2.5-VL-7B-Instruct</td>
-            <td>8.3B</td>
-            <td>-</td>
-            <td>56.4</td>
-            <td>65.1</td>
-            <td>71.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2.5-8B</td>
-            <td>8.1B</td>
-            <td>67.7</td>
-            <td>54.8</td>
-            <td>64.2</td>
-            <td>66.9</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V-2.6</td>
-            <td>8.1B</td>
-            <td>69.1</td>
-            <td>53.0</td>
-            <td>60.9</td>
-            <td>63.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-o-2.6</td>
-            <td>8.7B</td>
-            <td>71.9</td>
-            <td>56.7</td>
-            <td>63.9</td>
-            <td>69.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V-4.0</td>
-            <td>4.1B</td>
-            <td>71.4</td>
-            <td>54.0</td>
-            <td>61.2</td>
-            <td>65.8</td>
-        </tr>
-    </tbody>
-</table>
-</div>
-
-</details>
-
-### 典型示例
 
 <div style="display: flex; flex-direction: column; align-items: center;">
-  <img src="assets/minicpmv4/minicpm-v-4-case.png" alt="math" style="margin-bottom: 5px;">
+  <img src="assets/minicpmv4_5/zh_case1.jpeg" alt="zh_case1" style="margin-bottom: 5px;">
+  <img src="assets/minicpmv4_5/zh_case2.jpeg" alt="zh_case2" style="margin-bottom: 5px;">
 </div>
 
+<details>
+<summary>点击查看更多示例</summary>
+<div style="display: flex; flex-direction: column; align-items: center;">
+  <img src="assets/minicpmv4_5/en_extra.jpg" alt="en_extra" style="margin-bottom: 5px;">
+  <img src="assets/minicpmv4_5/en_case3.jpeg" alt="en_extra" style="margin-bottom: 5px;">
+</div>
+</details>
 
-我们在 iPhone 16 Pro Max 上部署了 MiniCPM-V 4.0 [iOS demo](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/demo/ios_demo/ios.md)，并录制了以下演示录屏，视频未经加速等任何编辑：
+
+我们使用 [iOS demo](https://github.com/tc-mb/MiniCPM-o-demo-iOS) 将 MiniCPM-V 4.5 部署在 iPad M4 ，并录制以下演示录屏，视频未经任何编辑。
 
 <table align="center"> 
     <p align="center">
-      <img src="assets/minicpmv4/iphone_en.gif" width=45%/>
+      <img src="assets/minicpmv4_5/v45_en_handwriting.gif" width=45%/>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="assets/minicpmv4/iphone_en_information_extraction.gif" width=45%/>
+      <img src="assets/minicpmv4_5/v45_en_cot.gif" width=45%/>
     </p>
     <p align="center">
-      <img src="assets/minicpmv4/iphone_cn.gif" width=45%/>
+      <img src="assets/minicpmv4_5/v45_cn_handwriting.gif" width=45%/>
       &nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="assets/minicpmv4/iphone_cn_funny_points.gif" width=45%/>
+      <img src="assets/minicpmv4_5/v45_cn_travel.gif" width=45%/>
     </p>
-</table> 
+</table>
+
 
 ## MiniCPM-o 2.6
 
@@ -1606,773 +1128,13 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 <summary>Click to view more details of MiniCPM-V 2.6</summary>
 
 
-## MiniCPM-V 2.6
-
-**MiniCPM-V 2.6** 是 MiniCPM-V 系列中最新、性能最佳的模型。该模型基于 SigLip-400M 和 Qwen2-7B 构建，共 8B 参数。与 MiniCPM-Llama3-V 2.5 相比，MiniCPM-V 2.6 性能提升显著，并引入了多图和视频理解的新功能。MiniCPM-V 2.6 的主要特点包括：
-
-
-- 🔥 **领先的性能。**
-  MiniCPM-V 2.6 在最新版本 OpenCompass 榜单上（综合 8 个主流多模态评测基准）平均得分 65.2，**以8B量级的大小在单图理解方面超越了 GPT-4o mini、GPT-4V、Gemini 1.5 Pro 和 Claude 3.5 Sonnet 等主流商用闭源多模态大模型**。
-
-- 🖼️ **多图理解和上下文学习。**
-  MiniCPM-V 2.6 还支持**多图对话和推理**。它在 Mantis-Eval、BLINK、Mathverse mv 和 Sciverse mv 等主流多图评测基准中取得了**最佳水平**，并展现出了优秀的上下文学习能力。
-
-- 🎬 **视频理解。**
-  MiniCPM-V 2.6 还可以**接受视频输入**，进行对话和提供涵盖时序和空间信息的详细视频描述。模型在 有/无字幕 评测场景下的 Video-MME 表现均超过了 **GPT-4V、Claude 3.5 Sonnet 和 LLaVA-NeXT-Video-34B**等商用闭源模型。
-
-- 💪 **强大的 OCR 能力及其他功能。**
-  MiniCPM-V 2.6 可以处理任意长宽比的图像，像素数可达 180 万（如 1344x1344）。在 OCRBench 上取得**最佳水平，超过 GPT-4o、GPT-4V 和 Gemini 1.5 Pro 等商用闭源模型**。基于最新的 [RLAIF-V](https://github.com/RLHF-V/RLAIF-V/) 和 [VisCPM](https://github.com/OpenBMB/VisCPM) 技术，其具备了**可信的多模态行为**，在 Object HalBench 上的幻觉率显著低于 GPT-4o 和 GPT-4V，并支持英语、中文、德语、法语、意大利语、韩语等**多种语言**。
-
-- 🚀 **卓越的效率。**
-  除了对个人用户友好的模型大小，MiniCPM-V 2.6 还表现出**最先进的视觉 token 密度**（即每个视觉 token 编码的像素数量）。它**仅需 640 个 token 即可处理 180 万像素图像，比大多数模型少 75%**。这一特性优化了模型的推理速度、首 token 延迟、内存占用和功耗。因此，MiniCPM-V 2.6 可以支持 iPad 等终端设备上的高效**实时视频理解**。
-
-- 💫 **易于使用。**
-  MiniCPM-V 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://github.com/OpenBMB/llama.cpp/blob/minicpmv-main/examples/llava/README-minicpmv2.6.md) 和 [ollama](https://github.com/OpenBMB/ollama/blob/minicpm-v2.6/examples/minicpm-v2.6/README.md) 支持在本地设备上进行高效的 CPU 推理，(2) [int4](https://huggingface.co/openbmb/MiniCPM-V-2_6-int4) 和 [GGUF](https://huggingface.co/openbmb/MiniCPM-V-2_6-gguf) 格式的量化模型，有 16 种尺寸，(3) [vLLM](#vllm-部署-) 支持高吞吐量和内存高效的推理，(4) 针对新领域和任务进行微调，(5) 使用 [Gradio](#本地-webui-demo-) 快速设置本地 WebUI 演示，(6) 在线[demo](http://120.92.209.146:8887/)即可体验。
-
-### 性能评估  <!-- omit in toc -->
-<div align="center">
-    <img src=assets/radar_final.png width=90% />
-</div>
-
-<details>
-<summary>点击查看 OpenCompass, MME, MMVet, OCRBench, MMMU, MathVista, MMB, AI2D, TextVQA, DocVQA, HallusionBench, Object HalBench 上的单图评测结果详情。 </summary>
-<div align="center">
-
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th align="left">Model</th>
-            <th>Size</th>
-            <th>Token Density<sup>+</sup></th>
-            <th>OpenCompass</th>
-            <th>MME</th>
-            <th>MMVet</th>
-            <th>OCRBench</th>
-            <th>MMMU val</th>
-            <th>MathVista mini</th>
-            <th>MMB1.1 test</th>
-            <th>AI2D</th>
-            <th>TextVQA val</th>
-            <th>DocVQA test</th>
-            <th>HallusionBench</th>
-            <th>Object HalBench</th>
-        </tr>
-    </thead>
-    <tbody align="center">
-        <tr>
-            <td colspan="15" align="left"><strong>Proprietary</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4o</td>
-            <td>-</td>
-            <td>1088</td>
-            <td>69.9</td>
-            <td>2328.7</td>
-            <td>69.1</td>
-            <td>736</td>
-            <td>69.2</td>
-            <td>61.3</td>
-            <td>82.2</td>
-            <td>84.6</td>
-            <td>-</td>
-            <td>92.8</td>
-            <td>55.0</td>
-            <td>17.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Claude 3.5 Sonnet</td>
-            <td>-</td>
-            <td>750</td>
-            <td>67.9</td>
-            <td>1920.0</td>
-            <td>66.0</td>
-            <td>788</td>
-            <td>65.9</td>
-            <td>61.6</td>
-            <td>78.5</td>
-            <td>80.2</td>
-            <td>-</td>
-            <td>95.2</td>
-            <td>49.9</td>
-            <td>13.8</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Gemini 1.5 Pro</td>
-            <td>-</td>
-            <td>-</td>
-            <td>64.4</td>
-            <td>2110.6</td>
-            <td>64.0</td>
-            <td>754</td>
-            <td>60.6</td>
-            <td>57.7</td>
-            <td>73.9</td>
-            <td>79.1</td>
-            <td>73.5</td>
-            <td>86.5</td>
-            <td>45.6</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4o mini</td>
-            <td>-</td>
-            <td>1088</td>
-            <td>64.1</td>
-            <td>2003.4</td>
-            <td>66.9</td>
-            <td>785</td>
-            <td>60.0</td>
-            <td>52.4</td>
-            <td>76.0</td>
-            <td>77.8</td>
-            <td>-</td>
-            <td>-</td>
-            <td>46.1</td>
-            <td>12.4</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4V</td>
-            <td>-</td>
-            <td>1088</td>
-            <td>63.5</td>
-            <td>2070.2</td>
-            <td>67.5</td>
-            <td>656</td>
-            <td>61.7</td>
-            <td>54.7</td>
-            <td>79.8</td>
-            <td>78.6</td>
-            <td>78.0</td>
-            <td>87.2</td>
-            <td>43.9</td>
-            <td>14.2</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Step-1V</td>
-            <td>-</td>
-            <td>-</td>
-            <td>59.5</td>
-            <td>2206.4</td>
-            <td>63.3</td>
-            <td>625</td>
-            <td>49.9</td>
-            <td>44.8</td>
-            <td>78.0</td>
-            <td>79.2</td>
-            <td>71.6</td>
-            <td>-</td>
-            <td>48.4</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Qwen-VL-Max</td>
-            <td>-</td>
-            <td>784</td>
-            <td>58.3</td>
-            <td>2281.7</td>
-            <td>61.8</td>
-            <td>684</td>
-            <td>52.0</td>
-            <td>43.4</td>
-            <td>74.6</td>
-            <td>75.7</td>
-            <td>79.5</td>
-            <td>93.1</td>
-            <td>41.2</td>
-            <td>13.4</td>
-        </tr>
-        <tr>
-            <td colspan="15" align="left"><strong>Open-source</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">LLaVA-NeXT-Yi-34B</td>
-            <td>34B</td>
-            <td>157</td>
-            <td>55.0</td>
-            <td>2006.5</td>
-            <td>50.7</td>
-            <td>574</td>
-            <td>48.8</td>
-            <td>40.4</td>
-            <td>77.8</td>
-            <td>78.9</td>
-            <td>69.3</td>
-            <td>-</td>
-            <td>34.8</td>
-            <td>12.6</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Mini-Gemini-HD-34B</td>
-            <td>34B</td>
-            <td>157</td>
-            <td>-</td>
-            <td>2141</td>
-            <td>59.3</td>
-            <td>518</td>
-            <td>48.0</td>
-            <td>43.3</td>
-            <td>-</td>
-            <td>80.5</td>
-            <td>74.1</td>
-            <td>78.9</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Cambrian-34B</td>
-            <td>34B</td>
-            <td>1820</td>
-            <td>58.3</td>
-            <td>2049.9</td>
-            <td>53.2</td>
-            <td>591</td>
-            <td>50.4</td>
-            <td>50.3</td>
-            <td>77.8</td>
-            <td>79.5</td>
-            <td>76.7</td>
-            <td>75.5</td>
-            <td>41.6</td>
-            <td>14.7</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GLM-4V-9B</td>
-            <td>13B</td>
-            <td>784</td>
-            <td>59.1</td>
-            <td>2018.8</td>
-            <td>58.0</td>
-            <td>776</td>
-            <td>46.9</td>
-            <td>51.1</td>
-            <td>67.9</td>
-            <td>71.2</td>
-            <td>-</td>
-            <td>-</td>
-            <td>45.0</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2-8B</td>
-            <td>8B</td>
-            <td>706</td>
-            <td>64.1</td>
-            <td>2215.1</td>
-            <td>54.3</td>
-            <td>794</td>
-            <td><strong>51.2</strong></td>
-            <td>58.3</td>
-            <td><strong>79.4</strong></td>
-            <td><strong>83.6</strong></td>
-            <td>77.4</td>
-            <td><strong>91.6</strong></td>
-            <td>45.0</td>
-            <td>21.3</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-Llama-V 2.5</td>
-            <td>8B</td>
-            <td>1882</td>
-            <td>58.8</td>
-            <td>2024.6</td>
-            <td>52.8</td>
-            <td>725</td>
-            <td>45.8</td>
-            <td>54.3</td>
-            <td>72.0</td>
-            <td>78.4</td>
-            <td>76.6</td>
-            <td>84.8</td>
-            <td>42.4</td>
-            <td>10.3</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V 2.6</td>
-            <td>8B</td>
-            <td><strong>2822</strong></td>
-            <td><strong>65.2</strong></td>
-            <td><strong>2348.4</strong>*</td>
-            <td><strong>60.0</strong></td>
-            <td><strong>852</strong>*</td>
-            <td>49.8*</td>
-            <td><strong>60.6</strong></td>
-            <td>78.0</td>
-            <td>82.1</td>
-            <td><strong>80.1<strong></td>
-            <td>90.8</td>
-            <td><strong>48.1</strong>*</td>
-            <td><strong>8.2</strong></td>
-        </tr>
-    </tbody>
-</table>
-
-</div>
-* 我们使用思维链提示词来评估这些基准。
-
-<sup>+</sup> Token Density：每个视觉 token 在最大分辨率下编码的像素数，即最大分辨率下的像素数 / 视觉 token 数。
-
-注意：闭源模型的 Token Density 由 API 收费方式估算得到。
-</details>
-
-
-<details>
-<summary>点击查看 Mantis Eval, BLINK, Mathverse mv, Sciverse mv, MIRB 上的多图评测结果详情。</summary>
-<div align="center">
- 
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th align="left">Model</th>
-            <th>Size</th>
-            <th>Mantis Eval</th>
-            <th>BLINK val</th>
-            <th>Mathverse mv</th>
-            <th>Sciverse mv</th>
-            <th>MIRB</th>
-        </tr>
-    </thead>
-    <tbody align="center">
-        <tr>
-            <td colspan="7" align="left"><strong>Proprietary</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4V</td>
-            <td>-</td>
-            <td>62.7</td>
-            <td>54.6</td>
-            <td>60.3</td>
-            <td>66.9</td>
-            <td>53.1</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">LLaVA-NeXT-Interleave-14B</td>
-            <td>14B</td>
-            <td>66.4</td>
-            <td>52.6</td>
-            <td>32.7</td>
-            <td>30.2</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td colspan="7" align="left"><strong>Open-source</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Emu2-Chat</td>
-            <td>37B</td>
-            <td>37.8</td>
-            <td>36.2</td>
-            <td>-</td>
-            <td>27.2</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">CogVLM</td>
-            <td>17B</td>
-            <td>45.2</td>
-            <td>41.1</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">VPG-C</td>
-            <td>7B</td>
-            <td>52.4</td>
-            <td>43.1</td>
-            <td>24.3</td>
-            <td>23.1</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">VILA 8B</td>
-            <td>8B</td>
-            <td>51.2</td>
-            <td>39.3</td>
-            <td>-</td>
-            <td>36.5</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternLM-XComposer-2.5</td>
-            <td>8B</td>
-            <td>53.1*</td>
-            <td>48.9</td>
-            <td>32.1*</td>
-            <td>-</td>
-            <td>42.5</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2-8B</td>
-            <td>8B</td>
-            <td>59.0*</td>
-            <td>50.9</td>
-            <td>30.5*</td>
-            <td>34.4*</td>
-            <td><strong>56.9*</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V 2.6</td>
-            <td>8B</td>
-            <td><strong>69.1</strong></td>
-            <td><strong>53.0</strong></td>
-            <td><strong>84.9</strong></td>
-            <td><strong>74.9</strong></td>
-            <td>53.8</td>
-        </tr>
-    </tbody>
-</table>
-
-
-</div>
-* 正式开源模型权重的评测结果。
-</details>
-
-<details>
-<summary>点击查看 Video-MME 和 Video-ChatGPT 上的视频评测结果详情。</summary>
-<div align="center">
-
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th align="left">Model</th>
-            <th>Size</th>
-            <th colspan="2">Video-MME</th>
-            <th colspan="5">Video-ChatGPT</th>
-        </tr>
-        <tr>
-            <th align="left"></th>
-            <th></th>
-            <th>w/o subs</th>
-            <th>w subs</th>
-            <th>Correctness</th>
-            <th>Detail</th>
-            <th>Context</th>
-            <th>Temporal</th>
-            <th>Consistency</th>
-        </tr>
-    </thead>
-    <tbody align="center">
-        <tr>
-            <td colspan="9" align="left"><strong>Proprietary</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">Claude 3.5 Sonnet</td>
-            <td>-</td>
-            <td>60.0</td>
-            <td>62.9</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">GPT-4V</td>
-            <td>-</td>
-            <td>59.9</td>
-            <td>63.3</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td colspan="9" align="left"><strong>Open-source</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">LLaVA-NeXT-7B</td>
-            <td>7B</td>
-            <td>-</td>
-            <td>-</td>
-            <td>3.39</td>
-            <td>3.29</td>
-            <td>3.92</td>
-            <td>2.60</td>
-            <td>3.12</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">LLaVA-NeXT-34B</td>
-            <td>34B</td>
-            <td>-</td>
-            <td>-</td>
-            <td>3.29</td>
-            <td>3.23</td>
-            <td>3.83</td>
-            <td>2.51</td>
-            <td>3.47</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">CogVLM2-Video</td>
-            <td>12B</td>
-            <td>-</td>
-            <td>-</td>
-            <td>3.49</td>
-            <td><strong>3.46</strong></td>
-            <td>3.23</td>
-            <td><strong>2.98</strong></td>
-            <td><strong>3.64</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">LongVA</td>
-            <td>7B</td>
-            <td>52.4</td>
-            <td>54.3</td>
-            <td>3.05</td>
-            <td>3.09</td>
-            <td>3.77</td>
-            <td>2.44</td>
-            <td><strong>3.64</strong></td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternVL2-8B</td>
-            <td>8B</td>
-            <td>54.0</td>
-            <td>56.9</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">InternLM-XComposer-2.5</td>
-            <td>8B</td>
-            <td>55.8</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-            <td>-</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">LLaVA-NeXT-Video</td>
-            <td>32B</td>
-            <td>60.2</td>
-            <td>63.0</td>
-            <td>3.48</td>
-            <td>3.37</td>
-            <td><strong>3.95</strong></td>
-            <td>2.64</td>
-            <td>3.28</td>
-        </tr>
-        <tr>
-            <td nowrap="nowrap" align="left">MiniCPM-V 2.6</td>
-            <td>8B</td>
-            <td><strong>60.9</strong></td>
-            <td><strong>63.6</strong></td>
-            <td><strong>3.59</strong></td>
-            <td>3.28</td>
-            <td>3.93</td>
-            <td>2.73</td>
-            <td>3.62</td>
-        </tr>
-    </tbody>
-</table>
-</div>
-</details>
-
-
-<details>
-<summary>点击查看 TextVQA, VizWiz, VQAv2, OK-VQA上的少样本评测结果详情。</summary>
-<div align="center">
-
-<table style="margin: 0px auto;">
-    <thead>
-        <tr>
-            <th align="left">Model</th>
-            <th>Size</th>
-            <th>Shot</th>
-            <th>TextVQA val</th>
-            <th>VizWiz test-dev</th>
-            <th>VQAv2 test-dev</th>
-            <th>OK-VQA val</th>
-        </tr>
-    </thead>
-    <tbody align="center">
-        <tr>
-            <td align="left" nowrap="nowrap" rowspan="3">Flamingo</td>
-            <td rowspan="3">80B</td>
-            <td>0*</td>
-            <td>35.0</td>
-            <td>31.6</td>
-            <td>56.3</td>
-            <td>40.6</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>36.5</td>
-            <td>39.6</td>
-            <td>63.1</td>
-            <td><strong>57.4</strong></td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>37.3</td>
-            <td>44.8</td>
-            <td>65.6</td>
-            <td>57.5</td>
-        </tr>
-        <tr>
-            <td align="left" nowrap="nowrap" rowspan="3">IDEFICS</td>
-            <td rowspan="3">80B</td>
-            <td>0*</td>
-            <td>30.9</td>
-            <td>36.0</td>
-            <td>60.0</td>
-            <td>45.2</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>34.3</td>
-            <td>40.4</td>
-            <td>63.6</td>
-            <td>52.4</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>35.7</td>
-            <td>46.1</td>
-            <td>64.8</td>
-            <td>55.1</td>
-        </tr>
-        <tr>
-            <td align="left" nowrap="nowrap" rowspan="3">OmniCorpus</td>
-            <td rowspan="3">7B</td>
-            <td>0*</td>
-            <td>43.0</td>
-            <td>49.8</td>
-            <td>63.2</td>
-            <td>45.5</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>45.4</td>
-            <td>51.3</td>
-            <td>64.5</td>
-            <td>46.5</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>45.6</td>
-            <td>52.2</td>
-            <td>64.7</td>
-            <td>46.6</td>
-        </tr>
-        <tr>
-            <td align="left" nowrap="nowrap" rowspan="3">Emu2</td>
-            <td rowspan="3">37B</td>
-            <td>0</td>
-            <td>26.4</td>
-            <td>40.4</td>
-            <td>33.5</td>
-            <td>26.7</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>48.2</td>
-            <td>54.6</td>
-            <td>67.0</td>
-            <td>53.2</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>49.3</td>
-            <td>54.7</td>
-            <td>67.8</td>
-            <td>54.1</td>
-        </tr>
-        <tr>
-            <td align="left" nowrap="nowrap" rowspan="2">MM1</td>
-            <td rowspan="2">30B</td>
-            <td>0</td>
-            <td>26.2</td>
-            <td>40.4</td>
-            <td>48.9</td>
-            <td>26.7</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td>49.3</td>
-            <td>54.7</td>
-            <td><strong>70.9</strong></td>
-            <td>54.1</td>
-        </tr>
-        <tr>
-            <td align="left" nowrap="nowrap" rowspan="3">MiniCPM-V 2.6<sup>+</sup></td>
-            <td rowspan="3">8B</td>
-            <td>0</td>
-            <td>43.9</td>
-            <td>33.8</td>
-            <td>45.4</td>
-            <td>23.9</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>63.6</td>
-            <td>60.5</td>
-            <td>65.5</td>
-            <td>50.1</td>
-        </tr>
-        <tr>
-            <td>8</td>
-            <td><strong>64.6</strong></td>
-            <td><strong>63.4</strong></td>
-            <td>68.2</td>
-            <td>51.4</td>
-        </tr>
-    </tbody>
-</table>
-
-
-</div>
-* 使用 Flamingo 方式 zero image shot 和 two additional text shots 评估零样本性能。
-
-<sup>+</sup> 我们在没有进行监督微调 (SFT) 的情况下评估预训练的模型权重 (ckpt)。
-</details>
-
-### 典型示例 <!-- omit in toc -->
-
-<div style="display: flex; flex-direction: column; align-items: center;">
-  <img src="assets/minicpmv2_6/multi_img-bike.png" alt="Bike" style="margin-bottom: 5px;">
-  <img src="assets/minicpmv2_6/multi_img-menu.png" alt="Menu" style="margin-bottom: 5px;">
-  <img src="assets/minicpmv2_6/multi_img-code.png" alt="Code" style="margin-bottom: 5px;">
-  <img src="assets/minicpmv2_6/ICL-Mem.png" alt="Mem" style="margin-bottom: 5px;">
-  <img src="assets/minicpmv2_6/multiling-medal.png" alt="medal" style="margin-bottom: 10px;">
-</div>
-<details>
-  <summary>点击查看更多示例。</summary>
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <img src="assets/minicpmv2_6/ICL-elec.png" alt="elec" style="margin-bottom: 5px;">
-    <img src="assets/minicpmv2_6/multiling-olympic.png" alt="Menu" style="margin-bottom: 10px;">
-  </div>
-</details>
-
-我们将 MiniCPM-V 2.6 部署在iPad Pro上，并录制了以下演示视频。
-
-<table align="center"> 
-    <p align="center">
-      <img src="assets/gif_cases/ai.gif" width=32%/>
-      &nbsp;&nbsp;&nbsp;&nbsp;
-      <img src="assets/gif_cases/beer.gif" width=32%/>
-    </p>
-</table>
-
-<table align="center">
-    <p align="center">
-      <video src="https://github.com/user-attachments/assets/21f4b818-ede1-4822-920e-91281725c830" width="360" /> </video>
-      <!-- <video src="https://github.com/user-attachments/assets/c835f757-206b-4d9c-8e36-70d67b453628" width="360" /> </video> -->
-    </p>
-</table>
-
-</details>
-
 ## 历史版本模型  <!-- omit in toc -->
 
 
 | 模型                | 介绍信息和使用教程       |
 |:----------------------|:-------------------:|
+| MiniCPM-V 4.0  | [文档](./docs/minicpm_v4_zh.md)   | 
+| MiniCPM-V 2.6  | [文档](./docs/minicpm_v2dot6_zh.md)   | 
 | MiniCPM-Llama3-V 2.5  | [文档](./docs/minicpm_llama3_v2dot5.md)   | 
 | MiniCPM-V 2.0  | [文档](./docs/minicpm_v2.md)   | 
 | MiniCPM-V 1.0  | [文档](./docs/minicpm_v1.md)   | 
@@ -2433,10 +1195,9 @@ python web_demos/minicpm-o_2.6/chatbot_web_demo_o2.6.py
 
 | 模型           | 设备 | 资源     | &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 简介       | 下载链接 |
 |:--------------|:-:|:----------:|:-------------------|:---------------:|
-| MiniCPM-V 4.0| GPU | 9 GB  | 提供出色的端侧单图、多图、视频理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4) |
-| MiniCPM-V 4.0 gguf | CPU | 4 GB  | gguf 版本，更低的内存占用和更高的推理效率。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4-gguf) |
-| MiniCPM-V 4.0 int4 | GPU | 5 GB  | int4量化版，更低显存占用   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4-int4) |
-| MiniCPM-V 4.0 AWQ  | GPU | 5 GB  | int4量化版，更低显存占用   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4-AWQ) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4-AWQ) |
+| MiniCPM-V 4.5| GPU | 18 GB  | 提供出色的端侧单图、多图、视频理解能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4_5) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4_5) |
+| MiniCPM-V 4.5 gguf | CPU | 8 GB  | gguf 版本，更低的内存占用和更高的推理效率。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4_5-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4_5-gguf) |
+| MiniCPM-V 4.5 int4 | GPU | 9 GB  | int4量化版，更低显存占用   |  [🤗](https://huggingface.co/openbmb/MiniCPM-V-4_5-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4_5-int4) |
 | MiniCPM-o 2.6| GPU | 18 GB  | 最新版本，提供端侧 GPT-4o 级的视觉、语音、多模态流式交互能力。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-o-2_6) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-o-2_6) |
 | MiniCPM-o 2.6 gguf | CPU | 8 GB  | gguf 版本，更低的内存占用和更高的推理效率。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-o-2_6-gguf) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-o-2_6-gguf) |
 | MiniCPM-o 2.6 int4 | GPU | 9 GB  | int4量化版，更低显存占用。   |  [🤗](https://huggingface.co/openbmb/MiniCPM-o-2_6-int4) &nbsp;&nbsp; [<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-o-2_6-int4) |
@@ -2448,7 +1209,7 @@ python web_demos/minicpm-o_2.6/chatbot_web_demo_o2.6.py
 
 
 ### 多轮对话
-请确保 `transformers==4.44.2`，其他版本目前可能会有兼容性问题
+如果您希望开启长思考模式，请向 `chat` 函数传入参数 `enable_thinking=True`
 
 ```shell
 pip install -r requirements_o2.6.txt
@@ -2466,12 +1227,14 @@ from transformers import AutoModel, AutoTokenizer
 
 torch.manual_seed(100)
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True,  # or openbmb/MiniCPM-o-2_6
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True, # or openbmb/MiniCPM-o-2_6
     attn_implementation='sdpa', torch_dtype=torch.bfloat16) # sdpa or flash_attention_2, no eager
 model = model.eval().cuda()
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True) # or openbmb/MiniCPM-o-2_6
 
 image = Image.open('./assets/minicpmo2_6/show_demo.jpg').convert('RGB')
+
+enable_thinking=False # If `enable_thinking=True`, the long-thinking mode is enabled.
 
 # First round chat 
 question = "What is the landform in the picture?"
@@ -2479,8 +1242,10 @@ msgs = [{'role': 'user', 'content': [image, question]}]
 
 answer = model.chat(
     msgs=msgs,
-    tokenizer=tokenizer
+    tokenizer=tokenizer,
+    enable_thinking=enable_thinking
 )
+
 print(answer)
 
 # Second round chat, pass history context of multi-turn conversation
@@ -2496,25 +1261,36 @@ print(answer)
 
 你可以得到如下推理结果：
 
-```
-"The landform in the picture is karst topography, characterized by its unique and striking limestone formations that rise dramatically from the surrounding landscape."
+```shell
+# round1
+The landform in the picture is karst topography. Karst landscapes are characterized by distinctive, jagged limestone hills or mountains with steep, irregular peaks and deep valleys—exactly what you see here These unique formations result from the dissolution of soluble rocks like limestone over millions of years through water erosion.
 
-"When traveling to this picturesque location, you should pay attention to the weather conditions as they can change rapidly in such areas. It's also important to respect local ecosystems and wildlife by staying on designated paths and not disturbing natural habitats. Additionally, bringing appropriate gear for photography is advisable due to the stunning reflections and lighting during sunrise or sunset."
+This scene closely resembles the famous karst landscape of Guilin and Yangshuo in China’s Guangxi Province. The area features dramatic, pointed limestone peaks rising dramatically above serene rivers and lush green forests, creating a breathtaking and iconic natural beauty that attracts millions of visitors each year for its picturesque views.
+
+# round2
+When traveling to a karst landscape like this, here are some important tips:
+
+1. Wear comfortable shoes: The terrain can be uneven and hilly.
+2. Bring water and snacks for energy during hikes or boat rides.
+3. Protect yourself from the sun with sunscreen, hats, and sunglasses—especially since you’ll likely spend time outdoors exploring scenic spots.
+4. Respect local customs and nature regulations by not littering or disturbing wildlife.
+
+By following these guidelines, you'll have a safe and enjoyable trip while appreciating the stunning natural beauty of places such as Guilin’s karst mountains.
 ```
 
 #### 多图对话
 <details>
-<summary> 点击查看 MiniCPM-V-4 多图输入的 Python 代码。 </summary>
+<summary> 点击查看 MiniCPM-V-4_5 多图输入的 Python 代码。 </summary>
   
 ```python
 import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True, # or openbmb/MiniCPM-o-2_6
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True, # or openbmb/MiniCPM-o-2_6
     attn_implementation='sdpa', torch_dtype=torch.bfloat16) # sdpa or flash_attention_2, no eager
 model = model.eval().cuda()
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True)
 
 image1 = Image.open('image1.jpg').convert('RGB')
 image2 = Image.open('image2.jpg').convert('RGB')
@@ -2539,10 +1315,10 @@ import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True, # or openbmb/MiniCPM-o-2_6
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True, # or openbmb/MiniCPM-o-2_6
     attn_implementation='sdpa', torch_dtype=torch.bfloat16) # sdpa or flash_attention_2, no eager
 model = model.eval().cuda()
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True)
 
 question = "production date" 
 image1 = Image.open('example1.jpg').convert('RGB')
@@ -2567,53 +1343,103 @@ print(answer)
 
 #### 视频对话
 <details>
-<summary> 点击查看 MiniCPM-V-4 视频输入的 Python 代码。 </summary>
+<summary> 点击查看 MiniCPM-V-4_5 视频输入的 3D-Resampler 推理的 Python 代码。 </summary>
 
 ```python
+## The 3d-resampler compresses multiple frames into 64 tokens by introducing temporal_ids. 
+# To achieve this, you need to organize your video data into two corresponding sequences: 
+#   frames: List[Image]
+#   temporal_ids: List[List[Int]].
+
 import torch
 from PIL import Image
 from transformers import AutoModel, AutoTokenizer
 from decord import VideoReader, cpu    # pip install decord
+from scipy.spatial import cKDTree
+import numpy as np
+import math
 
-model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True, # or openbmb/MiniCPM-o-2_6
+model = AutoModel.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True,  # or openbmb/MiniCPM-o-2_6
     attn_implementation='sdpa', torch_dtype=torch.bfloat16) # sdpa or flash_attention_2, no eager
 model = model.eval().cuda()
-tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4', trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained('openbmb/MiniCPM-V-4_5', trust_remote_code=True)  # or openbmb/MiniCPM-o-2_6
 
-MAX_NUM_FRAMES=64 # if cuda OOM set a smaller number
+MAX_NUM_FRAMES=180 # Indicates the maximum number of frames received after the videos are packed. The actual maximum number of valid frames is MAX_NUM_FRAMES * MAX_NUM_PACKING.
+MAX_NUM_PACKING=3  # indicates the maximum packing number of video frames. valid range: 1-6
+TIME_SCALE = 0.1 
 
-def encode_video(video_path):
+def map_to_nearest_scale(values, scale):
+    tree = cKDTree(np.asarray(scale)[:, None])
+    _, indices = tree.query(np.asarray(values)[:, None])
+    return np.asarray(scale)[indices]
+
+
+def group_array(arr, size):
+    return [arr[i:i+size] for i in range(0, len(arr), size)]
+
+def encode_video(video_path, choose_fps=3, force_packing=None):
     def uniform_sample(l, n):
         gap = len(l) / n
         idxs = [int(i * gap + gap / 2) for i in range(n)]
         return [l[i] for i in idxs]
-
     vr = VideoReader(video_path, ctx=cpu(0))
-    sample_fps = round(vr.get_avg_fps() / 1)  # FPS
-    frame_idx = [i for i in range(0, len(vr), sample_fps)]
-    if len(frame_idx) > MAX_NUM_FRAMES:
-        frame_idx = uniform_sample(frame_idx, MAX_NUM_FRAMES)
+    fps = vr.get_avg_fps()
+    video_duration = len(vr) / fps
+        
+    if choose_fps * int(video_duration) <= MAX_NUM_FRAMES:
+        packing_nums = 1
+        choose_frames = round(min(choose_fps, round(fps)) * min(MAX_NUM_FRAMES, video_duration))
+        
+    else:
+        packing_nums = math.ceil(video_duration * choose_fps / MAX_NUM_FRAMES)
+        if packing_nums <= MAX_NUM_PACKING:
+            choose_frames = round(video_duration * choose_fps)
+        else:
+            choose_frames = round(MAX_NUM_FRAMES * MAX_NUM_PACKING)
+            packing_nums = MAX_NUM_PACKING
+
+    frame_idx = [i for i in range(0, len(vr))]      
+    frame_idx =  np.array(uniform_sample(frame_idx, choose_frames))
+
+    if force_packing:
+        packing_nums = min(force_packing, MAX_NUM_PACKING)
+    
+    print(video_path, ' duration:', video_duration)
+    print(f'get video frames={len(frame_idx)}, packing_nums={packing_nums}')
+    
     frames = vr.get_batch(frame_idx).asnumpy()
-    frames = [Image.fromarray(v.astype('uint8')) for v in frames]
-    print('num frames:', len(frames))
-    return frames
+
+    frame_idx_ts = frame_idx / fps
+    scale = np.arange(0, video_duration, TIME_SCALE)
+
+    frame_ts_id = map_to_nearest_scale(frame_idx_ts, scale) / TIME_SCALE
+    frame_ts_id = frame_ts_id.astype(np.int32)
+
+    assert len(frames) == len(frame_ts_id)
+
+    frames = [Image.fromarray(v.astype('uint8')).convert('RGB') for v in frames]
+    frame_ts_id_group = group_array(frame_ts_id, packing_nums)
+    
+    return frames, frame_ts_id_group
+
 
 video_path="video_test.mp4"
-frames = encode_video(video_path)
+fps = 5 # fps for video
+force_packing = None # You can set force_packing to ensure that 3D packing is forcibly enabled; otherwise, encode_video will dynamically set the packing quantity based on the duration.
+frames, frame_ts_id_group = encode_video(video_path, fps, force_packing=force_packing)
+
 question = "Describe the video"
 msgs = [
     {'role': 'user', 'content': frames + [question]}, 
 ]
 
-# Set decode params for video
-params = {}
-params["use_image_id"] = False
-params["max_slice_nums"] = 2 # use 1 if cuda OOM and video resolution > 448*448
 
 answer = model.chat(
     msgs=msgs,
     tokenizer=tokenizer,
-    **params
+    use_image_id=False,
+    max_slice_nums=1,
+    temporal_ids=frame_ts_id_group
 )
 print(answer)
 ```
