@@ -159,7 +159,7 @@
   <img src="./assets/radar_minicpm_v45.png", width=80%>
 </div>
 <div align="center">
-<img src="./assets/minicpmv_4_5_evaluation_results.jpg" , width=80%>
+<img src="./assets/minicpmv_4_5_evaluation_results.png" , width=80%>
 </div>
 
 

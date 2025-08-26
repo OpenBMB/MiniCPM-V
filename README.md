@@ -168,7 +168,7 @@ MiniCPM-V 4.5 can be easily used in various ways: (1) [llama.cpp](https://github
   <img src="./assets/radar_minicpm_v45.png", width=60%>
 </div>
 <div align="center">
-<img src="./assets/minicpmv_4_5_evaluation_results.jpg" , width=100%>
+<img src="./assets/minicpmv_4_5_evaluation_results.png" , width=80%>
 </div>
 
 
