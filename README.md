@@ -2,7 +2,7 @@
 
 <img src="./assets/minicpm_v_and_minicpm_o_title.png" width="500em" ></img> 
 
-**A GPT-4o Level MLLM for Vision, Speech and Multimodal Live Streaming on Your Phone**
+**MiniCPM-V 4.5: A GPT-4o Level MLLM for Single Image, Multi Image and Video Understanding on Your Phone**
 
   <strong>[中文](./README_zh.md) |
   English</strong>
