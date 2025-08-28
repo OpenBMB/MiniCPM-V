@@ -165,7 +165,7 @@
 
 ### 典型示例 <!-- omit in toc -->
 <div align="center">
-  <a href="https://youtu.be/SCtimvC3Qfk"><img src="./assets/minicpmv4_5/MiniCPM-V 4.5-8.26_img.jpeg", width=70%></a>
+  <a href="https://www.youtube.com/watch?v=Cn23FujYMMU"><img src="./assets/minicpmv4_5/MiniCPM-V 4.5-8.26_img.jpeg", width=70%></a>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center;">
