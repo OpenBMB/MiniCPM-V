@@ -201,8 +201,8 @@ MiniCPM-V 4.5 can be easily used in various ways: (1) [llama.cpp](https://github
         <tr>
             <td nowrap="nowrap" align="left">MiniCPM-V 4.5</td>
             <td>8.7B</td>
-            <td>77.0</td>
-            <td>7.5h</td>
+            <td><b>77.0</td>
+            <td><b>7.5h</td>
         </tr>
     </tbody>
 </table>
@@ -232,7 +232,7 @@ MiniCPM-V 4.5 can be easily used in various ways: (1) [llama.cpp](https://github
           <tr>
               <td nowrap="nowrap" align="left">GLM-4.1V-9B-Thinking</td>
               <td>10.3B</td>
-              <td>73.6</td>
+              <td><b>73.6</td>
               <td>2.63h</td>
               <td>32G</td>
           </tr>
@@ -240,8 +240,8 @@ MiniCPM-V 4.5 can be easily used in various ways: (1) [llama.cpp](https://github
               <td nowrap="nowrap" align="left">MiniCPM-V 4.5</td>
               <td>8.7B</td>
               <td>73.5</td>
-              <td>0.26h</td>
-              <td>28G</td>
+              <td><b>0.26h</td>
+              <td><b>28G</td>
         </tr>
     </tbody>
 </table>
