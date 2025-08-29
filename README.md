@@ -171,6 +171,85 @@ MiniCPM-V 4.5 can be easily used in various ways: (1) [llama.cpp](https://github
 </div>
 
 
+### Inference Efficiency 
+
+
+**OpenCompass**
+<div align="left">
+<table style="margin: 0px auto;">
+    <thead>
+            <tr>
+              <th align="left">Model</th>
+              <th>Size</th>
+              <th>Avg Score ↑</th>
+              <th>Total Inference Time ↓</th>
+            </tr>
+    </thead>
+    <tbody align="center">
+        <tr>
+            <td nowrap="nowrap" align="left">GLM-4.1V-9B-Thinking</td>
+            <td>10.3B</td>
+            <td>76.6</td>
+            <td>17.5h</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">MiMo-VL-7B-RL</td>
+            <td>8.3B</td>
+            <td>76.4</td>
+            <td>11h</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">MiniCPM-V-4_5</td>
+            <td>8.7B</td>
+            <td>77.0</td>
+            <td>7.5h</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+**Video-MME**
+
+<div align="left">
+<table style="margin: 0px auto;">
+    <thead>
+          <tr>
+              <th align="left">Model</th>
+              <th>Size</th>
+              <th>Avg Score ↑</th>
+              <th>Total Inference Time ↓</th>
+              <th>GPU Mem ↓</th>
+          </tr>
+    </thead>
+    <tbody align="center">
+          <tr>
+              <td nowrap="nowrap" align="left">Qwen2.5-VL-7B-Instruct</td>
+              <td>8.3B</td>
+              <td>71.6</td>
+              <td>3h</td>
+              <td>60G</td>
+          </tr>
+          <tr>
+              <td nowrap="nowrap" align="left">GLM-4.1V-9B-Thinking</td>
+              <td>10.3B</td>
+              <td>73.6</td>
+              <td>2.63h</td>
+              <td>32G</td>
+          </tr>
+          <tr>
+              <td nowrap="nowrap" align="left">MiniCPM-V-4_5</td>
+              <td>8.7B</td>
+              <td>73.5</td>
+              <td>0.26h</td>
+              <td>28G</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+Both Video-MME and OpenCompass were evaluated using 8×A100 GPUs for inference. The reported inference time of Video-MME excludes the cost of video frame extraction.
+
+
 ### Examples  <!-- omit in toc -->
 
 <div align="center">
