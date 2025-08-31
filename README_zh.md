@@ -1124,9 +1124,6 @@ MiniCPM-o 2.6 可以通过多种方式轻松使用：(1) [llama.cpp](https://git
 </div>
 
 
-<details>
-<summary>Click to view more details of MiniCPM-V 2.6</summary>
-
 
 ## 历史版本模型  <!-- omit in toc -->
 
