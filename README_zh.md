@@ -163,9 +163,87 @@
 </div>
 
 
+### 推理效率
+
+
+**OpenCompass**
+<div align="left">
+<table style="margin: 0px auto;">
+    <thead>
+            <tr>
+              <th align="left">Model</th>
+              <th>Size</th>
+              <th>Avg Score ↑</th>
+              <th>Total Inference Time ↓</th>
+            </tr>
+    </thead>
+    <tbody align="center">
+        <tr>
+            <td nowrap="nowrap" align="left">GLM-4.1V-9B-Thinking</td>
+            <td>10.3B</td>
+            <td>76.6</td>
+            <td>17.5h</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">MiMo-VL-7B-RL</td>
+            <td>8.3B</td>
+            <td>76.4</td>
+            <td>11h</td>
+        </tr>
+        <tr>
+            <td nowrap="nowrap" align="left">MiniCPM-V 4.5</td>
+            <td>8.7B</td>
+            <td><b>77.0</td>
+            <td><b>7.5h</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+
+**Video-MME**
+
+<div align="left">
+<table style="margin: 0px auto;">
+    <thead>
+          <tr>
+              <th align="left">Model</th>
+              <th>Size</th>
+              <th>Avg Score ↑</th>
+              <th>Total Inference Time ↓</th>
+              <th>GPU Mem ↓</th>
+          </tr>
+    </thead>
+    <tbody align="center">
+          <tr>
+              <td nowrap="nowrap" align="left">Qwen2.5-VL-7B-Instruct</td>
+              <td>8.3B</td>
+              <td>71.6</td>
+              <td>3h</td>
+              <td>60G</td>
+          </tr>
+          <tr>
+              <td nowrap="nowrap" align="left">GLM-4.1V-9B-Thinking</td>
+              <td>10.3B</td>
+              <td><b>73.6</td>
+              <td>2.63h</td>
+              <td>32G</td>
+          </tr>
+          <tr>
+              <td nowrap="nowrap" align="left">MiniCPM-V 4.5</td>
+              <td>8.7B</td>
+              <td>73.5</td>
+              <td><b>0.26h</td>
+              <td><b>28G</td>
+        </tr>
+    </tbody>
+</table>
+
+
+OpenCompass 和 Video-MME 均采用 A100*8卡 推理，其中 Video-MME 的推理时间未统计视频抽帧时间
+
 ### 典型示例 <!-- omit in toc -->
 <div align="center">
-  <a href="https://youtu.be/SCtimvC3Qfk"><img src="./assets/minicpmv4_5/MiniCPM-V 4.5-8.26_img.jpeg", width=70%></a>
+  <a href="https://www.youtube.com/watch?v=Cn23FujYMMU"><img src="./assets/minicpmv4_5/MiniCPM-V 4.5-8.26_img.jpeg", width=70%></a>
 </div>
 
 <div style="display: flex; flex-direction: column; align-items: center;">
