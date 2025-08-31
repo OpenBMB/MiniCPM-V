@@ -247,7 +247,7 @@ MiniCPM-V 4.5 can be easily used in various ways: (1) [llama.cpp](https://github
 </table>
 </div>
 
-Both Video-MME and OpenCompass were evaluated using 8×A100 GPUs for inference. The reported inference time of Video-MME excludes the cost of video frame extraction.
+Both Video-MME and OpenCompass were evaluated using 8×A100 GPUs for inference. The reported inference time of Video-MME includes full model-side computation, and excludes the external cost of video frame extraction (dependent on specific frame extraction tools) for fair comparison.
 
 
 ### Examples  <!-- omit in toc -->
