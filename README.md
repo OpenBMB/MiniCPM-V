@@ -42,6 +42,9 @@
 
 #### 📌 Pinned
 
+
+* [2025.09.01] ⭐️⭐️⭐️ MiniCPM-V 4.5 has been officially supported by [llama.cpp](https://github.com/ggml-org/llama.cpp/pull/15575), [vLLM](https://github.com/vllm-project/vllm/pull/23586), and [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory/pull/9022). You are welcome to use it directly through these official channels! Support for additional frameworks such as [Ollama](https://github.com/ollama/ollama/pull/12078) and [SGLang](https://github.com/sgl-project/sglang/pull/9610) is actively in progress.
+
 * [2025.08.26] 🔥🔥🔥 We open-source MiniCPM-V 4.5, which outperforms GPT-4o-latest, Gemini-2.0 Pro, and Qwen2.5-VL 72B. It advances popular capabilities of MiniCPM-V, and brings useful new features. Try it now!
 
 * [2025.08.01] ⭐️⭐️⭐️ We open-sourced the [MiniCPM-V & o Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook)! It provides comprehensive guides for diverse user scenarios, paired with our new [Docs Site](https://minicpm-o.readthedocs.io/en/latest/index.html) for smoother onboarding.
@@ -109,6 +112,7 @@
 
 
 - [MiniCPM-V 4.5](#minicpm-v-45)
+  - [Inference Efficiency](#inference-efficiency)
 - [MiniCPM-o 2.6](#minicpm-o-26)
 - [MiniCPM-V \& o Cookbook](#minicpm-v--o-cookbook)
 - [Chat with Our Demo on Gradio 🤗](#chat-with-our-demo-on-gradio-)
