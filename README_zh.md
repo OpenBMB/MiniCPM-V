@@ -1985,7 +1985,7 @@ pip install vllm
 
 <table align="center">
     <p align="center">
-      <img src="/Users/yirany/Workspace/MiniCPM-o/assets/star-history-25-09-02.png"/>
+      <img src="assets/star-history-25-09-02.png"/>
     </p>
 </table>
 
