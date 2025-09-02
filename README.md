@@ -2091,13 +2091,13 @@ This project is developed by the following institutions:
 ## 🌟 Star History <!-- omit in toc -->
 
 
-<!-- <table align="center">
+<table align="center">
     <p align="center">
-      <img src="assets/star_history.svg"/>
+      <img src="/Users/yirany/Workspace/MiniCPM-o/assets/star-history-25-09-02.png"/>
     </p>
-</table> -->
+</table>
 
-<picture>
+<!-- <picture>
   <source
     media="(prefers-color-scheme: dark)"
     srcset="
@@ -2114,7 +2114,7 @@ This project is developed by the following institutions:
     alt="Star History Chart"
     src="https://api.star-history.com/svg?repos=OpenBMB/MiniCPM-o&type=Date"
   />
-</picture>
+</picture> -->
 
 ## Key Techniques and Other Multimodal Projects <!-- omit in toc -->
 
