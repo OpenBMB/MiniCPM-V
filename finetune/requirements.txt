@@ -35,8 +35,8 @@ http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_st
 decord
 aiosignal
 tensorboard
-deepspeed==0.12.3
-transformers==4.44.2
+deepspeed
+transformers==4.51.2
 librosa==0.9.0
 soundfile==0.12.1
 vector-quantize-pytorch==1.18.5
