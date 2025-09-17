@@ -23,7 +23,7 @@
 
 <p align="center">
    MiniCPM-V 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-V-4_5">🤗</a> <a href="http://101.126.42.235:30910/">🤖</a> | MiniCPM-o 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-o-2_6">🤗</a>  <a href="https://minicpm-omni-webdemo-us.modelbest.cn/"> 🤖</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 Cookbook</a> | 
-  📄 Technical Report (Coming Soon)
+  <a href="./docs/MiniCPM_V_4_5_Technical_Report.pdf">📄 Technical Report</a>
 </p>
 
 </div>
@@ -42,6 +42,7 @@
 
 #### 📌 Pinned
 
+* [2025.09.18] 📢📢📢 MiniCPM-V 4.5 technical report is now released! See [here](./docs/MiniCPM_V_4_5_Technical_Report.pdf).
 
 * [2025.09.01] ⭐️⭐️⭐️ MiniCPM-V 4.5 has been officially supported by [llama.cpp](https://github.com/ggml-org/llama.cpp/pull/15575), [vLLM](https://github.com/vllm-project/vllm/pull/23586), and [LLaMA-Factory](https://github.com/hiyouga/LLaMA-Factory/pull/9022). You are welcome to use it directly through these official channels! Support for additional frameworks such as [Ollama](https://github.com/ollama/ollama/pull/12078) and [SGLang](https://github.com/sgl-project/sglang/pull/9610) is actively in progress.
 
