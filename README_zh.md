@@ -20,7 +20,7 @@
   <br>
   <p align="center">
   MiniCPM-V 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-V-4_5">🤗</a>  <a href="http://101.126.42.235:30910/"> 🤖</a> | MiniCPM-o 2.6 <a href="https://huggingface.co/openbmb/MiniCPM-o-2_6">🤗</a> <a href="https://minicpm-omni-webdemo-us.modelbest.cn/"> 🤖</a> | 
-    <a href="./docs/MiniCPM_V_4_5_Technical_Report.pdf">📄 技术报告</a>
+    <a href="https://huggingface.co/papers/2509.18154">📄 技术报告</a>
 </p>
 
 </div>
