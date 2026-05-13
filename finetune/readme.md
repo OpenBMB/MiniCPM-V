@@ -99,7 +99,7 @@ Full-parameter parameter finetuning requires updating all parameters of LLM in t
 MODEL="MiniCPM-o-2_6" # or "openbmb/MiniCPM-V-2_6", "openbmb/MiniCPM-Llama3-V-2_5", "openbmb/MiniCPM-V-2"
 DATA="path/to/training_data.json"
 EVAL_DATA="path/to/test_data.json"
-LLM_TYPE="qwen" # llama for MiniCPM-V-4, minicpm for MiniCPM-V-2, llama3 for MiniCPM-Llama3-V-2_5, qwen for MiniCPM-o-2_6/MiniCPM-V-2_6
+LLM_TYPE="qwen" # llama3 for MiniCPM-V-4, minicpm for MiniCPM-V-2, llama3 for MiniCPM-Llama3-V-2_5, qwen for MiniCPM-o-2_6/MiniCPM-V-2_6
 ```
 
 To launch your training, run the following script:
