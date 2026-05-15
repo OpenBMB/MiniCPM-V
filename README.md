@@ -21,7 +21,7 @@
 
 
 <p align="center">
-   MiniCPM-V 4.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-4.6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.6-Demo">🤖</a> <a href="https://github.com/OpenBMB/MiniCPM-V-Apps/blob/main/DOWNLOAD.md">📱</a> | MiniCPM-o 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-o-4_5">🤗</a> <a href="https://openbmb.github.io/MiniCPM-o-Demo/">📞</a> <a href="http://211.93.21.133:18121/">🤖</a> | <a href="https://huggingface.co/papers/2604.27393">📄 Technical Report</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 Cookbook</a>
+   MiniCPM-V 4.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-4.6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.6-Demo">🤖</a> <a href="https://github.com/OpenBMB/MiniCPM-V-Apps/blob/main/DOWNLOAD.md">📱</a> | MiniCPM-o 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-o-4_5">🤗</a> <a href="https://openbmb.github.io/MiniCPM-o-Demo/">📞</a> <a href="http://211.93.21.133:18121/">🤖</a> | <a href="https://huggingface.co/papers/2604.27393">📄 Technical Report</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 Cookbook</a> | <a href="./docs/hosted_api.md">🌐 Hosted API</a>
 </p>
 
 </div>
@@ -2423,6 +2423,8 @@ We would like to thank the following projects:
 ## MiniCPM-V & o Cookbook
 
 The [MiniCPM-V & o Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook) provides scenario-based recipes for deploying, fine-tuning, quantizing, and building demos with MiniCPM-V and MiniCPM-o. The [documentation website](https://minicpm-o.readthedocs.io/en/latest/index.html) presents these recipes in a structured way for quick lookup.
+
+To quickly try MiniCPM-V 4.6 through the hosted API, see the [Hosted API Guide](./docs/hosted_api.md).
 
 It is organized for:
 

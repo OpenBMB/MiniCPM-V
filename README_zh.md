@@ -20,7 +20,7 @@
 
 <!-- <br> -->
 <p align="center">
-   MiniCPM-V 4.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-4.6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.6-Demo">🤖</a> <a href="https://github.com/OpenBMB/MiniCPM-V-Apps/blob/main/DOWNLOAD_zh.md">📱</a> | MiniCPM-o 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-o-4_5">🤗</a> <a href="https://openbmb.github.io/MiniCPM-o-Demo/">📞</a> <a href="http://211.93.21.133:18121/">🤖</a> | <a href="https://huggingface.co/papers/2604.27393">📄 技术报告</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 使用指南</a>
+   MiniCPM-V 4.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-4.6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.6-Demo">🤖</a> <a href="https://github.com/OpenBMB/MiniCPM-V-Apps/blob/main/DOWNLOAD_zh.md">📱</a> | MiniCPM-o 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-o-4_5">🤗</a> <a href="https://openbmb.github.io/MiniCPM-o-Demo/">📞</a> <a href="http://211.93.21.133:18121/">🤖</a> | <a href="https://huggingface.co/papers/2604.27393">📄 技术报告</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 使用指南</a> | <a href="./docs/hosted_api.md">🌐 托管 API</a>
 </p>
 
 </div>
@@ -2404,6 +2404,8 @@ MiniCPM-o 4.5 支持 vLLM, SGLang, llama.cpp, Ollama 等[推理框架](#训练�
 ## MiniCPM-V & o 使用手册
 
 欢迎探索我们整理的 [MiniCPM-V & o 使用手册 (Cookbook)](https://github.com/OpenSQZ/MiniCPM-V-CookBook)。Cookbook 提供面向场景的教程，覆盖 MiniCPM-V 和 MiniCPM-o 的部署、微调、量化和 Demo 构建等常见任务；配套的[文档网站](https://minicpm-o.readthedocs.io/en/latest/index.html)以结构化方式呈现这些方案，便于快速查找。
+
+如需通过托管 API 快速试用 MiniCPM-V 4.6，可参考 [Hosted API Guide](./docs/hosted_api.md)。
 
 它面向以下使用场景组织内容：
 
