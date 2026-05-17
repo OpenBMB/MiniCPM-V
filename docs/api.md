@@ -15,7 +15,7 @@ Authorization: Bearer <API_KEY>
 Content-Type: application/json
 ```
 
-A public API key is currently available for trying the service:
+A **free** public API key is currently available for trying the service:
 
 ```text
 sk-pQ8L2zF3XmR5kY9wV4jB7hN1tC6vM0xG3aD5sH2bJ9lK4cZ8
