@@ -20,7 +20,7 @@
 
 <!-- <br> -->
 <p align="center">
-   MiniCPM-V 4.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-4.6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.6-Demo">🤖</a> <a href="https://github.com/OpenBMB/MiniCPM-V-Apps/blob/main/DOWNLOAD_zh.md">📱</a> | MiniCPM-o 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-o-4_5">🤗</a> <a href="https://openbmb.github.io/MiniCPM-o-Demo/">📞</a> <a href="https://minicpmo45.modelbest.cn">🤖</a> | <a href="https://huggingface.co/papers/2604.27393">📄 技术报告</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 使用指南</a> | <a href="./docs/api.md">🌐 API 指南</a>
+   MiniCPM-V 4.6 <a href="https://huggingface.co/openbmb/MiniCPM-V-4.6">🤗</a> <a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.6-Demo">🤖</a> <a href="https://github.com/OpenBMB/MiniCPM-V-Apps/blob/main/DOWNLOAD_zh.md">📱</a> | MiniCPM-o 4.5 <a href="https://huggingface.co/openbmb/MiniCPM-o-4_5">🤗</a> <a href="https://openbmb.github.io/MiniCPM-o-Demo/">📞</a> <a href="https://minicpmo45.modelbest.cn">🤖</a> | <a href="https://huggingface.co/papers/2604.27393">📄 技术报告</a> | <a href="https://github.com/OpenSQZ/MiniCPM-V-Cookbook">🍳 使用指南</a> | <a href="./docs/api.md">🌐 API</a>
 </p>
 
 </div>
@@ -32,6 +32,7 @@
 
 ## 更新日志 <!-- omit in toc -->
 
+* [2026.05.17] ⭐️⭐️⭐️ 我们发布了 MiniCPM-V 4.6 和 MiniCPM-o 4.5 的 [API 接口](./docs/api.md)，并同时提供了一个 MiniCPM-V 4.6 的免费公用密钥，欢迎试用！
 * [2026.05.11] 🔥🔥🔥 我们开源了 MiniCPM-V 4.6，支持 4倍/16倍 混合视觉 token 压缩率，凭借出色的编码效率和 1.3B 的轻量规模，它是我们端侧部署最友好的一代模型，高并发场景 token 吞吐达到 Qwen3.5 0.8B 的 ~1.5 倍。欢迎试用！
 * [2026.02.06] 🥳 🥳 🥳 我们开源了可在 Mac 或 GPU 等本地设备上部署的实时 Web Demo。[立即体验](#本地-demo-部署)！
 * [2026.02.03] 🔥🔥🔥 我们开源了 MiniCPM-o 4.5，该模型视觉和语音能力达到了 Gemini 2.5 Flash 水平，同时支持全双工多模态流式交互。欢迎试用！
