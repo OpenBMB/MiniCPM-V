@@ -102,7 +102,7 @@
 - [MiniCPM-o 4.5](#minicpm-o-45)
   - [Usages](#usages-1)
 - [MiniCPM-V \& o Cookbook](#minicpm-v--o-cookbook)
-- [Supported Inference and Training Frameworks](#supported-inference-and-training-frameworks)
+- [Supported Inference and Training Frameworks and API](#supported-inference-and-training-frameworks)
 - [Model Zoo](#model-zoo)
 - [Awesome work using MiniCPM-V \& o](#awesome-work-using-minicpm-v--o)
 - [Technical Reports and Key Techniques Papers](#technical-reports-and-key-techniques-papers)
@@ -2433,10 +2433,10 @@ It is organized for:
 * **Enterprises**: Scalable serving, high-throughput inference, and production-oriented deployment.
 * **Researchers**: Fine-tuning, model adaptation, and experimental workflows.
 
-For framework-specific deployment and training guides, see [Supported Inference and Training Frameworks](#supported-inference-and-training-frameworks).
+For framework-specific deployment and training guides, see [Supported Inference and Training Frameworks and API](#supported-inference-and-training-frameworks).
 
 
-## Supported Inference and Training Frameworks
+## Supported Inference and Training Frameworks and API
 
 ### Inference: vLLM, SGLang, llama.cpp, Ollama, FlagOS <!-- omit in toc -->
 
@@ -2621,6 +2621,16 @@ We support fine-tuning with LLaMA-Factory, SWIFT. Refer to our [Cookbook](https:
 |:---|:---:|:---:|
 | LLaMA-Factory | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llamafactory_minicpmv46.md) | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llama-factory/finetune_llamafactory.md) | 
 | SWIFT | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift_minicpmv46.md) | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift.md) | 
+
+
+### API <!-- omit in toc -->
+
+We provide free API access for MiniCPM-V 4.6 and MiniCPM-o 4.5. Refer to the [API Guide](./docs/api.md) for more details.
+
+| Model | API |
+|:---|:---:|
+| MiniCPM-V 4.6 | [Guide](./docs/api.md#minicpm-v-46) |
+| MiniCPM-o 4.5 | [Guide](./docs/api.md#minicpm-o-45) |
 
 
 
