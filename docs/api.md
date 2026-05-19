@@ -116,7 +116,7 @@ print(data["choices"][0]["message"]["content"])
 
 ## MiniCPM-o 4.5
 
-MiniCPM-o 4.5 can be called through the Chat Completions API for single-turn text-only and vision-language requests.
+MiniCPM-o 4.5 can be called through the Chat Completions API for both traditional text and vision-language requests, and also full-duplex realtime interaction.
 
 ### Text-Only Request
 
