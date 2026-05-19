@@ -1,0 +1,36 @@
+# ============================================
+# MiniCPM-o 4.5 Frontend Web Service Dockerfile
+# Multi-stage build: Node.js build + Nginx deployment
+# ============================================
+
+# ---- Stage 1: Build Vue project ----
+FROM node:20-alpine AS build-stage
+
+WORKDIR /build
+COPY web_demos/minicpm-o_2.6/web_server/ /build/
+
+# Install pnpm and build
+# Generate placeholder certificate files (vite.config.js server.https is also parsed during build)
+RUN npm install -g pnpm && \
+    touch key.pem cert.pem && \
+    pnpm install && \
+    pnpm run build
+
+# ---- Stage 2: Nginx static service ----
+FROM nginx:alpine AS production-stage
+
+# envsubst is used to render nginx config template at container startup
+RUN apk add --no-cache gettext
+
+# Copy build artifacts
+COPY --from=build-stage /build/dist /usr/share/nginx/html
+
+# Copy custom nginx config template (Docker network version)
+COPY deploy/nginx.docker.conf /etc/nginx/nginx.conf.template
+
+# Render nginx config with BACKEND_PORT at startup
+ENV BACKEND_PORT=32550
+
+EXPOSE 3000 3443
+
+CMD ["sh", "-lc", "envsubst '$$BACKEND_PORT' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'"]

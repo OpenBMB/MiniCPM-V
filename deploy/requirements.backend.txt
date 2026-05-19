@@ -1,0 +1,29 @@
+# ============================================
+# MiniCPM-o 4.5 Backend Python Requirements
+# For offline environments: pip download / pip install
+# ============================================
+
+# == PyTorch (CUDA 12.4) ==
+# Note: PyTorch should be downloaded separately from https://download.pytorch.org/whl/cu124
+# torch>=2.3.0,<=2.8.0
+# torchaudio<=2.8.0
+
+# == Core Model Dependencies ==
+transformers==4.51.0
+accelerate
+minicpmo-utils[all]>=1.0.5
+sentencepiece
+
+# == Audio/Video Processing ==
+librosa
+soundfile
+onnxruntime
+Pillow
+numpy
+
+# == Web Service ==
+fastapi
+uvicorn[standard]
+aiofiles
+pydantic
+httpx
