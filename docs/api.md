@@ -9,7 +9,7 @@ MiniCPM-V 4.6 can be called through the Chat Completions API. The interface supp
 ### Endpoint
 
 ```text
-Base URL: https://api.modelbest.cn/v1
+Base URL: https://api.modelbest.co/v1
 Chat API: POST /chat/completions
 Authorization: Bearer <API_KEY>
 Content-Type: application/json
@@ -18,7 +18,7 @@ Content-Type: application/json
 A **free** public API key is currently available for trying the service:
 
 ```text
-sk-pQ8L2zF3XmR5kY9wV4jB7hN1tC6vM0xG3aD5sH2bJ9lK4cZ8
+lis_sk_298cf78155f231c7_DkrDcNLHnK8dJRnfFrJCd4JGDbBLMkHrC3T-wLpvC9zy0BPemsyFuQ
 ```
 
 Available model IDs:
@@ -31,7 +31,7 @@ MiniCPM-V-4.6-Thinking
 ### Text-Only Request
 
 ```bash
-curl https://api.modelbest.cn/v1/chat/completions \
+curl https://api.modelbest.co/v1/chat/completions \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -56,7 +56,7 @@ To use the Thinking model, replace the `model` value with:
 Images are passed as base64 data URLs in the `image_url` content format.
 
 ```bash
-curl https://api.modelbest.cn/v1/chat/completions \
+curl https://api.modelbest.co/v1/chat/completions \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -99,7 +99,7 @@ payload = {
 }
 
 request = urllib.request.Request(
-    "https://api.modelbest.cn/v1/chat/completions",
+    "https://api.modelbest.co/v1/chat/completions",
     data=json.dumps(payload).encode("utf-8"),
     headers={
         "Authorization": f"Bearer {api_key}",
@@ -121,7 +121,7 @@ MiniCPM-o 4.5 can be called through the Chat Completions API for both traditiona
 ### Text-Only Request
 
 ```bash
-curl https://api.modelbest.cn/v1/chat/completions \
+curl https://api.modelbest.co/v1/chat/completions \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -138,7 +138,7 @@ curl https://api.modelbest.cn/v1/chat/completions \
 ### Vision-Language Request
 
 ```bash
-curl https://api.modelbest.cn/v1/chat/completions \
+curl https://api.modelbest.co/v1/chat/completions \
   -H "Authorization: Bearer $API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
