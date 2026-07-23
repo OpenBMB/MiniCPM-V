@@ -2626,11 +2626,12 @@ We support fine-tuning with LLaMA-Factory, SWIFT. Refer to our [Cookbook](https:
 
 ### API <!-- omit in toc -->
 
-We provide free API access for MiniCPM-V 4.6 and MiniCPM-o 4.5. Refer to the [API Guide](./docs/api.md) for more details.
+We provide free API access for MiniCPM-V 4.5 / 4.6 and MiniCPM-o 4.5. Refer to the [API Guide](./docs/api.md) for more details.
 
 | Model | API |
 |:---|:---:|
 | MiniCPM-V 4.6 | [Guide](./docs/api.md#minicpm-v-46) |
+| MiniCPM-V 4.5 | [Guide](./docs/api.md#minicpm-v-45) |
 | MiniCPM-o 4.5 | [Guide](./docs/api.md#minicpm-o-45) |
 
 
