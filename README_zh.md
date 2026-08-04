@@ -4,6 +4,12 @@
 
 **口袋级多模态大模型，在 iOS、安卓、鸿蒙 上实现极致高效的图像与视频理解**
 
+</div>
+
+<sub>💡 **提示**: 如果你觉得这个仓库的结构或内容难以理解，请访问 [deepwiki](https://deepwiki.com/LujiaJin/MiniCPM-o) 获取详细的解读。</sub>
+
+<div align="center">
+
   <strong>中文 |
   [English](./README.md)</strong>
 

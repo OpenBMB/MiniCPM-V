@@ -91,7 +91,7 @@ class StreamManager:
         self.device='cuda:0'
         
         self.minicpmo_model_path = args.model #"openbmb/MiniCPM-o-2_6"
-        self.model_version = "2.6"
+        self.model_version = "4.5"
         with torch.no_grad():
             self.minicpmo_model = AutoModel.from_pretrained(self.minicpmo_model_path, trust_remote_code=True, torch_dtype=self.target_dtype, attn_implementation='sdpa')
         self.minicpmo_tokenizer = AutoTokenizer.from_pretrained(self.minicpmo_model_path, trust_remote_code=True)
@@ -103,6 +103,10 @@ class StreamManager:
         self.ref_path_default = "assets/ref_audios/default.wav"
         self.ref_path_female = "assets/ref_audios/female_example.wav"
         self.ref_path_male = "assets/ref_audios/male_example.wav"
+        self.tts_sample_rate = 24000  # 4.5 uses 24kHz (s3tokenizer)
+
+        # 4.5: init token2wav cache with default ref audio for streaming TTS
+        self._init_token2wav_with_ref(self.ref_path_default)
         
         self.input_audio_id = 0
         self.input_audio_vad_id = 0
@@ -119,7 +123,7 @@ class StreamManager:
         self.msg_type = 1
         
         self.speaking_time_stamp = 0
-        self.cycle_wait_time = 12800/24000 + 0.15
+        self.cycle_wait_time = 25 * 0.04 + 0.15  # 4.5: 25 audio tokens/chunk, each ~0.04s
         self.extra_wait_time = 2.5
         self.server_wait = True
         
@@ -203,69 +207,77 @@ class StreamManager:
                 return True
         return False
 
+    def _init_token2wav_with_ref(self, ref_path):
+        """Initialize token2wav cache with a reference audio for streaming TTS (4.5 API)."""
+        try:
+            ref_audio, _ = librosa.load(ref_path, sr=16000, mono=True)
+            with torch.no_grad():
+                self.minicpmo_model.init_token2wav_cache(ref_audio)
+            logger.info(f"init_token2wav_cache done with ref: {ref_path}")
+        except Exception as e:
+            logger.error(f"init_token2wav_cache failed: {e}")
+
     def sys_prompt_init(self, msg_type):
         if self.past_session_id == self.session_id:
             return
         logger.info("### sys_prompt_init ###")
 
         logger.info(f'msg_type is {msg_type}')
-        if msg_type <= 1: #audio
-            audio_voice_clone_prompt = "Use the voice in the audio prompt to synthesize new content."
-            audio_assistant_prompt = "You are a helpful assistant with the above voice style."
-            ref_path = self.ref_path_default
 
-            
-            if self.customized_options is not None:
-                audio_voice_clone_prompt = self.customized_options['voice_clone_prompt']
-                audio_assistant_prompt = self.customized_options['assistant_prompt']
-                if self.customized_options['use_audio_prompt'] == 1:
-                    ref_path = self.ref_path_default
-                elif self.customized_options['use_audio_prompt'] == 2:
-                    ref_path = self.ref_path_female
-                elif self.customized_options['use_audio_prompt'] == 3:
-                    ref_path = self.ref_path_male
-
-            audio_prompt, sr = librosa.load(ref_path, sr=16000, mono=True)
-            sys_msg = {'role': 'user', 'content': [audio_voice_clone_prompt + "\n", audio_prompt, "\n" + audio_assistant_prompt]}
-        elif msg_type == 2: #video
-            voice_clone_prompt="你是一个AI助手。你能接受视频，音频和文本输入并输出语音和文本。模仿输入音频中的声音特征。"
-            assistant_prompt="作为助手，你将使用这种声音风格说话。"
+        # Determine ref audio path
+        ref_path = self.ref_path_default
+        language = "en"
+        if msg_type == 2:  # video
             ref_path = self.ref_path_video_default
-            
-            if self.customized_options is not None:
-                voice_clone_prompt = self.customized_options['voice_clone_prompt']
-                assistant_prompt = self.customized_options['assistant_prompt']
-                if self.customized_options['use_audio_prompt'] == 1:
-                    ref_path = self.ref_path_default
-                elif self.customized_options['use_audio_prompt'] == 2:
-                    ref_path = self.ref_path_female
-                elif self.customized_options['use_audio_prompt'] == 3:
-                    ref_path = self.ref_path_male
-                
-            audio_prompt, sr = librosa.load(ref_path, sr=16000, mono=True)
-            sys_msg = {'role': 'user', 'content': [voice_clone_prompt, audio_prompt, assistant_prompt]}
-        # elif msg_type == 3: #user start
-        #     assistant_prompt="作为助手，你将使用这种声音风格说话。"
-        #     if self.customized_options is not None:
-        #         assistant_prompt = self.customized_options['assistant_prompt']
-                
-        #     sys_msg = {'role': 'user', 'content': [assistant_prompt]}
-        
+            language = "zh"
+
+        if self.customized_options is not None:
+            if self.customized_options.get('use_audio_prompt') == 1:
+                ref_path = self.ref_path_default
+            elif self.customized_options.get('use_audio_prompt') == 2:
+                ref_path = self.ref_path_female
+            elif self.customized_options.get('use_audio_prompt') == 3:
+                ref_path = self.ref_path_male
+
+        # 4.5 API: use model.get_sys_prompt() to build system message
+        ref_audio, _ = librosa.load(ref_path, sr=16000, mono=True)
+        sys_msg = self.minicpmo_model.get_sys_prompt(
+            ref_audio=ref_audio,
+            mode="omni",
+            language=language,
+        )
+
+        # Re-init token2wav cache with the selected ref audio
+        self._init_token2wav_with_ref(ref_path)
+
         self.msg_type = msg_type
         msgs = [sys_msg]
-        if self.customized_options is not None:
-            if self.customized_options['use_audio_prompt'] > 0:
+
+        def safe_streaming_prefill(prompt_msgs):
+            try:
                 self.minicpmo_model.streaming_prefill(
                     session_id=str(self.session_id),
-                    msgs=msgs,
+                    msgs=prompt_msgs,
                     tokenizer=self.minicpmo_tokenizer,
+                    use_tts_template=True,
                 )
+                return True
+            except Exception as e:
+                logger.warning(f"streaming_prefill failed with audio prompt, fallback to text-only prompt: {e}")
+                fallback_msg = self.minicpmo_model.get_sys_prompt(ref_audio=None, mode="omni", language=language)
+                self.minicpmo_model.streaming_prefill(
+                    session_id=str(self.session_id),
+                    msgs=[fallback_msg],
+                    tokenizer=self.minicpmo_tokenizer,
+                    use_tts_template=True,
+                )
+                return False
+
+        if self.customized_options is not None:
+            if self.customized_options.get('use_audio_prompt', 0) > 0:
+                safe_streaming_prefill(msgs)
         if msg_type == 0:
-            self.minicpmo_model.streaming_prefill(
-                session_id=str(self.session_id),
-                msgs=msgs,
-                tokenizer=self.minicpmo_tokenizer,
-            )
+            safe_streaming_prefill(msgs)
             
         self.savedir = os.path.join(f"./log_data/{args.port}/", str(time.time()))
         if not os.path.exists(self.savedir):
@@ -297,7 +309,15 @@ class StreamManager:
             self.audio_input = []
             self.image_prefill = None
             
-            if self.minicpmo_model.llm_past_key_values[0][0].shape[2]>8192:
+            kv = self.minicpmo_model.llm_past_key_values
+            kv_len = 0
+            if kv is not None:
+                if hasattr(kv, 'get_seq_length'):
+                    kv_len = kv.get_seq_length()
+                elif isinstance(kv, (list, tuple)) and len(kv) > 0:
+                    if isinstance(kv[0], (list, tuple)) and len(kv[0]) > 0:
+                        kv_len = kv[0][0].shape[2]
+            if kv_len > 8192:
                 self.session_id += 1  # to clear all kv cache
                 self.sys_prompt_flag = False
 
@@ -468,6 +488,8 @@ class StreamManager:
                             msgs=msgs, 
                             tokenizer=self.minicpmo_tokenizer,
                             max_slice_nums=slice_nums,
+                            use_tts_template=True,
+                            is_last_chunk=(is_end),
                         )
 
                 self.input_audio_id += 1
@@ -504,49 +526,69 @@ class StreamManager:
                     with open(input_audio_path, 'rb') as wav_file:
                         audio_stream = wav_file.read()
                 except FileNotFoundError:
-                    print(f"File {input_audio_path} not found.")
+                    logger.warning(f"File {input_audio_path} not found.")
                 yield base64.b64encode(audio_stream).decode('utf-8'), "assistant:\n"
                 
-                print('=== gen start: ', time.time() - time_gen)
-                first_time = True
-                temp_time = time.time()
-                temp_time1 = time.time()
+                logger.info(f'=== gen start: {time.time() - time_gen:.3f}s ===')
                 with torch.inference_mode():
                     if self.stop_response:
                         self.generate_end()
                         return
                     self.minicpmo_model.config.stream_input=True
-                    msg = {"role":"user", "content": self.cnts}
-                    msgs = [msg]
                     text = ''
                     self.speaking_time_stamp = time.time()
+                    sr = self.tts_sample_rate  # 4.5 fixed 24kHz
                     try:
-                        for r in self.minicpmo_model.streaming_generate(
+                        for result in self.minicpmo_model.streaming_generate(
                             session_id=str(self.session_id),
                             tokenizer=self.minicpmo_tokenizer,
                             generate_audio=True,
-                            # enable_regenerate=True,
+                            use_tts_template=True,
+                            do_sample=True,
                         ):
                             if self.stop_response:
                                 self.generate_end()
                                 return
-                            audio_np, sr, text = r["audio_wav"], r["sampling_rate"], r["text"]
+                            # 4.5 API: yields (waveform_chunk: Tensor, text_chunk: str)
+                            # End signal: (None, None)
+                            if isinstance(result, tuple):
+                                waveform_chunk, text_chunk = result
+                            else:
+                                # fallback for unexpected format
+                                logger.warning(f"Unexpected streaming_generate result type: {type(result)}")
+                                continue
 
-                            output_audio_path = self.savedir + f'/output_audio_log/output_audio_{self.output_audio_id}.wav'
-                            self.output_audio_id += 1
-                            soundfile.write(output_audio_path, audio_np, samplerate=sr)
-                            audio_stream = None
-                            try:
-                                with open(output_audio_path, 'rb') as wav_file:
-                                    audio_stream = wav_file.read()
-                            except FileNotFoundError:
-                                print(f"File {output_audio_path} not found.")
-                            temp_time1 = time.time()
-                            print('text: ', text)
-                            yield base64.b64encode(audio_stream).decode('utf-8'), text
+                            if waveform_chunk is None:
+                                # generation complete signal
+                                break
+
+                            # Convert tensor to numpy, ensure 1D float32
+                            if isinstance(waveform_chunk, torch.Tensor):
+                                audio_np = waveform_chunk.cpu().float().numpy()
+                            else:
+                                audio_np = np.array(waveform_chunk, dtype=np.float32)
+                            audio_np = audio_np.squeeze()  # remove batch dims
+                            if audio_np.ndim == 0 or audio_np.size == 0:
+                                continue  # skip empty chunks
+
+                            # Resample from model's 24kHz to frontend's expected 16kHz
+                            audio_np = librosa.resample(audio_np, orig_sr=sr, target_sr=16000)
+
+                            if text_chunk:
+                                text += text_chunk
+
+                            # Encode audio chunk to WAV in memory (no disk I/O)
+                            audio_buffer = io.BytesIO()
+                            soundfile.write(audio_buffer, audio_np, samplerate=16000, format='WAV', subtype='PCM_16')
+                            audio_stream = audio_buffer.getvalue()
+
+                            # Send delta text (text_chunk), not accumulated text
+                            yield base64.b64encode(audio_stream).decode('utf-8'), text_chunk if text_chunk else ''
                             self.speaking_time_stamp += self.cycle_wait_time
                     except Exception as e:
                         logger.error(f"Error happened during generation: {str(e)}")
+                        import traceback
+                        traceback.print_exc()
                     yield None, '\n<end>'
 
         except Exception as e:
@@ -582,8 +624,7 @@ class StreamManager:
                     output_audio_path = self.savedir + f'/customized_audio.wav'
                     soundfile.write(output_audio_path, audio_np, sr)
                     self.customized_audio = output_audio_path
-                    logger.info(f"processed customized {audio_fmt} audio")
-                    print(audio_np.shape, type(audio_np), sr)
+                    logger.info(f"processed customized {audio_fmt} audio, shape={audio_np.shape}, sr={sr}")
             else:
                 logger.info(f"empty customized audio, use default value instead.")
                 self.customized_audio = None
@@ -734,14 +775,14 @@ async def websocket_stream(websocket: WebSocket,
 
 async def generate_sse_response(request: Request, uid: Optional[str] = Header(None)):
     global stream_manager
-    print(f"uid: {uid}")
+    logger.info(f"uid: {uid}")
     try:
         # Wait for streaming to complete or timeout
         while not stream_manager.is_streaming_complete.is_set():
             # if stream_manager.is_timed_out():
             #     yield f"data: {json.dumps({'error': 'Stream timeout'})}\n\n"
             #     return
-            # print(f"{uid} whille not stream_manager.is_streaming_complete.is_set(), asyncio.sleep(0.1)")
+
             await asyncio.sleep(0.1)
 
         logger.info("streaming complete\n")
@@ -912,7 +953,7 @@ async def init_options(request: Request, uid: Optional[str] = Header(None)):
                     ctype = content["type"]
                     raise HTTPException(status_code=400, detail=f"Invalid content type: {ctype}")
         version = stream_manager.model_version
-        print(version)
+        logger.info(f"Model version: {version}")
         response = {
             "id": uid,
             "choices": {
