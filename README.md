@@ -195,6 +195,8 @@ MiniCPM-V 4.6 can be deployed across three mainstream end-side platforms — **i
 pip install "transformers[torch]>=5.7.0" torchvision torchcodec
 ```
 
+Runnable minimal scripts are also available in [examples/gallery](./examples/gallery/).
+
 > **Note on CUDA compatibility:** `torchcodec` (used for video decoding) may have compatibility issues with certain CUDA versions. For example, `torch>=2.11` bundles CUDA 13.1 by default, while environments with CUDA 12.x may encounter errors such as `RuntimeError: Could not load libtorchcodec`. Two workarounds:
 >
 > 1. **Replace `torchcodec` with `PyAV`** — supports both image and video inference without CUDA version constraints:
