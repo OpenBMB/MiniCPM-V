@@ -13,7 +13,7 @@ MODEL="openbmb/MiniCPM-o-2_6"
 DATA="path/to/trainging_data"
 EVAL_DATA="path/to/test_data"
 
-# if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm, if use openbmb/MiniCPM-Llama3-V-2_5, please set LLM_TYPE="llama3",
+# if use openbmb/MiniCPM-V-2, please set LLM_TYPE=minicpm, if use openbmb/MiniCPM-Llama3-V-2_5 or MiniCPM-V-4, please set LLM_TYPE="llama3",
 # if use openbmb/MiniCPM-o-2_6 or openbmb/MiniCPM-V-2_6, please set LLM_TYPE=qwen
 LLM_TYPE="qwen" 
 MODEL_MAX_Length=2048 # if conduct multi-images sft, please set MODEL_MAX_Length=4096
