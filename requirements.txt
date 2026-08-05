@@ -33,3 +33,4 @@ gradio==4.41.0
 gradio_client
 http://thunlp.oss-cn-qingdao.aliyuncs.com/multi_modal/never_delete/modelscope_studio-0.4.0.9-py3-none-any.whl
 decord
+setuptools==75.8.0
