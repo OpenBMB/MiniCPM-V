@@ -384,11 +384,13 @@ def preprocess(
     
     images = [transform(i) for i in images]
     
-    if len(images_dict) == 1 and "<image>" in images_dict:       
-        if "<image>" in conversations[0]["content"]:
-            conversations[0]["content"] = conversations[0]["content"].replace(
-                "<image>", image_placeholder
-            )
+    if len(images_dict) == 1 and "<image>" in images_dict:
+        for conversation in conversations:
+            if "<image>" in conversation["content"]:
+                conversation["content"] = conversation["content"].replace(
+                    "<image>", image_placeholder
+                )
+                break
         else:
             conversations[0]["content"] = (
                 image_placeholder + "\n" + conversations[0]["content"]
