@@ -1,0 +1,64 @@
+# ============================================
+# MiniCPM-o 4.5 Docker Compose Deployment Configuration
+# ============================================
+# Usage:
+#   docker compose -f deploy/docker-compose.yml up -d
+#
+# Prerequisites:
+#   1. NVIDIA Container Toolkit is installed on the server
+#   2. Model weights are placed in the ${MODEL_PATH} directory
+# ============================================
+
+services:
+  # ---- Backend Inference Service (GPU) ----
+  model-backend:
+    image: minicpmo-backend:latest
+    container_name: minicpmo-backend
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      # Mount model weights directory (host path → container path)
+      - ${MODEL_PATH:-<YOUR_MODEL_PATH>}:/models/MiniCPM-o-4_5:ro
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT:-32550}
+    ports:
+      - "${BACKEND_PORT:-32550}:${BACKEND_PORT:-32550}"
+    # Note: BACKEND_PORT is the application listening port (default 32550),
+    # which is different from the external SSH temporary tunnel port.
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:${BACKEND_PORT:-32550}/api/v1/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 120s  # Model loading may take a long time
+    networks:
+      - minicpmo-net
+
+  # ---- Frontend Web Service (Nginx) ----
+  web-frontend:
+    image: minicpmo-frontend:latest
+    container_name: minicpmo-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+      - "3443:3443"   # HTTPS (for mobile access)
+    volumes:
+      # Mount SSL certificate directory
+      - ${CERTS_PATH:-<YOUR_CERTS_PATH>}:/etc/nginx/certs:ro
+    environment:
+      - BACKEND_PORT=${BACKEND_PORT:-32550}
+    depends_on:
+      model-backend:
+        condition: service_started
+    networks:
+      - minicpmo-net
+
+networks:
+  minicpmo-net:
+    driver: bridge

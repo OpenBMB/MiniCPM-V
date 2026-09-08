@@ -1,0 +1,71 @@
+# ============================================
+# MiniCPM-o 4.5 Backend Inference Service Dockerfile
+# Base image: NVIDIA CUDA 12.8 + Ubuntu 22.04
+# ============================================
+FROM nvidia/cuda:12.8.1-devel-ubuntu22.04
+
+# Avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+ENV PYTHONUNBUFFERED=1
+
+# ---- System dependencies ----
+RUN apt-get update && apt-get install -y \
+    python3.10 \
+    python3.10-dev \
+    python3-pip \
+    ffmpeg \
+    libsndfile1 \
+    libsndfile1-dev \
+    git \
+    wget \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set python3.10 as default
+RUN ln -sf /usr/bin/python3.10 /usr/bin/python3 && \
+    ln -sf /usr/bin/python3 /usr/bin/python && \
+    python3 -m pip install --upgrade pip setuptools wheel
+
+# ---- PyTorch (CUDA 12.4) ----
+RUN pip install --no-cache-dir \
+    "torch>=2.3.0,<=2.8.0" \
+    "torchaudio<=2.8.0" \
+    --index-url https://download.pytorch.org/whl/cu124
+
+# ---- MiniCPM-o core dependencies ----
+RUN pip install --no-cache-dir \
+    "transformers==4.51.0" \
+    accelerate \
+    "minicpmo-utils[all]>=1.0.5" \
+    librosa \
+    soundfile \
+    onnxruntime \
+    sentencepiece \
+    Pillow \
+    numpy
+
+# ---- Web service dependencies ----
+RUN pip install --no-cache-dir \
+    fastapi \
+    uvicorn \
+    aiofiles \
+    pydantic
+
+# ---- Working directory ----
+WORKDIR /app
+
+# ---- Copy backend code ----
+COPY web_demos/minicpm-o_2.6/model_server.py /app/
+COPY web_demos/minicpm-o_2.6/vad_utils.py /app/
+COPY web_demos/minicpm-o_2.6/silero_vad.onnx /app/
+
+# ---- Copy TTS reference audios ----
+COPY assets/ref_audios/ /app/assets/ref_audios/
+
+# ---- Expose port ----
+EXPOSE 32550
+
+# ---- Startup command ----
+# Model path is mounted to /models/MiniCPM-o-4_5 via volume
+ENV BACKEND_PORT=32550
+CMD ["sh", "-lc", "python3 model_server.py --model /models/MiniCPM-o-4_5 --port ${BACKEND_PORT}"]
