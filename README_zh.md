@@ -2603,8 +2603,8 @@ MiniCPM-V 和 MiniCPM-o 模型支持通过 LLaMA-Factory 和 SWIFT 等框架训�
 
 | 框架 | MiniCPM-V 4.6 | 更多 MiniCPM-V/o 模型 | 
 |:---|:---:|:---:|
-| LLaMA-Factory | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llamafactory_minicpmv46_zh.md) | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llama-factory/finetune_llamafactory_zh.md) | 
-| SWIFT | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift_minicpmv46_zh.md) | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift_zh.md) | 
+| LLaMA-Factory | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llamafactory/llamafactory_minicpmv46_zh.md) | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llamafactory/finetune_llamafactory_zh.md) | 
+| SWIFT | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift/swift_minicpmv46_zh.md) | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift/swift_zh.md) | 
 
 
 ### API <!-- omit in toc -->
