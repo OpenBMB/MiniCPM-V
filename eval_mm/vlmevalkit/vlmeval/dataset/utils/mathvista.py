@@ -90,7 +90,7 @@ def post_check(line, prefetch=False):
                 res = float(response)
                 ans = float(line['answer'])
             else:
-                res = str(res)
+                res = str(response)
                 ans = str(ans)
     except ValueError:
         pass
