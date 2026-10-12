@@ -206,9 +206,10 @@ MiniCPM-V 和 MiniCPM-o 模型支持通过 LLaMA-Factory 和 SWIFT 等框架训�
 
 ### API
 
-MiniCPM-V 4.5 和 MiniCPM-o 4.5 的 API 用法见 [API Guide](./api.md)。MiniCPM-V 4.6 的 API 入口已保存在[独立文档](./minicpm_v4dot6_zh.md#api)中。
+MiniCPM-V 4.7 / 4.5 和 MiniCPM-o 4.5 的 API 用法见 [API Guide](./api.md)。MiniCPM-V 4.6 的 API 入口已保存在[独立文档](./minicpm_v4dot6_zh.md#api)中。
 
 | 模型 | API |
 |:---|:---:|
+| MiniCPM-V 4.7 | [指南](./api.md#minicpm-v-47) |
 | MiniCPM-V 4.5 | [指南](./api.md#minicpm-v-45) |
 | MiniCPM-o 4.5 | [指南](./api.md#minicpm-o-45) |

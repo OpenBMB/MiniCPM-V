@@ -208,9 +208,10 @@ We support fine-tuning with LLaMA-Factory, SWIFT. Refer to our [Cookbook](https:
 
 ### API
 
-Refer to the [API Guide](./api.md) for MiniCPM-V 4.5 and MiniCPM-o 4.5. The MiniCPM-V 4.6 API entry is preserved in its [archived documentation](./minicpm_v4dot6_en.md#api).
+Refer to the [API Guide](./api.md) for MiniCPM-V 4.7 / 4.5 and MiniCPM-o 4.5. The MiniCPM-V 4.6 API entry is preserved in its [archived documentation](./minicpm_v4dot6_en.md#api).
 
 | Model | API |
 |:---|:---:|
+| MiniCPM-V 4.7 | [Guide](./api.md#minicpm-v-47) |
 | MiniCPM-V 4.5 | [Guide](./api.md#minicpm-v-45) |
 | MiniCPM-o 4.5 | [Guide](./api.md#minicpm-o-45) |
