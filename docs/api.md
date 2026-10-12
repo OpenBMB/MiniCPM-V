@@ -1,6 +1,6 @@
 # API Guide
 
-This document introduces how to use the Chat Completions APIs for MiniCPM-V 4.5 / 4.6 and MiniCPM-o 4.5, including text, image, and video understanding.
+This document introduces how to use the Chat Completions APIs for MiniCPM-V 4.5 / 4.6 / 4.7 and MiniCPM-o 4.5, including text, image, and video understanding.
 
 ## Endpoint
 
@@ -20,10 +20,105 @@ export API_KEY="your-api-key"
 ## Available Models
 
 ```text
+MiniCPM-V-4.7-1B
+MiniCPM-V-4.7-35B-A3B
 MiniCPM-V-4.5-9B
 MiniCPM-V-4.6-1B
 MiniCPM-V-4.6-Thinking
 MiniCPM-O-4.5-9B
+```
+
+## MiniCPM-V 4.7
+
+MiniCPM-V 4.7 comes in two sizes — `MiniCPM-V-4.7-1B` (dense, edge-friendly) and `MiniCPM-V-4.7-35B-A3B` (MoE, high-throughput). Both support text-only, image, and video understanding through the Chat Completions API. Pick the size by setting the `model` field.
+
+Thinking is **off by default**; enable it per request with `chat_template_kwargs` (see below). The reasoning trace is returned in `message.reasoning`.
+
+### Text-Only Request
+
+```bash
+curl https://api.modelbest.cn/v1/chat/completions \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "MiniCPM-V-4.7-1B",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Introduce yourself in one sentence."
+      }
+    ]
+  }'
+```
+
+For the MoE size, replace the `model` value with `"MiniCPM-V-4.7-35B-A3B"`.
+
+To enable thinking, add:
+
+```json
+"chat_template_kwargs": {"enable_thinking": true}
+```
+
+The thinking model returns its intermediate reasoning in `message.reasoning` and the final answer in `message.content`.
+
+### Image Understanding
+
+Images are passed as base64 data URLs in the `image_url` content format.
+
+```bash
+curl https://api.modelbest.cn/v1/chat/completions \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "MiniCPM-V-4.7-1B",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Describe this image."
+          },
+          {
+            "type": "image_url",
+            "image_url": {
+              "url": "data:image/png;base64,<BASE64_IMAGE>"
+            }
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+### Video Understanding
+
+Videos are passed as base64 data URLs in the `video_url` content format (for example `data:video/mp4;base64,...`).
+
+```bash
+curl https://api.modelbest.cn/v1/chat/completions \
+  -H "Authorization: Bearer $API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "MiniCPM-V-4.7-1B",
+    "messages": [
+      {
+        "role": "user",
+        "content": [
+          {
+            "type": "text",
+            "text": "Describe this video briefly."
+          },
+          {
+            "type": "video_url",
+            "video_url": {
+              "url": "data:video/mp4;base64,<BASE64_VIDEO>"
+            }
+          }
+        ]
+      }
+    ]
+  }'
 ```
 
 ## MiniCPM-V 4.6
@@ -87,7 +182,7 @@ curl https://api.modelbest.cn/v1/chat/completions \
 
 ### Video Understanding
 
-Videos are passed as base64 data URLs in the `video_url` content format (for example `data:video/mp4;base64,...`). The same format works for `MiniCPM-V-4.5-9B`, `MiniCPM-V-4.6-1B`, `MiniCPM-V-4.6-Thinking`, and `MiniCPM-O-4.5-9B`.
+Videos are passed as base64 data URLs in the `video_url` content format (for example `data:video/mp4;base64,...`). The same format works for `MiniCPM-V-4.7-1B`, `MiniCPM-V-4.7-35B-A3B`, `MiniCPM-V-4.5-9B`, `MiniCPM-V-4.6-1B`, `MiniCPM-V-4.6-Thinking`, and `MiniCPM-O-4.5-9B`.
 
 ```bash
 curl https://api.modelbest.cn/v1/chat/completions \
