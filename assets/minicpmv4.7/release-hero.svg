@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1240" height="360" viewBox="0 0 1240 360" role="img" aria-labelledby="title desc">
   <title id="title">MiniCPM-V 4.7 — A new chapter in on-device multimodal AI</title>
-  <desc id="desc">A compact release cover for MiniCPM-V 4.7, available in 35BA3B and 1B variants. An abstract blue viewfinder and a pocket-sized device illustrate multimodal AI on-device.</desc>
+  <desc id="desc">A compact release cover for MiniCPM-V 4.7, available in 35B-A3B and 1B variants. An abstract blue viewfinder and a pocket-sized device illustrate multimodal AI on-device.</desc>
   <defs>
     <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#f2f7fc"/>
@@ -26,7 +26,7 @@
       <text x="47" y="210" fill="#244868" font-size="28" letter-spacing="-.35">A new chapter in on-device multimodal AI.</text>
       <g transform="translate(47 255)">
         <rect width="190" height="52" rx="26" fill="#102d4d"/>
-        <text x="95" y="34" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">35BA3B</text>
+        <text x="95" y="34" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">35B-A3B</text>
         <rect x="202" width="89" height="52" rx="26" fill="#fff"/>
         <text x="246.5" y="34" text-anchor="middle" fill="#102d4d" font-size="25" font-weight="700">1B</text>
         <text x="322" y="33" fill="#365976" font-size="20">Image · Video · Document</text>

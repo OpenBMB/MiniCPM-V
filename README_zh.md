@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="./docs/minicpm_v4dot7_zh.md"><img src="./assets/minicpmv4.7/release-hero.svg" alt="MiniCPM-V 4.7：端侧多模态 AI 的新一代。35BA3B 与 1B，理解图像、视频和文档。" width="100%"></a>
+<a href="./docs/minicpm_v4dot7_zh.md"><img src="./assets/minicpmv4.7/release-hero.svg" alt="MiniCPM-V 4.7：端侧多模态 AI 的新一代。35B-A3B 与 1B，理解图像、视频和文档。" width="100%"></a>
 
 **MiniCPM-V & MiniCPM-o · 把看、听、交互，带到你的端侧设备上。**
 
@@ -16,31 +16,31 @@
 
 ## MiniCPM-V 4.7
 
-MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35BA3B 和 1B 两种规格**，其中 35BA3B 是 MiniCPM-V 系列首个 MoE 模型。主要特点包括：
+MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两种规格**，其中 35B-A3B 是 MiniCPM-V 系列首个 MoE 模型。主要特点包括：
 
-- **🚀 性能与效率的新帕累托前沿。** MiniCPM-V 4.7 以 35BA3B 与 1B 分别刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35BA3B **以更短的推理时间取得比 Qwen3.6 35BA3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
-- **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.zh.md) 推理加速技术，MiniCPM-V 4.7 35BA3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。
+- **🚀 性能与效率的新帕累托前沿。** MiniCPM-V 4.7 以 35B-A3B 与 1B 分别刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35B-A3B **以更短的推理时间取得比 Qwen3.6 35B-A3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
+- **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.zh.md) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。
 - **🛠️ 多平台支持，开发者友好。** MiniCPM-V 4.7 同时支持 iOS、安卓和鸿蒙，并适配Intel、AMD、Arm、瑞芯微、后摩等芯片平台，覆盖更多移动设备与本地计算场景。同步开源 [Self-Replay Fine-Tuning](https://openbmb-dev.modelbest.co/blog/self-replay-fine-tuning) 微调方案，帮助开发者低成本扩展模型能力和减少遗忘，方便二次开发。
 
 
 ### 刷新性能与推理效率的帕累托前沿
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/performance_efficiency_frontier_zh.png"><img src="./assets/minicpmv4.7/performance_efficiency_frontier_zh.png" alt="MiniCPM-V 4.7 35BA3B 和 1B 的平均评测得分与推理时间对比；星形和圆形为非思考模式，菱形为思考模式。" width="760"></a>
+  <a href="./assets/minicpmv4.7/performance_efficiency_frontier_zh.png"><img src="./assets/minicpmv4.7/performance_efficiency_frontier_zh.png" alt="MiniCPM-V 4.7 35B-A3B 和 1B 的平均评测得分与推理时间对比；星形和圆形为非思考模式，菱形为思考模式。" width="760"></a>
 </p>
 
-**完整性能对比（35BA3B，Instruct）**
+**完整性能对比（35B-A3B，Instruct）**
 
 **Vision-Language**
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_instruct_zh.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_instruct_zh.png" alt="MiniCPM-V 4.7 35BA3B 在 Instruct 模式下的 Vision-Language 性能对比" width="90%"></a>
+  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_instruct_zh.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_instruct_zh.png" alt="MiniCPM-V 4.7 35B-A3B 在 Instruct 模式下的 Vision-Language 性能对比" width="90%"></a>
 </p>
 
 **Language**
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_language_zh.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_language_zh.png" alt="MiniCPM-V 4.7 35BA3B 在 Instruct 模式下的 Language 性能对比" width="90%"></a>
+  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_language_zh.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_language_zh.png" alt="MiniCPM-V 4.7 35B-A3B 在 Instruct 模式下的 Language 性能对比" width="90%"></a>
 </p>
 
 **完整性能对比（1B，Instruct）**
@@ -57,7 +57,7 @@ MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35BA3B 和 1B 两�
 为了解决这一两难问题，MiniCPM-V 4.7 提出[前瞻专家调度技术](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.zh.md)，**在不牺牲模型能力条件下实现 x5 的端侧真实加速**。通过跨层路由预测，提前加载下一层可能用到的专家并优先计算已加载的专家，显著减少了加载等待时间；同时，结合权重量化与存储布局优化策略，减少权重存储重和读取分散的问题，显著提升加载速度。推理优化前后的生成速度对比：
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/moe_speed_comparison_zh.gif"><img src="./assets/minicpmv4.7/moe_speed_comparison_zh.gif" alt="MiniCPM-V 4.7 35BA3B 端侧推理效率对比：左侧为优化后，右侧为优化前。" width="640"></a>
+  <a href="./assets/minicpmv4.7/moe_speed_comparison_zh.gif"><img src="./assets/minicpmv4.7/moe_speed_comparison_zh.gif" alt="MiniCPM-V 4.7 35B-A3B 端侧推理效率对比：左侧为优化后，右侧为优化前。" width="640"></a>
 </p>
 
 ## MiniCPM-o 4.5
@@ -92,7 +92,7 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
   <tbody>
     <tr>
       <td nowrap="nowrap"><b>模型规格</b></td>
-      <td>35BA3B MoE · 1B</td>
+      <td>35B-A3B MoE · 1B</td>
       <td>9B 端到端全模态模型</td>
     </tr>
     <tr>
@@ -102,7 +102,7 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
     </tr>
     <tr>
       <td nowrap="nowrap"><b>技术特性</b></td>
-      <td>4 倍/16 倍混合视觉 token 压缩；35BA3B 端侧无损流畅推理</td>
+      <td>4 倍/16 倍混合视觉 token 压缩；35B-A3B 端侧无损流畅推理</td>
       <td>全双工多模态实时交互，生成语音与文字时持续接收音视频输入</td>
     </tr>
     <tr>

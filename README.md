@@ -1,6 +1,6 @@
 <div align="center">
 
-<a href="./docs/minicpm_v4dot7_en.md"><img src="./assets/minicpmv4.7/release-hero.svg" alt="MiniCPM-V 4.7 — A new chapter in on-device multimodal AI. 35BA3B and 1B models for images, video and documents." width="100%"></a>
+<a href="./docs/minicpm_v4dot7_en.md"><img src="./assets/minicpmv4.7/release-hero.svg" alt="MiniCPM-V 4.7 — A new chapter in on-device multimodal AI. 35B-A3B and 1B models for images, video and documents." width="100%"></a>
 
 **MiniCPM-V & MiniCPM-o · See, hear, and interact on your local devices.**
 
@@ -16,10 +16,10 @@
 
 ## MiniCPM-V 4.7
 
-MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35BA3B and 1B variants**. The 35BA3B variant is the series' first MoE model. Its main features include:
+MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35B-A3B and 1B variants**. The 35B-A3B variant is the series' first MoE model. Its main features include:
 
-- **🚀 A new performance–efficiency Pareto frontier.** The 35BA3B and 1B variants each advance the performance–efficiency Pareto frontier for multimodal large language models. In Instruct mode, 35BA3B **achieves a higher overall score in less inference time than Qwen3.6 35BA3B**; the 1B variant further improves on MiniCPM-V 4.6's core capabilities and **substantially outperforms Qwen3.5 0.8B in both overall score and inference efficiency**.
-- **📱 The first open-source MoE to run smoothly on-device without compromising performance.** Powered by the latest [Lookahead Expert Scheduling (LES)](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.md) inference acceleration technique, MiniCPM-V 4.7 35BA3B becomes the first open-source MoE model to run smoothly on-device without compromising performance, achieving a **decoding speed of 13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max.
+- **🚀 A new performance–efficiency Pareto frontier.** The 35B-A3B and 1B variants each advance the performance–efficiency Pareto frontier for multimodal large language models. In Instruct mode, 35B-A3B **achieves a higher overall score in less inference time than Qwen3.6 35B-A3B**; the 1B variant further improves on MiniCPM-V 4.6's core capabilities and **substantially outperforms Qwen3.5 0.8B in both overall score and inference efficiency**.
+- **📱 The first open-source MoE to run smoothly on-device without compromising performance.** Powered by the latest [Lookahead Expert Scheduling (LES)](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.md) inference acceleration technique, MiniCPM-V 4.7 35B-A3B becomes the first open-source MoE model to run smoothly on-device without compromising performance, achieving a **decoding speed of 13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max.
 - **🛠️ Broad platform support and easy customization.** MiniCPM-V 4.7 supports **iOS, Android, and HarmonyOS**, and **supports chip platforms from Intel, AMD, Arm, Rockchip, and Houmo**, covering a diverse range of mobile devices and local computing scenarios. We also open-source [Self-Replay Fine-Tuning](https://openbmb-dev.modelbest.co/blog/self-replay-fine-tuning), helping developers **extend model capabilities at low cost while reducing forgetting of existing capabilities**.
 
 <a name="capability-alongside-inference-cost"></a>
@@ -27,21 +27,21 @@ MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35BA3B
 ### Significantly Advancing the Performance–Efficiency Pareto Frontier
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/performance_efficiency_frontier.png"><img src="./assets/minicpmv4.7/performance_efficiency_frontier.png" alt="MiniCPM-V 4.7 35BA3B and 1B: average evaluation score versus inference time. Stars and circles denote non-reasoning mode; diamonds denote reasoning mode." width="760"></a>
+  <a href="./assets/minicpmv4.7/performance_efficiency_frontier.png"><img src="./assets/minicpmv4.7/performance_efficiency_frontier.png" alt="MiniCPM-V 4.7 35B-A3B and 1B: average evaluation score versus inference time. Stars and circles denote non-reasoning mode; diamonds denote reasoning mode." width="760"></a>
 </p>
 
-**Overall Performance (35BA3B, Instruct)**
+**Overall Performance (35B-A3B, Instruct)**
 
 **Vision-Language**
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_instruct.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_instruct.png" alt="Vision-Language performance comparison for MiniCPM-V 4.7 35BA3B in Instruct mode" width="90%"></a>
+  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_instruct.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_instruct.png" alt="Vision-Language performance comparison for MiniCPM-V 4.7 35B-A3B in Instruct mode" width="90%"></a>
 </p>
 
 **Language**
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_language.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_language.png" alt="Language performance comparison for MiniCPM-V 4.7 35BA3B in Instruct mode" width="90%"></a>
+  <a href="./assets/minicpmv4.7/overall_performance_35ba3b_language.png"><img src="./assets/minicpmv4.7/overall_performance_35ba3b_language.png" alt="Language performance comparison for MiniCPM-V 4.7 35B-A3B in Instruct mode" width="90%"></a>
 </p>
 
 **Overall Performance (1B, Instruct)**
@@ -59,7 +59,7 @@ To address this trade-off, MiniCPM-V 4.7 introduces [Lookahead Expert Scheduling
 <a name="see-it-in-action"></a>
 
 <p align="center">
-  <a href="./assets/minicpmv4.7/moe_speed_comparison_en.gif"><img src="./assets/minicpmv4.7/moe_speed_comparison_en.gif" alt="MiniCPM-V 4.7 35BA3B on-device inference efficiency: after optimization on the left, before optimization on the right." width="640"></a>
+  <a href="./assets/minicpmv4.7/moe_speed_comparison_en.gif"><img src="./assets/minicpmv4.7/moe_speed_comparison_en.gif" alt="MiniCPM-V 4.7 35B-A3B on-device inference efficiency: after optimization on the left, before optimization on the right." width="640"></a>
 </p>
 
 ## MiniCPM-o 4.5
@@ -94,7 +94,7 @@ MiniCPM-o 4.5 is the latest model in the MiniCPM-o series, a **9B end-to-end omn
   <tbody>
     <tr>
       <td nowrap="nowrap"><b>Models</b></td>
-      <td>35BA3B MoE · 1B</td>
+      <td>35B-A3B MoE · 1B</td>
       <td>9B end-to-end omnimodal model</td>
     </tr>
     <tr>
