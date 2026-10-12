@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="360" viewBox="0 0 1240 360" role="img" aria-labelledby="title desc">
+  <title id="title">MiniCPM-V 4.7 — A new chapter in on-device multimodal AI</title>
+  <desc id="desc">A compact release cover for MiniCPM-V 4.7, available in 35BA3B and 1B variants. An abstract blue viewfinder and a pocket-sized device illustrate multimodal AI on-device.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f2f7fc"/>
+      <stop offset="1" stop-color="#dfecfa"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3084dc"/>
+      <stop offset="1" stop-color="#97d5f5"/>
+    </linearGradient>
+    <clipPath id="cover"><rect width="1240" height="360" rx="24"/></clipPath>
+    <clipPath id="device-screen"><rect x="963" y="61" width="136" height="240" rx="18"/></clipPath>
+  </defs>
+  <g clip-path="url(#cover)">
+    <rect width="1240" height="360" fill="url(#paper)"/>
+    <path d="M835 0H1240V360H730Z" fill="#d2e5f8"/>
+    <path d="M1010 0H1240V360H905Z" fill="#c4ddf5" opacity=".58"/>
+
+    <!-- The copy remains live SVG text for crisp rendering at any size. -->
+    <g font-family="Arial, Helvetica, sans-serif">
+      <rect x="46" y="41" width="11" height="11" rx="2" fill="#ff925f"/>
+      <text x="68" y="55" fill="#365976" font-size="19" font-weight="700" letter-spacing="2">OPENBMB / MINICPM</text>
+      <text x="43" y="157" fill="#102d4d" font-size="83" font-weight="700" letter-spacing="-3">MiniCPM-V <tspan fill="#267bc7">4.7</tspan></text>
+      <text x="47" y="210" fill="#244868" font-size="28" letter-spacing="-.35">A new chapter in on-device multimodal AI.</text>
+      <g transform="translate(47 255)">
+        <rect width="190" height="52" rx="26" fill="#102d4d"/>
+        <text x="95" y="34" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">35BA3B</text>
+        <rect x="202" width="89" height="52" rx="26" fill="#fff"/>
+        <text x="246.5" y="34" text-anchor="middle" fill="#102d4d" font-size="25" font-weight="700">1B</text>
+        <text x="322" y="33" fill="#365976" font-size="20">Image · Video · Document</text>
+      </g>
+    </g>
+
+    <!-- Abstract fields of view converge on a device; no product UI is depicted. -->
+    <g fill="none" stroke="#88b7e2" stroke-width="1.5" opacity=".6">
+      <ellipse cx="1020" cy="183" rx="193" ry="125" transform="rotate(-26 1020 183)"/>
+      <ellipse cx="1020" cy="183" rx="217" ry="148" transform="rotate(-26 1020 183)"/>
+    </g>
+    <g transform="rotate(-9 1015 181)">
+      <rect x="871" y="71" width="165" height="228" rx="25" fill="#a9cdee" stroke="#edf6ff" stroke-width="2"/>
+      <rect x="910" y="49" width="163" height="263" rx="29" fill="#74a9dc" stroke="#eaf4fe" stroke-width="2"/>
+      <rect x="949" y="45" width="164" height="272" rx="31" fill="#102d4d"/>
+      <rect x="963" y="61" width="136" height="240" rx="18" fill="url(#screen)"/>
+      <g clip-path="url(#device-screen)">
+        <circle cx="1093" cy="75" r="76" fill="#d4f0ff" opacity=".62"/>
+        <path d="M954 284L1010 150L1111 284Z" fill="#153b67"/>
+        <path d="M989 310L1080 186L1118 267V310Z" fill="#d0eafa"/>
+        <path d="M954 280L993 231L1035 301H954Z" fill="#4799de"/>
+        <circle cx="1060" cy="123" r="17" fill="#ffac7c"/>
+        <g fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round">
+          <path d="M981 127V113H995M1067 113H1081V127M1081 223V237H1067M995 237H981V223"/>
+        </g>
+      </g>
+      <rect x="1005" y="68" width="52" height="9" rx="4.5" fill="#102d4d"/>
+      <rect x="1011" y="286" width="40" height="4" rx="2" fill="#102d4d" opacity=".65"/>
+    </g>
+    <g transform="translate(1154 53)" fill="none" stroke="#397bb9" stroke-width="2">
+      <path d="M0 11H22M11 0V22"/>
+      <circle cx="11" cy="11" r="25" opacity=".4"/>
+    </g>
+    <circle cx="868" cy="307" r="6" fill="#ff925f"/>
+    <path d="M1149 281H1180M1164.5 265.5V296.5" stroke="#80acd4" stroke-width="2"/>
+  </g>
+</svg>
