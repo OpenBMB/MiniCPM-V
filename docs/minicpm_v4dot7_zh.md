@@ -7,7 +7,7 @@
 **MiniCPM-V 4.7** 是 MiniCPM-V 系列的最新模型，提供 **35BA3B 和 1B** 两种规格，其中 **35BA3B 是 MiniCPM-V 系列首个 MoE 模型**。它延续了系列模型的单图、多图和视频理解能力，在提升基础能力的同时，保持高效的视觉编码与端侧推理，其主要特点包括：
 
 - 📱 **首个端侧无损流畅运行的开源 MoE 模型。**
-  基于随 MiniCPM-V 4.7 同步提出的自研 **LES（前瞻专家调度）** 技术，配合精细的层级量化与 DSpark 投机采样适配，MiniCPM-V 4.7 35BA3B 成为**首个支持端侧无损流畅运行的开源 MoE 模型**，在 iPhone 17 Pro Max 上以仅 3GB 内存达到 13+ token/s 的解码速度。
+  基于随 MiniCPM-V 4.7 同步提出的自研 **[LES（前瞻专家调度）](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.zh.md)** 技术，配合精细的层级量化与 DSpark 投机采样适配，MiniCPM-V 4.7 35BA3B 成为**首个支持端侧无损流畅运行的开源 MoE 模型**，在 iPhone 17 Pro Max 上以仅 3GB 内存达到 13+ token/s 的解码速度。
 - 🔥 **性能与效率的新帕累托前沿。**
   随着模型能力不断发展，推理效率也成为衡量模型价值的重要维度；而在资源受限的端侧，更需要在有限的开销内提供尽可能强的能力，追求更高的能力密度。MiniCPM-V 4.7 以 **35BA3B 和 1B** 分别同时刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35BA3B **以更短的推理时间取得比 Qwen3.6 35BA3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
 - 🚀 **高效架构。**
@@ -15,7 +15,7 @@
 - 💻 **多平台与芯片支持。**
   MiniCPM-V 4.7 同时支持 **iOS、安卓和鸿蒙**，并提供开源端侧适配代码。同时，**首日支持瑞芯微、后摩、Intel、AMD 和 Arm 等芯片平台**，覆盖更多移动设备与本地计算场景。
 - 🛠️ **开发者友好。**
-  MiniCPM-V 4.7 适配 SGLang、vLLM、llama.cpp、Ollama 等[推理框架](./deployment_zh.md#训练和推理框架与-api-支持)，支持 SWIFT、LLaMA-Factory 等[微调框架](./deployment_zh.md#训练和推理框架与-api-支持)，提供 GGUF、BNB、AWQ、GPTQ 等量化版本，并新增 **FP8 量化支持**。同步公开 **Self-Replay Fine-Tuning** 微调方案，帮助开发者低成本扩展模型能力、减少原有能力遗忘，方便二次开发。
+  MiniCPM-V 4.7 适配 SGLang、vLLM、llama.cpp、Ollama 等[推理框架](./deployment_zh.md#训练和推理框架与-api-支持)，支持 SWIFT、LLaMA-Factory 等[微调框架](./deployment_zh.md#训练和推理框架与-api-支持)，提供 GGUF、BNB、AWQ、GPTQ 等量化版本，并新增 **FP8 量化支持**。同步公开 **[Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/blog/self-replay-fine-tuning)** 微调方案，帮助开发者低成本扩展模型能力、减少原有能力遗忘，方便二次开发。
 
 ### 端侧能力与效率
 
@@ -27,7 +27,7 @@ MoE 的总参数量可以远大于单个 token 激活的参数量，但这并不
 
 MiniCPM-V 4.7 35BA3B 通过三项技术协同实现这一目标：
 
-- **LES（前瞻专家调度）**：通过跨层路由预测提前加载下一层可能用到的专家，优先计算实际路由选中且预加载命中的专家，并利用这段计算时间并行加载其余所需专家，减少加载等待。预测仅用于预取与调度，实际计算仍遵循模型原有的 token 级路由；预测未命中的所需专家也会正常加载并参与计算。
+- **[LES（前瞻专家调度）](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.zh.md)**：通过跨层路由预测提前加载下一层可能用到的专家，优先计算实际路由选中且预加载命中的专家，并利用这段计算时间并行加载其余所需专家，减少加载等待。预测仅用于预取与调度，实际计算仍遵循模型原有的 token 级路由；预测未命中的所需专家也会正常加载并参与计算。
 - **精细的层级量化**：降低专家权重的存储占用与访存开销，在保持模型能力的前提下，使专家加载更适合端侧的内存与带宽条件。
 - **DSpark 投机采样适配**：将投机采样与端侧推理流程结合，与专家调度和量化协同提高解码效率。
 
@@ -321,7 +321,7 @@ MiniCPM-V 4.7 支持 iOS、安卓、鸿蒙部署，并首日支持瑞芯微、�
 
 我们对下列项目表示衷心感谢：
 
-* [Qwen3.6](https://huggingface.co/collections/Qwen/qwen36) 提供了语言基座
+* [Qwen3.5](https://huggingface.co/collections/Qwen/qwen35) 和 [Qwen3.6](https://huggingface.co/collections/Qwen/qwen36) 提供了语言基座
 * [SigLIP2](https://github.com/google-research/big_vision/blob/main/big_vision/configs/proj/image_text/README_siglip2.md) 提供了视觉理解模块
 * [Transformers](https://github.com/huggingface/transformers)
 

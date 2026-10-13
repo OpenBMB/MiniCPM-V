@@ -7,7 +7,7 @@
 **MiniCPM-V 4.7** is the latest model in the MiniCPM-V series, available in **35BA3B and 1B** variants, with **35BA3B being the first MoE model in the MiniCPM-V series**. It builds on the family's single-image, multi-image, and video understanding capabilities, combining stronger foundation capabilities with efficient visual encoding and on-device inference. Notable features of MiniCPM-V 4.7 include:
 
 - 📱 **The First Open-Source MoE Model with Lossless, Smooth On-Device Inference.**
-  With our **Lookahead Expert Scheduling (LES)** technique introduced alongside MiniCPM-V 4.7, combined with fine-grained layer-wise quantization and DSpark speculative sampling integration, MiniCPM-V 4.7 35BA3B becomes the **first open-source MoE model to run smoothly on-device without compromising performance**, achieving a decoding speed of **13+ tokens/s on iPhone 17 Pro Max**.
+  With our **[Lookahead Expert Scheduling (LES)](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.md)** technique introduced alongside MiniCPM-V 4.7, combined with fine-grained layer-wise quantization and DSpark speculative sampling integration, MiniCPM-V 4.7 35BA3B becomes the **first open-source MoE model to run smoothly on-device without compromising performance**, achieving a decoding speed of **13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max.
 - 🔥 **A New Pareto Frontier in Performance and Efficiency.**
   As model capabilities continue to advance, inference efficiency has become an important measure of a model's value. On resource-constrained devices, delivering the strongest possible capabilities within a limited resource budget calls for higher capability density. The **35BA3B and 1B** variants of MiniCPM-V 4.7 each advance the performance–efficiency Pareto frontier for MLLMs. In Instruct mode, 35BA3B **achieves a higher overall score in less inference time than Qwen3.6 35BA3B**; the 1B variant continues to improve foundation capabilities over MiniCPM-V 4.6 and **substantially outperforms Qwen3.5 0.8B in both overall score and inference efficiency**.
 - 🚀 **Efficient Architecture.**
@@ -15,7 +15,7 @@
 - 💻 **Broad Platform and Chip Support.**
   MiniCPM-V 4.7 supports **iOS, Android, and HarmonyOS**, together with open-source on-device deployment support. It also provides **day-0 support for chip platforms from Rockchip, Houmo, Intel, AMD, and Arm**, extending deployment options across mobile and local computing devices.
 - 🛠️ **Developer Friendly.**
-  MiniCPM-V 4.7 supports [inference frameworks](./deployment_en.md#supported-inference-and-training-frameworks-and-api) including SGLang, vLLM, llama.cpp, and Ollama, along with [fine-tuning frameworks](./deployment_en.md#supported-inference-and-training-frameworks-and-api) including SWIFT and LLaMA-Factory. It provides GGUF, BNB, AWQ, and GPTQ quantized variants and adds **FP8 quantization support**. We also release **Self-Replay Fine-Tuning**, a fine-tuning approach that helps developers extend model capabilities at low cost while reducing forgetting of existing capabilities, making further customization easier.
+  MiniCPM-V 4.7 supports [inference frameworks](./deployment_en.md#supported-inference-and-training-frameworks-and-api) including SGLang, vLLM, llama.cpp, and Ollama, along with [fine-tuning frameworks](./deployment_en.md#supported-inference-and-training-frameworks-and-api) including SWIFT and LLaMA-Factory. It provides GGUF, BNB, AWQ, and GPTQ quantized variants and adds **FP8 quantization support**. We also release **[Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/en/blog/self-replay-fine-tuning)**, a fine-tuning approach that helps developers extend model capabilities at low cost while reducing forgetting of existing capabilities, making further customization easier.
 
 ### On-Device Capability and Efficiency
 
@@ -27,11 +27,11 @@ Another approach is to restrict the pool of available experts. For example, fixi
 
 MiniCPM-V 4.7 35BA3B addresses this challenge through three complementary techniques:
 
-- **Lookahead Expert Scheduling (LES)** uses cross-layer routing prediction to preload experts likely to be needed by the next layer. Among the experts selected by the actual router, it prioritizes those successfully prefetched and overlaps their computation with loading the remaining required experts. Predictions guide only prefetching and scheduling; computation still follows the model's original token-level routing, and required experts missed by the prediction are loaded and evaluated as usual.
+- **[Lookahead Expert Scheduling (LES)](https://github.com/tc-mb/llama.cpp-omni/blob/master/docs/les/lookahead-expert-scheduling.md)** uses cross-layer routing prediction to preload experts likely to be needed by the next layer. Among the experts selected by the actual router, it prioritizes those successfully prefetched and overlaps their computation with loading the remaining required experts. Predictions guide only prefetching and scheduling; computation still follows the model's original token-level routing, and required experts missed by the prediction are loaded and evaluated as usual.
 - **Fine-grained layer-wise quantization** reduces the storage footprint and memory traffic of expert weights while preserving model capability, making expert loading better suited to on-device memory and bandwidth constraints.
 - **DSpark speculative sampling integration** incorporates speculative sampling into the on-device inference process, working with expert scheduling and quantization to improve decoding efficiency.
 
-Together, these techniques make MiniCPM-V 4.7 35BA3B the first open-source MoE model to run smoothly on-device without compromising performance, achieving **13+ tokens/s on iPhone 17 Pro Max**.
+Together, these techniques make MiniCPM-V 4.7 35BA3B the first open-source MoE model to run smoothly on-device without compromising performance, achieving a decoding speed of **13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max.
 
 **On-Device MoE Inference: Before and After Optimization**
 
@@ -319,7 +319,7 @@ For supported inference and training frameworks, see [Supported Inference and Tr
 
 We would like to thank the following projects:
 
-* [Qwen3.6](https://huggingface.co/collections/Qwen/qwen36) for providing the language backbone
+* [Qwen3.5](https://huggingface.co/collections/Qwen/qwen35) and [Qwen3.6](https://huggingface.co/collections/Qwen/qwen36) for providing the language backbone
 * [SigLIP2](https://github.com/google-research/big_vision/blob/main/big_vision/configs/proj/image_text/README_siglip2.md) for providing the vision understanding module
 * [Transformers](https://github.com/huggingface/transformers)
 
