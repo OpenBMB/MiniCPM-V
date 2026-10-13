@@ -25,11 +25,9 @@
       <text x="43" y="157" fill="#102d4d" font-size="83" font-weight="700" letter-spacing="-3">MiniCPM-V <tspan fill="#267bc7">4.7</tspan></text>
       <text x="47" y="210" fill="#244868" font-size="28" letter-spacing="-.35">A new chapter in on-device multimodal AI.</text>
       <g transform="translate(47 255)">
-        <rect width="190" height="52" rx="26" fill="#102d4d"/>
-        <text x="95" y="34" text-anchor="middle" fill="#fff" font-size="25" font-weight="700">35B-A3B</text>
-        <rect x="202" width="89" height="52" rx="26" fill="#fff"/>
-        <text x="246.5" y="34" text-anchor="middle" fill="#102d4d" font-size="25" font-weight="700">1B</text>
-        <text x="322" y="33" fill="#365976" font-size="20">Image · Video · Document</text>
+        <text x="0" y="34" fill="#244868" font-size="25" font-weight="700">35B-A3B · 1B</text>
+        <path d="M179 14V36" stroke="#9ebbd5" stroke-width="1.5"/>
+        <text x="201" y="33" fill="#365976" font-size="20">Image · Video · Document</text>
       </g>
     </g>
 
