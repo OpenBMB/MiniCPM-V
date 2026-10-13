@@ -6,7 +6,7 @@
 
 <p>
   <strong><a href="#minicpm-v-47">MiniCPM-V 4.7</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B" title="MiniCPM-V 4.7 35B-A3B on Hugging Face">🤗</a>&nbsp;35B-A3B&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-1B" title="MiniCPM-V 4.7 1B on Hugging Face">🤗</a>&nbsp;1B&nbsp;<a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo" title="MiniCPM-V 4.7 Demo">🤖</a>
-  &emsp;&emsp;&emsp;&emsp;
+  &emsp;
   <strong><a href="#minicpm-o-45">MiniCPM-o 4.5</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-o-4_5" title="MiniCPM-o 4.5 on Hugging Face">🤗</a>&nbsp;<a href="https://minicpmo45.modelbest.cn" title="MiniCPM-o 4.5 Demo">🤖</a>
 </p>
 
