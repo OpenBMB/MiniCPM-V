@@ -5,9 +5,9 @@
 **MiniCPM-V & MiniCPM-o · See, hear, and interact on your local devices.**
 
 <p>
-  <strong><a href="#minicpm-v-47">MiniCPM-V 4.7</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B" title="MiniCPM-V 4.7 35B-A3B on Hugging Face">🤗</a>&nbsp;35B-A3B&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-1B" title="MiniCPM-V 4.7 1B on Hugging Face">🤗</a>&nbsp;1B&nbsp;<a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo" title="MiniCPM-V 4.7 Demo">🤖</a>
+  <strong><a href="./docs/minicpm_v4dot7_en.md">MiniCPM-V 4.7</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B" title="MiniCPM-V 4.7 35B-A3B on Hugging Face">🤗</a>&nbsp;35B-A3B&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-1B" title="MiniCPM-V 4.7 1B on Hugging Face">🤗</a>&nbsp;1B&nbsp;<a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo" title="MiniCPM-V 4.7 Demo">🤖</a>
   &emsp;
-  <strong><a href="#minicpm-o-45">MiniCPM-o 4.5</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-o-4_5" title="MiniCPM-o 4.5 on Hugging Face">🤗</a>&nbsp;<a href="https://minicpmo45.modelbest.cn" title="MiniCPM-o 4.5 Demo">🤖</a>
+  <strong><a href="./docs/minicpm_o4dot5_en.md">MiniCPM-o 4.5</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-o-4_5" title="MiniCPM-o 4.5 on Hugging Face">🤗</a>&nbsp;<a href="https://minicpmo45.modelbest.cn" title="MiniCPM-o 4.5 Demo">🤖</a>
 </p>
 
 <p>
@@ -21,7 +21,7 @@
 MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35B-A3B and 1B variants**. The 35B-A3B variant is the series' first MoE model. Its main features include:
 
 - **🚀 A new performance–efficiency Pareto frontier.** The 35B-A3B and 1B variants each advance the performance–efficiency Pareto frontier for multimodal large language models. In Instruct mode, 35B-A3B **achieves a higher overall score in less inference time than Qwen3.6 35B-A3B**; the 1B variant further improves on MiniCPM-V 4.6's core capabilities and **substantially outperforms Qwen3.5 0.8B in both overall score and inference efficiency**.
-- **📱 The first open-source MoE to run smoothly on-device without compromising performance.** Powered by the latest [Lookahead Expert Scheduling (LES)](https://github.com/OpenBMB/llama.cpp-omni) inference acceleration technique, MiniCPM-V 4.7 35B-A3B becomes the first open-source MoE model to run smoothly on-device without compromising performance, achieving a **decoding speed of 13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max.
+- **📱 The first open-source MoE to run smoothly on-device without compromising performance.** Powered by the latest [Lookahead Expert Scheduling (LES)](https://github.com/OpenBMB/llama.cpp-omni) inference acceleration technique, MiniCPM-V 4.7 35B-A3B becomes the first open-source MoE model to run smoothly on-device without compromising performance, achieving a **decoding speed of 13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max. We also support DSpark speculative decoding, with dedicated heads available for the [1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark) and [35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark) variants.
 - **🛠️ Broad platform support and easy customization.** MiniCPM-V 4.7 supports **iOS, Android, and HarmonyOS**, and **supports chip platforms from Intel, AMD, Arm, Rockchip, and Houmo**, covering a diverse range of mobile devices and local computing scenarios. We also open-source [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/en/blog/self-replay-fine-tuning), helping developers **extend model capabilities at low cost while reducing forgetting of existing capabilities**.
 
 <a name="capability-alongside-inference-cost"></a>

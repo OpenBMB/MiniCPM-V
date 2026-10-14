@@ -5,9 +5,9 @@
 **MiniCPM-V & MiniCPM-o · 把看、听、交互，带到你的端侧设备上。**
 
 <p>
-  <strong><a href="#minicpm-v-47">MiniCPM-V 4.7</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B" title="MiniCPM-V 4.7 35B-A3B on Hugging Face">🤗</a>&nbsp;35B-A3B&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-1B" title="MiniCPM-V 4.7 1B on Hugging Face">🤗</a>&nbsp;1B&nbsp;<a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo" title="MiniCPM-V 4.7 Demo">🤖</a>
+  <strong><a href="./docs/minicpm_v4dot7_zh.md">MiniCPM-V 4.7</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B" title="MiniCPM-V 4.7 35B-A3B on Hugging Face">🤗</a>&nbsp;35B-A3B&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-V-4.7-1B" title="MiniCPM-V 4.7 1B on Hugging Face">🤗</a>&nbsp;1B&nbsp;<a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo" title="MiniCPM-V 4.7 Demo">🤖</a>
   &emsp;
-  <strong><a href="#minicpm-o-45">MiniCPM-o 4.5</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-o-4_5" title="MiniCPM-o 4.5 on Hugging Face">🤗</a>&nbsp;<a href="https://minicpmo45.modelbest.cn" title="MiniCPM-o 4.5 Demo">🤖</a>
+  <strong><a href="./docs/minicpm_o4dot5_zh.md">MiniCPM-o 4.5</a></strong>&nbsp;<a href="https://huggingface.co/openbmb/MiniCPM-o-4_5" title="MiniCPM-o 4.5 on Hugging Face">🤗</a>&nbsp;<a href="https://minicpmo45.modelbest.cn" title="MiniCPM-o 4.5 Demo">🤖</a>
 </p>
 
 <p>
@@ -21,7 +21,7 @@
 MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两种规格**，其中 35B-A3B 是 MiniCPM-V 系列首个 MoE 模型。主要特点包括：
 
 - **🚀 性能与效率的新帕累托前沿。** MiniCPM-V 4.7 以 35B-A3B 与 1B 分别刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35B-A3B **以更短的推理时间取得比 Qwen3.6 35B-A3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
-- **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。
+- **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。我们也适配了 DSpark 投机采样，并提供 [1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark) 和 [35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark) 的投机采样头。
 - **🛠️ 多平台支持，开发者友好。** MiniCPM-V 4.7 同时支持 iOS、安卓和鸿蒙，并适配Intel、AMD、Arm、瑞芯微、后摩等芯片平台，覆盖更多移动设备与本地计算场景。同步开源 [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/blog/self-replay-fine-tuning) 微调方案，帮助开发者低成本扩展模型能力和减少遗忘，方便二次开发。
 
 
