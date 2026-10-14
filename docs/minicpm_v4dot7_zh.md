@@ -273,6 +273,10 @@ curl -s http://localhost:8000/v1/chat/completions -H 'Content-Type: application/
 }'
 ```
 
+##### 推荐采样参数 <!-- omit in toc -->
+
+我们推荐使用以下采样参数进行生成：`temperature=0.7`、`top_p=0.95`、`top_k=100`、`min_p=0.0`、`presence_penalty=0`、`repetition_penalty=1.03`。
+
 </details>
 
 #### 投机解码 DSpark <!-- omit in toc -->
