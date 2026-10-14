@@ -287,7 +287,7 @@ Speculative decoding (DSpark): we also release [MiniCPM-V-4.7-35B-A3B-DSpark](ht
 
 #### Inference with OpenVINO™
 
-[OpenVINO™](https://docs.openvino.ai) is an open-source toolkit for optimizing and deploying AI inference on Intel CPU/GPU/NPU platforms. OpenVINO provides day-0 support for MiniCPM-V-4.7 on Intel platforms with high-performance inference. See the [OpenVINO™ Toolkit](https://github.com/openvinotoolkit) to get started. You can install and run the example with this notebook (link TBD).
+[OpenVINO™](https://docs.openvino.ai) is an open-source toolkit for optimizing and deploying AI inference on Intel CPU/GPU/NPU platforms. OpenVINO provides day-0 support for MiniCPM-V-4.7 on Intel platforms with high-performance inference. See the [OpenVINO™ Toolkit](https://github.com/openvinotoolkit) to get started. You can install and run the example with [this notebook](https://github.com/openvinotoolkit/openvino_notebooks/tree/latest/notebooks/minicpm-v-4.7).
 
 #### On-Device Deployment
 

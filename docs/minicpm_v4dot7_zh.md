@@ -289,7 +289,7 @@ curl -s http://localhost:8000/v1/chat/completions -H 'Content-Type: application/
 
 #### 基于 OpenVINO™ 推理
 
-[OpenVINO™](https://docs.openvino.ai) 是一个用于在 Intel CPU/GPU/NPU 平台上优化和部署 AI 推理的开源工具包。OpenVINO 首日支持 MiniCPM-V-4.7 在 Intel 平台上的高性能推理。可参考 [OpenVINO™ Toolkit](https://github.com/openvinotoolkit) 快速入门，并通过 notebook（链接待补）安装和运行示例。
+[OpenVINO™](https://docs.openvino.ai) 是一个用于在 Intel CPU/GPU/NPU 平台上优化和部署 AI 推理的开源工具包。OpenVINO 首日支持 MiniCPM-V-4.7 在 Intel 平台上的高性能推理。可参考 [OpenVINO™ Toolkit](https://github.com/openvinotoolkit) 快速入门，并通过 [该 notebook](https://github.com/openvinotoolkit/openvino_notebooks/tree/latest/notebooks/minicpm-v-4.7) 安装和运行示例。
 
 #### 端侧部署
 
