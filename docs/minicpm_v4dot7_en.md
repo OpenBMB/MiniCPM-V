@@ -271,6 +271,10 @@ curl -s http://localhost:8000/v1/chat/completions -H 'Content-Type: application/
 }'
 ```
 
+##### Recommended Sampling Parameters <!-- omit in toc -->
+
+We recommend using the following set of sampling parameters for generation in instruct mode: `temperature=0.7`, `top_p=0.95`, `top_k=100`, `min_p=0.0`, `presence_penalty=0`, `repetition_penalty=1.03`.
+
 </details>
 
 #### Speculative decoding (DSpark) <!-- omit in toc -->
