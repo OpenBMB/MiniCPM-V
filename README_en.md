@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <sub><a href="#model-overview">Overview</a> &nbsp;·&nbsp; <a href="#get-started">Get started</a> &nbsp;·&nbsp; <a href="#project-resources">Resources</a> &nbsp;·&nbsp; <a href="#citation">Citation</a> &nbsp;|&nbsp; <a href="./README_zh.md">中文</a> · English</sub>
+  <sub><a href="#model-overview">Overview</a> &nbsp;·&nbsp; <a href="#get-started">Get started</a> &nbsp;·&nbsp; <a href="#project-resources">Resources</a> &nbsp;|&nbsp; <a href="./README_zh.md">中文</a> · English</sub>
 </p>
 
 </div>
@@ -23,6 +23,11 @@ MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35B-A3
 - **🚀 A new performance–efficiency Pareto frontier.** The 35B-A3B and 1B variants each advance the performance–efficiency Pareto frontier for multimodal large language models. In Instruct mode, 35B-A3B **achieves a higher overall score in less inference time than Qwen3.6 35B-A3B**; the 1B variant further improves on MiniCPM-V 4.6's core capabilities and **substantially outperforms Qwen3.5 0.8B in both overall score and inference efficiency**.
 - **📱 The first open-source MoE to run smoothly on-device without compromising performance.** Powered by the latest [Lookahead Expert Scheduling (LES)](https://github.com/OpenBMB/llama.cpp-omni) inference acceleration technique, MiniCPM-V 4.7 35B-A3B becomes the first open-source MoE model to run smoothly on-device without compromising performance, achieving a **decoding speed of 13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max. We also support **DSpark speculative decoding**, with dedicated heads available for the [1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark) and [35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark) variants.
 - **🛠️ Broad platform support and easy customization.** MiniCPM-V 4.7 supports **iOS, Android, and HarmonyOS**, and **supports chip platforms from Intel, AMD, Arm, Rockchip, and Houmo**, covering a diverse range of mobile devices and local computing scenarios. We also open-source [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/en/blog/self-replay-fine-tuning), helping developers **extend model capabilities at low cost while reducing forgetting of existing capabilities**.
+
+### News
+
+- **2026-10-15** · We release **DSpark speculative decoding heads** in **BF16 and GGUF** for both MiniCPM-V 4.7 variants: **1B** ([BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark), [GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)) and **35B-A3B** ([BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark), [GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)).
+- **2026-10-12 · MiniCPM-V 4.7 released** — the first open-source MoE model to run smoothly on-device without compromising performance, setting a new multimodal performance–efficiency Pareto frontier. [See what's new](./docs/minicpm_v4dot7_en.md).
 
 <a name="capability-alongside-inference-cost"></a>
 
@@ -73,6 +78,10 @@ MiniCPM-o 4.5 is the latest model in the MiniCPM-o series, a **9B end-to-end omn
 - **🔥 Vision capability approaching Gemini 2.5 Flash.** It scores 77.6 on average across 8 popular OpenCompass benchmarks. **With only 9B parameters, its visual understanding surpasses GPT-4o and Gemini 2.0 Pro**, and a single model supports both instruct and thinking modes.
 - **🎙 Strong speech capability.** It supports bilingual real-time speech conversation with configurable voices in English and Chinese, making conversations **more natural, expressive, and stable**. A simple reference audio clip is enough for **voice cloning and role play**, and its voice cloning performance surpasses strong TTS tools such as CosyVoice2.
 - **🎬 Full-duplex, proactive live interaction.** It process real-time, continuous video and audio input streams simultaneously while generating concurrent text and speech output streams in an end-to-end fashion, without mutual blocking. This **allows MiniCPM-o 4.5 to see, hear, and speak simultaneously**, enabling smooth, real-time omnimodal conversations. Beyond responding to requests, the model can also interact proactively, for example by initiating reminders or comments based on its continuous understanding of the scene.
+
+### News
+
+- **2026-05-17** · Released [API access](./docs/api.md) for MiniCPM-o 4.5.
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=6UzC-O1Q-1U"><img src="./assets/minicpmo4_5/video_play.png" alt="Watch the MiniCPM-o 4.5 full-duplex multimodal interaction demo on YouTube." width="420"></a>
@@ -166,12 +175,10 @@ MiniCPM-o 4.5 is the latest model in the MiniCPM-o series, a **9B end-to-end omn
   </tbody>
 </table>
 
-## Latest updates
-
-- **2026-10-12 · MiniCPM-V 4.7 released** — the first open-source MoE model to run smoothly on-device without compromising performance, setting a new multimodal performance–efficiency Pareto frontier. [See what's new](./docs/minicpm_v4dot7_en.md).
+## Earlier updates
 
 - **2026-06-25** · MiniCPM-V 4.6 joined the [official Ollama model library](https://ollama.com/library/minicpm-v4.6).
-- **2026-05-17** · Released [API access](./docs/api.md) for MiniCPM-V 4.6 and MiniCPM-o 4.5.
+- **2026-05-17** · Released [API access](./docs/api.md) for MiniCPM-V 4.6.
 - **2026-05-11** · Released [MiniCPM-V 4.6](./docs/minicpm_v4dot6_en.md), with mixed 4×/16× visual token compression and mobile deployment support.
 
 ### Community milestones

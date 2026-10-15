@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <sub><a href="#模型概览">模型概览</a> &nbsp;·&nbsp; <a href="#开始使用">开始使用</a> &nbsp;·&nbsp; <a href="#项目资源">项目资源</a> &nbsp;·&nbsp; <a href="#引用">引用</a> &nbsp;|&nbsp; 中文 · <a href="./README.md">English</a></sub>
+  <sub><a href="#模型概览">模型概览</a> &nbsp;·&nbsp; <a href="#开始使用">开始使用</a> &nbsp;·&nbsp; <a href="#项目资源">项目资源</a> &nbsp;|&nbsp; 中文 · <a href="./README.md">English</a></sub>
 </p>
 
 </div>
@@ -24,6 +24,10 @@ MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两�
 - **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。我们也适配了 **DSpark 投机采样**，并提供 [1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark) 和 [35B-A3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark) 的投机采样头。
 - **🛠️ 多平台支持，开发者友好。** MiniCPM-V 4.7 同时支持 iOS、安卓和鸿蒙，并适配Intel、AMD、Arm、瑞芯微、后摩等芯片平台，覆盖更多移动设备与本地计算场景。同步开源 [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/blog/self-replay-fine-tuning) 微调方案，帮助开发者低成本扩展模型能力和减少遗忘，方便二次开发。
 
+### 最新动态
+
+- **2026-10-15** · 我们发布了 MiniCPM-V 4.7 的 **DSpark 投机采样头**，两个尺寸均提供 **BF16 和 GGUF 版本**：**1B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）。
+- **2026-10-12 · MiniCPM-V 4.7 发布** — 首个端侧无损流畅运行的开源 MoE 模型，刷新多模态性能—效率帕累托前沿。[查看这一代的新变化](./docs/minicpm_v4dot7_zh.md)。
 
 ### 刷新性能与推理效率的帕累托前沿
 
@@ -71,6 +75,10 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
 - **🔥 接近 Gemini 2.5 Flash 的视觉能力。** 在 OpenCompass 的 8 项主流基准上取得 77.6 的平均分。**仅 9B 参数，视觉理解超过 GPT-4o 和 Gemini 2.0 Pro**，并在同一模型中支持指令模式与思考模式。
 - **🎙 强大的语音能力。** 支持音色可配置的中英双语实时语音对话，对话**更加自然、富有表现力且稳定**。也可通过简单的参考音频进行**声音克隆和角色扮演**，声音克隆表现超越 CosyVoice2 等优秀 TTS 工具。
 - **🎬 全双工、可主动的实时交互。** 以端到端的方式同时处理实时连续的视频和音频输入流，并同步生成文本和语音输出流，且互不阻塞。这**使得 MiniCPM-o 4.5 能够同时“看、听、说”**，提供流畅的实时全模态对话体验。除了被动响应，模型还能进行主动交互，例如基于对场景的实时持续理解，主动发起提醒或评论。
+
+### 最新动态
+
+- **2026-05-17** · 发布 MiniCPM-o 4.5 的 [API 服务](./docs/api.md)。
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=6UzC-O1Q-1U"><img src="./assets/minicpmo4_5/video_play.png" alt="观看 MiniCPM-o 4.5 全双工多模态实时交互演示，点击前往 YouTube。" width="420"></a>
@@ -164,12 +172,10 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
   </tbody>
 </table>
 
-## 最近更新
-
-- **2026-10-12 · MiniCPM-V 4.7 发布** — 首个端侧无损流畅运行的开源 MoE 模型，刷新多模态性能—效率帕累托前沿。[查看这一代的新变化](./docs/minicpm_v4dot7_zh.md)。
+## 历史更新
 
 - **2026-06-25** · MiniCPM-V 4.6 加入 [Ollama 官方模型库](https://ollama.com/library/minicpm-v4.6)。
-- **2026-05-17** · 发布 MiniCPM-V 4.6 与 MiniCPM-o 4.5 的 [API 服务](./docs/api.md)。
+- **2026-05-17** · 发布 MiniCPM-V 4.6 的 [API 服务](./docs/api.md)。
 - **2026-05-11** · 发布 [MiniCPM-V 4.6](./docs/minicpm_v4dot6_zh.md)，支持 4 倍/16 倍混合视觉 token 压缩与移动端部署。
 
 ### 社区里程碑
