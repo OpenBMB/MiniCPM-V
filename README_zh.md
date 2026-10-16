@@ -21,12 +21,12 @@
 MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两种规格**，其中 35B-A3B 是 MiniCPM-V 系列首个 MoE 模型。主要特点包括：
 
 - **🚀 性能与效率的新帕累托前沿。** MiniCPM-V 4.7 以 35B-A3B 与 1B 分别刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35B-A3B **以更短的推理时间取得比 Qwen3.6 35B-A3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
-- **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni/blob/main/docs/les/lookahead-expert-scheduling.zh.md) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。我们也适配了 **DSpark 投机采样**，并提供 **1B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）的投机采样头。
+- **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni/blob/main/docs/les/lookahead-expert-scheduling.zh.md) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。我们也适配了 **DSpark 投机采样**，并提供 **1B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）的投机采样头。
 - **🛠️ 多平台支持，开发者友好。** MiniCPM-V 4.7 同时支持 iOS、安卓和鸿蒙，并适配Intel、AMD、Arm、瑞芯微、后摩等芯片平台，覆盖更多移动设备与本地计算场景。同步开源 [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/blog/self-replay-fine-tuning) 微调方案，帮助开发者低成本扩展模型能力和减少遗忘，方便二次开发。
 
 ### 最新动态
 
-- **2026-10-15** · 我们发布了 MiniCPM-V 4.7 的 **DSpark 投机采样头**，两个尺寸均提供 **BF16 和 GGUF 版本**：**1B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）。
+- **2026-10-15** · 我们发布了 MiniCPM-V 4.7 的 **DSpark 投机采样头**，两个尺寸均提供 **BF16 和 GGUF 版本**：**1B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）。
 - **2026-10-12 · MiniCPM-V 4.7 发布** — 首个端侧无损流畅运行的开源 MoE 模型，刷新多模态性能—效率帕累托前沿。[查看这一代的新变化](./docs/minicpm_v4dot7_zh.md)。
 
 ### 刷新性能与推理效率的帕累托前沿
@@ -65,6 +65,19 @@ MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两�
 <p align="center">
   <a href="./assets/minicpmv4.7/moe_speed_comparison_zh.gif"><img src="./assets/minicpmv4.7/moe_speed_comparison_zh.gif" alt="MiniCPM-V 4.7 35B-A3B 端侧推理效率对比：左侧为优化后，右侧为优化前。" width="640"></a>
 </p>
+
+### 模型权重
+
+MiniCPM-V 4.7 提供 **35B-A3B 和 1B** 两种规格。每行列出主模型权重及其对应的 **DSpark 投机采样头**，DSpark 均提供 **BF16 和 GGUF** 版本。
+
+| 模型 | 简介 | 主&#8288;模&#8288;型&#8288;权&#8288;重&#8288;下&#8288;载 | DSpark&nbsp;采&#8288;样&#8288;头 |
+|:---|:---|:---|:---|
+| MiniCPM&#8209;V&nbsp;4.7<br>**35B-A3B** | 首个可在端侧无损流畅运行的开源 MoE 模型，突破端侧性能上限。 | [🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B)&nbsp;**BF16**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-FP8)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-FP8)&nbsp;**FP8**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-int4)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-int4)&nbsp;**int4**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-AWQ)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-AWQ)&nbsp;**AWQ**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-GPTQ)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-GPTQ)&nbsp;**GPTQ**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-gguf)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-gguf)&nbsp;**GGUF** | [🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-DSpark)&nbsp;**BF16**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)&nbsp;**GGUF** |
+| MiniCPM&#8209;V&nbsp;4.7<br>**1B** | 兼顾能力提升与超高效率，多模态大模型效率-效果帕累托新前沿。 | [🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B)&nbsp;**BF16**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-int4)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B-int4)&nbsp;**int4**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-AWQ)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B-AWQ)&nbsp;**AWQ**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-GPTQ)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B-GPTQ)&nbsp;**GPTQ**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-gguf)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B-gguf)&nbsp;**GGUF** | [🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B-DSpark)&nbsp;**BF16**<br>[🤗](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)&nbsp;&nbsp;[<img src="./assets/modelscope_logo.png" width="20px"></img>](https://modelscope.cn/models/OpenBMB/MiniCPM-V-4.7-1B-DSpark-gguf)&nbsp;**GGUF** |
+
+1B int4 版本采用 bitsandbytes 量化；AWQ 和 GPTQ 均采用 W4A16 量化。量化版本可降低内存或显存占用；GGUF 权重支持 CPU 推理。
+
+也可通过 [Ollama](https://ollama.com/openbmb/minicpm-v4.7) 下载。
 
 ## MiniCPM-o 4.5
 
@@ -144,7 +157,7 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
   </thead>
   <tbody>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_zh.md#模型权重">模型权重</a></td>
+      <td><a href="#模型权重">模型权重</a></td>
       <td><a href="./docs/minicpm_o4dot5_zh.md#模型权重">模型权重</a></td>
     </tr>
     <tr>
