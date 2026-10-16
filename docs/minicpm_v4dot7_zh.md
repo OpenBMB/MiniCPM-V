@@ -7,7 +7,7 @@
 **MiniCPM-V 4.7** 是 MiniCPM-V 系列的最新模型，提供 **35BA3B 和 1B** 两种规格，其中 **35BA3B 是 MiniCPM-V 系列首个 MoE 模型**。它延续了系列模型的单图、多图和视频理解能力，在提升基础能力的同时，保持高效的视觉编码与端侧推理，其主要特点包括：
 
 - 📱 **首个端侧无损流畅运行的开源 MoE 模型。**
-  基于随 MiniCPM-V 4.7 同步提出的自研 **[LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni/blob/main/docs/les/lookahead-expert-scheduling.zh.md)** 技术，配合精细的层级量化与 DSpark 投机采样适配，MiniCPM-V 4.7 35BA3B 成为**首个支持端侧无损流畅运行的开源 MoE 模型**，在 iPhone 17 Pro Max 上以仅 3GB 内存达到 13+ token/s 的解码速度。我们也提供 [1B](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark) 和 [35BA3B](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark) 的 **DSpark 投机采样**头。
+  基于随 MiniCPM-V 4.7 同步提出的自研 **[LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni/blob/main/docs/les/lookahead-expert-scheduling.zh.md)** 技术，配合精细的层级量化与 DSpark 投机采样适配，MiniCPM-V 4.7 35BA3B 成为**首个支持端侧无损流畅运行的开源 MoE 模型**，在 iPhone 17 Pro Max 上以仅 3GB 内存达到 13+ token/s 的解码速度。我们也适配了 **DSpark 投机采样**，并提供 **1B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[BF16](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[GGUF](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）的投机采样头。
 - 🔥 **性能与效率的新帕累托前沿。**
   随着模型能力不断发展，推理效率也成为衡量模型价值的重要维度；而在资源受限的端侧，更需要在有限的开销内提供尽可能强的能力，追求更高的能力密度。MiniCPM-V 4.7 以 **35BA3B 和 1B** 分别同时刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35BA3B **以更短的推理时间取得比 Qwen3.6 35BA3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
 - 🚀 **高效架构。**
