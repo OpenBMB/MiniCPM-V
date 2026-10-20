@@ -363,20 +363,20 @@ def preprocess(
             )
             images.append(source_image)
             image_placeholder = default_image_placeholder
+            if use_image_id:
+                image_placeholder = f'{tokenizer.im_id_start}{image_id_cnt}{tokenizer.im_id_end}' + image_placeholder
+                image_id_cnt += 1
             if len(patches) > 0:
                 for i in range(len(patches)):
                     for j in range(len(patches[0])):
                         images.append(patches[i][j])
-                if use_image_id:
-                    image_placeholder = f'{tokenizer.im_id_start}{image_id_cnt}{tokenizer.im_id_end}' + image_placeholder
-                    image_id_cnt += 1
                 image_placeholder += get_grid_placeholder(
                     tokenizer, best_grid, query_nums, new_schema = new_schema)
             image_placeholder_dict[img_name] = image_placeholder
         else:
             images.append(image)
             if use_image_id:
-                image_placeholder = f'{tokenizer.im_id_start}{image_id_cnt}{tokenizer.im_id_end}' + image_placeholder
+                image_placeholder = f'{tokenizer.im_id_start}{image_id_cnt}{tokenizer.im_id_end}' + default_image_placeholder
                 image_id_cnt += 1
             else:
                 image_placeholder = default_image_placeholder
