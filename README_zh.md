@@ -161,8 +161,8 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
       <td><a href="./docs/minicpm_o4dot5_zh.md#模型权重">模型权重</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_zh.md#基于-transformers-推理">推理</a></td>
-      <td><a href="./docs/minicpm_o4dot5_zh.md#基于-transformers-推理">推理</a></td>
+      <td><a href="./docs/minicpm_v4dot7_zh.md#基于-transformers-推理">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_7_vllm_zh.md">vLLM</a></td>
+      <td><a href="./docs/minicpm_o4dot5_zh.md#基于-transformers-推理">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-o4_5_vllm_zh.md">vLLM</a></td>
     </tr>
     <tr>
       <td><a href="./docs/deployment_zh.md#训练llama-factoryswift">微调</a></td>

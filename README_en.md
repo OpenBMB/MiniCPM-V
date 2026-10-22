@@ -164,8 +164,8 @@ MiniCPM-o 4.5 is the latest model in the MiniCPM-o series, a **9B end-to-end omn
       <td><a href="./docs/minicpm_o4dot5_en.md#model-weights">Model weights</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_en.md#inference-with-transformers">Inference</a></td>
-      <td><a href="./docs/minicpm_o4dot5_en.md#inference-using-hugging-face-transformers">Inference</a></td>
+      <td><a href="./docs/minicpm_v4dot7_en.md#inference-with-transformers">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_7_vllm.md">vLLM</a></td>
+      <td><a href="./docs/minicpm_o4dot5_en.md#inference-using-hugging-face-transformers">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-o4_5_vllm.md">vLLM</a></td>
     </tr>
     <tr>
       <td><a href="./docs/deployment_en.md#training-llama-factory-swift">Fine-tuning</a></td>
