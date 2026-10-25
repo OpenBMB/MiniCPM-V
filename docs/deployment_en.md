@@ -202,8 +202,8 @@ We support fine-tuning with LLaMA-Factory, SWIFT. Refer to our [Cookbook](https:
 
 | Framework | MiniCPM-V 4.7 | Previous MiniCPM-V/o Models |
 |:---|:---:|:---:|
-| LLaMA-Factory | Supported | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llama-factory/finetune_llamafactory.md) |
-| SWIFT | Supported | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift.md) |
+| LLaMA-Factory | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/tree/main/finetune/llamafactory) | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/tree/main/finetune/llamafactory) |
+| SWIFT | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift/swift_minicpmv47_35b.md) | [Guide](https://github.com/OpenSQZ/MiniCPM-V-CookBook/tree/main/finetune/swift) |
 
 
 ### API

@@ -200,8 +200,8 @@ MiniCPM-V 和 MiniCPM-o 模型支持通过 LLaMA-Factory 和 SWIFT 等框架训�
 
 | 框架 | MiniCPM-V 4.7 | 更多 MiniCPM-V/o 模型 |
 |:---|:---:|:---:|
-| LLaMA-Factory | 支持 | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/llama-factory/finetune_llamafactory_zh.md) |
-| SWIFT | 支持 | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift_zh.md) |
+| LLaMA-Factory | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/tree/main/finetune/llamafactory) | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/tree/main/finetune/llamafactory) |
+| SWIFT | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/finetune/swift/swift_minicpmv47_35b_zh.md) | [微调指南](https://github.com/OpenSQZ/MiniCPM-V-CookBook/tree/main/finetune/swift) |
 
 
 ### API
