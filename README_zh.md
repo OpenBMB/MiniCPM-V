@@ -16,6 +16,12 @@
 
 </div>
 
+## 最新动态
+
+- [2026.10.28] 🔥🔥🔥 我们开源了 [MiniCPM-OCR 套件](https://github.com/OpenBMB/MiniCPM-OCR)，包含两个模型，兼顾**快速准确解析与质量把关**：**MiniCPM-OCR 1.0**（基于 **MiniCPM-V 4.6**，Real5-OmniDocBench 与 OCRBench v2 SOTA）和用于结果正确性检查的 **MiniCPM-OCR Jev**。
+- **2026-10-15** · 我们发布了 MiniCPM-V 4.7 的 **DSpark 投机采样头**，两个尺寸均提供 **BF16 和 GGUF 版本**：**1B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）。
+- **2026-10-12 · MiniCPM-V 4.7 发布** — 首个端侧无损流畅运行的开源 MoE 模型，刷新多模态性能—效率帕累托前沿。[查看这一代的新变化](./docs/minicpm_v4dot7_zh.md)。
+
 ## MiniCPM-V 4.7
 
 MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两种规格**，其中 35B-A3B 是 MiniCPM-V 系列首个 MoE 模型。主要特点包括：
@@ -23,11 +29,6 @@ MiniCPM-V 4.7 是 MiniCPM-V 系列的最新模型，提供 **35B-A3B 和 1B 两�
 - **🚀 性能与效率的新帕累托前沿。** MiniCPM-V 4.7 以 35B-A3B 与 1B 分别刷新了多模态大模型的性能—效率的帕累托前沿。在 Instruct 模式下，35B-A3B **以更短的推理时间取得比 Qwen3.6 35B-A3B 更高的综合得分**；1B 版本相比 MiniCPM-V 4.6 持续提升基础能力，并在**综合得分和推理效率上均显著领先 Qwen3.5 0.8B**。
 - **📱 首个端侧无损流畅的开源 MoE**。基于最新的 [LES（前瞻专家调度）](https://github.com/OpenBMB/llama.cpp-omni/blob/main/docs/les/lookahead-expert-scheduling.zh.md) 推理加速技术，MiniCPM-V 4.7 35B-A3B 成为首个支持端侧无损流畅运行的开源 MoE 模型，在 iPhone 17 Pro Max 上以**仅 3GB 内存**达到 **13+ token/s 的解码速度**。我们也适配了 **DSpark 投机采样**，并提供 **1B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）的投机采样头。
 - **🛠️ 多平台支持，开发者友好。** MiniCPM-V 4.7 同时支持 iOS、安卓和鸿蒙，并适配Intel、AMD、Arm、瑞芯微、后摩等芯片平台，覆盖更多移动设备与本地计算场景。同步开源 [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/blog/self-replay-fine-tuning) 微调方案，帮助开发者低成本扩展模型能力和减少遗忘，方便二次开发。
-
-### 最新动态
-
-- **2026-10-15** · 我们发布了 MiniCPM-V 4.7 的 **DSpark 投机采样头**，两个尺寸均提供 **BF16 和 GGUF 版本**：**1B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)）和 **35B-A3B**（[**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark)、[**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)）。
-- **2026-10-12 · MiniCPM-V 4.7 发布** — 首个端侧无损流畅运行的开源 MoE 模型，刷新多模态性能—效率帕累托前沿。[查看这一代的新变化](./docs/minicpm_v4dot7_zh.md)。
 
 ### 刷新性能与推理效率的帕累托前沿
 

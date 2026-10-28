@@ -16,6 +16,12 @@
 
 </div>
 
+## News
+
+- [2026.10.28] 🔥🔥🔥 We open-source the [MiniCPM-OCR suite](https://github.com/OpenBMB/MiniCPM-OCR), pairing two models for **fast, accurate parsing and result verification**: **MiniCPM-OCR 1.0** (based on **MiniCPM-V 4.6**, SOTA on Real5-OmniDocBench and OCRBench v2) and **MiniCPM-OCR Jev** for result correctness checks.
+- **2026-10-15** · We release **DSpark speculative decoding heads** in **BF16 and GGUF** for both MiniCPM-V 4.7 variants: **1B** ([**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark), [**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)) and **35B-A3B** ([**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark), [**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)).
+- **2026-10-12 · MiniCPM-V 4.7 released** — the first open-source MoE model to run smoothly on-device without compromising performance, setting a new multimodal performance–efficiency Pareto frontier. [See what's new](./docs/minicpm_v4dot7_en.md).
+
 ## MiniCPM-V 4.7
 
 MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35B-A3B and 1B variants**. The 35B-A3B variant is the series' first MoE model. Its main features include:
@@ -23,11 +29,6 @@ MiniCPM-V 4.7 is the latest model in the MiniCPM-V series, available in **35B-A3
 - **🚀 A new performance–efficiency Pareto frontier.** The 35B-A3B and 1B variants each advance the performance–efficiency Pareto frontier for multimodal large language models. In Instruct mode, 35B-A3B **achieves a higher overall score in less inference time than Qwen3.6 35B-A3B**; the 1B variant further improves on MiniCPM-V 4.6's core capabilities and **substantially outperforms Qwen3.5 0.8B in both overall score and inference efficiency**.
 - **📱 The first open-source MoE to run smoothly on-device without compromising performance.** Powered by the latest [Lookahead Expert Scheduling (LES)](https://github.com/OpenBMB/llama.cpp-omni/blob/main/docs/les/lookahead-expert-scheduling.md) inference acceleration technique, MiniCPM-V 4.7 35B-A3B becomes the first open-source MoE model to run smoothly on-device without compromising performance, achieving a **decoding speed of 13+ tokens/s with just 3 GB of memory** on iPhone 17 Pro Max. We also support **DSpark speculative decoding**, with dedicated heads available for **1B** ([**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark), [**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)) and **35B-A3B** ([**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark), [**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)).
 - **🛠️ Broad platform support and easy customization.** MiniCPM-V 4.7 supports **iOS, Android, and HarmonyOS**, and **supports chip platforms from Intel, AMD, Arm, Rockchip, and Houmo**, covering a diverse range of mobile devices and local computing scenarios. We also open-source [Self-Replay Fine-Tuning (SRFT)](https://openbmb.cn/en/blog/self-replay-fine-tuning), helping developers **extend model capabilities at low cost while reducing forgetting of existing capabilities**.
-
-### News
-
-- **2026-10-15** · We release **DSpark speculative decoding heads** in **BF16 and GGUF** for both MiniCPM-V 4.7 variants: **1B** ([**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark), [**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-1B-DSpark-gguf)) and **35B-A3B** ([**DSpark-BF16**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark), [**DSpark-GGUF**](https://huggingface.co/openbmb/MiniCPM-V-4.7-35B-A3B-DSpark-gguf)).
-- **2026-10-12 · MiniCPM-V 4.7 released** — the first open-source MoE model to run smoothly on-device without compromising performance, setting a new multimodal performance–efficiency Pareto frontier. [See what's new](./docs/minicpm_v4dot7_en.md).
 
 <a name="capability-alongside-inference-cost"></a>
 
