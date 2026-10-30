@@ -161,24 +161,24 @@ MiniCPM-o 4.5 is the latest model in the MiniCPM-o series, a **9B end-to-end omn
   </thead>
   <tbody>
     <tr>
-      <td><a href="#model-weights">Model weights</a></td>
-      <td><a href="./docs/minicpm_o4dot5_en.md#model-weights">Model weights</a></td>
+      <td align="center"><a href="#model-weights">Model weights</a></td>
+      <td align="center"><a href="./docs/minicpm_o4dot5_en.md#model-weights">Model weights</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_en.md#inference-with-transformers">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_7_vllm.md">vLLM</a></td>
-      <td><a href="./docs/minicpm_o4dot5_en.md#inference-using-hugging-face-transformers">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-o4_5_vllm.md">vLLM</a></td>
+      <td><a href="./docs/minicpm_v4dot7_en.md#inference-with-transformers">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_7_vllm.md">vLLM</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/minicpm-v4_7_sglang.md">SGLang</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/ollama/minicpm-v4_7_ollama.md">Ollama</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/llama.cpp/minicpm-v4_7_llamacpp.md">llama.cpp</a></td>
+      <td><a href="./docs/minicpm_o4dot5_en.md#inference-using-hugging-face-transformers">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-o4_5_vllm.md">vLLM</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/minicpm-o4_5_sglang.md">SGLang</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/ollama/minicpm-o4_5_ollama.md">Ollama</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/llama.cpp/minicpm-o4_5_llamacpp.md">llama.cpp</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/deployment_en.md#training-llama-factory-swift">Fine-tuning</a></td>
-      <td><a href="./docs/minicpm_o4dot5_en.md#use-minicpm-o-45-in-other-inference-and-training-frameworks">Fine-tuning</a></td>
+      <td align="center"><a href="./docs/deployment_en.md#training-llama-factory-swift">Fine-tuning</a></td>
+      <td align="center"><a href="./docs/minicpm_o4dot5_en.md#use-minicpm-o-45-in-other-inference-and-training-frameworks">Fine-tuning</a></td>
     </tr>
     <tr>
-      <td><a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo">Live demo</a></td>
-      <td><a href="https://minicpmo45.modelbest.cn">Live demo</a></td>
+      <td align="center"><a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo">Live demo</a></td>
+      <td align="center"><a href="https://minicpmo45.modelbest.cn">Live demo</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_en.md#on-device-deployment">Local deployment</a></td>
-      <td><a href="./docs/minicpm_o4dot5_en.md#web-demo-deployment">Local deployment</a></td>
+      <td align="center"><a href="./docs/minicpm_v4dot7_en.md#on-device-deployment">Local deployment</a></td>
+      <td align="center"><a href="./docs/minicpm_o4dot5_en.md#web-demo-deployment">Local deployment</a></td>
     </tr>
     <tr>
       <td colspan="2" align="center"><a href="./docs/api.md">API</a></td>
