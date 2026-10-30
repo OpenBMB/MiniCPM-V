@@ -158,24 +158,24 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
   </thead>
   <tbody>
     <tr>
-      <td><a href="#模型权重">模型权重</a></td>
-      <td><a href="./docs/minicpm_o4dot5_zh.md#模型权重">模型权重</a></td>
+      <td align="center"><a href="#模型权重">模型权重</a></td>
+      <td align="center"><a href="./docs/minicpm_o4dot5_zh.md#模型权重">模型权重</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_zh.md#基于-transformers-推理">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_7_vllm_zh.md">vLLM</a></td>
-      <td><a href="./docs/minicpm_o4dot5_zh.md#基于-transformers-推理">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-o4_5_vllm_zh.md">vLLM</a></td>
+      <td><a href="./docs/minicpm_v4dot7_zh.md#基于-transformers-推理">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-v4_7_vllm_zh.md">vLLM</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/minicpm-v4_7_sglang_zh.md">SGLang</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/ollama/minicpm-v4_7_ollama_zh.md">Ollama</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/llama.cpp/minicpm-v4_7_llamacpp_zh.md">llama.cpp</a></td>
+      <td><a href="./docs/minicpm_o4dot5_zh.md#基于-transformers-推理">HF</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/vllm/minicpm-o4_5_vllm_zh.md">vLLM</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/sglang/minicpm-o4_5_sglang_zh.md">SGLang</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/ollama/minicpm-o4_5_ollama_zh.md">Ollama</a> · <a href="https://github.com/OpenSQZ/MiniCPM-V-CookBook/blob/main/deployment/llama.cpp/minicpm-o4_5_llamacpp_zh.md">llama.cpp</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/deployment_zh.md#训练llama-factoryswift">微调</a></td>
-      <td><a href="./docs/minicpm_o4dot5_zh.md#在其他训练推理框架中使用-minicpm-o-45">微调</a></td>
+      <td align="center"><a href="./docs/deployment_zh.md#训练llama-factoryswift">微调</a></td>
+      <td align="center"><a href="./docs/minicpm_o4dot5_zh.md#在其他训练推理框架中使用-minicpm-o-45">微调</a></td>
     </tr>
     <tr>
-      <td><a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo">在线体验</a></td>
-      <td><a href="https://minicpmo45.modelbest.cn">在线体验</a></td>
+      <td align="center"><a href="https://huggingface.co/spaces/openbmb/MiniCPM-V-4.7-Demo">在线体验</a></td>
+      <td align="center"><a href="https://minicpmo45.modelbest.cn">在线体验</a></td>
     </tr>
     <tr>
-      <td><a href="./docs/minicpm_v4dot7_zh.md#端侧部署">本地部署</a></td>
-      <td><a href="./docs/minicpm_o4dot5_zh.md#本地-demo-部署">本地部署</a></td>
+      <td align="center"><a href="./docs/minicpm_v4dot7_zh.md#端侧部署">本地部署</a></td>
+      <td align="center"><a href="./docs/minicpm_o4dot5_zh.md#本地-demo-部署">本地部署</a></td>
     </tr>
     <tr>
       <td colspan="2" align="center"><a href="./docs/api.md">API</a></td>
