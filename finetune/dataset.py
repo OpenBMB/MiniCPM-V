@@ -289,29 +289,26 @@ def conversation_to_ids_qwen2(conversation, tokenizer):
     else:
         enable_thinking = False
 
-    ret = tokenizer.apply_chat_template(chat, tokenize=False, add_generation_prompt=False, enable_thinking=enable_thinking)
     input_ids = tokenizer.apply_chat_template(chat, tokenize=True, add_generation_prompt=False, enable_thinking=enable_thinking)
     input_ids = np.array(input_ids)
-    if "<think>\n\n</think>\n\n" in ret:
-        offset = 4
-    else:
-        offset = 0
     start_idxs = np.where(input_ids == tokenizer.convert_tokens_to_ids('<|im_start|>'))[0]
     assistant_idxs = np.where(input_ids == tokenizer.convert_tokens_to_ids('assistant'))[0]
+    assistant_idxs = [idx for idx in assistant_idxs if idx - 1 in set(start_idxs)]
     end_idxs = np.where(input_ids == tokenizer.convert_tokens_to_ids('<|im_end|>'))[0]
+    empty_thinking_ids = tokenizer.encode("<think>\n\n</think>\n\n", add_special_tokens=False)
 
     context = np.ones_like(input_ids, dtype=np.int8)
 
     for i, assistant_idx in enumerate(assistant_idxs):
-        if assistant_idx-1 in set(start_idxs):
-            if i == len(assistant_idxs) -1:
-                st = assistant_idx + 2 + offset
-            else:
-                st = assistant_idx + 2
-            for end_idx in end_idxs:
-                if end_idx > st:
-                    context[st: end_idx + 1] = 0
-                    break
+        st = assistant_idx + 2
+        if i == len(assistant_idxs) - 1 and np.array_equal(
+            input_ids[st:st + len(empty_thinking_ids)], empty_thinking_ids
+        ):
+            st += len(empty_thinking_ids)
+        for end_idx in end_idxs:
+            if end_idx > st:
+                context[st: end_idx + 1] = 0
+                break
                     
     input_ids = np.hstack(input_ids)
     context = np.hstack(context)
