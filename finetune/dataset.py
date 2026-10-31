@@ -351,9 +351,11 @@ def preprocess(
         new_schema = True
         use_image_id = True
     image_placeholder_dict = {}
+    image_groups = {}
     images = []
     image_id_cnt = 0 
     for img_name, image in images_dict.items():
+        group_start = len(images)
         if slice_config:
             source_image, patches, best_grid = slice_image(
                 image,
@@ -381,8 +383,7 @@ def preprocess(
             else:
                 image_placeholder = default_image_placeholder
             image_placeholder_dict[img_name] = image_placeholder
-    
-    images = [transform(i) for i in images]
+        image_groups[img_name] = images[group_start:]
     
     if len(images_dict) == 1 and "<image>" in images_dict:       
         if "<image>" in conversations[0]["content"]:
@@ -397,6 +398,7 @@ def preprocess(
     else:
         pattern = r'<image_\d+>'
         new_conversations = []
+        ordered_images = []
         for conversation in conversations:
             content = conversation['content']
             parts = re.split(f'({pattern})', content)
@@ -406,13 +408,17 @@ def preprocess(
                 if re.match(pattern, part):  
                     if part in image_placeholder_dict:
                         parts[i] = image_placeholder_dict[part] 
+                        ordered_images.extend(image_groups[part])
                     else:
                         raise Exception(f"not found {part} in image dict")
             conversation['content'] = '\n'.join(parts)
             new_conversations.append(conversation)
         conversations = new_conversations
+        images = ordered_images
         
         input_dict = conversation_to_ids(conversations, tokenizer, llm_type, new_schema, max_length)
+
+    images = [transform(image) for image in images]
 
     if batch_vision:
         tgt_sizes = []
