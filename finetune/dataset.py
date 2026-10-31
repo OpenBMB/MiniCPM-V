@@ -50,41 +50,51 @@ class SupervisedDataset(Dataset):
         return len(self.raw_data)
 
     def __getitem__(self, i) -> Dict[str, torch.Tensor]:
-        try:
-            if isinstance(self.raw_data[i]["image"], str):
-                images_dict = { "<image>" : Image.open(self.raw_data[i]["image"]).convert("RGB") }
-            elif isinstance(self.raw_data[i]["image"], Dict):
-                ### for multi-images input, the template for every image is <image_xx>, such as <image_00>, <image_01>
-                images_dict = {img_name : Image.open(img_path).convert("RGB") for img_name, img_path in self.raw_data[i]["image"].items()}
-                
-            ret = preprocess(
-                images_dict,
-                self.raw_data[i]["conversations"],
-                self.tokenizer,
-                self.transform,
-                query_nums=self.query_nums,
-                slice_config=self.slice_config,
-                llm_type=self.llm_type,
-                patch_size=self.patch_size,
-                batch_vision=self.batch_vision,
-                max_length=self.max_length
-            )
-            
-            ret = dict(
-                input_ids=ret["input_ids"],
-                position_ids=ret["position_ids"],
-                labels=ret["target"],
-                attention_mask=torch.ones_like(ret["input_ids"], dtype=torch.bool),
-                pixel_values=ret["pixel_values"],
-                tgt_sizes=ret["tgt_sizes"],
-                image_bound=ret["image_bound"],
-            )
-        except:
-            logger.error(f"data fetch error")
-            return self.__getitem__(random.randint(0, len(self))) 
+        if not -len(self) <= i < len(self):
+            raise IndexError(f"Training sample index out of range: {i}")
+        i %= len(self)
+        last_error = None
+        for offset in range(len(self)):
+            index = (i + offset) % len(self)
+            try:
+                return self._get_item(index)
+            except Exception as error:
+                last_error = error
+                logger.warning("Failed to load training sample %s: %s", index, error)
+        raise RuntimeError(f"Unable to load any of {len(self)} training samples") from last_error
+
+    def _get_item(self, i) -> Dict[str, torch.Tensor]:
+        if isinstance(self.raw_data[i]["image"], str):
+            images_dict = { "<image>" : Image.open(self.raw_data[i]["image"]).convert("RGB") }
+        elif isinstance(self.raw_data[i]["image"], Dict):
+            ### for multi-images input, the template for every image is <image_xx>, such as <image_00>, <image_01>
+            images_dict = {img_name : Image.open(img_path).convert("RGB") for img_name, img_path in self.raw_data[i]["image"].items()}
+
+        ret = preprocess(
+            images_dict,
+            self.raw_data[i]["conversations"],
+            self.tokenizer,
+            self.transform,
+            query_nums=self.query_nums,
+            slice_config=self.slice_config,
+            llm_type=self.llm_type,
+            patch_size=self.patch_size,
+            batch_vision=self.batch_vision,
+            max_length=self.max_length
+        )
+
+        ret = dict(
+            input_ids=ret["input_ids"],
+            position_ids=ret["position_ids"],
+            labels=ret["target"],
+            attention_mask=torch.ones_like(ret["input_ids"], dtype=torch.bool),
+            pixel_values=ret["pixel_values"],
+            tgt_sizes=ret["tgt_sizes"],
+            image_bound=ret["image_bound"],
+        )
         return ret
 
-        
+
 def data_collator(examples, padding_value=0, max_length=2048):
     def trim_and_pad(seq, batch_first, padding_value):
         return pad_sequence([s[:max_length] for s in seq], batch_first=True, padding_value=padding_value)
