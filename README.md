@@ -220,7 +220,7 @@ Community projects may support different model generations. Check each project's
 | **Deployment & development** | [Deployment & training](./docs/deployment_en.md) · [Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook) · [Documentation site](https://minicpm-o.readthedocs.io/en/latest/index.html) |
 | **Papers** | [Technical reports & related papers](./docs/project_en.md#technical-reports-and-key-techniques-papers) |
 | **Versions & updates** | [Earlier models](./docs/project_en.md#legacy-models) · [Full release history](./docs/changelog_en.md) |
-| **Community** | [Discord](https://discord.com/invite/7q3ry8Ny8K) · [WeChat](./docs/wechat.md) · [Feishu / Lark](./assets/feishu_qrcode.png) · [MiniCPM Wiki](https://modelbest.feishu.cn/wiki/UtWxwcERfiRIpIkBOjuc3h9tn1D?fromScene=spaceOverview) |
+| **Community** | [Discord](https://discord.com/invite/7q3ry8Ny8K) · [WeChat](./docs/wechat.md) · [Feishu / Lark](./assets/feishu_qrcode.png) · [MiniCPM Wiki](https://openbmb.cn/docs/) |
 | **License & usage** | [Apache-2.0](./LICENSE) · [Model license](./docs/project_en.md#model-license) · [Usage statement](./docs/project_en.md#statement) |
 
 Developed by [THUNLP](https://nlp.csai.tsinghua.edu.cn/) and [ModelBest](https://modelbest.cn/). Code and model weights are released under Apache-2.0.

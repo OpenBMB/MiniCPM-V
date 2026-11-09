@@ -217,7 +217,7 @@ MiniCPM-o 4.5 是 MiniCPM-o 系列的最新模型，是一个 **9B 端到端全�
 | **部署与开发** | [部署与训练](./docs/deployment_zh.md) · [Cookbook](https://github.com/OpenSQZ/MiniCPM-V-CookBook) · [文档网站](https://minicpm-o.readthedocs.io/en/latest/index.html) |
 | **论文资料** | [技术报告与相关论文](./docs/project_zh.md#技术报告和支撑技术论文) |
 | **版本与更新** | [历史模型](./docs/project_zh.md#历史版本模型) · [完整更新记录](./docs/changelog_zh.md) |
-| **社区交流** | [Discord](https://discord.gg/pBZuTA3hj) · [微信](./docs/wechat.md) · [飞书 / Lark](./assets/feishu_qrcode.png) · [MiniCPM 知识库](https://modelbest.feishu.cn/wiki/UtWxwcERfiRIpIkBOjuc3h9tn1D?fromScene=spaceOverview) |
+| **社区交流** | [Discord](https://discord.gg/pBZuTA3hj) · [微信](./docs/wechat.md) · [飞书 / Lark](./assets/feishu_qrcode.png) · [MiniCPM 知识库](https://openbmb.cn/docs/) |
 | **协议与声明** | [Apache-2.0](./LICENSE) · [模型协议](./docs/project_zh.md#模型协议) · [使用声明](./docs/project_zh.md#声明) |
 
 本项目由 [清华大学自然语言处理实验室](https://nlp.csai.tsinghua.edu.cn/)和[面壁智能](https://modelbest.cn/)共同开发，代码与模型权重采用 Apache-2.0 协议。
