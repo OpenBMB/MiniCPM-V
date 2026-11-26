@@ -769,7 +769,7 @@ async def generate_sse_response(request: Request, uid: Optional[str] = Header(No
 
         except Exception as e:
             logger.error(f"Error while generation: {str(e)}")
-            yield f'data:{{"error": "{str(exc)}"}}\n\n'
+            yield f'data:{{"error": "{str(e)}"}}\n\n'
     except Exception as e:
         yield f'data:{{"error": "{str(e)}"}}\n\n'
 
